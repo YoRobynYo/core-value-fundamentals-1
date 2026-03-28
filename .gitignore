@@ -1,60 +1,27 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# Node modules
+node_modules/
+npm-debug.log
 
 # Environment variables
 .env
-.env.local
+*.key
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-dev.db
-test.db
+# Ollama temp files
+.ollama/
 
-# Logs
-*.log
+# Build state
+build-state.json
 
-# Test artifacts
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.nox/
-
-# IDE
-.vshighlight/
-.idea/
-*.swp
-*.swo
-
-# OS
+# macOS junk
 .DS_Store
+*.swp
+*~
+
+# Backup files
+*-BACKUP-*.md
+*-REVIEW-NEEDED.md
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
