@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-5-LOOPS-PART3                    █ -->
+<!-- █  // Module 5 Loops Part3                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="loops-module">
+
+<h2 class="module-title">Module 5 Loops Part3</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: HELPER BOX 1: WELCOME ABOARD THE JOLLY CODER! ⚓ -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 1: WELCOME ABOARD THE JOLLY CODER! ⚓</h3>
+
+<p>Ahoy, young coders! Captain Condition and First Mate Function need your help on their pirate ship! You've learned all about conditions and logical operators in the factory — now it's time to use your skills on the high seas!</p>
+<p>On a pirate ship, you make decisions constantly:</p>
+<ul class="indented-list"><li>IF the storm is coming, THEN batten down the hatches!</li><li>IF you spot land, THEN shout "Land ho!"</li><li>ELSE IF you see another ship, THEN raise the flag!</li><li>ELSE keep sailing straight ahead.</li></ul>
+<p>Ready to set sail? Solve these 5 pirate ship challenges to prove you're ready for the treasure hunt! 🗺️</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: HELPER BOX 2: PIRATE CODING TOOLS — AND, OR, NOT 🏴‍☠️ -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 2: PIRATE CODING TOOLS — AND, OR, NOT 🏴‍☠️</h3>
+
+<p>Before we start our pirate adventure, let's review the three special tools that help us make smart decisions on the ship!</p>
+<p><strong>AND — Both Must Be True</strong></p>
+<p>Think of AND like needing BOTH a map AND a compass to find treasure. If you're missing either one, you're lost!</p>
+<p>SET "has map" = true</p>
+<p>SET "has compass" = true</p>
+<p>IF "has map" AND "has compass" THEN</p>
+<p>PRINT "Let's find that treasure!"</p>
+<p>ELSE</p>
+<p>PRINT "Need both map and compass first!"</p>
+<p>END IF</p>
+<p><strong>OR — At Least One Must Be True</strong></p>
+<p>OR is like spotting land — you might see it with your eyes OR through a telescope. Either way works!</p>
+<p>SET "see with eyes" = true</p>
+<p>SET "see with telescope" = false</p>
+<p>IF "see with eyes" OR "see with telescope" THEN</p>
+<p>PRINT "Land ho! Head that way!"</p>
+<p>ELSE</p>
+<p>PRINT "No land in sight — keep sailing"</p>
+<p>END IF</p>
+<p><strong>NOT — The Opposite</strong></p>
+<p>NOT flips things around. If it's NOT stormy weather, we can set sail!</p>
+<p>SET "stormy weather" = false</p>
+<p>IF NOT "stormy weather" THEN</p>
+<p>PRINT "Clear skies — full sails ahead!"</p>
+<p>ELSE</p>
+<p>PRINT "Too dangerous — stay in port"</p>
+<p>END IF</p>
+</div>
+<!-- End of Helper Box 2 -->
+
+<!-- Helper Box 3: HELPER BOX 3: ELSE IF — MULTIPLE CHOICES LIKE DIFFERENT ISLANDS 🏝️ -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 3: ELSE IF — MULTIPLE CHOICES LIKE DIFFERENT ISLANDS 🏝️</h3>
+
+<p>Sometimes you have more than two choices. A treasure map might have three possible locations — the cave, the palm tree, or the waterfall. That's when we use ELSE IF!</p>
+<p>SET "map clue" = "palm tree"</p>
+<p>IF "map clue" = "cave" THEN</p>
+<p>PRINT "Search near the caves!"</p>
+<p>ELSE IF "map clue" = "palm tree" THEN</p>
+<p>PRINT "Look by the palm trees!"</p>
+<p>ELSE IF "map clue" = "waterfall" THEN</p>
+<p>PRINT "Check behind the waterfall!"</p>
+<p>ELSE</p>
+<p>PRINT "Clue not recognized — keep searching!"</p>
+<p>END IF</p>
+<p>The computer checks each condition in order:</p>
+<ul class="indented-list"><li>First: Is it the cave? No — move to next</li><li>Second: Is it the palm tree? YES — stop checking and do that!</li></ul>
+</div>
+<!-- End of Helper Box 3 -->
+
+<!-- Helper Box 4: HELPER BOX 4: COMPARISON OPERATORS ON THE SHIP ⚖️ -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 4: COMPARISON OPERATORS ON THE SHIP ⚖️</h3>
+
+<p>Before we use AND, OR, and NOT, we need to compare things! Here are the comparison tools every pirate needs:</p>
+<ul class="indented-list"><li><code>></code> — Greater than (older than 8?)</li><li><code><</code> — Less than (fewer than 3 mistakes?)</li><li><code>>=</code> — Greater than or equal (8 or older?)</li><li><code><=</code> — Less than or equal (3 or fewer mistakes?)</li><li><code>=</code> — Equal to (exactly 10 steps?)</li><li><code>!=</code> — Not equal to (word is NOT "parrot"?)</li></ul>
+<p><strong>Examples on the Pirate Ship:</strong></p>
+<p>SET "child age" = 9</p>
+<p>SET "steps from tree" = 10</p>
+<p>SET "secret word" = "treasure"</p>
+<p>IF "child age" >= 8 THEN</p>
+<p>PRINT "Old enough to climb the rigging!"</p>
+<p>END IF</p>
+<p>IF "steps from tree" = 10 THEN</p>
+<p>PRINT "Exactly at the X — start digging!"</p>
+<p>END IF</p>
+<p>IF "secret word" != "parrot" THEN</p>
+<p>PRINT "That's not the password — try again!"</p>
+<p>END IF</p>
+</div>
+<!-- End of Helper Box 4 -->
+
+<!-- Helper Box 5: HELPER BOX 5: COMBINING IT ALL — REAL PIRATE DECISIONS 🎯 -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 5: COMBINING IT ALL — REAL PIRATE DECISIONS 🎯</h3>
+
+<p>Now for the exciting part! Real pirate decisions combine multiple tools. You might need to check age AND permission, OR have a backup plan, AND make sure it's NOT stormy!</p>
+<p><strong>Example: Can You Board the Ship?</strong></p>
+<p>SET "child age" = 9</p>
+<p>SET "has permission" = true</p>
+<p>SET "stormy weather" = false</p>
+<p>IF ("child age" >= 8 AND "has permission") AND NOT "stormy weather" THEN</p>
+<p>PRINT "All clear — climb aboard, matey!"</p>
+<p>ELSE</p>
+<p>PRINT "Not today — check conditions and try again"</p>
+<p>END IF</p>
+<p>This checks THREE things at once:</p>
+<p>1. Is child age >= 8? (9 is — true)</p>
+<p>2. Does child have permission? (true)</p>
+<p>3. Is it NOT stormy? (false is stormy? No — so NOT stormy is true!)</p>
+<p>All three are true — so we can board! 🏴‍☠️</p>
+</div>
+<!-- End of Helper Box 5 -->
+
+<!-- Helper Box 6: HELPER BOX 6: CAPTAIN'S TIP — USING PARENTHESES 📦 -->
+<div class="helper-box">
+<h3 class="box-title">HELPER BOX 6: CAPTAIN'S TIP — USING PARENTHESES 📦</h3>
+
+<p>Use parentheses ( ) to group your conditions, just like in maths. They help the computer understand which checks go together!</p>
+<p>IF ("child age" >= 8 AND "has permission") OR "captain says yes" THEN</p>
+<p>PRINT "You can come aboard!"</p>
+<p>END IF</p>
+<p>This says: You can board if (you're old enough AND have permission) OR if the captain says yes (even if the other two are false).</p>
+<p>END OF MODULE 6 PIRATE ADVENTURE PART 1 HELPER BOXES</p>
+</div>
+<!-- End of Helper Box 6 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 5 Loops Part3 — Exercises</h2>
+
+
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-5-LOOPS-PART3                    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

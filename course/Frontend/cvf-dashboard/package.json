@@ -1,0 +1,12 @@
+{
+  "name": "cvf-dashboard",
+  "version": "1.0.0",
+  "description": "Core Value Fundamentals — Pipeline Dashboard",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}

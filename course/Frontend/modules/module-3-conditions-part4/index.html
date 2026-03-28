@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼ Module ▼▼▼ -->
+<section class="page" id="conditions-module">
+
+<h2 class="module-title">Module 3 Conditions Part4</h2>
+
+<!-- ▼▼▼ Helper Boxes ▼▼▼ -->
+<!-- Helper Box 1: What is AND? -->
+<div class="helper-box">
+  <h3 class="box-title">🤔 What is AND? 🤔</h3>
+
+  <p>Imagine you're getting ready to leave the house. Your mum says you need BOTH
+  your coat AND your shoes before you can go outside. If you have your coat but no
+  shoes — you wait. If you have shoes but no coat — you wait. You need BOTH
+  things to be true!</p>
+
+  <h4 class="sub-title">AND Means "Both Must Be True"</h4>
+
+  <p>In coding, <strong>AND</strong> lets us check if two things are both true at
+  the same time. It's like a safety gate — both conditions must pass for the gate
+  to open!</p>
+
+  <h4 class="sub-title">Let's See a Simple Example:</h4>
+
+  <div class="code-block">
+    SET "bags are ready" = TRUE<br>
+    SET "boxes are ready" = TRUE<br><br>
+    IF "bags are ready" AND "boxes are ready" THEN<br>
+    &nbsp;&nbsp;PRINT "Green light - ready to start!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Red light - something needs fixing"<br>
+    END IF
+  </div>
+  <p class="output">Output: Green light - ready to start!</p>
+
+  <p><strong>Why?</strong> Because BOTH "bags are ready" AND "boxes are ready" are
+  TRUE. The green light turns on!</p>
+
+  <h4 class="sub-title">What If One Is False?</h4>
+
+  <div class="code-block">
+    SET "bags are ready" = TRUE<br>
+    SET "boxes are ready" = FALSE<br><br>
+    IF "bags are ready" AND "boxes are ready" THEN<br>
+    &nbsp;&nbsp;PRINT "Green light - ready to start!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Red light - something needs fixing"<br>
+    END IF
+  </div>
+  <p class="output">Output: Red light - something needs fixing</p>
+
+  <p><strong>Why?</strong> Because even though bags are ready, boxes are NOT ready.
+  Since AND requires BOTH to be true, we get the red light.</p>
+
+  <p class="note">💡 <strong>Remember:</strong> AND is like a strict teacher who
+  checks off TWO things on a list — both must be checked before you can proceed!</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: Using AND in Real Situations -->
+<div class="helper-box">
+  <h3 class="box-title">🏭 Using AND in Real Situations 🏭</h3>
+
+  <p>In the Popcorn Factory, many machines need two things checked before they can
+  start. Let's look at how AND helps us make sure everything is safe and ready.</p>
+
+  <h4 class="sub-title">Example 1: Safety Gear Check</h4>
+
+  <p>Before children can help at a machine, they need BOTH safety gloves AND safety
+  goggles. Let's check if a child is ready:</p>
+
+  <div class="code-block">
+    SET "child has gloves" = TRUE<br>
+    SET "child has goggles" = TRUE<br><br>
+    IF "child has gloves" AND "child has goggles" THEN<br>
+    &nbsp;&nbsp;PRINT "Ready to help - stay safe!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Collect missing items first"<br>
+    END IF
+  </div>
+  <p class="output">Output: Ready to help - stay safe!</p>
+
+  <h4 class="sub-title">Example 2: Machine Supplies Check</h4>
+
+  <p>Machine 7 needs BOTH enough corn kernels AND enough bags before it can start
+  popping. Let's check:</p>
+
+  <div class="code-block">
+    SET "enough corn kernels" = TRUE<br>
+    SET "enough bags" = FALSE<br><br>
+    IF "enough corn kernels" AND "enough bags" THEN<br>
+    &nbsp;&nbsp;PRINT "Machine 7 can start!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Machine 7 waiting for supplies"<br>
+    END IF
+  </div>
+  <p class="output">Output: Machine 7 waiting for supplies</p>
+
+  <p><strong>Why?</strong> We have enough corn kernels, but NOT enough bags. Both
+  must be true for the machine to start, so it waits.</p>
+
+  <h4 class="sub-title">Example 3: Quality Control Station</h4>
+
+  <p>The quality check passes only if the weight is correct AND the seal is intact:</p>
+
+  <div class="code-block">
+    SET "weight is correct" = TRUE<br>
+    SET "seal is intact" = TRUE<br><br>
+    IF "weight is correct" AND "seal is intact" THEN<br>
+    &nbsp;&nbsp;PRINT "Package approved!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Send package for review"<br>
+    END IF
+  </div>
+  <p class="output">Output: Package approved!</p>
+
+  <p class="note">💡 <strong>Tip:</strong> Think about all the things in your daily
+  life that need TWO checks before you can proceed — like needing both your lunch
+  AND your homework before you can leave for school!</p>
+</div>
+<!-- End of Helper Box 2 -->
+
+<!-- Helper Box 3: Common Mistakes with AND -->
+<div class="helper-box">
+  <h3 class="box-title">😅 Common Mistakes with AND 😅</h3>
+
+  <p>Everyone makes mistakes when learning something new! Let's look at some common
+  mistakes children make when using AND, so you can avoid them.</p>
+
+  <h4 class="sub-title">Mistake 1: Forgetting Both Must Be True</h4>
+
+  <p>Some children think AND means "if either one is true." That's actually OR (which
+  we'll learn next!). AND means BOTH must be true:</p>
+
+  <div class="code-block">
+    SET "bags are ready" = TRUE<br>
+    SET "boxes are ready" = FALSE<br><br>
+    IF "bags are ready" AND "boxes are ready" THEN<br>
+    &nbsp;&nbsp;PRINT "Ready!"  ← This will NOT print!<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Not ready"  ← This WILL print<br>
+    END IF
+  </div>
+
+  <h4 class="sub-title">Mistake 2: Wrong Order in the IF Statement</h4>
+
+  <p>The AND keyword goes BETWEEN the two conditions:</p>
+
+  <p class="output">✅ Correct: IF "condition 1" AND "condition 2" THEN<br>
+  ❌ Wrong: IF AND "condition 1" "condition 2" THEN<br>
+  ❌ Wrong: IF "condition 1" "condition 2" AND THEN</p>
+
+  <h4 class="sub-title">Mistake 3: Using AND When You Mean OR</h4>
+
+  <p>Imagine you're checking if a machine is broken. It's broken if it makes a loud
+  noise OR if it smokes. You don't need BOTH — either one means it's broken. That's
+  OR, not AND!</p>
+
+  <div class="code-block">
+    SET "machine makes loud noise" = TRUE<br>
+    SET "machine smokes" = FALSE<br><br>
+    IF "machine makes loud noise" OR "machine smokes" THEN<br>
+    &nbsp;&nbsp;PRINT "Machine needs repair!"  ← This prints because ONE is true<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Machine is working fine"<br>
+    END IF
+  </div>
+
+  <h4 class="sub-title">Mistake 4: Forgetting the ELSE</h4>
+
+  <p>Always think about what should happen when BOTH conditions are NOT true. The ELSE
+  part handles that situation:</p>
+
+  <div class="code-block">
+    IF "bags are ready" AND "boxes are ready" THEN<br>
+    &nbsp;&nbsp;PRINT "All set!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Need to fix something"  ← Don't forget this part!<br>
+    END IF
+  </div>
+
+  <p class="note">💡 <strong>Remember:</strong> Before using AND, ask yourself: "Do
+  I need BOTH things to be true, or is just ONE enough?" If both → use AND. If just
+  one → that's OR (coming next!).</p>
+</div>
+<!-- End of Helper Box 3 -->
+<!-- ▲▲▲ Helper Boxes ▲▲▲ -->
+
+<!-- ▼▼▼ Exercises ▼▼▼ -->
+<h2 class="module-title">Module 3 Conditions Part4 — Exercises</h2>
+
+<!-- ▼▼▼ Exercise 1 ▼▼▼ -->
+<div class="exercise-box" id="conditions-exercise-1">
+<h3 class="exercise-title">Exercise 1: Bags and Boxes Ready 📦</h3>
+
+<h4 class="sub-title">Part A: Check When Both Conditions Are True</h4>
+
+<p>The control panel light turns green only when both bags and boxes are in place for Machine 1. You need to check if both conditions are true.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bags are ready" and set its value to "true".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "boxes are ready" and set its value to "true".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Green light - ready to start!".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if both conditions are true:
+       <div class="code-example">
+         <code>SET bagsAreReady = "true"<br>SET boxesAreReady = "true"<br>IF bagsAreReady AND boxesAreReady THEN<br>  PRINT "Green light - ready to start!"<br>ELSE<br>  PRINT "Red light - something needs fixing"<br>END IF</code>
+       </div>
+     </li>
+   </ul>
+
+<label for="conditions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex1-part-a" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint1-part-a"></p>
+<pre class="output-block" id="conditions-output1-part-a"></pre>
+<pre class="answer-block" id="conditions-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Red Light - Something Needs Fixing</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>In this scenario, Machine 1 will not start because only one condition is true:</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bags are ready" and set its value to "bags are not ready".</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "boxes are ready" and set its value to "boxes are ready".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the status of Machine 1.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now run your code:
+      <div class="code-example">
+        <code>SET bags are ready = "bags are not ready"<br>SET boxes are ready = "boxes are ready"<br>PRINT "Status:", bags are ready, "and", boxes are ready</code>
+      </div>
+    </li>
+  </ul>
+
+<label for="conditions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex1-part-b" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint1-part-b"></p>
+<pre class="output-block" id="conditions-output1-part-b"></pre>
+<pre class="answer-block" id="conditions-answer1-part-b"></pre>
+</div>
+<!-- ▲▲▲ Exercise 1 ▲▲▲ -->
+
+<!-- ▼▼▼ Exercise 2 ▼▼▼ -->
+<div class="exercise-box" id="conditions-exercise-2">
+<h3 class="exercise-title">Exercise 2: Hair Nets and Aprons Check 🦺</h3>
+
+<h4 class="sub-title">Part A: Enough Gear for Entry</h4>
+
+<p>Before entering the Grand Hall, everyone needs both hair nets and aprons. Create a variable named "enough hair nets" and set its value to "yes". Create another variable named "enough aprons" and set its value to "yes". Use PRINT to display "Children can enter Grand Hall!" if both conditions are true.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "enough hair nets" and set its value to "yes".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "enough aprons" and set its value to "yes".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Children can enter Grand Hall!".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if both conditions are true and print the appropriate message in the code block below.</li>
+</ul>
+
+<label for="conditions-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex2-part-a" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint2-part-a"></p>
+<pre class="output-block" id="conditions-output2-part-a"></pre>
+<pre class="answer-block" id="conditions-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Not Enough Gear</h4>
+
+<p>In Part A, we checked if there were enough hair nets and aprons for all children to enter the Grand Hall safely.</p>
+
+<p>Now, let's imagine that one of the groups forgot their apron. Before they can enter, everyone needs both a hair net and an apron.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "enough hair nets" and set its value to "yes".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "enough aprons" and set its value to "no".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Wait in hallway - need more gear".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough hair nets and aprons in the code block below.</li>
+   </ul>
+
+<label for="conditions-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex2-part-b" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint2-part-b"></p>
+<pre class="output-block" id="conditions-output2-part-b"></pre>
+<pre class="answer-block" id="conditions-answer2-part-b"></pre>
+</div>
+<!-- ▲▲▲ Exercise 2 ▲▲▲ -->
+
+<!-- ▼▼▼ Exercise 3 ▼▼▼ -->
+<div class="exercise-box" id="conditions-exercise-3">
+<h3 class="exercise-title">Exercise 3: Scale Status Check ⚖️</h3>
+<h4 class="sub-title">Part A: Checking Scale Readiness</h4>
+<p>The weighing scale can only be used if it is both calibrated and not overloaded. To check if the scale is ready, we need to verify that the "scale is calibrated" and the "scale is not overloaded". If both conditions are met, we can use the scale.</p>
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scale is calibrated" and set its value to <code>TRUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "scale is not overloaded" and set its value to <code>TRUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Scale ready to use!" when both conditions are met.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if both the "scale is calibrated" and "scale is not overloaded" are true in the code block below.</li>
+</ul>
+<label for="conditions-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex3-part-a" data-section="conditions"></div>
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="3-part-a">Reset My Code</button>
+</div>
+<p class="hint" id="conditions-hint3-part-a"></p>
+<pre class="output-block" id="conditions-output3-part-a"></pre>
+<pre class="answer-block" id="conditions-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Checking for Overload</h4>
+
+<p>Now that we know how to check when the scale is ready to use, let's look at what happens when it's overloaded.</p>
+
+<p>In this scenario, the "scale is calibrated" but the "scale is not overloaded" condition is not met, so we need to call for assistance. We have two conditions to check: "scale is calibrated" and "scale is not overloaded".</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scale is calibrated" and set its value to <code>TRUE</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "scale is not overloaded" and set its value to <code>FALSE</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Call assistant for help" when the "scale is not overloaded" condition is not met.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the conditions and print the result in the code block below.</li>
+   </ul>
+
+<label for="conditions-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex3-part-b" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint3-part-b"></p>
+<pre class="output-block" id="conditions-output3-part-b"></pre>
+<pre class="answer-block" id="conditions-answer3-part-b"></pre>
+</div>
+<!-- ▲▲▲ Exercise 3 ▲▲▲ -->
+
+<!-- ▼▼▼ Exercise 4 ▼▼▼ -->
+<div class="exercise-box" id="conditions-exercise-4">
+<h3 class="exercise-title">Exercise 4: Tool Check 🔧</h3>
+
+<h4 class="sub-title">Part A: Checking the Work Station</h4>
+
+<p>A work station is only ready if it has the correct type of tool and enough of them. The manager needs to check both the "tool type is correct" and "enough tools are available" before starting work. If both conditions are met, the station is ready for use.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type is correct" and set its value to TRUE.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "enough tools are available" and set its value to TRUE.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Station ready - let's work!" when both conditions are met.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check both conditions and print the result in the code block below.</li>
+   </ul>
+
+<label for="conditions-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex4-part-a" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint4-part-a"></p>
+<pre class="output-block" id="conditions-output4-part-a"></pre>
+<pre class="answer-block" id="conditions-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Not Enough Tools</h4>
+
+<p>We have already checked when the station has the right tool and the right amount, now let's see what happens when there are not enough tools.</p>
+
+<p>In this scenario, the "tool type is correct" but there are not "enough tools are available". The work station needs the correct type of tool and enough of them to be ready. If the tools are not available, they must be fetched from storage.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type is correct" and set its value to <code>TRUE</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "enough tools are available" and set its value to <code>FALSE</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display a message when the "tool type is correct" is TRUE and "enough tools are available" is FALSE.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the conditions and print "Get correct tools from storage" in the code block below.</li>
+   </ul>
+
+<label for="conditions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex4-part-b" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint4-part-b"></p>
+<pre class="output-block" id="conditions-output4-part-b"></pre>
+<pre class="answer-block" id="conditions-answer4-part-b"></pre>
+</div>
+<!-- ▲▲▲ Exercise 4 ▲▲▲ -->
+
+<!-- ▼▼▼ Exercise 5 ▼▼▼ -->
+<div class="exercise-box" id="conditions-exercise-5">
+<h3 class="exercise-title">Exercise 5: Gloves and Goggles 🧤🥽</h3>
+<h4 class="sub-title">Part A: Checking for Safety Gear</h4>
+<p>For personal safety, children must wear both gloves and goggles before helping at a machine. We need to check if a child has both "gloves" and "goggles" to ensure they are ready to help. Let's create a simple check to see if a child is wearing the correct safety gear.</p>
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child has gloves" and set its value to <code>TRUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "child has goggles" and set its value to <code>TRUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Ready to help - stay safe!" when both conditions are met.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if a child has both "gloves" and "goggles" and print the correct message in the code block below.</li>
+</ul>
+<label for="conditions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex5-part-a" data-section="conditions"></div>
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="5-part-a">Reset My Code</button>
+</div>
+<p class="hint" id="conditions-hint5-part-a"></p>
+<pre class="output-block" id="conditions-output5-part-a"></pre>
+<pre class="answer-block" id="conditions-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Missing Items</h4>
+
+<p>From Part A, we learned that both gloves and goggles are required for safety before helping at a machine.</p>
+
+<p>A child is on their way to help but realizes they forgot their goggles. Does the child have both items needed?</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child has gloves" and set its value to "yes".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "child has goggles" and set its value to "no".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Collect missing items first".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if both conditions are true in the code block below.</li>
+   </ul>
+
+<label for="conditions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="conditions-ex5-part-b" data-section="conditions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="conditions" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="conditions" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="conditions" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="conditions-hint5-part-b"></p>
+<pre class="output-block" id="conditions-output5-part-b"></pre>
+<pre class="answer-block" id="conditions-answer5-part-b"></pre>
+</div>
+<!-- ▲▲▲ Exercise 5 ▲▲▲ -->
+
+<!-- ▲▲▲ Exercises ▲▲▲ -->
+
+</section>
+<!-- ▲▲▲ Module ▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-7-FUNCTIONS-PART4                █ -->
+<!-- █  // Module 7 Functions Part4                      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="functions-module">
+
+<h2 class="module-title">Module 7 Functions Part4</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: 🦺 Conditions Inside Functions -->
+<div class="helper-box">
+<h3 class="box-title">🦺 Conditions Inside Functions</h3>
+
+<p>You already know conditions. You have been using them since Module 3!</p>
+<div class="code-block"><code>SET "bags ready" = 10<br><br>IF "bags ready" &gt; 5<br>PRINT "Ready to go!"<br>ELSE<br>PRINT "Not enough bags"<br>END IF</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Ready to go!</code></div>
+<p>Simple! You know this already.</p>
+<p>Now here is the interesting part — what if we put that condition INSIDE a function?</p>
+<div class="code-block"><code>FUNCTION "check bags"<br>SET "bags ready" = 10<br>IF "bags ready" &gt; 5<br>PRINT "Ready to go!"<br>ELSE<br>PRINT "Not enough bags"<br>END IF<br>END FUNCTION<br><br>CALL "check bags"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Ready to go!</code></div>
+<p>The condition works exactly the same way inside a function!</p>
+<p>But we know RETURN from Part 2. So instead of printing inside the function, let us hand the answer back:</p>
+<div class="code-block"><code>FUNCTION "check bags"<br>SET "bags ready" = 10<br>IF "bags ready" &gt; 5<br>RETURN "Ready to go!"<br>ELSE<br>RETURN "Not enough bags"<br>END IF<br>END FUNCTION<br><br>SET "my check" = CALL "check bags"<br>PRINT "Bag check: ", "my check"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Bag check: Ready to go!</code></div>
+<p>The condition checked inside the function. RETURN handed the answer back. We decided what to do with it!</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: 🌳 The Safety Check Tree — Conditions Growing the Tree -->
+<div class="helper-box">
+<h3 class="box-title">🌳 The Safety Check Tree — Conditions Growing the Tree</h3>
+
+<p>Conditions can work with parameters too — something goes in, the check happens inside, the answer comes back out!</p>
+<p><strong>Condition with a parameter</strong> — value goes in, check happens inside:</p>
+<div class="code-block"><code>FUNCTION "check bags" ("bags ready")<br>IF "bags ready" &gt; 5<br>RETURN "Ready to go!"<br>ELSE<br>RETURN "Not enough bags"<br>END IF<br>END FUNCTION<br><br>SET "my check" = CALL "check bags" (10)<br>PRINT "Bag check: ", "my check"<br><br>SET "my check" = CALL "check bags" (3)<br>PRINT "Bag check: ", "my check"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Bag check: Ready to go!<br>Bag check: Not enough bags</code></div>
+<p><strong>Without RETURN</strong> — the answer stays trapped inside:</p>
+<div class="code-block"><code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "check bags" ("bags ready")<br>IF "bags ready" &gt; 5<br>SET "result" = "Ready to go!"<br>ELSE<br>SET "result" = "Not enough bags"<br>END IF<br>END FUNCTION<br><br>CALL "check bags" (10)<br>PRINT "result"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Nothing! "result" is trapped inside the function 😮</code></div>
+<p><strong>With RETURN</strong> — the answer comes back out:</p>
+<div class="code-block"><code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "check bags" ("bags ready")<br>IF "bags ready" &gt; 5<br>RETURN "Ready to go!"<br>ELSE<br>RETURN "Not enough bags"<br>END IF<br>END FUNCTION<br><br>SET "result" = CALL "check bags" (10)<br>PRINT "Factory: ", "factory name"<br>PRINT "Bag check: ", "result"<br><br>SET "result" = CALL "check bags" (3)<br>PRINT "Factory: ", "factory name"<br>PRINT "Bag check: ", "result"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Factory: Poppy's Factory<br>Bag check: Ready to go!<br>Factory: Poppy's Factory<br>Bag check: Not enough bags</code></div>
+<ul class="indented-list"><li><code>"factory name"</code> lives OUTSIDE — available everywhere</li><li><code>"bags ready"</code> is a PARAMETER — passed in each time</li><li>The condition does its check INSIDE the function</li><li>RETURN hands the answer back out 🎁</li></ul>
+<p>Your conditions have a new home now — inside functions! 🚀</p>
+</div>
+<!-- End of Helper Box 2 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 7 Functions Part4 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Goggles Check 🥽               █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-1">
+<h3 class="exercise-title">Exercise 1: Goggles Check 🥽</h3>
+
+<h4 class="sub-title">Part A: Checking Goggles</h4>
+
+<p>The factory needs to check if the goggles are ready. To do this, we will write a function that checks and returns the result. We will use a variable named "goggles ready" to store the status of the goggles. The function will check the value of "goggles ready" and return a message indicating whether the goggles are ready or not.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles ready" and set its value to <code>"yes"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "check goggles" that checks if "goggles ready" equals "yes" and returns "Goggles are ready!" or "Goggles are missing!".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the "check goggles" function.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the goggles check:
+    <div class="code-example">
+      <code>SET "goggles ready" = "yes"<br>SET "result" = IF "goggles ready" = "yes" THEN "Goggles are ready!" ELSE "Goggles are missing!"<br>PRINT "Goggles check: ", "result"</code>
+    </div>
+  </li>
+</ul>
+
+<label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint1-part-a"></p>
+<pre class="output-block" id="functions-output1-part-a"></pre>
+<pre class="answer-block" id="functions-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Goggles Not Ready</h4>
+
+<p>Great work on checking if the goggles are ready. Now let's try with different values.</p>
+
+<p>The factory needs to check if the goggles are not ready. The "goggles ready" variable should be set to "no" inside the function. The function should then check if "goggles ready" equals "no" and return "Goggles are missing!". The child should catch the result in "my check" and print it.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles ready" and set its value to <code>"no"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my check" to store the result of the function.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the function, which is stored in "my check".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the function to check the goggles:
+    <div class="code-example">
+      <code>SET "goggles ready" = "no"<br>IF "goggles ready" = "no"<br>  RETURN "Goggles are missing!"<br>ELSE<br>  RETURN "Goggles are ready!"<br>END IF</code>
+    </div>
+  </li>
+</ul>
+
+<label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint1-part-b"></p>
+<pre class="output-block" id="functions-output1-part-b"></pre>
+<pre class="answer-block" id="functions-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Gloves Check 🧤                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-2">
+<h3 class="exercise-title">Exercise 2: Gloves Check 🧤</h3>
+
+<h4 class="sub-title">Part A: Checking Gloves</h4>
+
+<p>In this exercise, you will write a function to check if the gloves are ready. You will use a variable named "gloves ready" and set its value to "yes". Then, you will use a condition to check if the "gloves ready" is "yes" and return a message saying "Gloves are ready!" or "Gloves are missing!". You will catch the result in "my check" and print it.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves ready" and set its value to <code>"yes"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my check" to store the result of the gloves check.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the gloves check.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "check gloves" that checks the "gloves ready" variable and returns the result in the code block below.</li>
+</ul>
+
+<label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint2-part-a"></p>
+<pre class="output-block" id="functions-output2-part-a"></pre>
+<pre class="answer-block" id="functions-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Gloves Check</h4>
+
+<p>In Part A, you wrote a function to check if gloves are ready and returned a message accordingly. Now it's your turn to modify the function so that it checks if the gloves are missing instead.</p>
+
+<p>Update the "gloves ready" variable inside the function to "no". The structure of the function will remain the same, but you need to catch and print the new result.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves ready" and set its value to "no".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display the message based on the new value of "gloves ready".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check if "gloves ready" equals "no" and return "Gloves are missing!" in the code block below.</li>
+</ul>
+
+<label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint2-part-b"></p>
+<pre class="output-block" id="functions-output2-part-b"></pre>
+<pre class="answer-block" id="functions-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Bag Safety Check 📦            █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-3">
+<h3 class="exercise-title">Exercise 3: Bag Safety Check 📦</h3>
+
+<h4 class="sub-title">Part A: Write a function to check bag count</h4>
+
+<p>The factory needs to ensure there are enough bags ready before proceeding. Write a function that takes the bag count as a parameter and returns whether it is safe to proceed!</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag count" and set its value to 10.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag check: Safe to proceed!" if the bag count is greater than 5, otherwise print "Bag check: Not enough bags!".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to create the function and call it with 10 in the code block below.</li>
+</ul>
+
+⚠️ Step 4 is ONE sentence only — no pseudocode, no code-example div.
+
+<label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint3-part-a"></p>
+<pre class="output-block" id="functions-output3-part-a"></pre>
+<pre class="answer-block" id="functions-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Bag Safety Check</h4>
+
+<p>From Part A, we learned how to create a function that checks if enough bags are ready for production.</p>
+
+<p>In this part, we will use the same function with different values. We want to check if it is safe to proceed when there are 8 bags and again when there are only 2 bags.</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag count" and set its value to 8.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bag count" and set its value to 2.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the bag check result.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with these values in the code block below.</li>
+</ul>
+
+<label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint3-part-b"></p>
+<pre class="output-block" id="functions-output3-part-b"></pre>
+<pre class="answer-block" id="functions-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Worker Safety Check 🦺         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-4">
+<h3 class="exercise-title">Exercise 4: Worker Safety Check 🦺</h3>
+
+<h4 class="sub-title">Part A: Checking Worker Status</h4>
+
+<p>In the Popcorn Factory, each worker needs to be checked before entering the factory. The worker's status is crucial in determining whether they can enter or not. We will create a function that takes the "worker status" as a parameter and returns whether the worker can enter the factory.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "check worker" that takes "worker status" as a parameter.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, check if the "worker status" equals "ready" and return "Worker can enter!" or "Worker is not ready!" accordingly.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the function call with "ready" and "not ready" as the "worker status" values.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the function and call it with "ready" and "not ready" in the code block below.</li>
+   </ul>
+
+<label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint4-part-a"></p>
+<pre class="output-block" id="functions-output4-part-a"></pre>
+<pre class="answer-block" id="functions-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Worker Safety Check</h4>
+
+<p>You already know how to use conditions inside functions from Module 3. In this part, you will call a function with different worker statuses and print the results.</p>
+
+<p>In Part A, you wrote a function called "checkWorker" that takes "worker status" as a parameter and returns whether the worker can enter or not. Now, we will use this same function but this time, we will assign different values to the variable and call the function with those values.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "statusReady" and set its value to "ready".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "statusNotReady" and set its value to "not ready".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Worker check: [function call with statusReady]".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the function with "statusNotReady" in the code block below.</li>
+</ul>
+
+<label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint4-part-b"></p>
+<pre class="output-block" id="functions-output4-part-b"></pre>
+<pre class="answer-block" id="functions-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: The Full Safety Report 🌟      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-5">
+<h3 class="exercise-title">Exercise 5: The Full Safety Report 🌟</h3>
+
+<h4 class="sub-title">Part A: Basic Safety Check</h4>
+
+<p>In this part, we will create a function to check if there are enough bags for the safety report. Set the "factory name" outside the function and use the "bag count" as a parameter.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "safety report" that takes "bag count" as a parameter.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the factory name and the result of the safety check.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set the factory name, call the "safety report" function with a bag count of 10 and print both the factory name and the returned message. Call again with a bag count of 3.</li>
+</ul>
+
+⚠️ Step 4 is ONE sentence only — no pseudocode, no code-example div.
+
+<label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-a"></p>
+<pre class="output-block" id="functions-output5-part-a"></pre>
+<pre class="answer-block" id="functions-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Factory Safety Check</h4>
+
+<p>Now that you know how to use conditions inside functions, let's apply it in our popcorn factory! You will keep "Poppy's Factory" as the name of the factory and check if there are enough bags for safety.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag count" and set its value to 8.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function "safety report" with the value of "bag count".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Factory: Poppy's Factory" and the result from the function.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with a different value for "bag count".</li>
+   </ul>
+
+<label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-b"></p>
+<pre class="output-block" id="functions-output5-part-b"></pre>
+<pre class="answer-block" id="functions-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-7-FUNCTIONS-PART4                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>
