@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Gate Diagnostics — JS Fundamentals</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: #02070e;
+      font-family: 'Courier New', monospace;
+      color: #00d4ff;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    /* GRID */
+    .hud {
+      flex: 1;
+      display: grid;
+      grid-template-rows: 28px 1fr 28px;
+      grid-template-columns: 210px 1fr 175px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hud::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 160, 200, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 160, 200, .03) 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* TITLE BAR */
+    .tbar {
+      grid-column: 1/-1;
+      grid-row: 1;
+      background: #030d1a;
+      border-bottom: 1px solid #0a2030;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 10px;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #005d70;
+      z-index: 2;
+      -webkit-app-region: drag;
+    }
+
+    .tbar-dot {
+      width: 7px;
+      height: 7px;
+      background: #00ff80;
+      border-radius: 1px;
+      -webkit-app-region: no-drag
+    }
+
+    .tbar-main {
+      color: #00ccee;
+      font-size: 9px;
+      letter-spacing: 3px
+    }
+
+    .tbar-id {
+      color: #004050
+    }
+
+    #tbar-status {
+      margin-left: 16px;
+      color: #00ff80;
+      font-size: 8px
+    }
+
+    .tbar-clock {
+      margin-left: auto;
+      color: #004050;
+      font-size: 8px
+    }
+
+    .pipeline-btns {
+      display: flex;
+      gap: 6px;
+      -webkit-app-region: no-drag;
+      margin-left: 12px
+    }
+
+    .pbtn {
+      border: 1px solid #005d70;
+      padding: 2px 10px;
+      font-size: 7px;
+      letter-spacing: 1px;
+      color: #007a90;
+      background: #010810;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .pbtn:hover {
+      border-color: #00aacc;
+      color: #00ccee
+    }
+
+    .pbtn.pbtn-stop {
+      border-color: #3a1010;
+      color: #7a2020
+    }
+
+    .pbtn.pbtn-stop:hover {
+      border-color: #cc2020;
+      color: #ff3030
+    }
+
+    .pbtn.running {
+      border-color: #00ff80;
+      color: #00ff80;
+      animation: pulse-green 1.5s ease-in-out infinite
+    }
+
+    @keyframes pulse-green {
+
+      0%,
+      100% {
+        box-shadow: none
+      }
+
+      50% {
+        box-shadow: 0 0 6px #00ff8060
+      }
+    }
+
+    /* LEFT PANEL */
+    .lpanel {
+      grid-column: 1;
+      grid-row: 2;
+      border-right: 1px solid #0a2030;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #020b14;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .slbl {
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: #00ff80;
+      margin-bottom: 2px
+    }
+
+    .slbl-b {
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: #00aacc;
+      margin-bottom: 2px
+    }
+
+    .dtable {
+      font-size: 7px;
+      color: #004d60;
+      line-height: 1.8
+    }
+
+    .dtable .dv {
+      color: #00aacc
+    }
+
+    .diagblk {
+      border: 1px solid #0a2030;
+      padding: 6px;
+      background: #010810;
+      font-size: 7px;
+      color: #006070;
+      line-height: 1.9;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .diagblk .dhi {
+      color: #00ff80
+    }
+
+    .diagblk .dbl {
+      color: #00aacc
+    }
+
+    .subblk {
+      border: 1px solid #0a2030;
+      padding: 5px;
+      background: #010810;
+      font-size: 7px;
+      color: #005060;
+      line-height: 1.8
+    }
+
+    /* PIPELINE LOG */
+    .log-panel {
+      border: 1px solid #0a2030;
+      background: #010810;
+      padding: 5px;
+      font-size: 7px;
+      color: #004d60;
+      line-height: 1.7;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .log-panel .log-ok {
+      color: #00ff80
+    }
+
+    .log-panel .log-err {
+      color: #cc3030
+    }
+
+    .log-panel .log-info {
+      color: #00aacc
+    }
+
+    /* CENTRE */
+    .centre {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #01070d;
+      z-index: 1;
+    }
+
+    #gate {
+      display: block
+    }
+
+    /* RIGHT PANEL */
+    .rpanel {
+      grid-column: 3;
+      grid-row: 2;
+      border-left: 1px solid #0a2030;
+      padding: 8px 5px;
+      background: #020b14;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .mrow {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 7px;
+      letter-spacing: 1px;
+      padding: 3px 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all .2s;
+      color: #003d50;
+    }
+
+    .mrow:hover {
+      border-color: #0a2030;
+      color: #006070
+    }
+
+    .mrow.done {
+      color: #005d40
+    }
+
+    .mrow.done .mdot {
+      background: #00ff80
+    }
+
+    .mrow.active {
+      border-color: #00aacc;
+      color: #00ccee
+    }
+
+    .mrow.active .mdot {
+      background: #00ccee;
+      animation: blink 1s step-end infinite
+    }
+
+    .mrow.locked {
+      color: #002030
+    }
+
+    .mrow.locked .mdot {
+      background: #001020
+    }
+
+    .mdot {
+      width: 5px;
+      height: 5px;
+      border-radius: 1px;
+      background: #002030;
+      flex-shrink: 0
+    }
+
+    .mparts {
+      margin-left: auto;
+      font-size: 6px;
+      color: #002030
+    }
+
+    .mrow.done .mparts {
+      color: #003d20
+    }
+
+    .mrow.active .mparts {
+      color: #006070
+    }
+
+    .rsep {
+      height: 1px;
+      background: #0a2030;
+      margin: 3px 0
+    }
+
+    .rsec {
+      font-size: 6px;
+      letter-spacing: 2px;
+      color: #003040;
+      margin: 3px 0 1px
+    }
+
+    .rsub {
+      font-size: 6px;
+      color: #002d3a;
+      padding: 1px 4px;
+      letter-spacing: 1px
+    }
+
+    .rsub.rhi {
+      color: #00ff80
+    }
+
+    /* ADDR BAR */
+    .abar {
+      grid-column: 1/-1;
+      grid-row: 3;
+      border-top: 1px solid #0a2030;
+      background: #030d1a;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 0 8px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .glyph {
+      border: 1px solid #0a2030;
+      padding: 1px 0;
+      font-size: 7px;
+      letter-spacing: 1px;
+      color: #003d50;
+      background: #010810;
+      flex: 1;
+      text-align: center;
+      transition: all .35s;
+    }
+
+    .glyph.lit {
+      border-color: #00aacc;
+      color: #00ccee;
+      background: #001828
+    }
+
+    .glyph.locked-g {
+      border-color: #00ff80;
+      color: #00ff80;
+      background: #001a10
+    }
+
+    /* BOTTOM MODULE CARDS */
+    .bpanel {
+      display: flex;
+      border-top: 1px solid #0a2030;
+      background: #020a12;
+      height: 185px;
+      flex-shrink: 0;
+    }
+
+    .mcard {
+      flex: 1;
+      border-right: 1px solid #0a2030;
+      padding: 8px 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      transition: background .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mcard:last-child {
+      border-right: none
+    }
+
+    .mcard:hover {
+      background: #031420
+    }
+
+    .mcard.mc-active {
+      background: #031a24;
+      border-top: 2px solid #00ccee
+    }
+
+    .mcard.mc-done {
+      border-top: 2px solid #005d40
+    }
+
+    .mcard.mc-locked {
+      opacity: .45;
+      cursor: default
+    }
+
+    .mc-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #0a2030;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      background: #010810;
+      flex-shrink: 0;
+      font-family: 'Courier New', monospace;
+      color: #004d60;
+      letter-spacing: -1px;
+      transition: border-color .3s, color .3s;
+    }
+
+    .mcard.mc-active .mc-icon {
+      border-color: #00aacc;
+      color: #00ccee
+    }
+
+    .mcard.mc-done .mc-icon {
+      border-color: #005d40;
+      color: #00aa60
+    }
+
+    .mc-num {
+      font-size: 6px;
+      letter-spacing: 2px;
+      color: #003d50
+    }
+
+    .mcard.mc-active .mc-num {
+      color: #00ff80
+    }
+
+    .mcard.mc-done .mc-num {
+      color: #004d30
+    }
+
+    .mc-name {
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: #005060;
+      line-height: 1.3;
+      font-weight: bold
+    }
+
+    .mcard.mc-active .mc-name {
+      color: #00ccee
+    }
+
+    .mcard.mc-done .mc-name {
+      color: #006040
+    }
+
+    .mcard.mc-locked .mc-name {
+      color: #002030
+    }
+
+    .mc-sub {
+      font-size: 6px;
+      color: #003040;
+      line-height: 1.5;
+      flex: 1
+    }
+
+    .mcard.mc-active .mc-sub {
+      color: #005d70
+    }
+
+    .mcard.mc-done .mc-sub {
+      color: #003d20
+    }
+
+    .mc-track {
+      height: 3px;
+      background: #010810;
+      border: 1px solid #0a2030;
+      position: relative;
+      overflow: hidden
+    }
+
+    .mc-fill {
+      height: 100%;
+      transition: width 1.2s ease;
+      background: #005d40
+    }
+
+    .mcard.mc-active .mc-fill {
+      background: #00aacc
+    }
+
+    .mcard.mc-done .mc-fill {
+      background: #00ff80
+    }
+
+    .mc-foot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 6px;
+      color: #003040
+    }
+
+    .mcard.mc-active .mc-foot {
+      color: #006070
+    }
+
+    .mcard.mc-done .mc-foot {
+      color: #004d30
+    }
+
+    .mc-status-dot {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #002030;
+    }
+
+    .mcard.mc-active .mc-status-dot {
+      background: #00ccee;
+      animation: blink 1s step-end infinite
+    }
+
+    .mcard.mc-done .mc-status-dot {
+      background: #00ff80
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hud">
+
+    <!-- TITLE BAR -->
+    <div class="tbar">
+      <div class="tbar-dot"></div>
+      <span class="tbar-main">Course Diagnostics || Core-Fundamentals-Let's Build</span>
+      <span class="tbar-id" id="macro-id">MCK.008762346</span>
+      <span id="tbar-status">STANDING BY</span>
+      <div class="pipeline-btns">
+        <div class="pbtn" id="btn-start" onclick="startPipeline()">▶ RUN PIPELINE</div>
+        <div class="pbtn pbtn-stop" id="btn-stop" onclick="stopPipeline()">■ STOP</div>
+      </div>
+      <span class="tbar-clock" id="clock">00:00:00</span>
+    </div>
+
+    <!-- LEFT PANEL -->
+    <div class="lpanel">
+      <div>
+        <div class="slbl">● RUNNING DIAGNOSTICS//**</div>
+        <div class="slbl-b" id="verify-lbl">SUBSYSTEM ALPHA V.4<br>VERIFYING: <span id="verify-mod">M01 —
+            VARIABLES</span></div>
+      </div>
+      <div class="dtable" id="left-table">
+        <div><span class="dv">3.645</span> &nbsp; <span class="dv">8.543455</span> &nbsp; 0.354</div>
+        <div><span class="dv">6.55</span> &nbsp; <span class="dv">11.7455</span> &nbsp; 0.745</div>
+        <div><span class="dv">0.0054</span> &nbsp; <span class="dv">0.9203</span> &nbsp; 0.65</div>
+        <div><span class="dv">0.48234</span> &nbsp; <span class="dv">0.884</span> &nbsp; 0.563</div>
+        <div><span class="dv">0.534</span> &nbsp; <span class="dv">0.885</span> &nbsp; 0.347</div>
+      </div>
+      <div class="diagblk" id="diagblk">
+        <div class="dhi">00.233.488839 349</div>
+        <div class="dhi">00.9998691.RT</div>
+        <br>
+        <div>INITIALIZED** 00.0289</div>
+        <div class="dbl">FREQUENCY 64.34KHZ // 0.3837</div>
+        <div>ISOLATE FREQUENCY // COMPILE</div>
+        <div class="dbl">00.46x6.59 ...CONFIRMED</div>
+        <br>
+        <div>REPEAT //GO 00.284 // 00.2388</div>
+        <div class="dhi">ACTIVE // 00.28000376</div>
+      </div>
+      <div class="subblk">
+        <div class="slbl-b" style="margin-bottom:3px">SUBSPACE PHASE ADJ** 0.5934</div>
+        <div>00.23453.3453234.XDS</div>
+        <div>NC &nbsp; 00.52447.RT</div>
+        <div>NC &nbsp; 00.22345.RT</div>
+        <div>NC &nbsp; 00.52447.RT</div>
+      </div>
+      <!-- Pipeline log -->
+      <div class="slbl" style="margin-bottom:0">PIPELINE LOG</div>
+      <div class="log-panel" id="log-panel">
+        <div class="log-info">// awaiting pipeline start...</div>
+      </div>
+    </div>
+
+    <!-- CENTRE GATE -->
+    <div class="centre">
+      <canvas id="gate" width="420" height="420"></canvas>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="rpanel">
+      <div class="rsec" style="color:#00ff80">● GR MATRIX</div>
+      <div class="rsec" style="color:#00ff80">● GATE NFC</div>
+      <div class="rsep"></div>
+      <div class="slbl" style="font-size:6px">COURSE MODULES</div>
+
+      <div class="mrow done" onclick="dialModule(0)">
+        <div class="mdot"></div>M01 · VARIABLES<span class="mparts">1pt</span>
+      </div>
+      <div class="mrow done" onclick="dialModule(1)">
+        <div class="mdot"></div>M02 · OPERATORS<span class="mparts">1pt</span>
+      </div>
+      <div class="mrow done" onclick="dialModule(2)">
+        <div class="mdot"></div>M03 · CONDITIONS<span class="mparts">5pt</span>
+      </div>
+      <div class="mrow done" onclick="dialModule(3)">
+        <div class="mdot"></div>M04 · LOG.OPS<span class="mparts">2pt</span>
+      </div>
+      <div class="mrow active" id="mrow-4" onclick="dialModule(4)">
+        <div class="mdot"></div>M05 · LOOPS<span class="mparts">4pt</span>
+      </div>
+      <div class="mrow locked" onclick="dialModule(5)">
+        <div class="mdot"></div>M06 · PIRATE ADV.<span class="mparts">2pt</span>
+      </div>
+      <div class="mrow locked" onclick="dialModule(6)">
+        <div class="mdot"></div>M07 · FUNCTIONS<span class="mparts">6pt</span>
+      </div>
+
+      <div class="rsep"></div>
+      <div class="rsec">PRIMARY GTF SUBROUTINES</div>
+      <div class="rsub rhi">** 00.7714.NV</div>
+      <div class="rsub rhi">** 00.9993.RF</div>
+      <div class="rsub rhi">** 00.5584.EG</div>
+      <div class="rsep"></div>
+      <div class="rsub">EXTRAPOLATE</div>
+      <div class="rsub" style="color:#00ff80">● MATRIX-TK</div>
+      <div class="rsub" style="color:#00ff80">● GATE-TK</div>
+      <div class="rsub">TRACK · AGC</div>
+      <div class="rsub">TRACK · VTC</div>
+    </div>
+
+    <!-- ADDRESS BAR -->
+    <div class="abar" id="abar">
+      <div class="glyph locked-g">DG3</div>
+      <div class="glyph locked-g">JF9</div>
+      <div class="glyph lit">RG2</div>
+      <div class="glyph lit">LR6</div>
+      <div class="glyph">JF9</div>
+      <div class="glyph">QT4</div>
+      <div class="glyph">RG2</div>
+      <div class="glyph">LR6</div>
+      <div class="glyph">JF9</div>
+      <div class="glyph">DG3</div>
+      <div class="glyph">PK7</div>
+      <div class="glyph">LR6</div>
+      <div class="glyph">JF9</div>
+      <div class="glyph">QT4</div>
+      <div class="glyph">XR8</div>
+      <div class="glyph">NV5</div>
+      <div class="glyph">TK6</div>
+    </div>
+
+  </div><!-- /hud -->
+
+  <!-- BOTTOM MODULE CARDS -->
+  <div class="bpanel" id="bpanel"></div>
+
+  <script>
+    // ── MODULE DATA ───────────────────────────────────────────────
+    const MODULES = [
+      {
+        id: 1, code: 'M01', key: 'module-1-variables',
+        name: 'VARIABLES', icon: 'x=1',
+        sub: 'let · const · var\nData types\nNaming rules\nString basics',
+        parts: 1, done: 1, status: 'done',
+        freq: '48.21KHZ', chevrons: 3,
+        glyphs: ['DG3', 'JF9', 'RG2']
+      },
+      {
+        id: 2, code: 'M02', key: 'module-2-operators',
+        name: 'OPERATORS', icon: '+−×',
+        sub: 'Arithmetic ops\nComparison ops\nAssignment ops\nString concat',
+        parts: 1, done: 1, status: 'done',
+        freq: '52.67KHZ', chevrons: 3,
+        glyphs: ['DG3', 'JF9', 'RG2']
+      },
+      {
+        id: 3, code: 'M03', key: 'module-3-conditions',
+        name: 'CONDITIONS', icon: 'if{}',
+        sub: 'if / else / else if\nComparison logic\nNested conditions\nSwitch statements\nTernary operator',
+        parts: 5, done: 5, status: 'done',
+        freq: '61.09KHZ', chevrons: 5,
+        glyphs: ['DG3', 'JF9', 'RG2', 'LR6', 'QT4']
+      },
+      {
+        id: 4, code: 'M04', key: 'module-4-logical-operators',
+        name: 'LOGICAL OPS', icon: '&&||',
+        sub: 'AND · OR · NOT\nTruthy & falsy\nShort-circuit eval\nCombining conditions',
+        parts: 2, done: 2, status: 'done',
+        freq: '64.34KHZ', chevrons: 4,
+        glyphs: ['DG3', 'JF9', 'RG2', 'LR6']
+      },
+      {
+        id: 5, code: 'M05', key: 'module-5-loops',
+        name: 'LOOPS', icon: '↻[]',
+        sub: 'for loops\nwhile loops\nbreak & continue\nLooping arrays',
+        parts: 4, done: 2, status: 'active',
+        freq: '71.88KHZ', chevrons: 5,
+        glyphs: ['DG3', 'JF9', 'RG2', 'LR6', 'QT4']
+      },
+      {
+        id: 6, code: 'M06', key: 'module-6-pirate-adventure',
+        name: 'PIRATE ADV.', icon: '🏴',
+        sub: 'Project module\nApply all concepts\nBuild a game\nPirate story engine',
+        parts: 2, done: 0, status: 'locked',
+        freq: '79.44KHZ', chevrons: 6,
+        glyphs: ['DG3', 'JF9', 'RG2', 'LR6', 'QT4', 'PK7']
+      },
+      {
+        id: 7, code: 'M07', key: 'module-7-functions',
+        name: 'FUNCTIONS', icon: 'f(x)',
+        sub: 'Declaring functions\nParameters & return\nScope & closures\nArrow functions\nCallbacks intro\nMini-projects',
+        parts: 6, done: 0, status: 'locked',
+        freq: '91.76KHZ', chevrons: 7,
+        glyphs: ['DG3', 'JF9', 'RG2', 'LR6', 'QT4', 'PK7', 'XR8']
+      },
+    ];
+
+    const GLYPHS_ALL = ['DG3', 'JF9', 'RG2', 'LR6', 'QT4', 'PK7', 'XR8', 'NV5', 'TK6', 'RF4', 'EG2', 'WZ7', 'MC3', 'BV8', 'PL1', 'XQ5', 'KR7'];
+
+    let currentMod = 4; // 0-indexed, M05 Loops is active
+    let ringAngle = 0, ringSpeed = 0, targetSpeed = 0;
+    let sweepAngle = 0;          // inner sweep has its own angle — only moves when pipeline active
+    let isDialling = false;
+    let chevronLit = 5;
+    let pipelineRunning = false;
+    let activeModuleIndex = -1;  // which module is currently being processed by pipeline (-1 = none)
+
+    // ── BUILD BOTTOM CARDS ────────────────────────────────────────
+    function buildCards() {
+      const bp = document.getElementById('bpanel');
+      bp.innerHTML = '';
+      MODULES.forEach((m, i) => {
+        const pct = m.parts > 0 ? Math.round((m.done / m.parts) * 100) : 0;
+        const cls = m.status === 'active' ? 'mc-active' : m.status === 'done' ? 'mc-done' : 'mc-locked';
+        const card = document.createElement('div');
+        card.className = 'mcard ' + cls;
+        card.id = 'card-' + i;
+        if (m.status !== 'locked') card.onclick = () => dialModule(i);
+        card.innerHTML = `
+      <div class="mc-status-dot"></div>
+      <div class="mc-icon">${m.icon}</div>
+      <div class="mc-num">${m.code} // ${m.parts} PART${m.parts > 1 ? 'S' : ''}</div>
+      <div class="mc-name">${m.name}</div>
+      <div class="mc-sub">${m.sub.replace(/\n/g, '<br>')}</div>
+      <div class="mc-track"><div class="mc-fill" style="width:${pct}%"></div></div>
+      <div class="mc-foot"><span>${m.done}/${m.parts} PARTS</span><span>${pct}%</span></div>
+    `;
+        bp.appendChild(card);
+      });
+    }
+    buildCards();
+
+    // ── GATE CANVAS ───────────────────────────────────────────────
+    const cv = document.getElementById('gate');
+    const ctx = cv.getContext('2d');
+    const W = 420, H = 420, CX = 210, CY = 210;
+
+    function drawGate() {
+      ctx.clearRect(0, 0, W, H);
+      const OR = 188, IR = 162;
+
+      // Outer rotating ring
+      ctx.save();
+      ctx.translate(CX, CY); ctx.rotate(ringAngle); ctx.translate(-CX, -CY);
+      for (let i = 0; i < 36; i++) {
+        const a0 = (i / 36) * Math.PI * 2;
+        const a1 = ((i + 0.82) / 36) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.arc(CX, CY, OR, a0, a1);
+        ctx.arc(CX, CY, IR, a1, a0, true);
+        ctx.closePath();
+        ctx.fillStyle = i % 4 === 0 ? '#0a1e2a' : '#060f18';
+        ctx.fill();
+        ctx.strokeStyle = '#0d3040'; ctx.lineWidth = 0.5; ctx.stroke();
+        // glyph label in segment
+        if (i % 2 === 0) {
+          const am = (a0 + a1) / 2, r = (OR + IR) / 2;
+          ctx.save();
+          ctx.translate(CX + r * Math.cos(am), CY + r * Math.sin(am));
+          ctx.rotate(am + Math.PI / 2);
+          ctx.font = '7px Courier New'; ctx.fillStyle = '#00ff8035';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(GLYPHS_ALL[i % GLYPHS_ALL.length].slice(0, 2), 0, 0);
+          ctx.restore();
+        }
+      }
+      ctx.restore();
+
+      // Ring outlines (blue glow)
+      ctx.beginPath(); ctx.arc(CX, CY, IR, 0, Math.PI * 2);
+      ctx.strokeStyle = '#005d99'; ctx.lineWidth = 4; ctx.stroke();
+      ctx.beginPath(); ctx.arc(CX, CY, OR, 0, Math.PI * 2);
+      ctx.strokeStyle = '#003d60'; ctx.lineWidth = 2; ctx.stroke();
+
+      // 9 fixed chevrons
+      for (let i = 0; i < 9; i++) {
+        const a = (i / 9) * Math.PI * 2 - Math.PI / 2;
+        const cr = OR + 15;
+        const cx2 = CX + cr * Math.cos(a), cy2 = CY + cr * Math.sin(a);
+        const lit = i < chevronLit;
+        ctx.save();
+        ctx.translate(cx2, cy2); ctx.rotate(a + Math.PI / 2);
+        ctx.beginPath();
+        ctx.moveTo(0, -10); ctx.lineTo(9, 6); ctx.lineTo(5, 3);
+        ctx.lineTo(0, 8); ctx.lineTo(-5, 3); ctx.lineTo(-9, 6);
+        ctx.closePath();
+        if (lit) {
+          ctx.fillStyle = '#00ff60';
+          ctx.shadowColor = '#00ff60'; ctx.shadowBlur = 14; ctx.fill(); ctx.shadowBlur = 0;
+        } else {
+          ctx.fillStyle = '#0a1e10'; ctx.strokeStyle = '#003020'; ctx.lineWidth = 1;
+          ctx.fill(); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Inner static ring + ticks
+      ctx.beginPath(); ctx.arc(CX, CY, IR - 8, 0, Math.PI * 2);
+      ctx.strokeStyle = '#003d55'; ctx.lineWidth = 1.5; ctx.stroke();
+      for (let i = 0; i < 72; i++) {
+        const a = (i / 72) * Math.PI * 2;
+        const r0 = IR - 10, r1 = i % 8 === 0 ? IR - 20 : IR - 15;
+        ctx.beginPath();
+        ctx.moveTo(CX + r0 * Math.cos(a), CY + r0 * Math.sin(a));
+        ctx.lineTo(CX + r1 * Math.cos(a), CY + r1 * Math.sin(a));
+        ctx.strokeStyle = i % 8 === 0 ? '#005d70' : '#002030';
+        ctx.lineWidth = 1; ctx.stroke();
+      }
+
+      // Inner fill
+      const textR = IR - 14;
+      ctx.beginPath(); ctx.arc(CX, CY, textR, 0, Math.PI * 2);
+      ctx.fillStyle = '#010810'; ctx.fill();
+      ctx.strokeStyle = '#002030'; ctx.lineWidth = 1; ctx.stroke();
+
+      // Sweep — only drawn when pipeline is actively running
+      if (pipelineRunning) {
+        const g = ctx.createRadialGradient(CX, CY, 0, CX, CY, textR);
+        g.addColorStop(0, 'rgba(0,180,210,0)');
+        g.addColorStop(0.6, 'rgba(0,180,210,0)');
+        g.addColorStop(1, 'rgba(0,180,210,0.12)');
+        ctx.beginPath(); ctx.moveTo(CX, CY);
+        ctx.arc(CX, CY, textR, sweepAngle, sweepAngle + 0.65); ctx.closePath();
+        ctx.fillStyle = g; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(CX, CY);
+        ctx.lineTo(CX + textR * Math.cos(sweepAngle), CY + textR * Math.sin(sweepAngle));
+        ctx.strokeStyle = 'rgba(0,220,255,0.45)'; ctx.lineWidth = 1.5; ctx.stroke();
+        // Trailing glow ring when processing
+        ctx.beginPath(); ctx.arc(CX, CY, textR - 2, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(0,180,210,0.08)'; ctx.lineWidth = 3; ctx.stroke();
+      }
+
+      // Centre text
+      const m = MODULES[currentMod];
+      const procMod = activeModuleIndex >= 0 ? MODULES[activeModuleIndex] : null;
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 10px Courier New';
+      ctx.fillStyle = pipelineRunning ? '#00ddff' : '#00aacc';
+      ctx.fillText('2049:1948  // V.34 X:Y', CX, CY - 28);
+      ctx.fillText('2058:2954  >> ALPHA 0' + (currentMod + 1), CX, CY - 13);
+      ctx.font = '9px Courier New'; ctx.fillStyle = '#007a90';
+      ctx.fillText('34503 > ROT. ' + Math.round((currentMod + 1) * 14.2) + ' DEG.', CX, CY + 4);
+      ctx.font = '8px Courier New';
+      if (pipelineRunning && procMod) {
+        ctx.fillStyle = '#00ff80';
+        ctx.fillText('PROCESSING: ' + procMod.code + ' // ' + procMod.name, CX, CY + 22);
+        ctx.font = '7px Courier New'; ctx.fillStyle = '#005d40';
+        ctx.fillText('FREQ ' + procMod.freq + '  ·  PIPELINE ACTIVE', CX, CY + 38);
+      } else if (isDialling) {
+        ctx.fillStyle = '#00aacc';
+        ctx.fillText('DIALLING SEQUENCE ACTIVE...', CX, CY + 22);
+        ctx.font = '7px Courier New'; ctx.fillStyle = '#004d60';
+        ctx.fillText(m.code + ' // ' + m.freq, CX, CY + 38);
+      } else {
+        ctx.fillStyle = '#005060';
+        ctx.fillText(m.code + ' // ' + m.name + ' // ' + m.freq, CX, CY + 22);
+        ctx.font = '7px Courier New'; ctx.fillStyle = '#003d50';
+        ctx.fillText(m.done + '/' + m.parts + ' PARTS  ·  ' + m.status.toUpperCase(), CX, CY + 38);
+      }
+    }
+
+    // ── ANIMATION TICK ────────────────────────────────────────────
+    // Ring behaviour:
+    //   idle        → completely still (ringSpeed coasts to 0)
+    //   dialling    → spins up briefly for chevron sequence, then stops
+    //   pipeline    → spins only while a module file is actively processing
+    //                 speeds up per part, slows between modules, stops at end
+
+    function tick() {
+      if (pipelineRunning && fileProcessing) {
+        // A file is actively being processed — spin the ring
+        ringSpeed += (0.03 - ringSpeed) * 0.04;
+        sweepAngle += 0.045;
+      } else if (isDialling) {
+        // Brief spin during manual dial sequence only
+        ringSpeed += (0.06 - ringSpeed) * 0.05;
+      } else {
+        // Idle or between modules — coast to a complete stop
+        ringSpeed *= 0.88;
+        if (Math.abs(ringSpeed) < 0.0001) ringSpeed = 0;
+      }
+      ringAngle += ringSpeed;
+      drawGate();
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // ── DIAL MODULE (manual click) ────────────────────────────────
+    function dialModule(i) {
+      if (isDialling || pipelineRunning) return;
+      currentMod = i;
+      const m = MODULES[i];
+
+      document.querySelectorAll('.mrow').forEach((el, j) => {
+        const st = MODULES[j].status;
+        el.className = 'mrow ' + (j === i ? 'active' : st === 'done' ? 'done' : 'locked');
+      });
+
+      buildCards();
+      MODULES.forEach((mod, j) => {
+        const card = document.getElementById('card-' + j);
+        if (card) card.className = 'mcard ' + (j === i ? 'mc-active' : mod.status === 'done' ? 'mc-done' : 'mc-locked');
+      });
+
+      document.getElementById('verify-mod').textContent = m.code + ' — ' + m.name;
+
+      isDialling = true;
+      chevronLit = 0;
+      document.getElementById('diagblk').innerHTML =
+        '<div class="dhi">INITIALISING DIAL SEQUENCE</div><br>' +
+        '<div class="dbl">FREQUENCY ' + m.freq + ' // LOCKED</div>' +
+        '<div>ISOLATE FREQUENCY // COMPILE</div>' +
+        '<div class="dbl">' + m.code + ' ADDRESS CONFIRMED</div>' +
+        '<br><div>ENGAGING CHEVRONS...</div>';
+
+      const glyphEls = document.querySelectorAll('.glyph');
+      glyphEls.forEach(g => g.className = 'glyph');
+
+      let step = 0;
+      const iv = setInterval(() => {
+        if (step < m.chevrons) {
+          chevronLit = step + 1;
+          if (glyphEls[step]) glyphEls[step].className = 'glyph lit';
+          step++;
+        } else {
+          clearInterval(iv);
+          if (glyphEls[step - 1]) glyphEls[step - 1].className = 'glyph locked-g';
+          isDialling = false;
+          // Ring stops after dial — only pipeline can restart it
+          document.getElementById('diagblk').innerHTML =
+            '<div class="dhi">00.233.488839 349</div>' +
+            '<div class="dhi">00.9998691.RT</div><br>' +
+            '<div>' + m.code + ' // LOCKED &amp; LOADED</div>' +
+            '<div class="dbl">FREQ ' + m.freq + ' // STANDBY</div>' +
+            '<div>PARTS: ' + m.done + '/' + m.parts + ' COMPLETE</div><br>' +
+            '<div class="dhi">AWAITING PIPELINE...</div>';
+        }
+      }, 380);
+    }
+
+    // ── PIPELINE ──────────────────────────────────────────────────
+    let fileProcessing = false;   // true only when a file line is coming through
+    let fileTimer = null;         // clears fileProcessing if no lines for 600ms
+    let partsSeenThisModule = 0;
+
+    function logLine(text, type) {
+      const panel = document.getElementById('log-panel');
+      const div = document.createElement('div');
+      div.className = type || '';
+      div.textContent = text;
+      panel.appendChild(div);
+      panel.scrollTop = panel.scrollHeight;
+      while (panel.children.length > 150) panel.removeChild(panel.firstChild);
+    }
+
+    // Called whenever a stdout line arrives — ring only spins while these are flowing
+    function onPipelineLine(line) {
+      const lower = line.toLowerCase();
+      const type = lower.startsWith('err') ? 'log-err'
+        : (line.includes('✓') || lower.includes('ok') || lower.includes('done') || lower.includes('built')) ? 'log-ok'
+          : 'log-info';
+      logLine(line, type);
+
+      // ── Which module is this line about? ──────────────────────
+      const modIndex = detectModuleFromLine(lower);
+      if (modIndex >= 0 && modIndex !== activeModuleIndex) {
+        // Switched to a new module — lock previous chevron, light next
+        activeModuleIndex = modIndex;
+        currentMod = modIndex;
+        partsSeenThisModule = 0;
+        chevronLit = 0;
+        document.getElementById('verify-mod').textContent =
+          MODULES[modIndex].code + ' — ' + MODULES[modIndex].name;
+
+        // Animate chevrons for this module as parts come in
+        const glyphEls = document.querySelectorAll('.glyph');
+        glyphEls.forEach(g => g.className = 'glyph');
+      }
+
+      // ── Part completion: light a chevron per part ──────────────
+      const isPart = lower.includes('part') || lower.includes('writing') ||
+        lower.includes('building') || lower.includes('built') ||
+        lower.includes('✓') || lower.includes('generating');
+      if (isPart && activeModuleIndex >= 0) {
+        const m = MODULES[activeModuleIndex];
+        partsSeenThisModule = Math.min(partsSeenThisModule + 1, m.parts);
+        chevronLit = Math.min(partsSeenThisModule + 1, 9);
+        const glyphEls = document.querySelectorAll('.glyph');
+        for (let g = 0; g < chevronLit && g < glyphEls.length; g++) {
+          glyphEls[g].className = g < chevronLit - 1 ? 'glyph locked-g' : 'glyph lit';
+        }
+      }
+
+      // ── fileProcessing flag: ring spins while lines are flowing ──
+      fileProcessing = true;
+      if (fileTimer) clearTimeout(fileTimer);
+      // If no new line arrives within 700ms, consider file done → ring slows
+      fileTimer = setTimeout(() => {
+        fileProcessing = false;
+        fileTimer = null;
+      }, 700);
+    }
+
+    function startPipeline() {
+      if (pipelineRunning) return;
+      pipelineRunning = true;
+      fileProcessing = false;
+      activeModuleIndex = -1;
+      partsSeenThisModule = 0;
+      chevronLit = 0;
+      ringSpeed = 0;
+      document.getElementById('btn-start').className = 'pbtn running';
+      document.getElementById('tbar-status').textContent = 'PIPELINE RUNNING';
+      logLine('// pipeline started — ' + new Date().toLocaleTimeString(), 'log-info');
+      document.getElementById('diagblk').innerHTML =
+        '<div class="dhi">PIPELINE ENGAGED</div><br>' +
+        '<div>AWAITING FIRST MODULE...</div>' +
+        '<div class="dbl">RING STANDBY UNTIL FILES DETECTED</div>';
+      if (window.pipeline) window.pipeline.start();
+    }
+
+    function stopPipeline() {
+      pipelineRunning = false;
+      fileProcessing = false;
+      activeModuleIndex = -1;
+      if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+      document.getElementById('btn-start').className = 'pbtn';
+      document.getElementById('tbar-status').textContent = 'PIPELINE STOPPED';
+      logLine('// pipeline stopped', 'log-err');
+      document.getElementById('diagblk').innerHTML =
+        '<div class="dhi">PIPELINE STOPPED</div><br>' +
+        '<div class="dbl">RING HALTED</div>';
+      if (window.pipeline) window.pipeline.stop();
+    }
+
+    // ── Detect module from log line ───────────────────────────────
+    function detectModuleFromLine(lower) {
+      const keys = ['module-1', 'module-2', 'module-3', 'module-4', 'module-5', 'module-6', 'module-7'];
+      const names = ['variables', 'operators', 'conditions', 'logical', 'loops', 'pirate', 'functions'];
+      for (let i = 0; i < keys.length; i++) {
+        if (lower.includes(keys[i]) || lower.includes(names[i])) return i;
+      }
+      const mm = lower.match(/m0?(\d)/);
+      if (mm) { const n = parseInt(mm[1]) - 1; if (n >= 0 && n < MODULES.length) return n; }
+      return -1;
+    }
+
+    // ── Wire Electron IPC ─────────────────────────────────────────
+    if (window.pipeline) {
+      window.pipeline.onLine(line => onPipelineLine(line));
+      window.pipeline.onDone(code => {
+        pipelineRunning = false;
+        fileProcessing = false;
+        if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+        document.getElementById('btn-start').className = 'pbtn';
+        const ok = code === 0;
+        document.getElementById('tbar-status').textContent = ok ? 'PIPELINE COMPLETE' : 'PIPELINE ERROR';
+        logLine('// done — exit code ' + code, ok ? 'log-ok' : 'log-err');
+        document.getElementById('diagblk').innerHTML =
+          '<div class="dhi">' + (ok ? 'ALL MODULES PROCESSED' : 'PIPELINE ERROR') + '</div><br>' +
+          '<div class="dbl">EXIT CODE: ' + code + '</div>' +
+          '<br><div class="dhi">RING STANDING DOWN</div>';
+      });
+      window.pipeline.onStopped(() => stopPipeline());
+    }
+
+    // ── CLOCK ─────────────────────────────────────────────────────
+    let sec = 0;
+    setInterval(() => {
+      sec++;
+      const h = String(Math.floor(sec / 3600)).padStart(2, '0');
+      const m2 = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+      const s = String(sec % 60).padStart(2, '0');
+      document.getElementById('clock').textContent = h + ':' + m2 + ':' + s;
+      document.getElementById('macro-id').textContent =
+        'MCK.' + Math.floor(Math.random() * 900000000 + 100000000);
+    }, 1000);
+
+    // Init — gate completely still at startup
+    chevronLit = MODULES[currentMod].chevrons;
+    ringSpeed = 0;
+    fileProcessing = false;
+  </script>
+</body>
+
+</html>

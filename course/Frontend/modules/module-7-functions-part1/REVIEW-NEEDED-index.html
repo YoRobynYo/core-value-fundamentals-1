@@ -26,44 +26,156 @@
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Helper Boxes                     █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<!-- Helper Box 1: 🧠 From Variables to Functions -->
+<!-- Helper Box 1: From Variables to Functions -->
 <div class="helper-box">
-<h3 class="box-title">🧠 From Variables to Functions</h3>
+  <h3 class="box-title">🧠 From Variables to Functions 🧠</h3>
 
-<p>You already know variables. You have been using them since Module 1!</p>
-<div class="code-block"><code>SET "child name" = "David"<br>SET "desk number" = 5</code></div>
-<p>A variable stores a piece of information. Simple!</p>
-<p>Now meet a <strong>function</strong>. A function is a named container for instructions. You write the instructions once, give them a name, and use that name whenever you need them to run.</p>
-<p>Here is a simple function:</p>
-<div class="code-block"><code>FUNCTION "show name"<br>PRINT "My name is ", "child name"<br>END FUNCTION</code></div>
-<p>To make it run, you <strong>call</strong> it:</p>
-<div class="code-block"><code>CALL "show name"</code></div>
-<p>Now here is the interesting part — what if we want the function to work with DIFFERENT information each time? We use a <strong>parameter</strong>!</p>
-<p>A parameter is information you pass INTO the function when you call it:</p>
-<div class="code-block"><code>FUNCTION "show name" ("child name")<br>PRINT "My name is ", "child name"<br>END FUNCTION<br><br>CALL "show name" ("David")<br>CALL "show name" ("Samantha")</code></div>
-<p>Output:</p>
-<div class="code-block"><code>My name is David<br>My name is Samantha</code></div>
-<p>One function — works for everyone! 🎉</p>
+  <p>You have already learned how to store information in variables. You have been doing
+    it since Module 1! But what happens when you need to do the same job over and over
+    again? Writing the same instructions ten times would be exhausting — and if you ever
+    needed to change something, you would have to find and fix every single copy!</p>
+
+  <p>That is exactly the problem that <strong>functions</strong> solve.</p>
+
+  <h4 class="sub-title">What is a Function?</h4>
+
+  <p>Think of a function like a recipe card. You write the instructions down once, give
+    the card a name, and then anyone can follow it whenever they need to. You do not
+    rewrite the recipe every time — you just say the name and the instructions run!</p>
+
+  <p>In coding, a function is a named container for instructions. You write the
+    instructions once, give them a name, and use that name whenever you need them to run.</p>
+
+  <h4 class="sub-title">The Three Parts of a Function:</h4>
+
+  <ul class="indented-list">
+    <li><strong>FUNCTION</strong> — tells the computer "here come the instructions, and here is their name"</li>
+    <li><strong>The instructions inside</strong> — everything the function will do when called</li>
+    <li><strong>END FUNCTION</strong> — tells the computer "that is the end of the instructions"</li>
+  </ul>
+
+  <h4 class="sub-title">Here is your first function:</h4>
+
+  <div class="code-block">
+    SET "child name" = "David"<br>
+    <br>
+    FUNCTION "introduce me"<br>
+    &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+    END FUNCTION
+  </div>
+
+  <h4 class="sub-title">But wait — nothing happened yet!</h4>
+
+  <p>Writing a function is like writing a recipe card — it does not cook the meal by
+    itself! To make the instructions actually run, you need to <strong>call</strong> it.
+    Calling a function is as simple as using its name:</p>
+
+  <div class="code-block">
+    CALL "introduce me"
+  </div>
+
+  <p class="output">Output: My name is David</p>
+
+  <h4 class="sub-title">Now let's see the real power — write once, use anywhere:</h4>
+
+  <div class="code-block">
+    SET "child name" = "David"<br>
+    <br>
+    FUNCTION "introduce me"<br>
+    &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+    END FUNCTION<br>
+    <br>
+    CALL "introduce me"<br>
+    CALL "introduce me"<br>
+    CALL "introduce me"
+  </div>
+
+  <p class="output">Output:<br>
+    My name is David<br>
+    My name is David<br>
+    My name is David</p>
+
+  <p>The same instructions ran three times — and you only wrote them once! Change the
+    instructions in one place and every single call updates automatically. That is the
+    superpower of functions.</p>
+
+  <p class="note">💡 <strong>Remember:</strong> Writing a function does nothing on its own.
+    You must CALL it to make it run — just like a recipe card does nothing until
+    someone actually follows it!</p>
 </div>
 <!-- End of Helper Box 1 -->
 
-<!-- Helper Box 2: 🌳 The Function Tree — Seeing How It All Fits -->
+<!-- Helper Box 2: The Function Tree -->
 <div class="helper-box">
-<h3 class="box-title">🌳 The Function Tree — Seeing How It All Fits</h3>
+  <h3 class="box-title">🌳 The Function Tree — Seeing How It All Fits 🌳</h3>
 
-<p>Variables can live in different places — and that changes what they can do!</p>
-<p><strong>A variable OUTSIDE a function</strong> — available everywhere:</p>
-<div class="code-block"><code>SET "classroom" = "Room 3"<br><br>FUNCTION "show class"<br>PRINT "Welcome to ", "classroom"<br>END FUNCTION<br><br>CALL "show class"</code></div>
-<p><strong>A variable INSIDE a function</strong> — only lives while the function runs:</p>
-<div class="code-block"><code>FUNCTION "show class"<br>SET "classroom" = "Room 3"<br>PRINT "Welcome to ", "classroom"<br>END FUNCTION<br><br>CALL "show class"</code></div>
-<p><strong>A variable passed in as a PARAMETER</strong> — information given to the function each time:</p>
-<div class="code-block"><code>FUNCTION "show class" ("classroom")<br>PRINT "Welcome to ", "classroom"<br>END FUNCTION<br><br>CALL "show class" ("Room 3")<br>CALL "show class" ("Room 5")</code></div>
-<p>Now here is everything working together:</p>
-<div class="code-block"><code>SET "school name" = "Greenfield Primary"<br><br>FUNCTION "introduce child" ("child name", "desk number")<br>PRINT "School: ", "school name"<br>PRINT "My name is ", "child name"<br>PRINT "I sit at desk ", "desk number"<br>END FUNCTION<br><br>CALL "introduce child" ("David", 5)<br>CALL "introduce child" ("Samantha", 12)<br>CALL "introduce child" ("Gabrielle", 7)</code></div>
-<p>Output:</p>
-<div class="code-block"><code>School: Greenfield Primary<br>My name is David<br>I sit at desk 5<br>School: Greenfield Primary<br>My name is Samantha<br>I sit at desk 12<br>School: Greenfield Primary<br>My name is Gabrielle<br>I sit at desk 7</code></div>
-<ul class="indented-list"><li><code>"school name"</code> lives OUTSIDE — available everywhere</li><li><code>"child name"</code> and <code>"desk number"</code> are PARAMETERS — passed in each time</li><li>The function runs THREE times with different information</li></ul>
-<p>Write once. Use anywhere. That is the power of functions! 🚀</p>
+  <p>Now you know what a function is and how to call it. But where does the information
+    come from? Variables can live in different places — and that changes what they can do
+    inside a function!</p>
+
+  <h4 class="sub-title">A variable OUTSIDE a function — available everywhere:</h4>
+
+  <div class="code-block">
+    SET "classroom" = "Room 3"<br>
+    <br>
+    FUNCTION "show class"<br>
+    &nbsp;&nbsp;PRINT "Welcome to ", "classroom"<br>
+    END FUNCTION<br>
+    <br>
+    CALL "show class"
+  </div>
+
+  <p class="output">Output: Welcome to Room 3</p>
+
+  <p>Because "classroom" was set outside the function, the function can see it and use it!</p>
+
+  <h4 class="sub-title">A variable INSIDE a function — only lives while the function runs:</h4>
+
+  <div class="code-block">
+    FUNCTION "show class"<br>
+    &nbsp;&nbsp;SET "classroom" = "Room 3"<br>
+    &nbsp;&nbsp;PRINT "Welcome to ", "classroom"<br>
+    END FUNCTION<br>
+    <br>
+    CALL "show class"
+  </div>
+
+  <p class="output">Output: Welcome to Room 3</p>
+
+  <p>This works too — but "classroom" only exists while the function is running.
+    Once it finishes, the variable is gone!</p>
+
+  <h4 class="sub-title">Now here is everything working together:</h4>
+
+  <div class="code-block">
+    SET "school name" = "Greenfield Primary"<br>
+    <br>
+    FUNCTION "introduce child"<br>
+    &nbsp;&nbsp;SET "child name" = "David"<br>
+    &nbsp;&nbsp;SET "desk number" = 5<br>
+    &nbsp;&nbsp;PRINT "School: ", "school name"<br>
+    &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+    &nbsp;&nbsp;PRINT "I sit at desk ", "desk number"<br>
+    END FUNCTION<br>
+    <br>
+    CALL "introduce child"
+  </div>
+
+  <p class="output">Output:<br>
+    School: Greenfield Primary<br>
+    My name is David<br>
+    I sit at desk 5</p>
+
+  <ul class="indented-list">
+    <li><strong>"school name"</strong> lives OUTSIDE — available everywhere</li>
+    <li><strong>"child name"</strong> and <strong>"desk number"</strong> live INSIDE — only while the function runs</li>
+    <li>The function uses both — inside and outside variables working together!</li>
+  </ul>
+
+  <p class="note">💡 <strong>Remember:</strong> Variables set outside a function are available
+    everywhere. Variables set inside a function only exist while that function is running.
+    In the next modules you will learn how to pass information INTO a function — making
+    them even more powerful! 🚀</p>
 </div>
 <!-- End of Helper Box 2 -->
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
@@ -82,17 +194,17 @@
 <div class="exercise-box" id="functions-exercise-1">
 <h3 class="exercise-title">Exercise 1: My First Function 👋</h3>
 
-<h4 class="sub-title">Part A: Introduction</h4>
+<h4 class="sub-title">Part A: Introducing Yourself</h4>
 
-<p>In this exercise, you will write your very first function. The function will introduce you to the class with just your name. You will create a variable named "child name" and set its value to "David". Then, you will write a function called "introduce me" that prints the "child name". Finally, you will call the function to see the output.</p>
+<p>In this exercise, you will create your very first function! It introduces you to the class with just your name. You need to create a variable named "child name" and set its value to "David". Then, write a function called "introduce me" that prints the child name. Finally, call the function.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>"David"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Write a function called "introduce me" that prints the "child name".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "My name is " followed by the "child name".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the introduction:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to "David".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Write a function called "introduce me" that prints the child name.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Call the function "introduce me".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
     <div class="code-example">
-      <code>SET "child name" = "David"<br>FUNCTION "introduce me"<br>PRINT "My name is ", "child name"<br>END FUNCTION<br>CALL "introduce me"</code>
+      <code>SET child name = "David"<br>DEF introduce me()<br>  PRINT "My name is ", child name<br>END DEF<br>introduce me()</code>
     </div>
   </li>
 </ul>
@@ -109,26 +221,32 @@
 <p class="hint" id="functions-hint1-part-a"></p>
 <pre class="output-block" id="functions-output1-part-a"></pre>
 <pre class="answer-block" id="functions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Introducing Samantha</h4>
+<h4 class="sub-title">Part B: Introduce Samantha</h4>
+
 <p>Great work! Now let's try with different values.</p>
-<p>In this part of the exercise, we will change the "child name" to "Samantha" and write the same function to introduce her. We will use the same function structure, but this time we will use the new "child name" value. Remember to use the "child name" variable in your function.</p>
+
+<p>Change "child name" to "Samantha". Write the same function and call it again.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>"Samantha"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "introduce me" that prints a message with the "child name" value.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display a message that says "My name is " followed by the "child name" value.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now call the "introduce me" function to see the result:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to "Samantha".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "introduce me" that prints the child name.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Call the function.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now run your code to see the output.
     <div class="code-example">
-      <code>SET "child name" = "Samantha"<br>FUNCTION "introduce me"<br>  PRINT "My name is ", "child name"<br>END FUNCTION<br>CALL "introduce me"</code>
+      <code>SET child name = "Samantha"<br>SET child name2 = "David"<br>PRINT "My name is ", child name</code>
     </div>
   </li>
 </ul>
+
 <label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
   <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint1-part-b"></p>
 <pre class="output-block" id="functions-output1-part-b"></pre>
 <pre class="answer-block" id="functions-answer1-part-b"></pre>
@@ -143,36 +261,42 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="functions-exercise-2">
 <h3 class="exercise-title">Exercise 2: My Desk 🪑</h3>
-<h4 class="sub-title">Part A: Creating a Function to Show My Desk</h4>
-<p>In this part of the exercise, you will create a function called "show my desk" that prints your name and desk number. You will use variables "child name" and "desk number" to store this information. First, you need to create these variables and then use them inside your function to display the required information.</p>
+
+<h4 class="sub-title">Part A: Creating a Function with Two Variables</h4>
+
+<p>In this exercise, you will create a function called "show my desk" that prints out your name and desk number. You will use variables "child name" and "desk number" to store this information. First, you need to create these variables and assign them values. Then, you will write a function that uses these variables to print out the required information.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>"David"</code>.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>David</code>.</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>5</code>.</li>
   <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name and desk number.</li>
   <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "show my desk" function and call it in the code block below.</li>
 </ul>
+
 <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
   <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint2-part-a"></p>
 <pre class="output-block" id="functions-output2-part-a"></pre>
 <pre class="answer-block" id="functions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Update Your Desk Details</h4>
+<h4 class="sub-title">Part B: Gabrielle's Desk</h4>
 
-<p>In Part A, you created a function to display your name and desk number, with "child name" set to "David" and "desk number" set to 5.</p>
+<p>Now that you have seen how to create a function with your own name and desk number, it is time to try it with different information.</p>
 
-<p>Now, imagine you have moved to a new desk. The "child name" is now "Gabrielle" and the "desk number" is 12. You need to update the function with these new details. The function should still display the "child name" and "desk number", but with the new values.</p>
+<p>In this part of the exercise, you will use the "child name" and "desk number" variables again, but this time you will set "child name" to "Gabrielle" and "desk number" to 12. You will then write a function called "show my desk" that prints both, just like before. The function will display a message with the child's name and their desk number.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>Gabrielle</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>12</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name and desk number, using the "child name" and "desk number" variables.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create and call the "show my desk" function in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>Gabrielle</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>12</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the child's name and desk number in the required format.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "show my desk" function and call it in the code block below.</li>
+</ul>
 
 <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
@@ -200,14 +324,14 @@
 
 <h4 class="sub-title">Part A: Introduction</h4>
 
-<p>In this part of the exercise, you will create variables for "child name", "desk number", and "classroom" to introduce yourself. You will then write a function called "introduce myself" that prints out these details. Remember to use the variables you have created to make your code more efficient.</p>
+<p>In this part of the exercise, you will create variables for a child's name, desk number, and classroom. You will then write a function to introduce yourself, printing out your name, desk number, and classroom. This will help you understand how to use functions to perform tasks with multiple variables. You will use variables named "child name", "desk number", and "classroom" to store the information.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>"David"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>5</code>, and create a variable named "classroom" and set its value to <code>"Room 3"</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name, desk number, and classroom.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "introduce myself" function and call it in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>David</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>5</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name, desk number, and classroom.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "introduce myself" that prints all three variables in the code block below.</li>
+</ul>
 
 <label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
@@ -223,16 +347,16 @@
 <pre class="answer-block" id="functions-answer3-part-a"></pre>
 <h4 class="sub-title">Part B: Introducing Myself with New Details</h4>
 
-<p>In Part A, you created variables for your "child name", "desk number", and "classroom", and then wrote a function to introduce yourself using these variables.</p>
+<p>Now that you have seen how to introduce yourself with your name, desk number, and classroom, it is time to change some of those details.</p>
 
-<p>Now, imagine you are a different child, "Samantha", who sits at "desk number" 8 in "classroom" "Room 5". You need to update your variables to reflect this new information and write the same function to introduce yourself. The "child name" variable should be set to "Samantha", the "desk number" variable to 8, and the "classroom" variable to "Room 5".</p>
+<p>In this part of the exercise, imagine you are a child named "Samantha" who sits at "desk number" 8 in "classroom" Room 5. You will create variables for "child name", "desk number", and "classroom", and then use these to print out your introduction. You will write a function called "introduce myself" that includes these new details.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>Samantha</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>8</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name, desk number, and classroom.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to introduce yourself with the new details in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>Samantha</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "desk number" and set its value to <code>8</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display your name, desk number, and classroom.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "introduce myself" function and call it in the code block below.</li>
+</ul>
 
 <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
@@ -260,14 +384,14 @@
 
 <h4 class="sub-title">Part A: Creating a Greeting Function</h4>
 
-<p>In this part of the exercise, you will create a function called "greet child" that takes a "child name" as a parameter and prints a greeting. This function will be able to greet any child, not just one. You will call this function with different names to see how it works.</p>
+<p>In this exercise, you will create a function called "greet child" that takes a "child name" as a parameter and prints a greeting. This function will be able to greet any child by name. You will call this function with different names to see how it works. The "child name" will be passed into the function, allowing it to create a personalised greeting.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "greet child" that takes a "child name" as a parameter.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, use PRINT to display a greeting message that includes the "child name" parameter.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Call the "greet child" function with "David" as the "child name" to test it.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "greet child" function again with "Samantha" as the "child name" in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "greet child" that takes a "child name" as a parameter.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, use PRINT to display a greeting message that includes the "child name" parameter.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use the function to greet a child named "David" and then another child named "Samantha" by calling the function with these names.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "greet child" function and call it with "David" and "Samantha" in the code block below.</li>
+</ul>
 
 <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
@@ -282,21 +406,27 @@
 <pre class="output-block" id="functions-output4-part-a"></pre>
 <pre class="answer-block" id="functions-answer4-part-a"></pre>
 <h4 class="sub-title">Part B: Calling the Function with Different Names</h4>
+
 <p>In Part A, you created a function called "greet child" that takes "child name" as a parameter and prints a greeting, which you then called with "David" and "Samantha".</p>
-<p>Now, you will call the same "greet child" function with "Gabrielle" and then with a name of your choice, using the "child name" as a parameter to personalise the greeting. You will use the function to print a greeting for these different "child name" values.</p>
+
+<p>Now, you will call the same function with "Gabrielle" and then with a name of the child's choice, using the "child name" as a parameter to personalise the greeting. You will use the function you created earlier, passing in the new "child name" values to generate different greetings.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>Gabrielle</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to a name of your choice, for example <code>Emily</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display a greeting message that includes the current "child name" value.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "greet child" function with "Gabrielle" and your chosen name in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "first child name" and set its value to <code>Gabrielle</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "own child name" and set its value to the child's own name, which they will input.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the greeting for each "child name".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "greet child" function with "Gabrielle" and the child's own name in the code block below.</li>
 </ul>
+
 <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
   <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint4-part-b"></p>
 <pre class="output-block" id="functions-output4-part-b"></pre>
 <pre class="answer-block" id="functions-answer4-part-b"></pre>
@@ -311,17 +441,14 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="functions-exercise-5">
 <h3 class="exercise-title">Exercise 5: The Full Introduction 🌟</h3>
-
-<h4 class="sub-title">Part A: Introduction with Two Parameters</h4>
-
-<p>In this part of the exercise, you will create a function called "full introduction" that takes two parameters: "child name" and "desk number". You will also use a variable "school name" that is defined outside the function. Your task is to write the function and call it with the given parameters to print out the full introduction.</p>
-
+<h4 class="sub-title">Part A: Two Parameters, One Outside Variable</h4>
+<p>The complete classroom introduction — now with TWO parameters! Another branch added to the tree!</p>
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "school name" and set its value to <code>"Greenfield Primary"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "full introduction" that takes "child name" and "desk number" as parameters.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "school name", "child name", and "desk number" inside the function.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "full introduction" function with "David" at desk 5 and then with "Samantha" at desk 8 in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "school name" and set its value to "Greenfield Primary".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "full introduction" that takes "child name" and "desk number" as parameters.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "School: Greenfield Primary", "My name is [child name]", and "I sit at desk [desk number]".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Call the function with David at desk 5, then Samantha at desk 8.</li>
+</ul>
 
 <label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
@@ -335,17 +462,17 @@
 <p class="hint" id="functions-hint5-part-a"></p>
 <pre class="output-block" id="functions-output5-part-a"></pre>
 <pre class="answer-block" id="functions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Full Introduction with Two Parameters</h4>
+<h4 class="sub-title">Part B: Using Parameters and an Outside Variable</h4>
 
-<p>Now that you have seen how to create a function with two parameters and use a variable outside the function, let's try calling the same function with different values.</p>
+<p>In Part A, you learned how to use one parameter inside a function. Now let's grow our function even more by adding another parameter and using a variable outside the function.</p>
 
-<p>In this part, you will keep the "school name" as "Greenfield Primary" and call the "full introduction" function with Gabrielle at desk 3, then with your own name and desk number. You will use the "child name" and "desk number" as parameters and display all three pieces of information.</p>
+<p>Imagine we have a classroom at "Greenfield Primary" with different children sitting in various desks. You need to create a function that can greet each child by name, but also display the school name, which does not change for any child.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "school name" and set its value to <code>"Greenfield Primary"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "child name" and set its value to <code>"Gabrielle"</code>, then another variable named "desk number" and set its value to <code>3</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "school name", "child name", and "desk number" in the correct format.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "full introduction" function with your own name and desk number in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "schoolName" and set its value to "Greenfield Primary".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "fullIntroduction" that takes two parameters: "childName" and "deskNumber".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the school name, child's name, and desk number.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Call the function twice: once with Gabrielle at desk 3, and then with your own name and desk number.</li>
 </ul>
 
 <label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>

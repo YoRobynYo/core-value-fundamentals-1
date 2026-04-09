@@ -51,6 +51,8 @@ const MODULES_TO_REBUILD = [
   'MODULE-7-FUNCTIONS-PART2',
   'MODULE-7-FUNCTIONS-PART3',
   'MODULE-7-FUNCTIONS-PART4',
+  'MODULE-7-FUNCTIONS-PART5',
+  'MODULE-7-FUNCTIONS-PART6',
 ];
 
 const GAP_BETWEEN_MODULES = 60_000; // 60 seconds between modules
@@ -100,8 +102,31 @@ function runScript(scriptName, args = []) {
 
 async function main() {
   const locked = getLockedModules();
-  const toRebuild = MODULES_TO_REBUILD.filter(m => !locked[m]);
-  const skipped = MODULES_TO_REBUILD.filter(m => locked[m]);
+
+  // ── --from flag: start from a specific module ──────────────
+  // Usage: node rebuild-all.js --from MODULE-7-FUNCTIONS
+  // Matches on prefix so --from MODULE-7-FUNCTIONS runs all MODULE-7-FUNCTIONS-* parts
+  const fromArg = process.argv.indexOf('--from');
+  let fromModule = null;
+  if (fromArg !== -1 && process.argv[fromArg + 1]) {
+    fromModule = process.argv[fromArg + 1].toUpperCase();
+    console.log(`\n▶  Starting from: ${fromModule}`);
+  }
+
+  let allModules = MODULES_TO_REBUILD;
+  if (fromModule) {
+    const fromIdx = allModules.findIndex(m => m.startsWith(fromModule) || m === fromModule);
+    if (fromIdx === -1) {
+      console.error(`❌ Module not found: ${fromModule}`);
+      console.error(`   Available: ${allModules.join(', ')}`);
+      process.exit(1);
+    }
+    allModules = allModules.slice(fromIdx);
+    console.log(`   Rebuilding ${allModules.length} module(s) from this point\n`);
+  }
+
+  const toRebuild = allModules.filter(m => !locked[m]);
+  const skipped = allModules.filter(m => locked[m]);
   const startTime = Date.now();
 
   if (skipped.length > 0) {

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gate Diagnostics — JS Fundamentals</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #02070e;
+      color: #00d4ff;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud {
+      flex: 1;
+      display: grid;
+      grid-template-rows: 34px 1fr 34px;
+      grid-template-columns: 220px 1fr 180px;
+      gap: 6px;
+      padding: 8px;
+      background: #01050c;
+      position: relative;
+    }
+
+    .hud::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 180, 220, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 180, 220, 0.035) 1px, transparent 1px);
+      background-size: 26px 26px;
+      animation: gridmove 15s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridmove {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 60px 60px;
+      }
+    }
+
+    .tbar {
+      grid-column: 1 / -1;
+      background: #0a1628;
+      border-bottom: 2px solid #003d60;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      font-size: 9.5px;
+      letter-spacing: 1px;
+      color: #00aacc;
+    }
+
+    .tbar-dot {
+      width: 9px;
+      height: 9px;
+      background: #00ff80;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .status {
+      margin-left: auto;
+      color: #00ff80;
+      font-weight: bold;
+    }
+
+    .lpanel,
+    .rpanel {
+      background: #020b14;
+      border: 1px solid #0a2030;
+      padding: 12px;
+      font-size: 8.5px;
+      line-height: 1.5;
+      overflow-y: auto;
+      color: #77ddff;
+    }
+
+    .centre {
+      background: #01070d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .bpanel {
+      grid-column: 1 / -1;
+      height: 155px;
+      background: #020b14;
+      border-top: 1px solid #0a2030;
+      display: flex;
+      overflow-x: auto;
+      padding: 8px;
+      gap: 8px;
+    }
+
+    #gate {
+      filter: drop-shadow(0 0 30px #00ccff);
+    }
+
+    .btn {
+      cursor: pointer;
+      padding: 4px 10px;
+      border: 1px solid #005d70;
+      margin: 6px 0;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      border-color: #00aacc;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hud">
+    <!-- Top Bar -->
+    <div class="tbar">
+      <div class="tbar-dot"></div>
+      Course Diagnostics || // awaiting pipeline start...
+      <span style="margin-left:20px; color:#ff0088;">Core-Fundamentals-Let's Build</span>
+      <span id="macro-id" style="margin-left:auto; margin-right:20px;">MCK.008762346</span>
+      <span id="tbar-status" class="status">STANDING BY</span>
+    </div>
+
+    <!-- Left Panel -->
+    <div class="lpanel" id="log-panel">
+      // System initialized...<br>
+      Awaiting pipeline start...
+    </div>
+
+    <!-- Center Radar -->
+    <div class="centre">
+      <canvas id="gate" width="420" height="420"></canvas>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="rpanel">
+      <div style="color:#00ff80; margin-bottom:8px;">● GATE STATUS</div>
+      <div class="btn" onclick="startPipeline()">▶ RUN PIPELINE</div><br>
+      <div class="btn" onclick="stopPipeline()" style="color:#ff5555;">■ STOP</div>
+
+      <div style="margin-top:20px; font-size:8px; color:#00aacc;">
+        M07 · FUNCTIONS<br>
+        <span style="color:#ffaa00;">PART 2 OF 6 IN PROGRESS</span>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bpanel" id="bpanel">
+      <!-- Bottom cards will be added by JS if needed -->
+    </div>
+  </div>
+
+  <script>
+    // Canvas Setup
+    const canvas = document.getElementById('gate');
+    const ctx = canvas.getContext('2d');
+    const W = 420, H = 420, CX = 210, CY = 210;
+
+    let ringAngle = 0;
+    let ringSpeed = 0;
+    let targetSpeed = 0;
+    let sweepAngle = 0;
+    let pipelineRunning = false;
+    let isProcessing = false;
+
+    const particles = [];
+    for (let i = 0; i < 28; i++) {
+      particles.push({
+        angle: Math.random() * Math.PI * 2,
+        radius: 155 + Math.random() * 45,
+        life: Math.random(),
+        speed: 0.8 + Math.random() * 2
+      });
+    }
+
+    // Draw Radar
+    function drawGate() {
+      ctx.clearRect(0, 0, W, H);
+      const OR = 192;
+      const IR = 157;
+      const active = isProcessing;
+
+      // Rotating ring segments
+      ctx.save();
+      ctx.translate(CX, CY);
+      ctx.rotate(ringAngle);
+      ctx.translate(-CX, -CY);
+
+      for (let i = 0; i < 42; i++) {
+        const a = (i / 42) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.arc(CX, CY, OR, a, a + 0.22);
+        ctx.arc(CX, CY, IR, a + 0.22, a, true);
+        ctx.closePath();
+        ctx.fillStyle = '#0a1a2a';
+        ctx.fill();
+        ctx.strokeStyle = active ? '#00ffcc' : '#003366';
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // Glowing main ring
+      ctx.shadowBlur = active ? 50 : 20;
+      ctx.shadowColor = active ? '#00ffcc' : '#0088cc';
+      ctx.beginPath();
+      ctx.arc(CX, CY, IR, 0, Math.PI * 2);
+      ctx.strokeStyle = active ? '#44ffdd' : '#006699';
+      ctx.lineWidth = active ? 9 : 5;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Pulsing chevrons
+      for (let i = 0; i < 9; i++) {
+        const a = (i / 9) * Math.PI * 2 - Math.PI / 2;
+        const x = CX + (OR + 22) * Math.cos(a);
+        const y = CY + (OR + 22) * Math.sin(a);
+        const pulse = active ? Math.sin(Date.now() / 100 + i) * 0.4 + 0.9 : 1;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(a);
+        ctx.scale(pulse, pulse);
+        ctx.fillStyle = active ? '#00ff88' : '#113322';
+        ctx.beginPath();
+        ctx.moveTo(0, -13);
+        ctx.lineTo(11, 9);
+        ctx.lineTo(-11, 9);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Sweep line
+      ctx.strokeStyle = active ? 'rgba(0,255,200,0.95)' : 'rgba(0,180,255,0.45)';
+      ctx.lineWidth = active ? 4 : 2;
+      ctx.beginPath();
+      ctx.moveTo(CX, CY);
+      ctx.lineTo(CX + IR * Math.cos(sweepAngle), CY + IR * Math.sin(sweepAngle));
+      ctx.stroke();
+
+      // Particles during processing
+      if (active) {
+        particles.forEach(p => {
+          p.radius += p.speed;
+          p.life -= 0.023;
+          if (p.life <= 0) {
+            p.radius = 150;
+            p.life = 1;
+            p.angle = Math.random() * Math.PI * 2;
+          }
+          const px = CX + Math.cos(p.angle) * p.radius;
+          const py = CY + Math.sin(p.angle) * p.radius;
+          ctx.fillStyle = `rgba(0, 255, 180, ${p.life * 0.9})`;
+          ctx.fillRect(px - 1.5, py - 1.5, 3, 3);
+        });
+      }
+
+      // Center text
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 13px Courier New';
+      ctx.fillStyle = active ? '#00ffaa' : '#00bbdd';
+      ctx.fillText(active ? "PROCESSING PART..." : "STANDBY", CX, CY + 18);
+    }
+
+    // Animation
+    function animate() {
+      if (isProcessing) targetSpeed = 0.115;
+      else if (pipelineRunning) targetSpeed = 0.028;
+      else targetSpeed *= 0.82;
+
+      ringSpeed += (targetSpeed - ringSpeed) * 0.25;
+      ringAngle += ringSpeed;
+      sweepAngle += isProcessing ? 0.095 : 0.032;
+
+      drawGate();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Pipeline Controls
+    function startPipeline() {
+      pipelineRunning = true;
+      isProcessing = true;
+      document.getElementById('tbar-status').textContent = 'PIPELINE RUNNING';
+      document.getElementById('tbar-status').style.color = '#00ff80';
+
+      const log = document.getElementById('log-panel');
+      log.innerHTML += '<br>▶ RUN PIPELINE<br>Building (attempt 1 of 5)...<br>Grok (llama-3.3-70b-versatile)...<br>';
+
+      // Simulate real exercise flow
+      setTimeout(() => {
+        log.innerHTML += '✓ Ex1 Part A passed!<br>';
+        isProcessing = false;
+      }, 6500);
+
+      setTimeout(() => {
+        isProcessing = true;
+        log.innerHTML += '<br>Ex1 Part B...<br>Building (attempt 1 of 5)...<br>';
+      }, 9500);
+
+      setTimeout(() => {
+        log.innerHTML += '✘ FAIL: Contains "let" — use "SET" instead<br>Retrying in 30s...<br>';
+        isProcessing = false;
+      }, 16500);
+    }
+
+    function stopPipeline() {
+      pipelineRunning = false;
+      isProcessing = false;
+      document.getElementById('tbar-status').textContent = 'STANDING BY';
+      document.getElementById('tbar-status').style.color = '#00aacc';
+
+      const log = document.getElementById('log-panel');
+      log.innerHTML += '<br>■ Pipeline stopped.<br>';
+    }
+
+    // Auto hint
+    setTimeout(() => {
+      document.getElementById('log-panel').innerHTML += '<br><span style="color:#ffaa00;">Click ▶ RUN PIPELINE to start the radar →</span>';
+    }, 1200);
+
+  </script>
+</body>
+
+</html>

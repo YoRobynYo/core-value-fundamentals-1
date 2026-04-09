@@ -1,412 +1,1076 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CVF Pipeline</title>
+<meta charset="UTF-8" />
+<title>Gate Diagnostics — JS Fundamentals</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0 }
+body {
+  background: #0a2235;
+  font-family: 'Courier New', monospace;
+  color: #00e5ff;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.hud {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 36px 1fr 32px;
+  grid-template-columns: 320px 1fr 280px;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+}
+.hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,160,200,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,160,200,.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+.tbar {
+  grid-column: 1/-1;
+  grid-row: 1;
+  background: #071e2e;
+  border-bottom: 2px solid #1a4a5a;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #1a8090;
+  z-index: 2;
+  -webkit-app-region: drag;
+}
+.tbar-dot { width: 8px; height: 8px; background: #00ff80; border-radius: 2px; flex-shrink: 0; -webkit-app-region: no-drag }
+.tbar-main { color: #00ccee; font-size: 11px; letter-spacing: 3px; font-weight: bold }
+.tbar-id { color: #1a6070; font-size: 10px }
+#tbar-status { margin-left: 12px; color: #00ff80; font-size: 10px; letter-spacing: 2px }
+.tbar-clock { margin-left: auto; color: #1a7080; font-size: 11px }
+.pipeline-btns { display: flex; gap: 8px; -webkit-app-region: no-drag; margin-left: 10px }
+.pbtn {
+  border: 1px solid #005d70;
+  padding: 4px 14px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #007a90;
+  background: #061525;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'Courier New', monospace;
+}
+.pbtn:hover { border-color: #00ccee; color: #00eeff }
+.pbtn-stop { border-color: #3a1010; color: #7a2020 }
+.pbtn-stop:hover { border-color: #cc2020; color: #ff4040 }
+.pbtn.running { border-color: #00ff80; color: #00ff80; animation: pulse-g 1.5s ease-in-out infinite }
+@keyframes pulse-g {
+  0%,100% { box-shadow: none }
+  50% { box-shadow: 0 0 8px #00ff8050 }
+}
+.lpanel {
+  grid-column: 1;
+  grid-row: 2;
+  border-right: 1px solid #1a4a5a;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #071825;
+  overflow: hidden;
+  z-index: 1;
+}
+.slbl { font-size: 10px; letter-spacing: 2px; color: #00ff80; margin-bottom: 3px }
+.slbl-b { font-size: 10px; letter-spacing: 1px; color: #00ccee; line-height: 1.6 }
+.diagblk {
+  border: 1px solid #1a4a5a;
+  padding: 8px;
+  background: #061525;
+  font-size: 10px;
+  color: #1a9aaa;
+  line-height: 1.9;
+  flex: 1;
+  overflow: hidden;
+}
+.diagblk .dhi { color: #00ff80 }
+.diagblk .dbl { color: #00ddff }
+.subblk {
+  border: 1px solid #1a4a5a;
+  padding: 7px;
+  background: #061525;
+  font-size: 10px;
+  color: #1a8090;
+  line-height: 1.8;
+}
+.log-panel {
+  border: 1px solid #1a4a5a;
+  background: #061525;
+  padding: 6px;
+  font-size: 13px;
+  color: #00ccdd;
+  line-height: 1.8;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 60px;
+  scrollbar-width: thin;
+  scrollbar-color: #0d4a60 #010810;
+}
+.log-panel::-webkit-scrollbar { width: 5px }
+.log-panel::-webkit-scrollbar-track { background: #010810 }
+.log-panel::-webkit-scrollbar-thumb { background: #0d4a60; border-radius: 2px }
+.log-panel .log-ok { color: #00ff80 }
+.log-panel .log-err { color: #cc3030 }
+.log-panel .log-info { color: #00ddff }
+.centre {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #040f1a;
+  z-index: 1;
+}
+.rpanel {
+  grid-column: 3;
+  grid-row: 2;
+  border-left: 2px solid #0d3a50;
+  padding: 8px 6px;
+  background: #112e48;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #0d4a60 #010810;
+}
+.rpanel::-webkit-scrollbar { width: 4px }
+.rpanel::-webkit-scrollbar-track { background: #010810 }
+.rpanel::-webkit-scrollbar-thumb { background: #0d4a60; border-radius: 2px }
+.rsec {
+  font-size: 8px; letter-spacing: 3px; color: #00ddee;
+  margin: 4px 0 2px; padding: 0 2px;
+  border-left: 3px solid #00ddee;
+  padding-left: 5px;
+}
+.rsep { height: 1px; background: #3a8a9a; margin: 4px 0 }
+.rsub { font-size: 11px; color: #00ccdd; padding: 1px 4px; letter-spacing: 1px }
+.rsub.rhi { color: #00eeff }
 
-  :root {
-    --bg:        #000008;
-    --bg2:       #00010c;
-    --panel:     #000d1a;
-    --panel2:    #001122;
-    --border:    #0d3555;
-    --glow:      #00d4ff;
-    --glow2:     #00ff88;
-    --glow3:     #ff6b35;
-    --warn:      #ffaa00;
-    --danger:    #ff3355;
-    --text:      #ffffff;
-    --textdim:   #88bbdd;
-    --font-mono: 'Share Tech Mono', monospace;
-    --font-hud:  'Orbitron', monospace;
-    --font-body: 'Rajdhani', sans-serif;
-  }
+/* overall progress bar at top */
+.rprogress {
+  border: 1px solid #1a4a5a;
+  background: #0d2535;
+  padding: 5px 6px;
+  margin-bottom: 2px;
+}
+.rprogress-lbl {
+  font-size: 8px; letter-spacing: 2px; color: #00ddee;
+  display: flex; justify-content: space-between; margin-bottom: 4px;
+}
+.rprogress-lbl span { color: #00ddff }
+.rprogress-track {
+  height: 3px; background: #071825;
+  border: 1px solid #0a2a3a;
+  position: relative;
+}
+.rprogress-fill {
+  height: 100%; background: #00884a;
+  transition: width 1s ease;
+}
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; background:var(--bg); color:var(--text); font-family:var(--font-body); overflow:hidden; user-select:none; }
+/* module grid */
+.rmod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
 
-  body::before {
-    content:''; position:fixed; inset:0; z-index:9999; pointer-events:none;
-    background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.12) 3px,rgba(0,0,0,0.12) 4px);
-  }
+/* module box */
+.rmod {
+  border: 1px solid #2a6a7a;
+  border-left: 3px solid #2a6a7a;
+  background: #132f42;
+  padding: 4px 5px;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+.rmod:hover { background: #112e48; border-color: #2a7080; border-left-color: #40909a }
+.rmod.done { border-left-color: #00cc60; background: #102e1c; }
+.rmod.done:hover { border-left-color: #00ff80; background: #143d24 }
+.rmod.active { border-left-color: #00ccee; border-color: #1a5a6a; background: #143d65 }
+.rmod.active:hover { border-left-color: #00eeff }
+.rmod.locked { border-left-color: #1a3a4a; background: #112840; opacity: .9 }
+.rmod.processing { border-left-color: #00ff80; border-color: #0a3020; background: #030f0a; animation: pulse-g 1s ease-in-out infinite }
 
-  .grid-bg {
-    position:fixed; inset:0; z-index:0;
-    background-image:linear-gradient(rgba(0,212,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.06) 1px,transparent 1px);
-    background-size:50px 50px;
-    animation:gridPulse 4s ease-in-out infinite;
-  }
-  @keyframes gridPulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
+/* scan line overlay */
+.rmod::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,180,220,.015) 3px, rgba(0,180,220,.015) 4px
+  );
+  pointer-events: none;
+}
 
-  .shell {
-    position:relative; z-index:1;
-    display:grid;
-    grid-template-rows:80px 1fr 44px;
-    grid-template-columns:300px 1fr 320px;
-    height:100vh; gap:2px;
-    background:var(--border); padding:2px;
-  }
+/* header row */
+.rmod-hdr { display: flex; align-items: center; gap: 3px }
+.rmod-dot { width: 4px; height: 4px; border-radius: 50%; background: #0a2030; flex-shrink: 0 }
+.rmod.done .rmod-dot { background: #00ccee }
+.rmod.active .rmod-dot { background: #00aacc }
+.rmod.processing .rmod-dot { background: #00ff80; animation: blink .5s step-end infinite }
 
-  /* HEADER */
-  .header {
-    grid-column:1/-1; background:var(--panel);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 28px; position:relative; overflow:hidden;
-  }
-  .header::after {
-    content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
-    background:linear-gradient(90deg,transparent 0%,var(--glow) 30%,var(--glow2) 50%,var(--glow) 70%,transparent 100%);
-    animation:headerLine 3s ease-in-out infinite;
-  }
-  @keyframes headerLine { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+.rmod-code { font-size: 9px; letter-spacing: 1px; color: #00ccdd; flex: 1 }
+.rmod.done .rmod-code { color: #00ccee }
+.rmod.active .rmod-code { color: #00eeff }
+.rmod.processing .rmod-code { color: #00ff80 }
+.rmod.locked .rmod-code { color: #3a7a8a }
 
-  .header-left { display:flex; align-items:center; gap:18px; }
-  .logo-diamond {
-    width:42px; height:42px; flex-shrink:0;
-    background:linear-gradient(135deg,var(--glow),var(--glow2));
-    clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
-    animation:diamondPulse 2s ease-in-out infinite;
-  }
-  @keyframes diamondPulse {
-    0%,100%{filter:drop-shadow(0 0 6px var(--glow));}
-    50%{filter:drop-shadow(0 0 20px var(--glow)) drop-shadow(0 0 40px rgba(0,212,255,0.4));}
-  }
-  .logo-text {
-    font-family:var(--font-hud); font-size:18px; font-weight:900;
-    letter-spacing:5px; color:var(--glow);
-    text-shadow:0 0 30px rgba(0,212,255,0.8),0 0 60px rgba(0,212,255,0.3);
-  }
-  .logo-sub { font-family:var(--font-mono); font-size:11px; letter-spacing:3px; color:var(--textdim); margin-top:2px; }
+.rmod-name { font-size: 10px; font-weight: bold; letter-spacing: 1px; color: #00eeff; line-height: 1.2 }
+.rmod.done .rmod-name { color: #00eeff }
+.rmod.active .rmod-name { color: #00eeff }
+.rmod.processing .rmod-name { color: #00ff80 }
+.rmod.locked .rmod-name { color: #3a7a8a }
 
-  .header-center { text-align:center; }
-  .clock {
-    font-family:var(--font-hud); font-size:32px; font-weight:900;
-    letter-spacing:8px; color:var(--text);
-    text-shadow:0 0 30px rgba(0,212,255,0.5);
-  }
-  .elapsed-label { font-family:var(--font-mono); font-size:12px; letter-spacing:3px; color:var(--textdim); margin-top:4px; }
+/* status bar under name */
+.rmod-bar { height: 2px; background: #0a2030; margin-top: 2px; position: relative }
+.rmod-bar-fill { height: 100%; background: #00aacc; transition: width .8s ease }
+.rmod.active .rmod-bar-fill { background: #00aacc }
+.rmod.processing .rmod-bar-fill { background: #00ff80 }
 
-  .header-right { display:flex; align-items:center; gap:14px; }
-  .btn {
-    font-family:var(--font-hud); font-size:13px; font-weight:700;
-    letter-spacing:2px; padding:10px 28px;
-    border:2px solid var(--glow); background:rgba(0,212,255,0.08);
-    color:var(--glow); cursor:pointer;
-    clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
-    transition:all 0.2s; text-transform:uppercase;
-  }
-  .btn:hover { background:rgba(0,212,255,0.2); box-shadow:0 0 24px rgba(0,212,255,0.5); }
-  .btn.stop { border-color:var(--danger); color:var(--danger); background:rgba(255,51,85,0.08); }
-  .btn.stop:hover { background:rgba(255,51,85,0.2); box-shadow:0 0 24px rgba(255,51,85,0.5); }
-  .btn:disabled { opacity:0.25; cursor:not-allowed; }
+/* part pills */
+.rmod-parts { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px }
+.rmod-part {
+  font-size: 8px; padding: 2px 5px;
+  border: 1px solid #1a4a5a;
+  color: #00ccdd; background: #081828;
+  cursor: pointer; font-family: 'Courier New', monospace;
+  transition: all .15s;
+}
+.rmod-part:hover { border-color: #00ccee; color: #00eeff }
+.rmod.done .rmod-part { border-color: #1a5a30; color: #00dd70 }
+.rmod-part.rp-done { border-color: #007a99 !important; color: #00ccee !important; background: #04101a !important }
+.rmod-part.rp-active { border-color: #00aacc !important; color: #00ccee !important; background: #03101e !important }
+.rmod-part.rp-processing { border-color: #00ff80 !important; color: #00ff80 !important; background: #030f0a !important; animation: blink .6s step-end infinite }
 
-  /* PANEL TITLE */
-  .panel-title {
-    font-family:var(--font-hud); font-size:12px; font-weight:700;
-    letter-spacing:4px; color:var(--glow);
-    text-shadow:0 0 12px rgba(0,212,255,0.6);
-    padding:14px 18px 10px; border-bottom:1px solid var(--border);
-    background:var(--panel2);
-  }
+/* freq readout */
+.rmod-freq { font-size: 8px; color: #00ddee; letter-spacing: 1px; margin-top: 1px }
+.rmod.active .rmod-freq { color: #00bbdd }
+.rmod.done .rmod-freq { color: #00aacc }
 
-  /* LEFT */
-  .panel-left { background:var(--panel); display:flex; flex-direction:column; overflow:hidden; }
-  .module-list { flex:1; overflow-y:auto; padding:6px 0; }
-  .module-list::-webkit-scrollbar { width:3px; }
-  .module-list::-webkit-scrollbar-thumb { background:var(--border); }
+/* keep old mrow/mdot hidden — pipeline JS still references them */
+.mrow { display: none }
+.mdot { display: none }
+.abar {
+  grid-column: 1/-1;
+  grid-row: 3;
+  border-top: 1px solid #0a2030;
+  background: #071e2e;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 10px;
+  overflow: hidden;
+  z-index: 1;
+}
+.glyph {
+  border: 1px solid #1a4a5a;
+  padding: 2px 0;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #1a6070;
+  background: #061525;
+  flex: 1;
+  text-align: center;
+  transition: all .35s;
+}
+.glyph.lit { border-color: #00ccee; color: #00ccee; background: #001828 }
+.glyph.locked-g { border-color: #00ff80; color: #00ff80; background: #001a10 }
 
-  .module-item {
-    display:flex; align-items:center; gap:12px;
-    padding:9px 18px; font-family:var(--font-mono); font-size:13px;
-    color:var(--textdim); letter-spacing:0.5px;
-    border-left:3px solid transparent; transition:all 0.3s;
-  }
-  .module-item.building {
-    color:var(--warn); border-left-color:var(--warn);
-    background:rgba(255,170,0,0.07);
-    text-shadow:0 0 10px rgba(255,170,0,0.6);
-    animation:modBuilding 1.5s ease-in-out infinite;
-  }
-  .module-item.passed {
-    color:var(--glow2); border-left-color:var(--glow2);
-    background:rgba(0,255,136,0.05);
-    text-shadow:0 0 8px rgba(0,255,136,0.4);
-    animation:modPop 0.5s ease;
-  }
-  .module-item.failed {
-    color:var(--danger); border-left-color:var(--danger);
-    background:rgba(255,51,85,0.05); animation:modPop 0.5s ease;
-  }
-  @keyframes modBuilding { 0%,100%{background:rgba(255,170,0,0.04);} 50%{background:rgba(255,170,0,0.1);} }
-  @keyframes modPop { 0%{transform:translateX(-6px);opacity:0.5;} 60%{transform:translateX(2px);} 100%{transform:translateX(0);opacity:1;} }
-  .module-icon { font-size:14px; width:16px; text-align:center; }
+/* ── BOTTOM PANEL ── */
+.bpanel-wrap {
+  height: 190px;
+  flex-shrink: 0;
+  border-top: 2px solid #0a2030;
+  border: 2px solid #0a2030;
+  background: #081e2e;
+  overflow: hidden;
+  padding: 4px 4px 4px 4px;
+}
 
-  /* CENTRE */
-  .panel-center { background:var(--bg2); display:flex; flex-direction:column; overflow:hidden; }
+.bpanel-scroll {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #1a4a60 #010810;
+  gap: 3px;
+}
+.bpanel-scroll::-webkit-scrollbar { height: 4px }
+.bpanel-scroll::-webkit-scrollbar-track { background: #020b14 }
+.bpanel-scroll::-webkit-scrollbar-thumb { background: #1a4a60; border-radius: 2px }
 
-  .progress-section { padding:22px 28px 18px; background:var(--panel); border-bottom:1px solid var(--border); }
-  .progress-label {
-    font-family:var(--font-hud); font-size:12px; letter-spacing:4px;
-    color:var(--glow); margin-bottom:12px;
-    text-shadow:0 0 12px rgba(0,212,255,0.5);
-  }
-  .progress-bar-outer {
-    height:10px; background:rgba(0,212,255,0.06);
-    border:1px solid var(--border); position:relative; overflow:visible;
-  }
-  .progress-bar-inner {
-    height:100%; transition:width 1s ease;
-    background:linear-gradient(90deg,#0066ff,var(--glow),var(--glow2));
-    box-shadow:0 0 16px var(--glow),0 0 32px rgba(0,212,255,0.4);
-    position:relative;
-  }
-  .progress-bar-inner::after {
-    content:''; position:absolute; right:-2px; top:-5px;
-    width:3px; height:20px; background:white;
-    box-shadow:0 0 10px white,0 0 20px var(--glow);
-  }
-  .progress-stats { display:flex; align-items:center; justify-content:space-between; margin-top:14px; }
-  .stat { display:flex; align-items:baseline; gap:8px; }
-  .stat-num { font-family:var(--font-hud); font-size:36px; font-weight:900; line-height:1; }
-  .stat-num.green { color:var(--glow2); text-shadow:0 0 20px rgba(0,255,136,0.7); }
-  .stat-num.red   { color:var(--danger); text-shadow:0 0 20px rgba(255,51,85,0.7); }
-  .stat-num.dim   { color:var(--textdim); }
-  .stat-label { font-family:var(--font-mono); font-size:13px; color:var(--textdim); letter-spacing:1px; }
-  .stat-divider { font-size:28px; color:var(--border); }
-  .progress-pct { font-family:var(--font-hud); font-size:28px; font-weight:900; color:var(--glow); text-shadow:0 0 16px rgba(0,212,255,0.6); }
+/* ── COLUMN ── */
+.mcol {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+  width: 100px;
+}
 
-  .status-section {
-    padding:16px 28px; border-bottom:1px solid var(--border);
-    background:var(--panel); min-height:72px; display:flex; align-items:center;
-  }
-  .status-row { display:flex; align-items:center; gap:14px; width:100%; }
-  .status-indicator { width:12px; height:12px; border-radius:50%; flex-shrink:0; background:var(--border); }
-  .status-indicator.active { background:var(--glow2); box-shadow:0 0 12px var(--glow2); animation:dotBlink 1s ease-in-out infinite; }
-  .status-indicator.warn   { background:var(--warn);  box-shadow:0 0 12px var(--warn);  animation:dotBlink 0.5s ease-in-out infinite; }
-  .status-indicator.idle   { background:var(--border); }
-  @keyframes dotBlink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-  .status-module { font-family:var(--font-hud); font-size:16px; font-weight:700; color:var(--text); letter-spacing:2px; flex:1; }
-  .status-ai { font-family:var(--font-mono); font-size:13px; padding:4px 14px; border:1px solid; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
-  .status-ai.groq   { color:var(--glow); border-color:var(--glow); background:rgba(0,212,255,0.1); text-shadow:0 0 8px var(--glow); }
-  .status-ai.ollama { color:var(--warn); border-color:var(--warn); background:rgba(255,170,0,0.1); text-shadow:0 0 8px var(--warn); }
+/* ── BASE CARD — visible by default ── */
+.mcard {
+  border: 1px solid #3a8a9a;
+  padding: 5px 6px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  position: relative;
+  flex: 1;
+  background: #102840;
+}
+.mcard:hover { background: #102640; border-color: #60ccdd }
 
-  .wait-section { padding:0 28px 16px; display:none; background:var(--panel); border-bottom:1px solid var(--border); }
-  .wait-section.visible { display:block; }
-  .wait-label { font-family:var(--font-mono); font-size:13px; color:var(--warn); letter-spacing:1px; margin-bottom:8px; display:flex; justify-content:space-between; text-shadow:0 0 8px rgba(255,170,0,0.5); }
-  .wait-bar-outer { height:6px; background:rgba(255,170,0,0.08); border:1px solid rgba(255,170,0,0.2); }
-  .wait-bar-inner { height:100%; transition:width 1s linear; background:linear-gradient(90deg,var(--warn),var(--glow3)); box-shadow:0 0 10px var(--warn); }
+/* DONE — green tint */
+.mcard.mc-done {
+  border-top: 2px solid #00cc60;
+  border-color: #2a9a50;
+  background: #0e2a1a;
+}
+.mcard.mc-done:hover { background: #071a14 }
 
-  .log-section { flex:1; display:flex; flex-direction:column; overflow:hidden; }
-  .log-title { font-family:var(--font-hud); font-size:12px; letter-spacing:4px; color:var(--glow); padding:12px 28px 10px; border-bottom:1px solid var(--border); text-shadow:0 0 12px rgba(0,212,255,0.5); flex-shrink:0; }
-  .log-body { flex:1; overflow-y:auto; padding:14px 28px; font-family:var(--font-mono); font-size:14px; line-height:2; }
-  .log-body::-webkit-scrollbar { width:3px; }
-  .log-body::-webkit-scrollbar-thumb { background:var(--border); }
-  .log-line { animation:logIn 0.3s ease; }
-  @keyframes logIn { from{opacity:0;transform:translateX(-8px);} to{opacity:1;transform:none;} }
-  .log-pass  { color:var(--glow2); text-shadow:0 0 6px rgba(0,255,136,0.4); }
-  .log-fail  { color:var(--danger); }
-  .log-warn  { color:var(--warn); text-shadow:0 0 6px rgba(255,170,0,0.4); }
-  .log-build { color:var(--glow); text-shadow:0 0 6px rgba(0,212,255,0.4); }
-  .log-dim   { color:var(--textdim); }
-  .log-err   { color:var(--danger); opacity:0.8; }
+/* ACTIVE — cyan highlight */
+.mcard.mc-active {
+  border-top: 2px solid #00ccee;
+  border-color: #2a8a9a;
+  background: #112e48;
+}
+.mcard.mc-selected {
+  border: 2px solid #00ccee;
+  background: #102c40;
+  animation: card-glow-cyan 6s ease-in-out infinite;
+}
+@keyframes card-glow-cyan {
+  0%,100% { border-color: #0d4a5a; }
+  40%,60% { border-color: #00ccee; }
+}
+.mcard.mc-active:hover { background: #071e30 }
 
-  /* RIGHT */
-  .panel-right { background:var(--panel); display:flex; flex-direction:column; overflow:hidden; }
-  .metrics { padding:16px 18px; border-bottom:1px solid var(--border); }
-  .metric-row { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid rgba(13,53,85,0.5); }
-  .metric-row:last-child { border-bottom:none; }
-  .metric-key { font-family:var(--font-mono); font-size:13px; color:var(--textdim); letter-spacing:1px; }
-  .metric-val { font-family:var(--font-hud); font-size:17px; font-weight:700; letter-spacing:1px; }
-  .metric-val.cyan   { color:var(--glow);  text-shadow:0 0 10px rgba(0,212,255,0.5); }
-  .metric-val.orange { color:var(--glow3); }
+/* LOCKED — dimmed but still readable */
+.mcard.mc-locked {
+  border-top: 2px solid #2a7a8a;
+  border-color: #2a7a8a;
+  background: #0e2438;
+  opacity: .85;
+  cursor: default;
+}
 
-  .ex-grid-title { font-family:var(--font-hud); font-size:12px; letter-spacing:4px; color:var(--glow); padding:14px 18px 10px; border-bottom:1px solid var(--border); text-shadow:0 0 12px rgba(0,212,255,0.5); }
-  .ex-grid { padding:18px; display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
-  .ex-cell {
-    aspect-ratio:1; border:2px solid var(--border);
-    display:flex; align-items:center; justify-content:center;
-    flex-direction:column; gap:5px;
-    font-family:var(--font-hud); font-size:11px; color:var(--textdim);
-    transition:all 0.4s ease; position:relative; overflow:hidden;
-  }
-  .ex-cell.active  { border-color:var(--warn); color:var(--warn); background:rgba(255,170,0,0.08); animation:exActive 1.2s ease-in-out infinite; }
-  .ex-cell.pass-a  { border-color:rgba(0,255,136,0.5); color:var(--glow2); background:rgba(0,255,136,0.08); animation:exPassA 0.5s ease; }
-  .ex-cell.pass-b  { border-color:var(--glow2); color:var(--glow2); background:rgba(0,255,136,0.15); box-shadow:0 0 18px rgba(0,255,136,0.4),inset 0 0 18px rgba(0,255,136,0.08); animation:exPassB 0.6s ease; }
-  .ex-cell.fail    { border-color:var(--danger); color:var(--danger); background:rgba(255,51,85,0.1); animation:exFail 0.4s ease; }
-  @keyframes exActive { 0%,100%{box-shadow:0 0 8px rgba(255,170,0,0.2);} 50%{box-shadow:0 0 22px rgba(255,170,0,0.6);} }
-  @keyframes exPassA  { 0%{transform:scale(0.85);opacity:0.4;} 60%{transform:scale(1.1);} 100%{transform:scale(1);} }
-  @keyframes exPassB  { 0%{transform:scale(0.85);opacity:0.4;box-shadow:none;} 50%{transform:scale(1.15);box-shadow:0 0 30px rgba(0,255,136,0.8);} 100%{transform:scale(1);} }
-  @keyframes exFail   { 0%,100%{background:rgba(255,51,85,0.1);} 50%{background:rgba(255,51,85,0.3);} }
-  .ex-num   { font-size:14px; font-weight:700; }
-  .ex-parts { font-size:10px; }
+/* PROCESSING — pulsing green */
+.mcard.mc-processing {
+  border-top: 2px solid #00ff80;
+  border-color: #0d5a30;
+  background: #051a10;
+  animation: card-glow 6s ease-in-out infinite;
+}
+@keyframes card-glow {
+  0%,100% { border-color: #0a2030; }
+  40%,60% { border-color: #00884a; }
+}
 
-  /* FOOTER */
-  .footer {
-    grid-column:1/-1; background:var(--panel);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 28px; border-top:1px solid var(--border);
-    font-family:var(--font-mono); font-size:12px; color:var(--textdim); letter-spacing:1px;
-  }
-  .footer-status { display:flex; align-items:center; gap:10px; }
-  .footer-dot { width:8px; height:8px; border-radius:50%; background:var(--glow2); box-shadow:0 0 8px var(--glow2); }
+/* status dot */
+.mc-dot { position: absolute; top: 4px; right: 4px; width: 5px; height: 5px; border-radius: 50%; background: #0d3040 }
+.mcard.mc-done .mc-dot { background: #00cc60 }
+.mcard.mc-active .mc-dot { background: #00ccee; }
+.mcard.mc-processing .mc-dot { background: #00ff80; }
 
-  /* DONE */
-  .done-overlay { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,12,0.9); backdrop-filter:blur(4px); align-items:center; justify-content:center; flex-direction:column; gap:28px; }
-  .done-overlay.visible { display:flex; }
-  .done-title { font-family:var(--font-hud); font-size:48px; font-weight:900; letter-spacing:10px; color:var(--glow2); text-shadow:0 0 40px var(--glow2),0 0 80px rgba(0,255,136,0.4); animation:logIn 0.6s ease; }
-  .done-sub { font-family:var(--font-mono); font-size:16px; color:var(--textdim); letter-spacing:3px; }
+/* code label */
+.mc-num { font-size: 8px; letter-spacing: 1px; color: #50c0d0 }
+.mcard.mc-done .mc-num { color: #00884a }
+.mcard.mc-active .mc-num { color: #00ddff }
+.mcard.mc-processing .mc-num { color: #00ff80; }
+.mcard.mc-locked .mc-num { color: #40909a }
+
+/* name */
+.mc-name { font-size: 9px; letter-spacing: 1px; font-weight: bold; line-height: 1.2; color: #60ccdd }
+.mcard.mc-done .mc-name { color: #00dd70 }
+.mcard.mc-active .mc-name { color: #00eeff }
+.mcard.mc-processing .mc-name { color: #00ff80 }
+.mcard.mc-locked .mc-name { color: #40909a }
+
+/* part buttons */
+.mc-parts-row { display: flex; flex-direction: column; gap: 3px; margin-top: 3px; flex: 1 }
+.mc-part-btn {
+  font-size: 8px;
+  padding: 3px 6px;
+  border: 1px solid #3a8a9a;
+  color: #50c0d0;
+  background: #0e2438;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.mcard.mc-done .mc-part-btn { border-color: #1a6a30; color: #00cc70; background: #0c1c10 }
+.mcard.mc-active .mc-part-btn { border-color: #2a8a9a; color: #00eeff; background: #06121e }
+.mc-part-btn.p-done { border-color: #00884a !important; color: #00cc60 !important; background: #040e0a !important }
+.mc-part-btn.p-active { border-color: #00aacc !important; color: #00ccee !important; background: #04101a !important; }
+.mc-part-btn.p-processing { border-color: #00ff80 !important; color: #00ff80 !important; background: #04120a !important; }
+
+@keyframes blink { 50% { opacity: 0 } }
+@keyframes active-pulse {
+  0% { border-color: #0a2030; }
+  40%, 60% { border-color: #006680; }
+  100% { border-color: #0a2030; }
+}
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
-<div class="shell">
-
-  <header class="header">
-    <div class="header-left">
-      <div class="logo-diamond"></div>
-      <div>
-        <div class="logo-text">CORE VALUE FUNDAMENTALS</div>
-        <div class="logo-sub">PIPELINE CONTROL SYSTEM v2.0</div>
-      </div>
+<div class="hud">
+  <div class="tbar">
+    <div class="tbar-dot"></div>
+    <span class="tbar-main">GATE DIAGNOSTICS :: CORE-FUNDAMENTALS COURSE ::</span>
+    <span class="tbar-id" id="macro-id">MCK.008762346</span>
+    <span id="tbar-status">STANDING BY</span>
+    <div class="pipeline-btns">
+      <div class="pbtn" id="btn-start" onclick="startPipeline(false)">▶ REBUILD</div>
+      <div class="pbtn" style="border-color:#1a5a40;color:#1a9060" onclick="startPipeline(true)">▶ AUDIT</div>
+      <div class="pbtn pbtn-stop" onclick="stopPipeline()">■ STOP</div>
     </div>
-    <div class="header-center">
-      <div class="clock" id="clock">00:00:00</div>
-      <div class="elapsed-label" id="elapsed-label">ELAPSED: 00:00</div>
-    </div>
-    <div class="header-right">
-      <button class="btn" id="btnStart" onclick="startPipeline()">▶ LAUNCH PIPELINE</button>
-      <button class="btn stop" id="btnStop" onclick="stopPipeline()" disabled>■ STOP</button>
-    </div>
-  </header>
+    <span class="tbar-clock" id="clock">00:00:00</span>
+  </div>
 
-  <aside class="panel-left">
-    <div class="panel-title">◈ MODULE STATUS</div>
-    <div class="module-list" id="moduleList"></div>
-  </aside>
-
-  <main class="panel-center">
-    <div class="progress-section">
-      <div class="progress-label">◈ OVERALL BUILD PROGRESS</div>
-      <div class="progress-bar-outer">
-        <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
-      </div>
-      <div class="progress-stats">
-        <div class="stat"><div class="stat-num green" id="statPassed">0</div><div class="stat-label">PASSED</div></div>
-        <div class="stat-divider">/</div>
-        <div class="stat"><div class="stat-num red" id="statFailed">0</div><div class="stat-label">FAILED</div></div>
-        <div class="stat-divider">/</div>
-        <div class="stat"><div class="stat-num dim" id="statRemaining">16</div><div class="stat-label">REMAINING</div></div>
-        <div class="progress-pct" id="progressPct">0%</div>
-      </div>
+  <div class="lpanel">
+    <div>
+      <div class="slbl">● RUNNING DIAGNOSTICS//**</div>
+      <div class="slbl-b" id="verify-lbl">SUBSYSTEM ALPHA V.4<br>VERIFYING: <span id="verify-mod">—</span></div>
     </div>
-
-    <div class="status-section">
-      <div class="status-row">
-        <div class="status-indicator idle" id="statusDot"></div>
-        <div class="status-module" id="statusModule">AWAITING LAUNCH</div>
-        <div class="status-ai groq" id="statusAI" style="display:none"></div>
-      </div>
+    <div class="diagblk" id="diagblk">
+      <div class="dhi">00.233.488839 349</div>
+      <div class="dhi">00.9998691.RT</div><br>
+      <div>INITIALIZED** 00.0289</div>
+      <div class="dbl">FREQUENCY 71.88KHZ // 0.3837</div>
+      <div>ISOLATE FREQ // COMPILE</div>
+      <div class="dbl">CONFIRMED // CHECK</div><br>
+      <div class="dhi">ACTIVE // 00.28000376</div>
     </div>
-
-    <div class="wait-section" id="waitSection">
-      <div class="wait-label"><span id="waitReason">RATE LIMIT COOLDOWN</span><span id="waitCountdown">0s</span></div>
-      <div class="wait-bar-outer"><div class="wait-bar-inner" id="waitBar" style="width:0%"></div></div>
+    <div class="subblk">
+      <div class="slbl-b" style="margin-bottom:4px">SUBSPACE PHASE ADJ** 0.5934</div>
+      <div>00.23453.3453234.XDS</div>
+      <div>NC &nbsp; 00.52447.RT</div>
+      <div>NC &nbsp; 00.22345.RT</div>
     </div>
-
-    <div class="log-section">
-      <div class="log-title">◈ LIVE ACTIVITY LOG</div>
-      <div class="log-body" id="logBody"></div>
+    <div class="slbl">PIPELINE LOG</div>
+    <div class="log-panel" id="log-panel">
+      <div class="log-info">// awaiting pipeline start...</div>
     </div>
-  </main>
+  </div>
 
-  <aside class="panel-right">
-    <div class="panel-title">◈ SESSION METRICS</div>
-    <div class="metrics">
-      <div class="metric-row"><span class="metric-key">MODULES TOTAL</span><span class="metric-val cyan">16</span></div>
-      <div class="metric-row"><span class="metric-key">CURRENT MODULE</span><span class="metric-val orange" id="metricCurrent">—</span></div>
-      <div class="metric-row"><span class="metric-key">ACTIVE AI</span><span class="metric-val cyan" id="metricAI">—</span></div>
-      <div class="metric-row"><span class="metric-key">RATE LIMITS</span><span class="metric-val" id="metricRateLimits" style="color:var(--warn)">0</span></div>
-      <div class="metric-row"><span class="metric-key">OLLAMA FALLBACKS</span><span class="metric-val" id="metricFallbacks" style="color:var(--glow3)">0</span></div>
+  <div class="centre">
+    <canvas id="gate" width="420" height="420"></canvas>
+  </div>
+
+  <div class="rpanel" id="rpanel">
+
+    <div class="rprogress">
+      <div class="rprogress-lbl">COURSE PROGRESS <span id="rprogress-val">0%</span></div>
+      <div class="rprogress-track"><div class="rprogress-fill" id="rprogress-fill" style="width:0%"></div></div>
     </div>
-    <div class="ex-grid-title">◈ EXERCISE GRID</div>
-    <div class="ex-grid" id="exGrid"></div>
-  </aside>
+    <div class="rsec">COURSE MODULES</div>
+    <div class="rmod-grid" id="rmod-grid"></div>
 
-  <footer class="footer">
-    <div class="footer-status"><div class="footer-dot"></div><span id="footerStatus">SYSTEM READY</span></div>
-    <span>CORE VALUE FUNDAMENTALS — PIPELINE DASHBOARD</span>
-    <span id="footerTime">—</span>
-  </footer>
+  </div>
+
+  <div class="abar" id="abar">
+    <div class="glyph locked-g">DG3</div>
+    <div class="glyph locked-g">JF9</div>
+    <div class="glyph locked-g">RG2</div>
+    <div class="glyph locked-g">LR6</div>
+    <div class="glyph lit">QT4</div>
+    <div class="glyph">RG2</div>
+    <div class="glyph">LR6</div>
+    <div class="glyph">JF9</div>
+    <div class="glyph">DG3</div>
+    <div class="glyph">PK7</div>
+    <div class="glyph">LR6</div>
+    <div class="glyph">JF9</div>
+    <div class="glyph">QT4</div>
+    <div class="glyph">XR8</div>
+    <div class="glyph">NV5</div>
+    <div class="glyph">TK6</div>
+    <div class="glyph">RF4</div>
+  </div>
 </div>
 
-<div class="done-overlay" id="doneOverlay">
-  <div class="done-title" id="doneTitle">BUILD COMPLETE</div>
-  <div class="done-sub" id="doneSub">All modules processed successfully</div>
-  <button class="btn" onclick="dismissDone()">◈ DISMISS</button>
+<div class="bpanel-wrap">
+  <div class="bpanel-scroll" id="bpanel"></div>
 </div>
 
 <script>
-const ALL_MODULES=['MODULE-1-VARIABLES','MODULE-2-OPERATORS','MODULE-3-CONDITIONS-PART1','MODULE-3-CONDITIONS-PART2','MODULE-3-CONDITIONS-PART3','MODULE-3-CONDITIONS-PART4','MODULE-3-CONDITIONS-PART5','MODULE-4-LOGICAL-OPERATORS-PART1','MODULE-4-LOGICAL-OPERATORS-PART2','MODULE-5-LOOPS-PART1','MODULE-5-LOOPS-PART2','MODULE-5-LOOPS-PART3','MODULE-5-LOOPS-PART4','MODULE-6-PIRATE-ADVENTURE-PART1','MODULE-6-PIRATE-ADVENTURE-PART2','MODULE-7-FUNCTIONS-PART1'];
-const TOTAL=ALL_MODULES.length;
-const state={moduleStatuses:{},currentModule:'',currentAI:'',passed:0,failed:0,rateLimits:0,fallbacks:0,isWaiting:false,waitTotal:0,waitStart:0,waitReason:'',startTime:null,running:false,exStatus:{}};
-ALL_MODULES.forEach(m=>{state.moduleStatuses[m]='pending';state.exStatus[m]={};for(let i=1;i<=5;i++)state.exStatus[m][i]={a:'pending',b:'pending'};});
+const MODULES = [
+  { id:1,  code:'M01', name:'VARIABLES',   rebuildKey:'MODULE-1-VARIABLES',              parts:1, done:0, status:'locked', freq:'48.21KHZ', chevrons:3 },
+  { id:2,  code:'M02', name:'OPERATORS',   rebuildKey:'MODULE-2-OPERATORS',              parts:1, done:0, status:'locked', freq:'52.67KHZ', chevrons:3 },
+  { id:3,  code:'M03', name:'CONDITIONS',  rebuildKey:'MODULE-3-CONDITIONS-PART1',       parts:5, done:0, status:'locked', freq:'61.09KHZ', chevrons:5 },
+  { id:4,  code:'M04', name:'LOGICAL OPS', rebuildKey:'MODULE-4-LOGICAL-OPERATORS-PART1',parts:2, done:0, status:'locked', freq:'64.34KHZ', chevrons:4 },
+  { id:5,  code:'M05', name:'LOOPS',       rebuildKey:'MODULE-5-LOOPS-PART1',            parts:4, done:0, status:'locked', freq:'71.88KHZ', chevrons:5 },
+  { id:6,  code:'M06', name:'PIRATE ADV.', rebuildKey:'MODULE-6-PIRATE-ADVENTURE-PART1', parts:2, done:0, status:'locked', freq:'79.44KHZ', chevrons:6 },
+  { id:7,  code:'M07', name:'FUNCTIONS',   rebuildKey:'MODULE-7-FUNCTIONS-PART1',        parts:6, done:0, status:'locked', freq:'91.76KHZ', chevrons:7 },
+  { id:8,  code:'M08', name:'SPARE',       rebuildKey:'MODULE-8-SPARE',                  parts:1, done:0, status:'locked', freq:'98.34KHZ', chevrons:7 },
+  { id:9,  code:'M09', name:'SPARE',       rebuildKey:'MODULE-9-SPARE',                  parts:1, done:0, status:'locked', freq:'104.12KHZ',chevrons:7 },
+  { id:10, code:'M10', name:'SPARE',       rebuildKey:'MODULE-10-SPARE',                 parts:1, done:0, status:'locked', freq:'110.55KHZ',chevrons:8 },
+  { id:11, code:'M11', name:'SPARE',       rebuildKey:'MODULE-11-SPARE',                 parts:1, done:0, status:'locked', freq:'117.88KHZ',chevrons:8 },
+  { id:12, code:'M12', name:'SPARE',       rebuildKey:'MODULE-12-SPARE',                 parts:1, done:0, status:'locked', freq:'123.44KHZ',chevrons:8 },
+  { id:13, code:'M13', name:'SPARE',       rebuildKey:'MODULE-13-SPARE',                 parts:1, done:0, status:'locked', freq:'129.03KHZ',chevrons:8 },
+  { id:14, code:'M14', name:'SPARE',       rebuildKey:'MODULE-14-SPARE',                 parts:1, done:0, status:'locked', freq:'134.77KHZ',chevrons:9 },
+  { id:15, code:'M15', name:'SPARE',       rebuildKey:'MODULE-15-SPARE',                 parts:1, done:0, status:'locked', freq:'142.00KHZ',chevrons:9 },
+];
 
-const $=id=>document.getElementById(id);
-const moduleList=$('moduleList'),progressBar=$('progressBar'),statPassed=$('statPassed'),statFailed=$('statFailed'),statRemaining=$('statRemaining'),progressPct=$('progressPct'),statusDot=$('statusDot'),statusModule=$('statusModule'),statusAI=$('statusAI'),waitSection=$('waitSection'),waitReason=$('waitReason'),waitCountdown=$('waitCountdown'),waitBar=$('waitBar'),logBody=$('logBody'),metricCurrent=$('metricCurrent'),metricAI=$('metricAI'),metricRateLimits=$('metricRateLimits'),metricFallbacks=$('metricFallbacks'),exGrid=$('exGrid'),footerStatus=$('footerStatus'),footerTime=$('footerTime'),btnStart=$('btnStart'),btnStop=$('btnStop'),elapsedLabel=$('elapsed-label');
+const GLYPHS_ALL = ['DG3','JF9','RG2','LR6','QT4','PK7','XR8','NV5','TK6','RF4','EG2','WZ7','MC3','BV8','PL1','XQ5','KR7'];
+let currentMod = -1;
+let ringAngle = 0, ringSpeed = 0, sweepAngle = 0;
+let isDialling = false, chevronLit = 0;
+let pipelineRunning = false, fileProcessing = false, fileTimer = null;
+let activeModIdx = -1, partsSeenThisMod = 0;
+const partResults = MODULES.map(m => Array(m.parts).fill(null));
 
-function initModuleList(){moduleList.innerHTML='';ALL_MODULES.forEach(m=>{const el=document.createElement('div');el.className='module-item';el.id='mod-'+m;const short=m.replace('MODULE-','M').replace(/-/g,' ').toLowerCase();el.innerHTML=`<span class="module-icon" id="icon-${m}">○</span><span class="module-name">${short}</span>`;moduleList.appendChild(el);});}
+// ── BUILD BOTTOM CARDS ────────────────────────────────────────
+// Cards are coloured entirely from m.status — no processingIdx needed at init
+function buildCards(processingIdx) {
+  processingIdx = (processingIdx !== undefined) ? processingIdx : -1;
+  const bp = document.getElementById('bpanel');
+  bp.innerHTML = '';
 
-function initExGrid(){exGrid.innerHTML='';for(let i=1;i<=5;i++){const el=document.createElement('div');el.className='ex-cell';el.id=`ex-${i}`;el.innerHTML=`<span class="ex-num">EX${i}</span><span class="ex-parts" id="ex-parts-${i}">· ·</span>`;exGrid.appendChild(el);}}
+  function makeCard(idx, solo) {
+    const m = MODULES[idx];
+    let cls = m.status === 'done'   ? 'mc-done'
+            : m.status === 'active' ? 'mc-active'
+            : 'mc-locked';
+    if (idx === processingIdx) cls = 'mc-processing';
+    const card = document.createElement('div');
+    card.className = 'mcard ' + cls;
+    card.id = 'card-' + idx;
+    if (m.status !== 'locked' || idx === processingIdx) {
+      card.onclick = () => dialModule(idx);
+    }
+    let partsHtml = '';
+    for (let p = 0; p < m.parts; p++) {
+      let pcls = '';
+      if (idx === processingIdx) pcls = 'p-processing';
+      else if (p < m.done) pcls = 'p-done';
+      else if (m.status === 'active' && p === m.done) pcls = 'p-active';
+      partsHtml += '<div class="mc-part-btn ' + pcls + '">P' + (p + 1) + '</div>';
+    }
+    card.innerHTML =
+      '<div class="mc-dot"></div>' +
+      '<div class="mc-num">' + m.code + '</div>' +
+      '<div class="mc-name">' + m.name + '</div>' +
+      '<div class="mc-parts-row">' + partsHtml + '</div>';
+    return card;
+  }
 
-function resetExGrid(){for(let i=1;i<=5;i++){const el=$(`ex-${i}`),p=$(`ex-parts-${i}`);if(el){el.className='ex-cell';el.style.animation='none';setTimeout(()=>el.style.animation='',10);}if(p)p.textContent='· ·';}}
+  // Layout: modules with 4+ parts get a solo column; others pair up
+  let i = 0;
+  while (i < MODULES.length) {
+    const m = MODULES[i];
+    const col = document.createElement('div');
+    col.className = 'mcol';
+    if (m.parts >= 4) {
+      // solo — full column
+      col.appendChild(makeCard(i, true));
+      i++;
+    } else {
+      // pair this with the next small module if available
+      col.appendChild(makeCard(i, false));
+      i++;
+      if (i < MODULES.length && MODULES[i].parts < 4) {
+        col.appendChild(makeCard(i, false));
+        i++;
+      }
+    }
+    bp.appendChild(col);
+  }
 
-function updateClock(){const now=new Date();$('clock').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');if(state.startTime){const e=Math.floor((Date.now()-state.startTime)/1000),m=Math.floor(e/60),s=e%60;elapsedLabel.textContent=`ELAPSED: ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;footerTime.textContent=`${m}m ${s}s`;}if(state.isWaiting){const el=Math.floor((Date.now()-state.waitStart)/1000),rem=Math.max(0,state.waitTotal-el),pct=Math.min(100,(el/state.waitTotal)*100);waitCountdown.textContent=rem+'s';waitBar.style.width=pct+'%';if(rem===0){state.isWaiting=false;waitSection.classList.remove('visible');}}}
-setInterval(updateClock,1000);updateClock();
-
-function parseLine(line){
-  const clean=line.trim();if(!clean)return;
-  const stepMatch=clean.match(/STEP (\d+) OF \d+: BUILD (MODULE-[\w-]+)/);
-  if(stepMatch){const mod=stepMatch[2];state.currentModule=mod;state.currentAI='';state.isWaiting=false;waitSection.classList.remove('visible');ALL_MODULES.forEach(m=>{if(state.moduleStatuses[m]==='building')state.moduleStatuses[m]='pending';});state.moduleStatuses[mod]='building';resetExGrid();updateModuleList();updateStatus();metricCurrent.textContent='M'+mod.replace('MODULE-','').replace(/-/g,' ').substring(0,8);addLog(`<span class="log-build">▶ ${mod}</span>`);return;}
-  if(clean.includes('Groq (')){state.currentAI='GROQ';updateStatus();metricAI.textContent='GROQ';}
-  if(clean.includes('Falling back to Ollama')){state.currentAI='OLLAMA';state.fallbacks++;updateStatus();metricAI.textContent='OLLAMA';metricFallbacks.textContent=state.fallbacks;addLog(`<span class="log-warn">⇢ Fallback → Ollama</span>`);}
-  if(clean.includes('Retrying Groq')){state.currentAI='GROQ';updateStatus();metricAI.textContent='GROQ';}
-  const waitMatch=clean.match(/waiting (\d+)s/i);
-  if(waitMatch&&(clean.includes('rate limit')||clean.includes('Gap'))){const secs=parseInt(waitMatch[1]);state.isWaiting=true;state.waitTotal=secs;state.waitStart=Date.now();state.waitReason=clean.includes('rate')?'RATE LIMIT COOLDOWN':'GAP BETWEEN MODULES';waitReason.textContent=state.waitReason;waitBar.style.width='0%';waitSection.classList.add('visible');if(clean.includes('rate')){state.rateLimits++;metricRateLimits.textContent=state.rateLimits;addLog(`<span class="log-warn">⏳ Rate limit — ${secs}s cooldown</span>`);}return;}
-  const exPassMatch=clean.match(/✅ Ex(\d+) Part ([AB]) passed/);
-  if(exPassMatch){const n=parseInt(exPassMatch[1]),p=exPassMatch[2].toLowerCase();if(state.currentModule&&state.exStatus[state.currentModule])state.exStatus[state.currentModule][n][p]='passed';updateExGrid(n,p,'pass');addLog(`<span class="log-pass">  ✓ Ex${n} Part ${exPassMatch[2]} passed</span>`);return;}
-  if(clean.includes('❌ FAIL'))addLog(`<span class="log-fail">  ✗ ${clean.replace('❌ ','')}</span>`);
-  if((clean.includes('Done!')||clean.includes('✅ Saved:'))&&state.currentModule){if(state.moduleStatuses[state.currentModule]!=='passed'){state.moduleStatuses[state.currentModule]='passed';state.passed++;updateModuleList();updateProgress();addLog(`<span class="log-pass">✅ ${state.currentModule} complete</span>`);}state.isWaiting=false;waitSection.classList.remove('visible');}
-  if(clean.includes('REVIEW-NEEDED')&&state.currentModule){if(state.moduleStatuses[state.currentModule]!=='failed'){state.moduleStatuses[state.currentModule]='failed';state.failed++;updateModuleList();updateProgress();addLog(`<span class="log-fail">⚠ ${state.currentModule} needs review</span>`);}}
-  if(clean.includes('RUNNING AUDIT'))addLog(`<span class="log-build">🔍 Running audit...</span>`);
-  if(clean.startsWith('ERR:'))addLog(`<span class="log-err">${clean}</span>`);
+  const target = processingIdx >= 0 ? processingIdx
+               : MODULES.findIndex(m => m.status === 'active');
+  const card = document.getElementById('card-' + (target >= 0 ? target : 0));
+  if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
 
-function updateExGrid(n,part,status){const el=$(`ex-${n}`),partsEl=$(`ex-parts-${n}`);if(!el||!partsEl)return;const mod=state.currentModule;if(!mod||!state.exStatus[mod])return;const a=state.exStatus[mod][n]?.a==='passed',b=state.exStatus[mod][n]?.b==='passed';el.style.animation='none';setTimeout(()=>el.style.animation='',10);if(a&&b){el.className='ex-cell pass-b';partsEl.textContent='A✓ B✓';}else if(a){el.className='ex-cell pass-a';partsEl.textContent='A✓ B·';}else{el.className='ex-cell active';partsEl.textContent='· ·';}}
+// ── GATE CANVAS ───────────────────────────────────────────────
+const cv = document.getElementById('gate');
+const ctx = cv.getContext('2d');
+const W = 420, H = 420, CX = 210, CY = 210;
 
-function updateModuleList(){ALL_MODULES.forEach(m=>{const el=$('mod-'+m),ico=$('icon-'+m);if(!el||!ico)return;const s=state.moduleStatuses[m];el.className='module-item '+s;ico.textContent=s==='passed'?'✓':s==='failed'?'✗':s==='building'?'⚡':'○';});}
+function drawGate() {
+  ctx.clearRect(0, 0, W, H);
+  const OR = 188, IR = 162;
+  ctx.save();
+  ctx.translate(CX, CY); ctx.rotate(ringAngle); ctx.translate(-CX, -CY);
+  for (let i = 0; i < 36; i++) {
+    const a0 = (i / 36) * Math.PI * 2;
+    const a1 = ((i + 0.82) / 36) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.arc(CX, CY, OR, a0, a1);
+    ctx.arc(CX, CY, IR, a1, a0, true);
+    ctx.closePath();
+    ctx.fillStyle = i % 4 === 0 ? '#0a1e2a' : '#060f18';
+    ctx.fill();
+    ctx.strokeStyle = '#0d3040'; ctx.lineWidth = 0.5; ctx.stroke();
+    if (i % 2 === 0) {
+      const am = (a0 + a1) / 2, r = (OR + IR) / 2;
+      ctx.save();
+      ctx.translate(CX + r * Math.cos(am), CY + r * Math.sin(am));
+      ctx.rotate(am + Math.PI / 2);
+      ctx.font = '7px Courier New';
+      ctx.fillStyle = '#00ff8035';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(GLYPHS_ALL[i % GLYPHS_ALL.length].slice(0, 2), 0, 0);
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+  const glowActive = pipelineRunning && fileProcessing;
+  ctx.beginPath(); ctx.arc(CX, CY, IR, 0, Math.PI * 2);
+  ctx.strokeStyle = glowActive ? '#0099dd' : '#1a7aaa';
+  ctx.lineWidth = glowActive ? 5 : 4; ctx.stroke();
+  ctx.beginPath(); ctx.arc(CX, CY, OR, 0, Math.PI * 2);
+  ctx.strokeStyle = '#0d4a66'; ctx.lineWidth = 2; ctx.stroke();
+  for (let i = 0; i < 9; i++) {
+    const a = (i / 9) * Math.PI * 2 - Math.PI / 2;
+    const cr = OR + 15;
+    const cx2 = CX + cr * Math.cos(a), cy2 = CY + cr * Math.sin(a);
+    const lit = i < chevronLit;
+    ctx.save();
+    ctx.translate(cx2, cy2); ctx.rotate(a + Math.PI / 2);
+    ctx.beginPath();
+    ctx.moveTo(0, -10); ctx.lineTo(9, 6); ctx.lineTo(5, 3);
+    ctx.lineTo(0, 8); ctx.lineTo(-5, 3); ctx.lineTo(-9, 6);
+    ctx.closePath();
+    if (lit) {
+      ctx.fillStyle = '#00ff60';
+      ctx.shadowColor = '#00ff60'; ctx.shadowBlur = 14;
+      ctx.fill(); ctx.shadowBlur = 0;
+    } else {
+      ctx.fillStyle = '#0a1e10'; ctx.strokeStyle = '#003020';
+      ctx.lineWidth = 1; ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  ctx.beginPath(); ctx.arc(CX, CY, IR - 8, 0, Math.PI * 2);
+  ctx.strokeStyle = '#0d5570'; ctx.lineWidth = 1.5; ctx.stroke();
+  for (let i = 0; i < 72; i++) {
+    const a = (i / 72) * Math.PI * 2;
+    const r0 = IR - 10, r1 = i % 8 === 0 ? IR - 20 : IR - 15;
+    ctx.beginPath();
+    ctx.moveTo(CX + r0 * Math.cos(a), CY + r0 * Math.sin(a));
+    ctx.lineTo(CX + r1 * Math.cos(a), CY + r1 * Math.sin(a));
+    ctx.strokeStyle = i % 8 === 0 ? '#1a7a90' : '#0a3040';
+    ctx.lineWidth = 1; ctx.stroke();
+  }
+  const textR = IR - 14;
+  ctx.beginPath(); ctx.arc(CX, CY, textR, 0, Math.PI * 2);
+  ctx.fillStyle = '#010d18'; ctx.fill();
+  ctx.strokeStyle = '#0a3040'; ctx.lineWidth = 1; ctx.stroke();
+  var _sa = ((pipelineRunning && fileProcessing) || isDialling) ? 0.14 : 0.035;
+  var _la = ((pipelineRunning && fileProcessing) || isDialling) ? 0.5 : 0.10;
+  var _sg = ctx.createRadialGradient(CX, CY, 0, CX, CY, textR);
+  _sg.addColorStop(0, 'rgba(0,180,210,0)');
+  _sg.addColorStop(0.6, 'rgba(0,180,210,0)');
+  _sg.addColorStop(1, 'rgba(0,180,210,' + _sa + ')');
+  ctx.beginPath(); ctx.moveTo(CX, CY);
+  ctx.arc(CX, CY, textR, sweepAngle, sweepAngle + 0.65);
+  ctx.closePath(); ctx.fillStyle = _sg; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(CX, CY);
+  ctx.lineTo(CX + textR * Math.cos(sweepAngle), CY + textR * Math.sin(sweepAngle));
+  ctx.strokeStyle = 'rgba(0,220,255,' + _la + ')'; ctx.lineWidth = 1.5; ctx.stroke();
+  if (pipelineRunning && fileProcessing) {
+    ctx.beginPath(); ctx.arc(CX, CY, textR - 2, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(0,180,210,0.07)'; ctx.lineWidth = 3; ctx.stroke();
+  }
+  const m = currentMod >= 0 ? MODULES[currentMod] : null;
+  const procMod = activeModIdx >= 0 ? MODULES[activeModIdx] : null;
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 11px Courier New';
+  ctx.fillStyle = (pipelineRunning && fileProcessing) ? '#00eeff' : '#00ccee';
+  ctx.fillText('2049:1948  // V.34 X:Y', CX, CY - 28);
+  ctx.fillText('2058:2954  >> ALPHA 0' + (m ? m.id : '?'), CX, CY - 13);
+  ctx.font = '10px Courier New'; ctx.fillStyle = '#1a8a9a';
+  ctx.fillText('34503 > ROT. ' + (m ? Math.round(m.id * 14.2) : '0') + ' DEG.', CX, CY + 4);
+  ctx.font = '9px Courier New';
+  if (pipelineRunning && procMod) {
+    ctx.fillStyle = '#00ff80';
+    ctx.fillText('PROCESSING: ' + procMod.code + ' // ' + procMod.name, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#00aa60';
+    ctx.fillText('FREQ ' + procMod.freq + '  ·  PIPELINE ACTIVE', CX, CY + 38);
+  } else if (isDialling && m) {
+    ctx.fillStyle = '#00ccee';
+    ctx.fillText('DIALLING: ' + m.code + ' // ' + m.name, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a7090';
+    ctx.fillText('ENGAGING CHEVRONS...', CX, CY + 38);
+  } else if (m) {
+    ctx.fillStyle = '#1a8090';
+    ctx.fillText(m.code + ' // ' + m.name + ' // ' + m.freq, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a6070';
+    ctx.fillText(m.done + '/' + m.parts + ' PARTS  ·  ' + m.status.toUpperCase(), CX, CY + 38);
+  } else {
+    ctx.fillStyle = '#1a6070';
+    ctx.fillText('GATE STANDING BY', CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a4050';
+    ctx.fillText('AWAITING PIPELINE...', CX, CY + 38);
+  }
+}
 
-function updateProgress(){const done=state.passed+state.failed,pct=Math.round((done/TOTAL)*100);progressBar.style.width=pct+'%';statPassed.textContent=state.passed;statFailed.textContent=state.failed;statRemaining.textContent=Math.max(0,TOTAL-done);progressPct.textContent=pct+'%';}
+function tick() {
+  if (pipelineRunning && fileProcessing) {
+    ringSpeed += (0.012 - ringSpeed) * 0.03;
+    sweepAngle += 0.018;
+  } else if (isDialling) {
+    ringSpeed += (0.025 - ringSpeed) * 0.05;
+    sweepAngle += 0.022;
+  } else {
+    ringSpeed += (0.0008 - ringSpeed) * 0.02;
+    sweepAngle += 0.003;
+  }
+  ringAngle += ringSpeed;
+  drawGate();
+  requestAnimationFrame(tick);
+}
+tick();
 
-function updateStatus(){if(state.currentModule){statusDot.className='status-indicator active';statusModule.textContent=state.currentModule;if(state.currentAI){statusAI.style.display='';statusAI.textContent=state.currentAI;statusAI.className='status-ai '+state.currentAI.toLowerCase();}}}
+// ── DIAL MODULE ───────────────────────────────────────────────
+let dialSafetyTimer = null;
+function dialModule(i) {
+  if (isDialling) {
+    isDialling = false;
+    if (dialSafetyTimer) { clearTimeout(dialSafetyTimer); dialSafetyTimer = null; }
+  }
+  pipelineRunning = false; fileProcessing = false;
+  currentMod = i; activeModIdx = i;
+  const m = MODULES[i];
+  document.querySelectorAll('.mrow').forEach((el, j) => {
+    el.className = 'mrow ' + (j < i ? 'done' : j === i ? 'active' : 'locked');
+  });
+  buildCards(i);
+  document.getElementById('verify-mod').textContent = m.code + ' — ' + m.name;
+  document.getElementById('tbar-status').textContent = m.code + ' SELECTED';
+  isDialling = true; ringSpeed = 0.025; sweepAngle = 0; chevronLit = 0;
+  document.getElementById('diagblk').innerHTML =
+    '<div class="dhi">DIALLING ' + m.code + '</div><br>' +
+    '<div class="dbl">FREQUENCY ' + m.freq + ' // LOCKED</div>' +
+    '<div class="dbl">' + m.name + ' // CONFIRMED</div>' +
+    '<br><div>ENGAGING CHEVRONS...</div>';
+  const glyphEls = document.querySelectorAll('.glyph');
+  glyphEls.forEach(g => g.className = 'glyph');
+  let step = 0;
+  const totalTime = m.chevrons * 150 + 300;
+  const iv = setInterval(() => {
+    if (step < m.chevrons) {
+      chevronLit = step + 1;
+      if (glyphEls[step]) glyphEls[step].className = 'glyph lit';
+      step++;
+    } else {
+      clearInterval(iv);
+      if (dialSafetyTimer) { clearTimeout(dialSafetyTimer); dialSafetyTimer = null; }
+      if (glyphEls[step - 1]) glyphEls[step - 1].className = 'glyph locked-g';
+      isDialling = false; chevronLit = m.chevrons;
+      document.getElementById('diagblk').innerHTML =
+        '<div class="dhi">00.233.488839 349</div>' +
+        '<div class="dhi">00.9998691.RT</div><br>' +
+        '<div>' + m.code + ' // LOCKED &amp; LOADED</div>' +
+        '<div class="dbl">FREQ ' + m.freq + ' // STANDBY</div>' +
+        '<div>PARTS: ' + m.done + '/' + m.parts + '</div><br>' +
+        '<div class="dhi">HIT REBUILD TO RUN</div>';
+    }
+  }, 150);
+  dialSafetyTimer = setTimeout(() => { isDialling = false; dialSafetyTimer = null; }, totalTime + 500);
+}
 
-function addLog(html){const el=document.createElement('div');el.className='log-line';el.innerHTML=html;logBody.appendChild(el);while(logBody.children.length>200)logBody.removeChild(logBody.firstChild);logBody.scrollTop=logBody.scrollHeight;}
+// ── PIPELINE ──────────────────────────────────────────────────
+function logLine(text, type) {
+  const panel = document.getElementById('log-panel');
+  const div = document.createElement('div');
+  div.className = type || ''; div.textContent = text;
+  panel.appendChild(div); panel.scrollTop = panel.scrollHeight;
+  while (panel.children.length > 150) panel.removeChild(panel.firstChild);
+}
 
-function startPipeline(){if(!window.pipeline){addLog('<span class="log-err">ERR: Not running in Electron</span>');return;}state.startTime=Date.now();state.running=true;state.passed=0;state.failed=0;state.rateLimits=0;state.fallbacks=0;ALL_MODULES.forEach(m=>{state.moduleStatuses[m]='pending';for(let i=1;i<=5;i++)state.exStatus[m][i]={a:'pending',b:'pending'};});updateModuleList();updateProgress();resetExGrid();logBody.innerHTML='';btnStart.disabled=true;btnStop.disabled=false;statusDot.className='status-indicator active';statusModule.textContent='PIPELINE STARTING...';footerStatus.textContent='PIPELINE RUNNING';addLog('<span class="log-build">◈ Pipeline launched</span>');window.pipeline.start();}
+function detectModuleFromLine(line) {
+  const m = line.match(/module-(\d+)-[a-z](?:[a-z-]*?)(?:-part(\d+))?(?:[^a-z]|$)/i);
+  if (m) {
+    const num = parseInt(m[1]) - 1;
+    const part = m[2] ? parseInt(m[2]) - 1 : 0;
+    if (num >= 0 && num < MODULES.length)
+      return { modIdx: num, partIdx: Math.max(0, Math.min(part, MODULES[num].parts - 1)) };
+  }
+  return null;
+}
 
-function stopPipeline(){if(!window.pipeline)return;window.pipeline.stop();btnStart.disabled=false;btnStop.disabled=true;statusDot.className='status-indicator idle';statusModule.textContent='STOPPED';footerStatus.textContent='PIPELINE STOPPED';state.running=false;state.isWaiting=false;waitSection.classList.remove('visible');}
+var _apiGroq = 0, _apiGemini = 0;
+var _waitTimer = null, _waitEnd = 0;
+var _curEx = 0, _curPart = '', _curAttempt = 0, _maxAttempt = 5;
 
-function dismissDone(){$('doneOverlay').classList.remove('visible');}
+function updateDiagPanel() {
+  var m = currentMod >= 0 ? MODULES[currentMod] : null;
+  var html = '';
+  if (m) { html += '<div class="dhi">' + m.code + ' // ' + m.name + '</div><div class="dbl">FREQ ' + m.freq + '</div><br>'; }
+  if (_curEx > 0) {
+    html += '<div>EX ' + _curEx + '/5  PART ' + (_curPart.toUpperCase() || '?') + '</div>';
+    if (_curAttempt > 0) html += '<div class="dbl">ATTEMPT ' + _curAttempt + '/' + _maxAttempt + '</div>';
+  }
+  html += '<br>';
+  var gPct = Math.min(100, Math.round((_apiGroq / 40) * 100));
+  var gFill = Math.round(gPct / 5);
+  var gCol = gPct >= 75 ? '#ffaa00' : '#00cc70';
+  html += '<div style="color:#1a6070">GROQ</div><div style="font-size:9px;color:' + gCol + ';letter-spacing:0">' + String.fromCharCode(9608).repeat(gFill) + String.fromCharCode(9617).repeat(20 - gFill) + ' ' + _apiGroq + '/40</div>';
+  var mPct = Math.min(100, Math.round((_apiGemini / 20) * 100));
+  var mFill = Math.round(mPct / 5);
+  var mCol = mPct >= 75 ? '#ffaa00' : '#00cc70';
+  html += '<div style="color:#1a6070">GEMINI</div><div style="font-size:9px;color:' + mCol + ';letter-spacing:0">' + String.fromCharCode(9608).repeat(mFill) + String.fromCharCode(9617).repeat(20 - mFill) + ' ' + _apiGemini + '/20</div>';
+  html += '<div style="color:#00ff80">OLLAMA — ALWAYS ON</div>';
+  if (_waitEnd > Date.now()) {
+    var secs = Math.ceil((_waitEnd - Date.now()) / 1000);
+    html += '<br><div style="color:#ffaa00">RATE LIMIT WAIT: ' + secs + 's</div>';
+  }
+  document.getElementById('diagblk').innerHTML = html;
+}
 
-if(window.pipeline){
-  window.pipeline.onLine(line=>parseLine(line));
-  window.pipeline.onDone(code=>{btnStart.disabled=false;btnStop.disabled=true;state.running=false;state.isWaiting=false;waitSection.classList.remove('visible');statusDot.className='status-indicator idle';footerStatus.textContent='PIPELINE COMPLETE';const overlay=$('doneOverlay'),title=$('doneTitle'),sub=$('doneSub');if(state.failed===0){title.textContent='ALL SYSTEMS GO';title.style.color='var(--glow2)';sub.textContent=`${state.passed} modules built successfully`;}else{title.textContent='BUILD COMPLETE';title.style.color='var(--warn)';sub.textContent=`${state.passed} passed · ${state.failed} need review`;}overlay.classList.add('visible');});
-  window.pipeline.onStopped(()=>addLog('<span class="log-warn">◈ Pipeline stopped by user</span>'));
-}else{addLog('<span class="log-dim">◈ Running in browser — connect Electron to activate pipeline</span>');addLog('<span class="log-dim">◈ Dashboard UI loaded successfully</span>');}
+function startWait(ms) {
+  _waitEnd = Date.now() + ms;
+  if (_waitTimer) clearInterval(_waitTimer);
+  _waitTimer = setInterval(function () {
+    if (Date.now() >= _waitEnd) { clearInterval(_waitTimer); _waitTimer = null; _waitEnd = 0; }
+    updateDiagPanel();
+  }, 1000);
+}
 
-initModuleList();initExGrid();updateProgress();
+function onPipelineLine(line) {
+  var lower = line.toLowerCase();
+  var type = 'log-info';
+  if (lower.indexOf('fail') !== -1 || lower.indexOf(' err') !== -1 || line.indexOf('X ') === 0) type = 'log-err';
+  else if (lower.indexOf('pass') !== -1 || lower.indexOf('clean') !== -1 || lower.indexOf('done') !== -1) type = 'log-ok';
+  else if (lower.indexOf('rate limit') !== -1 || lower.indexOf('waiting') !== -1) type = 'log-err';
+  logLine(line, type);
+  var exM = line.match(/Exercise (\d+)\s*\/\s*(\d+)/i);
+  if (exM) { _curEx = parseInt(exM[1]); _maxAttempt = parseInt(exM[2]) || 5; _curPart = ''; _curAttempt = 0; }
+  var ptM = line.match(/Ex(\d+)\s+Part\s+([AB])/i);
+  if (ptM) { _curEx = parseInt(ptM[1]); _curPart = ptM[2].toLowerCase(); _curAttempt = 0; }
+  var atM = line.match(/attempt\s+(\d+)\s+of\s+(\d+)/i);
+  if (atM) { _curAttempt = parseInt(atM[1]); _maxAttempt = parseInt(atM[2]); }
+  if (lower.indexOf('groq (llama') !== -1) _apiGroq = Math.min(_apiGroq + 1, 40);
+  if (lower.indexOf('gemini') !== -1 && lower.indexOf('flash') !== -1) _apiGemini = Math.min(_apiGemini + 1, 20);
+  var wM = line.match(/waiting\s+(\d+)s/i);
+  if (wM) startWait(parseInt(wM[1]) * 1000);
+  var detected = detectModuleFromLine(line);
+  if (detected) {
+    var modIdx = detected.modIdx, partIdx = detected.partIdx;
+    if (modIdx !== activeModIdx) {
+      activeModIdx = modIdx; currentMod = modIdx; partsSeenThisMod = 0; chevronLit = 0; _curEx = 0;
+      document.getElementById('verify-mod').textContent = MODULES[modIdx].code + ' — ' + MODULES[modIdx].name;
+      document.querySelectorAll('.glyph').forEach(function (g) { g.className = 'glyph'; });
+      document.querySelectorAll('.mrow').forEach(function (el, j) {
+        el.className = 'mrow ' + (j < modIdx ? 'done' : j === modIdx ? 'processing' : 'locked');
+        var dot = el.querySelector('.mdot');
+        if (dot) dot.style.background = j <= modIdx ? '#00ff80' : '#0d4050';
+      });
+      buildCards(modIdx);
+      updateRightPanel(modIdx);
+    }
+    var isClean = lower.indexOf('clean') !== -1 || lower.indexOf('locked') !== -1 || lower.indexOf('pass') !== -1;
+    var isIssue = lower.indexOf('issue') !== -1 || lower.indexOf('fail') !== -1;
+    if (isClean || isIssue) {
+      partResults[modIdx][partIdx] = isClean ? 'clean' : 'issue';
+      partsSeenThisMod++;
+      chevronLit = Math.min(partsSeenThisMod, 9);
+      var glyphEls = document.querySelectorAll('.glyph');
+      for (var g = 0; g < chevronLit && g < glyphEls.length; g++)
+        glyphEls[g].className = g < chevronLit - 1 ? 'glyph locked-g' : 'glyph lit';
+      var flashCard = document.getElementById('card-' + modIdx);
+      if (flashCard) {
+        flashCard.style.borderTopColor = isClean ? '#00ff80' : '#ff4444';
+        setTimeout(function () { flashCard.style.borderTopColor = ''; }, 600);
+      }
+    }
+  }
+  if (lower.indexOf('files checked') !== -1 || lower.indexOf('audit summary') !== -1 ||
+      lower.indexOf('clean files') !== -1 || lower.indexOf('files with issues') !== -1 ||
+      lower.indexOf('total issues') !== -1 || lower.indexOf('files needing') !== -1) {
+    updateAuditSummary(line);
+  }
+  updateDiagPanel();
+  fileProcessing = true;
+  if (fileTimer) clearTimeout(fileTimer);
+  fileTimer = setTimeout(function () { fileProcessing = false; fileTimer = null; }, 800);
+}
+
+const auditLines = [];
+function updateAuditSummary(line) {
+  auditLines.push(line.trim());
+  const html = auditLines.slice(-10).map(l => {
+    if (l.includes('issue') && l.match(/\d/)) return '<div style="color:#ff6060">' + l + '</div>';
+    if (l.includes('clean') || l.includes('locked')) return '<div class="dhi">' + l + '</div>';
+    if (l.includes('checked') || l.includes('summary')) return '<div class="dbl">' + l + '</div>';
+    return '<div>' + l + '</div>';
+  }).join('');
+  document.getElementById('diagblk').innerHTML = html;
+}
+
+function startPipeline(isAudit) {
+  if (pipelineRunning) return;
+  pipelineRunning = true; fileProcessing = false;
+  activeModIdx = currentMod >= 0 ? currentMod : -1;
+  partsSeenThisMod = 0; chevronLit = 0; ringSpeed = 0;
+  auditLines.length = 0;
+  document.querySelectorAll('.glyph').forEach(g => g.className = 'glyph');
+  document.getElementById('btn-start').className = 'pbtn running';
+  const fromMod = currentMod >= 0 ? MODULES[currentMod] : null;
+  const fromKey = fromMod ? fromMod.rebuildKey : null;
+  document.getElementById('tbar-status').textContent = isAudit ? 'AUDIT RUNNING'
+    : fromMod ? 'REBUILDING FROM ' + fromMod.code : 'PIPELINE RUNNING';
+  logLine('// ' + (isAudit ? 'audit' : 'rebuild from ' + (fromMod ? fromMod.name : 'start'))
+    + ' — ' + new Date().toLocaleTimeString(), 'log-info');
+  if (fromMod && !isAudit) logLine('// starting from: ' + (fromKey || fromMod.name), 'log-info');
+  buildCards(currentMod >= 0 ? currentMod : undefined);
+  if (window.pipeline) {
+    if (isAudit) window.pipeline.startAudit();
+    else window.pipeline.start(fromKey);
+  }
+}
+
+function stopPipeline() {
+  pipelineRunning = false; fileProcessing = false; activeModIdx = -1;
+  if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+  document.getElementById('btn-start').className = 'pbtn';
+  document.getElementById('tbar-status').textContent = 'PIPELINE STOPPED';
+  logLine('// pipeline stopped', 'log-err');
+  buildCards();
+  buildRightPanel();
+  if (window.pipeline) window.pipeline.stop();
+}
+
+if (window.pipeline) {
+  window.pipeline.onLine(line => onPipelineLine(line));
+  window.pipeline.onDone(code => {
+    pipelineRunning = false; fileProcessing = false;
+    if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+    document.getElementById('btn-start').className = 'pbtn';
+    const ok = code === 0;
+    document.getElementById('tbar-status').textContent = ok ? 'PIPELINE COMPLETE' : 'PIPELINE ERROR';
+    logLine('// done — exit code ' + code, ok ? 'log-ok' : 'log-err');
+    buildCards();
+    buildRightPanel();
+    document.getElementById('diagblk').innerHTML =
+      '<div class="dhi">' + (ok ? 'ALL MODULES PROCESSED' : 'PIPELINE ERROR') + '</div><br>' +
+      '<div class="dbl">EXIT CODE: ' + code + '</div><br><div class="dhi">RING STANDING DOWN</div>';
+  });
+  window.pipeline.onStopped(() => stopPipeline());
+}
+
+// ── CLOCK ─────────────────────────────────────────────────────
+let sec = 0;
+setInterval(() => {
+  sec++;
+  const h = String(Math.floor(sec / 3600)).padStart(2, '0');
+  const m2 = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+  const s = String(sec % 60).padStart(2, '0');
+  document.getElementById('clock').textContent = h + ':' + m2 + ':' + s;
+  document.getElementById('macro-id').textContent = 'MCK.' + Math.floor(Math.random() * 900000000 + 100000000);
+}, 1000);
+
+// ── INIT ──────────────────────────────────────────────────────
+function buildRightPanel() {
+  const grid = document.getElementById('rmod-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  // progress bar
+  const totalParts = MODULES.reduce(function(a,m){ return a + m.parts; }, 0);
+  const doneParts  = MODULES.reduce(function(a,m){ return a + m.done; }, 0);
+  const pct = totalParts > 0 ? Math.round((doneParts / totalParts) * 100) : 0;
+  const prog = document.getElementById('rprogress-fill');
+  const progLbl = document.getElementById('rprogress-val');
+  if (prog) prog.style.width = pct + '%';
+  if (progLbl) progLbl.textContent = pct + '%';
+
+  MODULES.forEach(function(m, idx) {
+    const cls = m.status === 'done' ? 'done'
+              : m.status === 'active' ? 'active'
+              : 'locked';
+    // module button
+    const row = document.createElement('div');
+    row.className = 'rmod-row';
+    const btn = document.createElement('div');
+    btn.className = 'rmod ' + cls;
+    btn.id = 'rmod-' + idx;
+    btn.onclick = function() { dialModule(idx); };
+    btn.innerHTML = '<div class="rmod-code">' + m.code + '</div><div class="rmod-name">' + m.name + '</div>';
+    row.appendChild(btn);
+    // part buttons — fill second column and beyond
+    var partGrid = document.createElement('div');
+    partGrid.className = 'rmod-parts';
+    for (var p = 0; p < m.parts; p++) {
+      var pcls = p < m.done ? 'rp-done'
+               : (m.status === 'active' && p === m.done) ? 'rp-active' : '';
+      var pb = document.createElement('div');
+      pb.className = 'rmod-part ' + pcls;
+      pb.textContent = 'P' + (p+1);
+      pb.onclick = (function(i){ return function(e){ e.stopPropagation(); dialModule(i); }; })(idx);
+      partGrid.appendChild(pb);
+    }
+    row.appendChild(partGrid);
+    grid.appendChild(row);
+  });
+}
+
+function updateRightPanel(activeIdx) {
+  MODULES.forEach(function(m, idx) {
+    const box = document.getElementById('rmod-' + idx);
+    if (!box) return;
+    var cls = m.status === 'done' ? 'done'
+            : m.status === 'active' ? 'active'
+            : 'locked';
+    if (idx === activeIdx) cls = 'processing';
+    box.className = 'rmod ' + cls;
+    // update part pills
+    var pills = box.querySelectorAll('.rmod-part');
+    pills.forEach(function(pill, p) {
+      pill.className = 'rmod-part ' + (p < m.done ? 'rp-done'
+        : (m.status === 'active' && p === m.done) ? 'rp-active'
+        : idx === activeIdx ? 'rp-processing' : '');
+    });
+  });
+}
+
+function initFromLocked() {
+  if (window.pipeline && window.pipeline.getModuleStatus) {
+    window.pipeline.getModuleStatus().then(function (locked) {
+      if (!locked) { buildCards(); buildRightPanel(); updateDiagPanel(); return; }
+      MODULES.forEach(function (m, i) {
+        var lockedParts = Object.keys(locked).filter(function (k) {
+          return k.startsWith('module-' + m.id + '-') && locked[k] === true;
+        }).length;
+        if (lockedParts >= m.parts) { m.status = 'done'; m.done = m.parts; }
+        else if (lockedParts > 0) { m.status = 'active'; m.done = lockedParts; }
+      });
+      buildCards(); buildRightPanel(); updateDiagPanel();
+    }).catch(function () { buildCards(); buildRightPanel(); updateDiagPanel(); });
+  } else {
+    buildCards(); buildRightPanel(); updateDiagPanel();
+  }
+}
+initFromLocked();
 </script>
 </body>
 </html>

@@ -1,0 +1,211 @@
+{
+  "courseName": "core-value-fundamentals",
+  "version": "2.0",
+  "lastUpdated": "2026-03-30",
+  "modules": [
+    {
+      "id": "MODULE-1-VARIABLES",
+      "folder": "module-1-variables",
+      "spec": "MODULE-1-VARIABLES-SPECS.md",
+      "helper": "MODULE-1-VARIABLES-HELPER-BOXES.md",
+      "section": "variables"
+    },
+    {
+      "id": "MODULE-2-OPERATORS",
+      "folder": "module-2-operators",
+      "spec": "MODULE-2-OPERATORS-SPECS.md",
+      "helper": "MODULE-2-OPERATORS-HELPER-BOXES.md",
+      "section": "operations"
+    },
+    {
+      "id": "MODULE-3-CONDITIONS-PART1",
+      "folder": "module-3-conditions-part1",
+      "spec": "MODULE-3-CONDITIONS-PART1-SPECS.md",
+      "helper": "MODULE-3-CONDITIONS-PART1-HELPER-BOXES.md",
+      "section": "conditions"
+    },
+    {
+      "id": "MODULE-3-CONDITIONS-PART2",
+      "folder": "module-3-conditions-part2",
+      "spec": "MODULE-3-CONDITIONS-PART2-SPECS.md",
+      "helper": "MODULE-3-CONDITIONS-PART2-HELPER-BOXES.md",
+      "section": "conditions"
+    },
+    {
+      "id": "MODULE-3-CONDITIONS-PART3",
+      "folder": "module-3-conditions-part3",
+      "spec": "MODULE-3-CONDITIONS-PART3-SPECS.md",
+      "helper": "MODULE-3-CONDITIONS-PART3-HELPER-BOXES.md",
+      "section": "conditions"
+    },
+    {
+      "id": "MODULE-3-CONDITIONS-PART4",
+      "folder": "module-3-conditions-part4",
+      "spec": "MODULE-3-CONDITIONS-PART4-SPECS.md",
+      "helper": "MODULE-3-CONDITIONS-PART4-HELPER-BOXES.md",
+      "section": "conditions"
+    },
+    {
+      "id": "MODULE-3-CONDITIONS-PART5",
+      "folder": "module-3-conditions-part5",
+      "spec": "MODULE-3-CONDITIONS-PART5-SPECS.md",
+      "helper": "MODULE-3-CONDITIONS-PART5-HELPER-BOXES.md",
+      "section": "conditions"
+    },
+    {
+      "id": "MODULE-4-LOGICAL-OPERATORS-PART1",
+      "folder": "module-4-logical-operators-part1",
+      "spec": "MODULE-4-LOGICAL-OPERATORS-PART1-SPECS.md",
+      "helper": "MODULE-4-LOGICAL-OPERATORS-PART1-HELPER-BOXES.md",
+      "section": "logicalOperators"
+    },
+    {
+      "id": "MODULE-4-LOGICAL-OPERATORS-PART2",
+      "folder": "module-4-logical-operators-part2",
+      "spec": "MODULE-4-LOGICAL-OPERATORS-PART2-SPECS.md",
+      "helper": "MODULE-4-LOGICAL-OPERATORS-PART2-HELPER-BOXES.md",
+      "section": "logicalOperators"
+    },
+    {
+      "id": "MODULE-5-LOOPS-PART1",
+      "folder": "module-5-loops-part1",
+      "spec": "MODULE-5-LOOPS-PART-1-SPEC.md",
+      "helper": "MODULE-5-LOOPS-PART-1-HELPER-BOX.md",
+      "section": "loops"
+    },
+    {
+      "id": "MODULE-5-LOOPS-PART2",
+      "folder": "module-5-loops-part2",
+      "spec": "MODULE-5-LOOPS-PART-2-SPEC.md",
+      "helper": "MODULE-5-LOOPS-PART-2-HELPER-BOX.md",
+      "section": "loops"
+    },
+    {
+      "id": "MODULE-5-LOOPS-PART3",
+      "folder": "module-5-loops-part3",
+      "spec": "MODULE-5-LOOPS-PART-3-SPEC.md",
+      "helper": "MODULE-5-LOOPS-PART-3-HELPER-BOX.md",
+      "section": "loops"
+    },
+    {
+      "id": "MODULE-5-LOOPS-PART4",
+      "folder": "module-5-loops-part4",
+      "spec": "MODULE-5-LOOPS-PART-4-SPEC.md",
+      "helper": "MODULE-5-LOOPS-PART-4-HELPER-BOX.md",
+      "section": "loops"
+    },
+    {
+      "id": "MODULE-6-PIRATE-ADVENTURE-PART1",
+      "folder": "module-6-pirate-adventure-part1",
+      "spec": "MODULE-6-PIRATE-ADVENTURE-PART1-SPECS.md",
+      "helper": "MODULE-6-PIRATE-ADVENTURE-PART1-HELPER-BOXES.md",
+      "section": "pirateAdventure"
+    },
+    {
+      "id": "MODULE-6-PIRATE-ADVENTURE-PART2",
+      "folder": "module-6-pirate-adventure-part2",
+      "spec": "MODULE-6-PIRATE-ADVENTURE-PART2-SPECS.md",
+      "helper": "MODULE-6-PIRATE-ADVENTURE-PART2-HELPER-BOXES.md",
+      "section": "pirateAdventure"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART1",
+      "folder": "module-7-functions-part1",
+      "spec": "MODULE-7-FUNCTIONS-PART1-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART1-HELPER-BOXES.md",
+      "section": "functions"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART2",
+      "folder": "module-7-functions-part2",
+      "spec": "MODULE-7-FUNCTIONS-PART2-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART2-HELPER-BOXES.md",
+      "section": "functions"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART3",
+      "folder": "module-7-functions-part3",
+      "spec": "MODULE-7-FUNCTIONS-PART3-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART3-HELPER-BOXES.md",
+      "section": "functions"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART4",
+      "folder": "module-7-functions-part4",
+      "spec": "MODULE-7-FUNCTIONS-PART4-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART4-HELPER-BOXES.md",
+      "section": "functions"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART5",
+      "folder": "module-7-functions-part5",
+      "spec": "MODULE-7-FUNCTIONS-PART5-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART5-HELPER-BOXES.md",
+      "section": "functions"
+    },
+    {
+      "id": "MODULE-7-FUNCTIONS-PART6",
+      "folder": "module-7-functions-part6",
+      "spec": "MODULE-7-FUNCTIONS-PART6-SPECS.md",
+      "helper": "MODULE-7-FUNCTIONS-PART6-HELPER-BOXES.md",
+      "section": "functions"
+    }
+  ],
+  "aiConfig": {
+    "groq": {
+      "model": "llama-3.3-70b-versatile",
+      "maxDaily": 40,
+      "cutoff": 0.9,
+      "url": "https://api.groq.com/openai/v1/chat/completions"
+    },
+    "gemini": {
+      "model": "gemini-2.0-flash",
+      "maxDaily": 20,
+      "cutoff": 0.9,
+      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+    },
+    "openrouter": {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "url": "https://openrouter.ai/api/v1/chat/completions"
+    },
+    "ollama": {
+      "model": "qwen2.5-coder:7b",
+      "url": "http://localhost:11434/api/chat",
+      "alwaysAvailable": true
+    }
+  },
+  "bannedWords": [
+    { "word": "students",    "replace": "children",  "reason": "UK English" },
+    { "word": "student",     "replace": "child",      "reason": "UK English" },
+    { "word": "period",      "replace": "lesson",     "reason": "UK English — school period" },
+    { "word": "periods",     "replace": "lessons",    "reason": "UK English — school periods" },
+    { "word": "program",     "replace": "code",       "reason": "Language-agnostic" },
+    { "word": "programming", "replace": "coding",     "reason": "Language-agnostic" },
+    { "word": "practice",    "replace": "practise",   "reason": "UK English verb" },
+    { "word": "color",       "replace": "colour",     "reason": "UK English" },
+    { "word": "organize",    "replace": "organise",   "reason": "UK English" },
+    { "word": "recognize",   "replace": "recognise",  "reason": "UK English" },
+    { "word": "center",      "replace": "centre",     "reason": "UK English" },
+    { "word": "math",        "replace": "maths",      "reason": "UK English" },
+    { "word": "let ",        "replace": "SET",        "reason": "Pseudocode only" },
+    { "word": "const ",      "replace": "SET",        "reason": "Pseudocode only" },
+    { "word": "var ",        "replace": "SET",        "reason": "Pseudocode only" },
+    { "word": "console",     "replace": "never use",  "reason": "JS syntax" }
+  ],
+  "settings": {
+    "variables":       "🏫 Classroom",
+    "operations":      "🍿 Popcorn Factory",
+    "conditions":      "🍿 Popcorn Factory",
+    "logicalOperators":"🍿 Popcorn Factory",
+    "loops":           "🍿 Popcorn Factory",
+    "pirateAdventure": "🏴‍☠️ Pirate Adventure",
+    "functions":       "🏫 Classroom & ☕ The Popcorn Press"
+  },
+  "pipeline": {
+    "gapBetweenModules":   60000,
+    "gapBetweenExercises": 60000,
+    "gapBetweenParts":     60000,
+    "maxAttempts":         5,
+    "rateLimitDelay":      90000
+  }
+}

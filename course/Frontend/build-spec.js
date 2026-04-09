@@ -213,7 +213,7 @@ ${newContent}
 
 Check ONLY for these issues:
 1. Any camelCase variable names — must be natural language in quotes
-2. Any JS syntax (console.log, backticks, const/let/var, ===, !==)
+2. Any JS syntax — console.log, backticks, const, var, ===, !==, or "let" used as a JS variable declaration (i.e. the word "let" followed by a variable name and = sign) — do NOT flag "let" in normal English sentences like "let's", "let me", "let us", "now let's"
 3. Any mention of "student" — must be "child"
 4. Any mention of specific AI names (DeepSeek, Gemini, ChatGPT)
 5. Missing ## Language-Agnostic Edition subtitle

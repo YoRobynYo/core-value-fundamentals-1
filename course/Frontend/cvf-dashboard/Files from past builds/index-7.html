@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Gate Diagnostics — JS Fundamentals</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#030d18;
+  font-family:'Courier New',monospace;
+  color:#00e5ff;
+  overflow:hidden;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ── MAIN GRID ── */
+.hud{
+  flex:1;
+  display:grid;
+  grid-template-rows:42px 1fr 34px;
+  grid-template-columns:260px 1fr 200px;
+  overflow:hidden;
+  position:relative;
+  min-height:0;
+}
+.hud::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,180,220,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,180,220,.05) 1px,transparent 1px);
+  background-size:28px 28px;
+  pointer-events:none;z-index:0;
+}
+
+/* ── TITLE BAR ── */
+.tbar{
+  grid-column:1/-1;grid-row:1;
+  background:#040f1e;
+  border-bottom:2px solid #0d3a50;
+  display:flex;align-items:center;
+  padding:0 16px;gap:14px;
+  font-size:12px;letter-spacing:2px;color:#3a9ab0;
+  z-index:2;
+  -webkit-app-region:drag;
+}
+.tbar-dot{width:9px;height:9px;background:#00ff80;border-radius:2px;flex-shrink:0;-webkit-app-region:no-drag}
+.tbar-main{color:#00e5ff;font-size:13px;letter-spacing:3px;font-weight:bold}
+.tbar-id{color:#2a7a90;font-size:11px}
+#tbar-status{margin-left:12px;color:#00ff80;font-size:12px;letter-spacing:2px}
+.tbar-clock{margin-left:auto;color:#2a7a90;font-size:12px}
+.pipeline-btns{display:flex;gap:10px;-webkit-app-region:no-drag;margin-left:12px}
+.pbtn{
+  border:1px solid #1a6a80;padding:5px 16px;
+  font-size:11px;letter-spacing:1px;
+  color:#20a0c0;background:#020d18;
+  cursor:pointer;transition:all .3s;
+  font-family:'Courier New',monospace;
+}
+.pbtn:hover{border-color:#00e5ff;color:#00e5ff}
+.pbtn-stop{border-color:#5a1a1a;color:#c04040}
+.pbtn-stop:hover{border-color:#ff4040;color:#ff6060}
+.pbtn.running{border-color:#00ff80;color:#00ff80;animation:pulse-g 2s ease-in-out infinite}
+@keyframes pulse-g{0%,100%{box-shadow:none}50%{box-shadow:0 0 10px #00ff8060}}
+
+/* ── LEFT PANEL ── */
+.lpanel{
+  grid-column:1;grid-row:2;
+  border-right:2px solid #0d3a50;
+  padding:14px 12px;
+  display:flex;flex-direction:column;gap:10px;
+  background:#030c16;overflow:hidden;z-index:1;
+}
+.slbl{font-size:11px;letter-spacing:2px;color:#00ff80;margin-bottom:3px}
+.slbl-b{font-size:11px;letter-spacing:1px;color:#00ccee;line-height:1.7}
+.dtable{font-size:11px;color:#2a8a9a;line-height:2.0}
+.dtable .dv{color:#00ccee}
+.diagblk{
+  border:1px solid #0d3a50;padding:10px;
+  background:#020b14;font-size:11px;color:#2a8a9a;line-height:2.0;
+  flex:1;overflow:hidden;
+}
+.diagblk .dhi{color:#00ff80}
+.diagblk .dbl{color:#00ccee}
+.subblk{
+  border:1px solid #0d3a50;padding:8px;
+  background:#020b14;font-size:11px;color:#1a7a8a;line-height:1.9;
+}
+.log-panel{
+  border:1px solid #0d3a50;background:#020b14;padding:8px;
+  font-size:11px;color:#1a7080;line-height:1.8;
+  overflow-y:auto;flex:1;min-height:60px;
+}
+.log-panel .log-ok{color:#00ff80}
+.log-panel .log-err{color:#ff4444}
+.log-panel .log-info{color:#00ccee}
+
+/* ── CENTRE ── */
+.centre{
+  grid-column:2;grid-row:2;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:#020a12;z-index:1;
+}
+
+/* ── RIGHT PANEL ── */
+.rpanel{
+  grid-column:3;grid-row:2;
+  border-left:2px solid #0d3a50;
+  padding:12px 8px;background:#030c16;
+  display:flex;flex-direction:column;gap:4px;
+  overflow:hidden;z-index:1;
+}
+.mrow{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;letter-spacing:1px;
+  padding:5px 6px;border:1px solid transparent;
+  cursor:pointer;transition:all .3s;color:#1a6070;
+}
+.mrow:hover{border-color:#0d3a50;color:#30a0b8}
+.mrow.done{color:#1a8060}.mrow.done .mdot{background:#00ff80}
+.mrow.active{border-color:#00aacc;color:#00e5ff}
+.mrow.active .mdot{background:#00ccee;animation:blink 1.5s step-end infinite}
+.mrow.locked{color:#0a3040}.mrow.locked .mdot{background:#081828}
+.mdot{width:7px;height:7px;border-radius:1px;background:#0a2030;flex-shrink:0}
+.mparts{margin-left:auto;font-size:10px;color:#0a3040}
+.mrow.done .mparts{color:#0d5030}
+.mrow.active .mparts{color:#1a7090}
+.rsep{height:1px;background:#0d3a50;margin:5px 0}
+.rsec{font-size:10px;letter-spacing:2px;color:#1a5060;margin:3px 0 1px}
+.rsub{font-size:10px;color:#1a4a5a;padding:2px 6px;letter-spacing:1px}
+.rsub.rhi{color:#00ff80}
+
+/* ── ADDR BAR ── */
+.abar{
+  grid-column:1/-1;grid-row:3;
+  border-top:2px solid #0d3a50;
+  background:#040f1e;
+  display:flex;align-items:center;gap:3px;
+  padding:0 12px;overflow:hidden;z-index:1;
+}
+.glyph{
+  border:1px solid #0d3a50;padding:3px 0;
+  font-size:10px;letter-spacing:1px;
+  color:#1a6070;background:#020b14;
+  flex:1;text-align:center;transition:all .5s;
+}
+.glyph.lit{border-color:#00aacc;color:#00e5ff;background:#021828}
+.glyph.locked-g{border-color:#00ff80;color:#00ff80;background:#011a10}
+
+/* ── BOTTOM MODULE PANEL ── */
+.bpanel-wrap{
+  height:230px;
+  flex-shrink:0;
+  border-top:2px solid #0d3a50;
+  background:#030c16;
+  overflow:hidden;
+}
+.bpanel-scroll{
+  display:flex;
+  width:100%;
+  height:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:thin;
+  scrollbar-color:#1a5a70 #020b14;
+}
+.bpanel-scroll::-webkit-scrollbar{height:6px}
+.bpanel-scroll::-webkit-scrollbar-track{background:#020b14}
+.bpanel-scroll::-webkit-scrollbar-thumb{background:#1a5a70;border-radius:3px}
+
+.mcard{
+  flex:1;
+  min-width:140px;
+  border-right:1px solid #0d3a50;
+  padding:12px 10px;
+  display:flex;flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  transition:background .4s;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.mcard:last-child{border-right:none}
+.mcard:hover{background:#041220}
+.mcard.mc-active{background:#041828;border-top:3px solid #00ccee}
+.mcard.mc-done{border-top:3px solid #00aa60;background:#030e0c}
+.mcard.mc-locked{opacity:.3;cursor:default;border-top:3px solid #091820}
+
+/* PROCESSING */
+.mcard.mc-processing{
+  border-top:3px solid #00ff80;
+  background:#041c10;
+  animation:card-proc 2s ease-in-out infinite alternate;
+}
+@keyframes card-proc{
+  0%{background:#041c10}
+  100%{background:#062818}
+}
+
+.mc-icon{
+  width:36px;height:36px;
+  border:1px solid #0d3a50;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;background:#020b14;flex-shrink:0;
+  font-family:'Courier New',monospace;
+  color:#1a6070;letter-spacing:-1px;
+  transition:all .4s;
+}
+.mcard.mc-active .mc-icon{border-color:#00aacc;color:#00ccee}
+.mcard.mc-done .mc-icon{border-color:#00aa60;color:#00cc70}
+.mcard.mc-processing .mc-icon{
+  border-color:#00ff80;color:#00ff80;
+  background:#031408;
+  animation:icon-proc 2s ease-in-out infinite alternate;
+}
+@keyframes icon-proc{
+  0%{box-shadow:none}
+  100%{box-shadow:0 0 12px #00ff8050}
+}
+
+.mc-num{font-size:10px;letter-spacing:2px;color:#1a6070}
+.mcard.mc-active .mc-num{color:#00ccee}
+.mcard.mc-done .mc-num{color:#00884a}
+.mcard.mc-processing .mc-num{color:#00ff80;animation:blink 1.5s step-end infinite}
+
+.mc-name{
+  font-size:13px;letter-spacing:1px;
+  color:#1a7080;line-height:1.3;font-weight:bold;
+}
+.mcard.mc-active .mc-name{color:#00e5ff}
+.mcard.mc-done .mc-name{color:#00cc70}
+.mcard.mc-processing .mc-name{color:#00ff80}
+.mcard.mc-locked .mc-name{color:#0a2a30}
+
+.mc-sub{font-size:10px;color:#0e4a58;line-height:1.7;flex:1}
+.mcard.mc-active .mc-sub{color:#1a7090}
+.mcard.mc-done .mc-sub{color:#0d5a35}
+.mcard.mc-processing .mc-sub{color:#0d7040}
+
+.mc-track{height:5px;background:#020b14;border:1px solid #0d3a50;position:relative;overflow:hidden}
+.mc-fill{height:100%;transition:width 1.5s ease;background:#006040}
+.mcard.mc-active .mc-fill{background:#00aacc}
+.mcard.mc-done .mc-fill{background:#00cc70}
+.mcard.mc-processing .mc-fill{
+  background:#00ff80;
+  animation:track-scan 2s ease-in-out infinite;
+}
+@keyframes track-scan{
+  0%{opacity:.5} 50%{opacity:1} 100%{opacity:.5}
+}
+
+.mc-foot{display:flex;justify-content:space-between;font-size:10px;color:#0e4a58}
+.mcard.mc-active .mc-foot{color:#1a7090}
+.mcard.mc-done .mc-foot{color:#0d6040}
+.mcard.mc-processing .mc-foot{color:#00cc70}
+
+.mc-dot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;background:#0a2030;
+}
+.mcard.mc-active .mc-dot{background:#00ccee;animation:blink 1.5s step-end infinite}
+.mcard.mc-done .mc-dot{background:#00cc70}
+.mcard.mc-processing .mc-dot{background:#00ff80;animation:blink 1s step-end infinite}
+
+.mc-proc-badge{
+  display:none;
+  font-size:8px;letter-spacing:2px;
+  color:#00ff80;border:1px solid #00ff8050;
+  padding:2px 5px;text-align:center;
+  animation:blink 1.5s step-end infinite;
+}
+.mcard.mc-processing .mc-proc-badge{display:block}
+
+@keyframes blink{50%{opacity:0}}
+
+/* ── MAIN GRID ── */
+.hud{
+  flex:1;
+  display:grid;
+  grid-template-rows:36px 1fr 32px;
+  grid-template-columns:240px 1fr 190px;
+  overflow:hidden;
+  position:relative;
+  min-height:0;
+}
+.hud::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,160,200,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,160,200,.03) 1px,transparent 1px);
+  background-size:24px 24px;
+  pointer-events:none;z-index:0;
+}
+
+/* ── TITLE BAR ── */
+.tbar{
+  grid-column:1/-1;grid-row:1;
+  background:#030d1a;
+  border-bottom:2px solid #0a2030;
+  display:flex;align-items:center;
+  padding:0 14px;gap:12px;
+  font-size:11px;letter-spacing:2px;color:#005d70;
+  z-index:2;
+  -webkit-app-region:drag;
+}
+.tbar-dot{width:8px;height:8px;background:#00ff80;border-radius:2px;flex-shrink:0;-webkit-app-region:no-drag}
+.tbar-main{color:#00ccee;font-size:11px;letter-spacing:3px;font-weight:bold}
+.tbar-id{color:#004050;font-size:10px}
+#tbar-status{margin-left:12px;color:#00ff80;font-size:10px;letter-spacing:2px}
+.tbar-clock{margin-left:auto;color:#005070;font-size:11px}
+.pipeline-btns{display:flex;gap:8px;-webkit-app-region:no-drag;margin-left:10px}
+.pbtn{
+  border:1px solid #005d70;padding:4px 14px;
+  font-size:10px;letter-spacing:1px;
+  color:#007a90;background:#010810;
+  cursor:pointer;transition:all .2s;
+  font-family:'Courier New',monospace;
+}
+.pbtn:hover{border-color:#00aacc;color:#00ccee}
+.pbtn-stop{border-color:#3a1010;color:#7a2020}
+.pbtn-stop:hover{border-color:#cc2020;color:#ff4040}
+.pbtn.running{border-color:#00ff80;color:#00ff80;animation:pulse-g 1.5s ease-in-out infinite}
+@keyframes pulse-g{0%,100%{box-shadow:none}50%{box-shadow:0 0 8px #00ff8050}}
+
+/* ── LEFT PANEL ── */
+.lpanel{
+  grid-column:1;grid-row:2;
+  border-right:1px solid #0a2030;
+  padding:12px 10px;
+  display:flex;flex-direction:column;gap:10px;
+  background:#020b14;overflow:hidden;z-index:1;
+}
+.slbl{font-size:10px;letter-spacing:2px;color:#00ff80;margin-bottom:3px}
+.slbl-b{font-size:10px;letter-spacing:1px;color:#00aacc;line-height:1.6}
+.dtable{font-size:10px;color:#004d60;line-height:1.9}
+.dtable .dv{color:#00aacc}
+.diagblk{
+  border:1px solid #0a2030;padding:8px;
+  background:#010810;font-size:10px;color:#006070;line-height:1.9;
+  flex:1;overflow:hidden;
+}
+.diagblk .dhi{color:#00ff80}
+.diagblk .dbl{color:#00aacc}
+.subblk{
+  border:1px solid #0a2030;padding:7px;
+  background:#010810;font-size:10px;color:#005060;line-height:1.8;
+}
+.log-panel{
+  border:1px solid #0a2030;background:#010810;padding:6px;
+  font-size:10px;color:#004d60;line-height:1.7;
+  overflow-y:auto;flex:1;min-height:60px;
+}
+.log-panel .log-ok{color:#00ff80}
+.log-panel .log-err{color:#cc3030}
+.log-panel .log-info{color:#00aacc}
+
+/* ── CENTRE ── */
+.centre{
+  grid-column:2;grid-row:2;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:#01070d;z-index:1;
+}
+
+/* ── RIGHT PANEL ── */
+.rpanel{
+  grid-column:3;grid-row:2;
+  border-left:1px solid #0a2030;
+  padding:10px 7px;background:#020b14;
+  display:flex;flex-direction:column;gap:3px;
+  overflow:hidden;z-index:1;
+}
+.mrow{
+  display:flex;align-items:center;gap:5px;
+  font-size:10px;letter-spacing:1px;
+  padding:4px 5px;border:1px solid transparent;
+  cursor:pointer;transition:all .2s;color:#003d50;
+}
+.mrow:hover{border-color:#0a2030;color:#006070}
+.mrow.done{color:#005d40}.mrow.done .mdot{background:#00ff80}
+.mrow.active{border-color:#00aacc;color:#00ccee}
+.mrow.active .mdot{background:#00ccee;animation:blink 1s step-end infinite}
+.mrow.locked{color:#002030}.mrow.locked .mdot{background:#001020}
+.mdot{width:6px;height:6px;border-radius:1px;background:#002030;flex-shrink:0}
+.mparts{margin-left:auto;font-size:9px;color:#002030}
+.mrow.done .mparts{color:#003d20}
+.mrow.active .mparts{color:#006070}
+.rsep{height:1px;background:#0a2030;margin:4px 0}
+.rsec{font-size:9px;letter-spacing:2px;color:#003040;margin:3px 0 1px}
+.rsub{font-size:9px;color:#002d3a;padding:2px 5px;letter-spacing:1px}
+.rsub.rhi{color:#00ff80}
+
+/* ── ADDR BAR ── */
+.abar{
+  grid-column:1/-1;grid-row:3;
+  border-top:1px solid #0a2030;
+  background:#030d1a;
+  display:flex;align-items:center;gap:2px;
+  padding:0 10px;overflow:hidden;z-index:1;
+}
+.glyph{
+  border:1px solid #0a2030;padding:2px 0;
+  font-size:9px;letter-spacing:1px;
+  color:#003d50;background:#010810;
+  flex:1;text-align:center;transition:all .35s;
+}
+.glyph.lit{border-color:#00aacc;color:#00ccee;background:#001828}
+.glyph.locked-g{border-color:#00ff80;color:#00ff80;background:#001a10}
+
+/* ── BOTTOM MODULE PANEL ── */
+.bpanel-wrap{
+  height:220px;
+  flex-shrink:0;
+  border-top:2px solid #0a2030;
+  background:#020a12;
+  overflow:hidden;
+}
+.bpanel-scroll{
+  display:flex;
+  width:100%;
+  height:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:thin;
+  scrollbar-color:#1a4a60 #010810;
+}
+.bpanel-scroll::-webkit-scrollbar{height:6px}
+.bpanel-scroll::-webkit-scrollbar-track{background:#010810}
+.bpanel-scroll::-webkit-scrollbar-thumb{background:#1a4a60;border-radius:3px}
+
+/* Cards flex to fill full width — min-width so text stays readable */
+.mcard{
+  flex:1;
+  min-width:130px;
+  border-right:1px solid #0a2030;
+  padding:10px 8px;
+  display:flex;flex-direction:column;
+  gap:4px;
+  cursor:pointer;
+  transition:background .3s;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.mcard:last-child{border-right:none}
+.mcard:hover{background:#031420}
+.mcard.mc-active{background:#031a24;border-top:3px solid #00ccee}
+.mcard.mc-done{border-top:3px solid #005d40;background:#020e0a}
+.mcard.mc-locked{opacity:.35;cursor:default;border-top:3px solid #021820}
+
+/* PROCESSING — obvious pulsing green */
+.mcard.mc-processing{
+  border-top:3px solid #00ff80;
+  background:#021c14;
+  animation:card-proc 0.8s ease-in-out infinite alternate;
+}
+@keyframes card-proc{
+  0%{background:#021c14}
+  100%{background:#03281a}
+}
+
+.mc-icon{
+  width:34px;height:34px;
+  border:1px solid #0a2030;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;background:#010810;flex-shrink:0;
+  font-family:'Courier New',monospace;
+  color:#004d60;letter-spacing:-1px;
+  transition:all .3s;
+}
+.mcard.mc-active .mc-icon{border-color:#00aacc;color:#00ccee}
+.mcard.mc-done .mc-icon{border-color:#005d40;color:#00aa60}
+.mcard.mc-processing .mc-icon{
+  border-color:#00ff80;color:#00ff80;
+  background:#011a0d;
+  animation:icon-proc .6s ease-in-out infinite alternate;
+}
+@keyframes icon-proc{
+  0%{box-shadow:none}
+  100%{box-shadow:0 0 10px #00ff8060}
+}
+
+.mc-num{font-size:9px;letter-spacing:2px;color:#003d50}
+.mcard.mc-active .mc-num{color:#00ff80}
+.mcard.mc-done .mc-num{color:#004d30}
+.mcard.mc-processing .mc-num{color:#00ff80;animation:blink .8s step-end infinite}
+
+.mc-name{
+  font-size:11px;letter-spacing:1px;
+  color:#005060;line-height:1.3;font-weight:bold;
+}
+.mcard.mc-active .mc-name{color:#00ccee}
+.mcard.mc-done .mc-name{color:#006040}
+.mcard.mc-processing .mc-name{color:#00ff80}
+.mcard.mc-locked .mc-name{color:#002030}
+
+.mc-sub{font-size:9px;color:#003040;line-height:1.6;flex:1}
+.mcard.mc-active .mc-sub{color:#005d70}
+.mcard.mc-done .mc-sub{color:#003d20}
+.mcard.mc-processing .mc-sub{color:#006040}
+
+.mc-track{height:4px;background:#010810;border:1px solid #0a2030;position:relative;overflow:hidden}
+.mc-fill{height:100%;transition:width 1s ease;background:#005d40}
+.mcard.mc-active .mc-fill{background:#00aacc}
+.mcard.mc-done .mc-fill{background:#00ff80}
+.mcard.mc-processing .mc-fill{
+  background:#00ff80;
+  animation:track-scan 1.2s ease-in-out infinite;
+}
+@keyframes track-scan{
+  0%{opacity:.5} 50%{opacity:1} 100%{opacity:.5}
+}
+
+.mc-foot{display:flex;justify-content:space-between;font-size:9px;color:#003040}
+.mcard.mc-active .mc-foot{color:#006070}
+.mcard.mc-done .mc-foot{color:#004d30}
+.mcard.mc-processing .mc-foot{color:#00aa60}
+
+.mc-dot{
+  position:absolute;top:5px;right:5px;
+  width:6px;height:6px;border-radius:50%;background:#002030;
+}
+.mcard.mc-active .mc-dot{background:#00ccee;animation:blink 1s step-end infinite}
+.mcard.mc-done .mc-dot{background:#00ff80}
+.mcard.mc-processing .mc-dot{background:#00ff80;animation:blink .4s step-end infinite}
+
+/* Processing label badge */
+.mc-proc-badge{
+  display:none;
+  font-size:7px;letter-spacing:2px;
+  color:#00ff80;border:1px solid #00ff8040;
+  padding:1px 4px;text-align:center;
+  animation:blink .8s step-end infinite;
+}
+.mcard.mc-processing .mc-proc-badge{display:block}
+
+@keyframes blink{50%{opacity:0}}
+</style>
+</head>
+<body>
+
+<div class="hud">
+
+  <!-- TITLE BAR -->
+  <div class="tbar">
+    <div class="tbar-dot"></div>
+    <span class="tbar-main">GATE DIAGNOSTICS // JS-FUNDAMENTALS-KIDS</span>
+    <span class="tbar-id" id="macro-id">MCK.008762346</span>
+    <span id="tbar-status">STANDING BY</span>
+    <div class="pipeline-btns">
+      <div class="pbtn" id="btn-start" onclick="startPipeline(false)">▶ REBUILD</div>
+      <div class="pbtn" style="border-color:#1a5a40;color:#1a9060" onclick="startPipeline(true)">▶ AUDIT</div>
+      <div class="pbtn pbtn-stop" onclick="stopPipeline()">■ STOP</div>
+    </div>
+    <span class="tbar-clock" id="clock">00:00:00</span>
+  </div>
+
+  <!-- LEFT PANEL -->
+  <div class="lpanel">
+    <div>
+      <div class="slbl">● RUNNING DIAGNOSTICS//**</div>
+      <div class="slbl-b" id="verify-lbl">SUBSYSTEM ALPHA V.4<br>VERIFYING: <span id="verify-mod">M05 — LOOPS</span></div>
+    </div>
+    <div class="dtable">
+      <div><span class="dv">3.645</span> &nbsp; <span class="dv">8.543455</span> &nbsp; 0.354</div>
+      <div><span class="dv">6.55</span> &nbsp; <span class="dv">11.7455</span> &nbsp; 0.745</div>
+      <div><span class="dv">0.0054</span> &nbsp; <span class="dv">0.9203</span> &nbsp; 0.650</div>
+      <div><span class="dv">0.534</span> &nbsp; <span class="dv">0.885</span> &nbsp; 0.347</div>
+    </div>
+    <div class="diagblk" id="diagblk">
+      <div class="dhi">00.233.488839 349</div>
+      <div class="dhi">00.9998691.RT</div>
+      <br>
+      <div>INITIALIZED** 00.0289</div>
+      <div class="dbl">FREQUENCY 71.88KHZ // 0.3837</div>
+      <div>ISOLATE FREQ // COMPILE</div>
+      <div class="dbl">CONFIRMED // CHECK</div>
+      <br>
+      <div class="dhi">ACTIVE // 00.28000376</div>
+    </div>
+    <div class="subblk">
+      <div class="slbl-b" style="margin-bottom:4px">SUBSPACE PHASE ADJ** 0.5934</div>
+      <div>00.23453.3453234.XDS</div>
+      <div>NC &nbsp; 00.52447.RT</div>
+      <div>NC &nbsp; 00.22345.RT</div>
+    </div>
+    <div class="slbl">PIPELINE LOG</div>
+    <div class="log-panel" id="log-panel">
+      <div class="log-info">// awaiting pipeline start...</div>
+    </div>
+  </div>
+
+  <!-- CENTRE GATE -->
+  <div class="centre">
+    <canvas id="gate" width="420" height="420"></canvas>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="rpanel">
+    <div class="rsec" style="color:#00ff80;font-size:10px">● GR MATRIX &nbsp; ● GATE NFC</div>
+    <div class="rsep"></div>
+    <div class="slbl" style="font-size:9px">COURSE MODULES</div>
+    <div class="mrow done"   onclick="dialModule(0)"><div class="mdot"></div>M01 · VARIABLES<span class="mparts">1pt</span></div>
+    <div class="mrow done"   onclick="dialModule(1)"><div class="mdot"></div>M02 · OPERATORS<span class="mparts">1pt</span></div>
+    <div class="mrow done"   onclick="dialModule(2)"><div class="mdot"></div>M03 · CONDITIONS<span class="mparts">5pt</span></div>
+    <div class="mrow done"   onclick="dialModule(3)"><div class="mdot"></div>M04 · LOG.OPS<span class="mparts">2pt</span></div>
+    <div class="mrow active" id="mrow-4" onclick="dialModule(4)"><div class="mdot"></div>M05 · LOOPS<span class="mparts">4pt</span></div>
+    <div class="mrow locked" onclick="dialModule(5)"><div class="mdot"></div>M06 · PIRATE ADV<span class="mparts">2pt</span></div>
+    <div class="mrow locked" onclick="dialModule(6)"><div class="mdot"></div>M07 · FUNCTIONS<span class="mparts">6pt</span></div>
+    <div class="rsep"></div>
+    <div class="rsec">PRIMARY GTF SUBROUTINES</div>
+    <div class="rsub rhi">** 00.7714.NV</div>
+    <div class="rsub rhi">** 00.9993.RF</div>
+    <div class="rsub rhi">** 00.5584.EG</div>
+    <div class="rsep"></div>
+    <div class="rsub" style="color:#00ff80">● MATRIX-TK &nbsp; ● GATE-TK</div>
+    <div class="rsub">TRACK · AGC &nbsp; TRACK · VTC</div>
+  </div>
+
+  <!-- ADDRESS BAR -->
+  <div class="abar" id="abar">
+    <div class="glyph locked-g">DG3</div>
+    <div class="glyph locked-g">JF9</div>
+    <div class="glyph locked-g">RG2</div>
+    <div class="glyph locked-g">LR6</div>
+    <div class="glyph lit">QT4</div>
+    <div class="glyph">RG2</div>
+    <div class="glyph">LR6</div>
+    <div class="glyph">JF9</div>
+    <div class="glyph">DG3</div>
+    <div class="glyph">PK7</div>
+    <div class="glyph">LR6</div>
+    <div class="glyph">JF9</div>
+    <div class="glyph">QT4</div>
+    <div class="glyph">XR8</div>
+    <div class="glyph">NV5</div>
+    <div class="glyph">TK6</div>
+    <div class="glyph">RF4</div>
+  </div>
+
+</div><!-- /hud -->
+
+<!-- BOTTOM MODULE CARDS — scrollable, fixed-width cards -->
+<div class="bpanel-wrap">
+  <div class="bpanel-scroll" id="bpanel"></div>
+</div>
+
+<script>
+// ── MODULE DATA ───────────────────────────────────────────────
+const MODULES = [
+  { id:1, code:'M01', name:'VARIABLES',   icon:'x=1',  sub:'let · const · var\nData types\nNaming rules\nString basics',                                       parts:1, done:1, status:'done',   freq:'48.21KHZ', chevrons:3 },
+  { id:2, code:'M02', name:'OPERATORS',   icon:'+−×',  sub:'Arithmetic ops\nComparison ops\nAssignment ops\nString concat',                                    parts:1, done:1, status:'done',   freq:'52.67KHZ', chevrons:3 },
+  { id:3, code:'M03', name:'CONDITIONS',  icon:'if{}', sub:'if / else / else if\nComparison logic\nNested conditions\nSwitch · Ternary',                       parts:5, done:5, status:'done',   freq:'61.09KHZ', chevrons:5 },
+  { id:4, code:'M04', name:'LOGICAL OPS', icon:'&&||', sub:'AND · OR · NOT\nTruthy & falsy\nShort-circuit eval\nCombining conditions',                         parts:2, done:2, status:'done',   freq:'64.34KHZ', chevrons:4 },
+  { id:5, code:'M05', name:'LOOPS',       icon:'↻[]',  sub:'for loops\nwhile loops\nbreak & continue\nLooping arrays',                                         parts:4, done:2, status:'active', freq:'71.88KHZ', chevrons:5 },
+  { id:6, code:'M06', name:'PIRATE ADV.', icon:'🏴',   sub:'Project module\nApply all concepts\nBuild a text game\nPirate story engine',                       parts:2, done:0, status:'locked', freq:'79.44KHZ', chevrons:6 },
+  { id:7, code:'M07', name:'FUNCTIONS',   icon:'f(x)', sub:'Declaring functions\nParameters & return\nScope & closures\nArrow functions · Callbacks',          parts:6, done:0, status:'locked', freq:'91.76KHZ', chevrons:7 },
+];
+
+const GLYPHS_ALL = ['DG3','JF9','RG2','LR6','QT4','PK7','XR8','NV5','TK6','RF4','EG2','WZ7','MC3','BV8','PL1','XQ5','KR7'];
+
+let currentMod      = -1;  // set by first pipeline line, not hardcoded
+let ringAngle       = 0;
+let ringSpeed       = 0;
+let sweepAngle      = 0;
+let isDialling      = false;
+let chevronLit      = 0;
+let pipelineRunning = false;
+let fileProcessing  = false;
+let fileTimer       = null;
+let activeModIdx    = -1;
+let partsSeenThisMod = 0;
+
+// ── BUILD BOTTOM CARDS ────────────────────────────────────────
+function buildCards(processingIdx = -1) {
+  const bp = document.getElementById('bpanel');
+  bp.innerHTML = '';
+  MODULES.forEach((m, i) => {
+    const pct = Math.round((m.done / m.parts) * 100);
+    let cls = m.status === 'active' ? 'mc-active'
+            : m.status === 'done'   ? 'mc-done'
+            : 'mc-locked';
+    if (i === processingIdx) cls = 'mc-processing';
+
+    const card = document.createElement('div');
+    card.className = 'mcard ' + cls;
+    card.id = 'card-' + i;
+    if (m.status !== 'locked' || i === processingIdx) {
+      card.onclick = () => dialModule(i);
+    }
+    card.innerHTML =
+      '<div class="mc-dot"></div>' +
+      '<div class="mc-proc-badge">▶ PROCESSING</div>' +
+      '<div class="mc-icon">' + m.icon + '</div>' +
+      '<div class="mc-num">' + m.code + ' // ' + m.parts + ' PART' + (m.parts > 1 ? 'S' : '') + '</div>' +
+      '<div class="mc-name">' + m.name + '</div>' +
+      '<div class="mc-sub">' + m.sub.replace(/\n/g, '<br>') + '</div>' +
+      '<div class="mc-track"><div class="mc-fill" id="fill-' + i + '" style="width:' + pct + '%"></div></div>' +
+      '<div class="mc-foot"><span>' + m.done + '/' + m.parts + ' parts</span><span>' + pct + '%</span></div>';
+    bp.appendChild(card);
+  });
+
+  // Scroll active/processing card into view
+  const target = processingIdx >= 0 ? processingIdx : currentMod;
+  const card = document.getElementById('card-' + target);
+  if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+buildCards();
+
+// ── GATE CANVAS ───────────────────────────────────────────────
+const cv = document.getElementById('gate');
+const ctx = cv.getContext('2d');
+const W = 420, H = 420, CX = 210, CY = 210;
+
+function drawGate() {
+  ctx.clearRect(0, 0, W, H);
+  const OR = 188, IR = 162;
+
+  // Outer rotating ring
+  ctx.save();
+  ctx.translate(CX, CY); ctx.rotate(ringAngle); ctx.translate(-CX, -CY);
+  for (let i = 0; i < 36; i++) {
+    const a0 = (i / 36) * Math.PI * 2;
+    const a1 = ((i + 0.82) / 36) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.arc(CX, CY, OR, a0, a1);
+    ctx.arc(CX, CY, IR, a1, a0, true);
+    ctx.closePath();
+    ctx.fillStyle = i % 4 === 0 ? '#0a1e2a' : '#060f18';
+    ctx.fill();
+    ctx.strokeStyle = '#0d3040'; ctx.lineWidth = 0.5; ctx.stroke();
+    if (i % 2 === 0) {
+      const am = (a0 + a1) / 2, r = (OR + IR) / 2;
+      ctx.save();
+      ctx.translate(CX + r * Math.cos(am), CY + r * Math.sin(am));
+      ctx.rotate(am + Math.PI / 2);
+      ctx.font = '7px Courier New';
+      ctx.fillStyle = '#00ff8035';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(GLYPHS_ALL[i % GLYPHS_ALL.length].slice(0, 2), 0, 0);
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+
+  // Ring outlines — glow brighter when active
+  const glowActive = pipelineRunning && fileProcessing;
+  ctx.beginPath(); ctx.arc(CX, CY, IR, 0, Math.PI * 2);
+  ctx.strokeStyle = glowActive ? '#0099dd' : '#1a7aaa';
+  ctx.lineWidth = glowActive ? 5 : 4; ctx.stroke();
+  ctx.beginPath(); ctx.arc(CX, CY, OR, 0, Math.PI * 2);
+  ctx.strokeStyle = '#0d4a66'; ctx.lineWidth = 2; ctx.stroke();
+
+  // 9 fixed chevrons
+  for (let i = 0; i < 9; i++) {
+    const a = (i / 9) * Math.PI * 2 - Math.PI / 2;
+    const cr = OR + 15;
+    const cx2 = CX + cr * Math.cos(a), cy2 = CY + cr * Math.sin(a);
+    const lit = i < chevronLit;
+    ctx.save();
+    ctx.translate(cx2, cy2); ctx.rotate(a + Math.PI / 2);
+    ctx.beginPath();
+    ctx.moveTo(0, -10); ctx.lineTo(9, 6); ctx.lineTo(5, 3);
+    ctx.lineTo(0, 8); ctx.lineTo(-5, 3); ctx.lineTo(-9, 6);
+    ctx.closePath();
+    if (lit) {
+      ctx.fillStyle = '#00ff60';
+      ctx.shadowColor = '#00ff60'; ctx.shadowBlur = 14;
+      ctx.fill(); ctx.shadowBlur = 0;
+    } else {
+      ctx.fillStyle = '#0a1e10'; ctx.strokeStyle = '#003020';
+      ctx.lineWidth = 1; ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // Inner ring ticks
+  ctx.beginPath(); ctx.arc(CX, CY, IR - 8, 0, Math.PI * 2);
+  ctx.strokeStyle = '#0d5570'; ctx.lineWidth = 1.5; ctx.stroke();
+  for (let i = 0; i < 72; i++) {
+    const a = (i / 72) * Math.PI * 2;
+    const r0 = IR - 10, r1 = i % 8 === 0 ? IR - 20 : IR - 15;
+    ctx.beginPath();
+    ctx.moveTo(CX + r0 * Math.cos(a), CY + r0 * Math.sin(a));
+    ctx.lineTo(CX + r1 * Math.cos(a), CY + r1 * Math.sin(a));
+    ctx.strokeStyle = i % 8 === 0 ? '#1a7a90' : '#0a3040';
+    ctx.lineWidth = 1; ctx.stroke();
+  }
+
+  // Inner fill circle
+  const textR = IR - 14;
+  ctx.beginPath(); ctx.arc(CX, CY, textR, 0, Math.PI * 2);
+  ctx.fillStyle = '#010d18'; ctx.fill();
+  ctx.strokeStyle = '#0a3040'; ctx.lineWidth = 1; ctx.stroke();
+
+  // Sweep — only when pipeline is actively processing OR dialling
+  const showSweep = (pipelineRunning && fileProcessing) || isDialling;
+  if (showSweep) {
+    const g = ctx.createRadialGradient(CX, CY, 0, CX, CY, textR);
+    g.addColorStop(0, 'rgba(0,180,210,0)');
+    g.addColorStop(0.6, 'rgba(0,180,210,0)');
+    g.addColorStop(1, 'rgba(0,180,210,0.14)');
+    ctx.beginPath(); ctx.moveTo(CX, CY);
+    ctx.arc(CX, CY, textR, sweepAngle, sweepAngle + 0.65);
+    ctx.closePath(); ctx.fillStyle = g; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(CX, CY);
+    ctx.lineTo(CX + textR * Math.cos(sweepAngle), CY + textR * Math.sin(sweepAngle));
+    ctx.strokeStyle = 'rgba(0,220,255,0.5)'; ctx.lineWidth = 1.5; ctx.stroke();
+    if (pipelineRunning && fileProcessing) {
+      ctx.beginPath(); ctx.arc(CX, CY, textR - 2, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0,180,210,0.07)'; ctx.lineWidth = 3; ctx.stroke();
+    }
+  }
+
+  // Centre text
+  const m = currentMod >= 0 ? MODULES[currentMod] : null;
+  const procMod = activeModIdx >= 0 ? MODULES[activeModIdx] : null;
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 11px Courier New';
+  ctx.fillStyle = (pipelineRunning && fileProcessing) ? '#00eeff' : '#00ccee';
+  ctx.fillText('2049:1948  // V.34 X:Y', CX, CY - 28);
+  ctx.fillText('2058:2954  >> ALPHA 0' + (m ? m.id : '?'), CX, CY - 13);
+  ctx.font = '10px Courier New'; ctx.fillStyle = '#1a8a9a';
+  ctx.fillText('34503 > ROT. ' + (m ? Math.round(m.id * 14.2) : '0') + ' DEG.', CX, CY + 4);
+  ctx.font = '9px Courier New';
+  if (pipelineRunning && procMod) {
+    ctx.fillStyle = '#00ff80';
+    ctx.fillText('PROCESSING: ' + procMod.code + ' // ' + procMod.name, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#00aa60';
+    ctx.fillText('FREQ ' + procMod.freq + '  ·  PIPELINE ACTIVE', CX, CY + 38);
+  } else if (isDialling && m) {
+    ctx.fillStyle = '#00ccee';
+    ctx.fillText('DIALLING: ' + m.code + ' // ' + m.name, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a7090';
+    ctx.fillText('ENGAGING CHEVRONS...', CX, CY + 38);
+  } else if (m) {
+    ctx.fillStyle = '#1a8090';
+    ctx.fillText(m.code + ' // ' + m.name + ' // ' + m.freq, CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a6070';
+    ctx.fillText(m.done + '/' + m.parts + ' PARTS  ·  ' + m.status.toUpperCase(), CX, CY + 38);
+  } else {
+    ctx.fillStyle = '#1a6070';
+    ctx.fillText('GATE STANDING BY', CX, CY + 22);
+    ctx.font = '8px Courier New'; ctx.fillStyle = '#1a4050';
+    ctx.fillText('AWAITING PIPELINE...', CX, CY + 38);
+  }
+}
+
+// ── ANIMATION TICK ────────────────────────────────────────────
+function tick() {
+  if (pipelineRunning && fileProcessing) {
+    // Pipeline active — slow steady spin
+    ringSpeed += (0.012 - ringSpeed) * 0.03;
+    sweepAngle += 0.018;
+  } else if (isDialling) {
+    // Dial — moderate spin, slows naturally after
+    ringSpeed += (0.025 - ringSpeed) * 0.05;
+    sweepAngle += 0.022;
+  } else {
+    // Idle — coast gently to stop
+    ringSpeed *= 0.94;
+    if (Math.abs(ringSpeed) < 0.0001) ringSpeed = 0;
+  }
+  ringAngle += ringSpeed;
+  drawGate();
+  requestAnimationFrame(tick);
+}
+tick();
+
+// ── DIAL MODULE (manual click) ────────────────────────────────
+let dialSafetyTimer = null;
+
+function dialModule(i) {
+  if (pipelineRunning) return;
+  // Safety: if isDialling is stuck, force-clear it so clicks always work
+  if (isDialling) {
+    isDialling = false;
+    if (dialSafetyTimer) { clearTimeout(dialSafetyTimer); dialSafetyTimer = null; }
+  }
+
+  currentMod = i;
+  const m = MODULES[i];
+
+  document.querySelectorAll('.mrow').forEach((el, j) => {
+    const st = MODULES[j].status;
+    el.className = 'mrow ' + (j === i ? 'active' : st === 'done' ? 'done' : 'locked');
+  });
+  buildCards();
+
+  document.getElementById('verify-mod').textContent = m.code + ' — ' + m.name;
+
+  // Kick ring speed — gentler than before
+  isDialling = true;
+  ringSpeed = 0.025;
+  sweepAngle = 0;
+  chevronLit = 0;
+
+  document.getElementById('diagblk').innerHTML =
+    '<div class="dhi">INITIALISING DIAL SEQUENCE</div><br>' +
+    '<div class="dbl">FREQUENCY ' + m.freq + ' // LOCKED</div>' +
+    '<div>COMPILE // CONFIRMED</div>' +
+    '<div class="dbl">' + m.code + ' ADDRESS CONFIRMED</div>' +
+    '<br><div>ENGAGING CHEVRONS...</div>';
+
+  const glyphEls = document.querySelectorAll('.glyph');
+  glyphEls.forEach(g => g.className = 'glyph');
+
+  let step = 0;
+  const totalTime = m.chevrons * 380 + 600; // max time before safety kills it
+  const iv = setInterval(() => {
+    if (step < m.chevrons) {
+      chevronLit = step + 1;
+      if (glyphEls[step]) glyphEls[step].className = 'glyph lit';
+      step++;
+    } else {
+      clearInterval(iv);
+      if (dialSafetyTimer) { clearTimeout(dialSafetyTimer); dialSafetyTimer = null; }
+      if (glyphEls[step - 1]) glyphEls[step - 1].className = 'glyph locked-g';
+      isDialling = false;
+      document.getElementById('diagblk').innerHTML =
+        '<div class="dhi">00.233.488839 349</div>' +
+        '<div class="dhi">00.9998691.RT</div><br>' +
+        '<div>' + m.code + ' // LOCKED &amp; LOADED</div>' +
+        '<div class="dbl">FREQ ' + m.freq + ' // STANDBY</div>' +
+        '<div>PARTS: ' + m.done + '/' + m.parts + '</div><br>' +
+        '<div class="dhi">AWAITING PIPELINE...</div>';
+    }
+  }, 600);
+
+  // Safety net — if interval never clears for some reason, force unlock after max time
+  dialSafetyTimer = setTimeout(() => {
+    isDialling = false;
+    dialSafetyTimer = null;
+  }, totalTime + 500);
+}
+
+// ── PIPELINE ──────────────────────────────────────────────────
+function logLine(text, type) {
+  const panel = document.getElementById('log-panel');
+  const div = document.createElement('div');
+  div.className = type || '';
+  div.textContent = text;
+  panel.appendChild(div);
+  panel.scrollTop = panel.scrollHeight;
+  while (panel.children.length > 150) panel.removeChild(panel.firstChild);
+}
+
+// ── MODULE/PART RESULT TRACKING ──────────────────────────────
+// partResults[modIdx][partNum] = 'clean' | 'issue' | 'processing'
+const partResults = MODULES.map(m => Array(m.parts).fill(null));
+
+function detectModuleFromLine(line) {
+  // Matches: module-1-variables, module-3-conditions-part2, module-7-functions-part6 etc
+  const m = line.match(/module-(\d+)-([a-z-]+?)(?:-part(\d+))?(?:\s|$|—|-)/i);
+  if (m) {
+    const num = parseInt(m[1]) - 1;
+    const part = m[3] ? parseInt(m[3]) - 1 : 0; // 0-indexed part
+    if (num >= 0 && num < MODULES.length) return { modIdx: num, partIdx: part };
+  }
+  return null;
+}
+
+function onPipelineLine(line) {
+  const lower = line.toLowerCase();
+
+  // ── Colour-code the log line ──────────────────────────────
+  let type = 'log-info';
+  if (lower.includes('issue') || lower.includes('err') || line.includes('❌')) type = 'log-err';
+  else if (lower.includes('clean') || lower.includes('locked') || line.includes('✅')) type = 'log-ok';
+  else if (lower.includes('audit summary') || lower.includes('files checked')) type = 'log-ok';
+  logLine(line, type);
+
+  // ── Detect which module+part this line refers to ──────────
+  const detected = detectModuleFromLine(line);
+  if (detected) {
+    const { modIdx, partIdx } = detected;
+
+    // New module starting?
+    if (modIdx !== activeModIdx) {
+      activeModIdx = modIdx;
+      currentMod = modIdx;
+      partsSeenThisMod = 0;
+      chevronLit = 0;
+      document.getElementById('verify-mod').textContent =
+        MODULES[modIdx].code + ' — ' + MODULES[modIdx].name;
+      document.querySelectorAll('.glyph').forEach(g => g.className = 'glyph');
+      buildCards(modIdx);
+    }
+
+    // Mark part result based on line content
+    const isClean  = lower.includes('clean') || lower.includes('✅') || lower.includes('locked');
+    const isIssue  = lower.includes('issue') || lower.includes('❌');
+
+    if (isClean || isIssue) {
+      partResults[modIdx][partIdx] = isClean ? 'clean' : 'issue';
+      partsSeenThisMod++;
+
+      // Light up a chevron for each completed part
+      chevronLit = Math.min(partsSeenThisMod, 9);
+      const glyphEls = document.querySelectorAll('.glyph');
+      for (let g = 0; g < chevronLit && g < glyphEls.length; g++) {
+        glyphEls[g].className = g < chevronLit - 1 ? 'glyph locked-g' : 'glyph lit';
+      }
+
+      // Update card foot with live part count
+      const foot = document.querySelector('#card-' + modIdx + ' .mc-foot');
+      if (foot) {
+        const cleaned = partResults[modIdx].filter(r => r === 'clean').length;
+        const issues  = partResults[modIdx].filter(r => r === 'issue').length;
+        const done    = cleaned + issues;
+        const total   = MODULES[modIdx].parts;
+        foot.innerHTML = '<span>' + done + '/' + total + ' parts</span>' +
+          (issues > 0 ? '<span style="color:#ff6060">' + issues + ' issue' + (issues>1?'s':'') + '</span>'
+                      : '<span style="color:#00cc70">ALL CLEAN</span>');
+        // Update progress fill
+        const fill = document.getElementById('fill-' + modIdx);
+        if (fill) fill.style.width = Math.round((done / total) * 100) + '%';
+      }
+
+      // Flash card for this part result
+      const flashCard = document.getElementById('card-' + modIdx);
+      if (flashCard) {
+        flashCard.style.borderTopColor = isClean ? '#00ff80' : '#ff4444';
+        setTimeout(() => { flashCard.style.borderTopColor = ''; }, 600);
+      }
+    }
+  }
+
+  // ── Audit summary detection ───────────────────────────────
+  if (lower.includes('files checked') || lower.includes('audit summary') ||
+      lower.includes('clean files') || lower.includes('files with issues') ||
+      lower.includes('total issues') || lower.includes('files needing')) {
+    updateAuditSummary(line);
+  }
+
+  // ── Gate ring spins while lines are flowing ───────────────
+  fileProcessing = true;
+  if (fileTimer) clearTimeout(fileTimer);
+  fileTimer = setTimeout(() => { fileProcessing = false; fileTimer = null; }, 800);
+}
+
+// ── AUDIT SUMMARY PANEL ───────────────────────────────────────
+const auditLines = [];
+function updateAuditSummary(line) {
+  auditLines.push(line.trim());
+  // Update diagblk with the latest summary lines
+  const html = auditLines.slice(-10).map(l => {
+    if (l.includes('issue') && l.match(/\d/)) return '<div style="color:#ff6060">' + l + '</div>';
+    if (l.includes('clean') || l.includes('locked')) return '<div class="dhi">' + l + '</div>';
+    if (l.includes('checked') || l.includes('summary')) return '<div class="dbl">' + l + '</div>';
+    return '<div>' + l + '</div>';
+  }).join('');
+  document.getElementById('diagblk').innerHTML = html;
+}
+
+function startPipeline(isAudit) {
+  if (pipelineRunning) return;
+  pipelineRunning  = true;
+  fileProcessing   = false;
+  activeModIdx     = -1;
+  currentMod       = -1;
+  partsSeenThisMod = 0;
+  chevronLit       = 0;
+  ringSpeed        = 0;
+  auditLines.length = 0;
+  document.querySelectorAll('.glyph').forEach(g => g.className = 'glyph');
+  document.getElementById('btn-start').className = 'pbtn running';
+  document.getElementById('tbar-status').textContent = isAudit ? 'AUDIT RUNNING' : 'PIPELINE RUNNING';
+  logLine('// ' + (isAudit ? 'audit' : 'pipeline') + ' started — ' + new Date().toLocaleTimeString(), 'log-info');
+  document.getElementById('diagblk').innerHTML =
+    '<div class="dhi">PIPELINE ENGAGED</div><br>' +
+    '<div>AWAITING FIRST MODULE...</div>' +
+    '<div class="dbl">RING STANDBY</div>';
+  buildCards();
+  if (window.pipeline) {
+    if (isAudit) window.pipeline.startAudit();
+    else window.pipeline.start();
+  }
+}
+
+function stopPipeline() {
+  pipelineRunning = false;
+  fileProcessing = false;
+  activeModIdx = -1;
+  if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+  document.getElementById('btn-start').className = 'pbtn';
+  document.getElementById('tbar-status').textContent = 'PIPELINE STOPPED';
+  logLine('// pipeline stopped', 'log-err');
+  buildCards();
+  if (window.pipeline) window.pipeline.stop();
+}
+
+if (window.pipeline) {
+  window.pipeline.onLine(line => onPipelineLine(line));
+  window.pipeline.onDone(code => {
+    pipelineRunning = false;
+    fileProcessing = false;
+    if (fileTimer) { clearTimeout(fileTimer); fileTimer = null; }
+    document.getElementById('btn-start').className = 'pbtn';
+    const ok = code === 0;
+    document.getElementById('tbar-status').textContent = ok ? 'PIPELINE COMPLETE' : 'PIPELINE ERROR';
+    logLine('// done — exit code ' + code, ok ? 'log-ok' : 'log-err');
+    buildCards();
+    document.getElementById('diagblk').innerHTML =
+      '<div class="dhi">' + (ok ? 'ALL MODULES PROCESSED' : 'PIPELINE ERROR') + '</div><br>' +
+      '<div class="dbl">EXIT CODE: ' + code + '</div>' +
+      '<br><div class="dhi">RING STANDING DOWN</div>';
+  });
+  window.pipeline.onStopped(() => stopPipeline());
+}
+
+// ── CLOCK ─────────────────────────────────────────────────────
+let sec = 0;
+setInterval(() => {
+  sec++;
+  const h  = String(Math.floor(sec / 3600)).padStart(2, '0');
+  const m2 = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+  const s  = String(sec % 60).padStart(2, '0');
+  document.getElementById('clock').textContent = h + ':' + m2 + ':' + s;
+  document.getElementById('macro-id').textContent =
+    'MCK.' + Math.floor(Math.random() * 900000000 + 100000000);
+}, 1000);
+
+// Init — clean slate, gate shows standby until pipeline fires
+chevronLit = 0;
+ringSpeed  = 0;
+buildCards(); // draw all cards in their default states
+</script>
+</body>
+</html>

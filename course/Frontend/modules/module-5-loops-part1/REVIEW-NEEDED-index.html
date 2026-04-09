@@ -206,36 +206,296 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 1                       █ -->
-<!-- █  // Exercise 1: COUNTING BAGS ON THE PRODUCTION LINE 📦█ -->
+<!-- █  // Exercise 1: Counting Bags on the Production Line 📦█ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-1">
-<h3 class="exercise-title">Exercise 1: COUNTING BAGS ON THE PRODUCTION LINE 📦</h3>
-<h4 class="sub-title">Part A: Counting the First 5 Bags</h4>
-<p>A child needs to count bags on a production line as they pass by. The child must keep track of the "number of bags" that have been counted so far. To start, the child will count the first 5 bags on the production line. The child will use a coding technique to make this task easier and more efficient.</p>
+<h3 class="exercise-title">Exercise 1: Counting Bags on the Production Line 📦</h3>
+
+<h4 class="sub-title">Part A: Count the First 5 Bags</h4>
+
+<p>A child needs to count bags on a production line as they pass by.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>0</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>0</code>, then use a loop to count the bags one by one, starting from 1 and going up to 5.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "Bag X is ready" for each bag, where X is the current "number of bags" being counted.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the counting process:
-    <div class="code-example">
-      <code>SET number of bags = 0<br>SET number of bags = number of bags + 1<br>PRINT "Bag ", number of bags, " is ready"<br>REPEAT FOR number of bags FROM 1 TO 5</code>
-    </div>
-  </li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to 1.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag is ready".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now count the first 5 bags:
+       <div class="code-example">
+         <code>SET numberOfBags = 1<br>WHILE numberOfBags <= 5<br>&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Bag ", numberOfBags, " is ready"<br>&nbsp;&nbsp;&nbsp;&nbsp;numberOfBags = numberOfBags + 1<br>END WHILE</code>
+       </div>
+     </li>
+   </ul>
+
 <label for="loops-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex1-part-a" data-section="loops"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="loops" data-ex="1-part-a">Hint</button>
   <button class="run-button" data-section="loops" data-ex="1-part-a">Run My Code</button>
   <button class="reset-button" data-section="loops" data-ex="1-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="loops-hint1-part-a"></p>
 <pre class="output-block" id="loops-output1-part-a"></pre>
 <pre class="answer-block" id="loops-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Counting More Bags</h4>
 
+<p>Great work! Now let's try with different values.</p>
+
+<p>In this section, you will count 10 bags passing through the production line as they are produced faster.</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>10</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag X passing through".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now loop through the count:
+      <div class="code-example">
+        <code>SET numberOfBags = 10<br>FOR i FROM 1 TO numberOfBags:<br>  PRINT "Bag ", i, " passing through"</code>
+      </div>
+    </li>
+</ul>
+
+<label for="loops-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex1-part-b" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint1-part-b"></p>
+<pre class="output-block" id="loops-output1-part-b"></pre>
+<pre class="answer-block" id="loops-answer1-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Counting Corn Boxes 🌽         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="loops-exercise-2">
+<h3 class="exercise-title">Exercise 2: Counting Corn Boxes 🌽</h3>
+<h4 class="sub-title">Part A: Count corn boxes for the first 6 machines</h4>
+<p>Imagine you are working in a Grand Hall where popcorn machines need to be assigned corn boxes. We will use a loop to count the corn boxes for each of the first 6 machines.</p>
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 1.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] receives corn box".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count the corn boxes for each of the first 6 machines in the code block below.</li>
+   </ul>
+
+<label for="loops-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex2-part-a" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint2-part-a"></p>
+<pre class="output-block" id="loops-output2-part-a"></pre>
+<pre class="answer-block" id="loops-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Counting Corn Boxes for All Machines</h4>
+
+<p>Building on Part A, we are now counting corn boxes as they are assigned to each of the 10 popcorn machines in the Grand Hall.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 10.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine {machine number} receives corn box".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count and print the corn boxes for all 10 machines in the code block below.</li>
+</ul>
+
+<label for="loops-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex2-part-b" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint2-part-b"></p>
+<pre class="output-block" id="loops-output2-part-b"></pre>
+<pre class="answer-block" id="loops-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Counting Oil Containers 🛢️    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="loops-exercise-3">
+<h3 class="exercise-title">Exercise 3: Counting Oil Containers 🛢️</h3>
+
+<h4 class="sub-title">Part A: Counting Oil Containers</h4>
+
+<p>In the storage area, there are 7 oil containers that need to be checked. Using a loop, we will count these oil containers.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to 0.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Checking oil container".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Increment the "container number" by 1 after each check.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count and print the oil containers in the code block below.</li>
+   </ul>
+
+<label for="loops-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex3-part-a" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint3-part-a"></p>
+<pre class="output-block" id="loops-output3-part-a"></pre>
+<pre class="answer-block" id="loops-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Assigning Oil Containers</h4>
+
+<p>In Part A, you learned how to count oil containers in the storage area inventory. Now, let's assign these containers to 8 production machines.</p>
+
+<p>There are 8 production machines and we need to assign an oil container to each one. We will use a loop to perform this task.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 0.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a loop to iterate from 1 to 8 (inclusive). In each iteration, print "Machine [machine number] gets oil container" and increment the machine number by 1.</li>
+</ul>
+
+<label for="loops-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex3-part-b" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint3-part-b"></p>
+<pre class="output-block" id="loops-output3-part-b"></pre>
+<pre class="answer-block" id="loops-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Counting Flavor Packets 🍬     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="loops-exercise-4">
+<h3 class="exercise-title">Exercise 4: Counting Flavor Packets 🍬</h3>
+
+<h4 class="sub-title">Part A: Counting Flavor Packets on the Shelf</h4>
+
+<p>In this exercise, we will count the 5 flavor packets on the inventory shelf. We'll use a loop to display each packet number.</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "packet number" and set its value to 0.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Counting flavor packet [packet number]".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count and display each of the 5 flavor packets in the code block below.</li>
+</ul>
+
+<label for="loops-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex4-part-a" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint4-part-a"></p>
+<pre class="output-block" id="loops-output4-part-a"></pre>
+<pre class="answer-block" id="loops-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Flavor Station Assignment</h4>
+
+<p>Counting flavor packet 1 on the inventory shelf.</p>
+
+<p>Assign and count flavor packets for all 9 flavor stations.</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to 9.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Station [station number] receives flavor packet".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to assign and count flavor packets for all stations in the code block below.</li>
+</ul>
+
+<label for="loops-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex4-part-b" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint4-part-b"></p>
+<pre class="output-block" id="loops-output4-part-b"></pre>
+<pre class="answer-block" id="loops-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: Counting Salt Containers 🧂    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="loops-exercise-5">
+<h3 class="exercise-title">Exercise 5: Counting Salt Containers 🧂</h3>
+
+<h4 class="sub-title">Part A: Counting salt containers in storage</h4>
+
+<p>Counting salt containers in storage and then for all the production machines. Use a loop to repeat actions automatically.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to 4.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Salt container [container number] counted".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count salt containers for all the production machines in the code block below.</li>
+</ul>
+
+<label for="loops-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex5-part-a" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint5-part-a"></p>
+<pre class="output-block" id="loops-output5-part-a"></pre>
+<pre class="answer-block" id="loops-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Assign and Count Salt Containers for All Production Machines</h4>
+
+<p>In Part A, we counted the 4 salt containers in the storage area. Now it's time to assign and count salt containers for all 10 production machines.</p>
+
+<p>There are 10 production machines, and each machine will receive one salt container.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] receives salt container".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Increment the "machine number" by 1.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count salt containers for all production machines in the code block below.</li>
+   </ul>
+
+<label for="loops-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="loops-ex5-part-b" data-section="loops"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="loops" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="loops" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="loops" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="loops-hint5-part-b"></p>
+<pre class="output-block" id="loops-output5-part-b"></pre>
+<pre class="answer-block" id="loops-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->

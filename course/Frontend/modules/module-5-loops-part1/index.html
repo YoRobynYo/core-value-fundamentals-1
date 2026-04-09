@@ -211,18 +211,18 @@
 <div class="exercise-box" id="loops-exercise-1">
 <h3 class="exercise-title">Exercise 1: Counting Bags on the Production Line 📦</h3>
 
-<h4 class="sub-title">Part A: Count the First 5 Bags</h4>
+<h4 class="sub-title">Part A: Count the first 5 bags on the production line</h4>
 
 <p>A child needs to count bags on a production line as they pass by.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>0</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag is ready".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now count the bags on the production line:
-        <div class="code-example">
-            <code>SET numberOfBags = 0<br>WHILE numberOfBags &lt; 5 DO<br>&nbsp;&nbsp;PRINT "Bag is ready"<br>&nbsp;&nbsp;numberOfBags = numberOfBags + 1<br>END WHILE</code>
-        </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to 5.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag [number] is ready".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now count the bags:
+    <div class="code-example">
+      <code>SET numberOfBags = 5<br>FOR i FROM 1 TO numberOfBags<br> PRINT "Bag ", i, " is ready"</code>
+    </div>
+  </li>
 </ul>
 
 <label for="loops-ex1-part-a" class="code-label">Add your code in the code block below</label>
@@ -239,18 +239,18 @@
 <pre class="answer-block" id="loops-answer1-part-a"></pre>
 <h4 class="sub-title">Part B: Count 10 Bags</h4>
 
-<p>Great work! Now let's try counting a larger number of bags as they pass by.</p>
+<p>Great work! Now let's try counting a larger number of bags as the line runs faster.</p>
 
-<p>In this scenario, we will count 10 bags on the production line. We'll use the same loop structure to automate the counting process.</p>
+<p>In this scenario, you need to count 10 bags passing through on the production line. You'll use the same loop structure to accomplish this.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to 10.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag passing through" for each bag.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now run your code to see the bags count automatically:
-        <div class="code-example">
-            <code>SET numberOfBags = 10<br>FOR i FROM 1 TO numberOfBags<br>    PRINT "Bag passing through"<br>NEXT</code>
-        </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>10</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Bag passing through".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now count the bags:
+    <div class="code-example">
+      <code>SET numberOfBags = 10<br>FOR i FROM 1 TO numberOfBags<br>  PRINT "Bag ", i, " passing through"<br>END FOR</code>
+    </div>
+  </li>
 </ul>
 
 <label for="loops-ex1-part-b" class="code-label">Add your code in the code block below</label>
@@ -277,15 +277,15 @@
 <div class="exercise-box" id="loops-exercise-2">
 <h3 class="exercise-title">Exercise 2: Counting Corn Boxes 🌽</h3>
 
-<h4 class="sub-title">Part A: First 6 Machines</h4>
+<h4 class="sub-title">Part A: Counting for the first 6 machines</h4>
 
-<p>In this scenario, we need to count how many corn boxes each of the first 6 popcorn machines receives. Each machine will receive one corn box.</p>
+<p>Counting corn boxes as they are assigned to each of the popcorn machines. Use the variables "machine number".</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 1.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] receives corn box".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count corn boxes for the first 6 machines in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 0.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine {machine number} receives corn box".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count the corn boxes for the first 6 machines in the code block below.</li>
+   </ul>
 
 <label for="loops-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex2-part-a" data-section="loops"></div>
@@ -301,14 +301,16 @@
 <pre class="answer-block" id="loops-answer2-part-a"></pre>
 <h4 class="sub-title">Part B: Counting Corn Boxes for All Machines</h4>
 
-<p>In Part A, we counted corn boxes for the first 6 machines. Now let's extend that to all 10 machines in the Grand Hall.</p>
+<p>Now that we have counted corn boxes for the first 6 machines, let's count them for all 10 machines in the Grand Hall.</p>
+
+<p>In the Grand Hall, there are 10 popcorn machines, and each machine needs a corn box. We will use a loop counter to keep track of the "machine number" as we assign corn boxes to each machine. The "machine number" will start from 1 and go up to 10.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 1.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a loop to count the corn boxes for all 10 machines. Increase the "machine number" by 1 in each iteration until it reaches 10.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Display each machine receiving a corn box.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Write the code to count and display the corn boxes for all 10 machines in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total machines" and set its value to <code>10</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "Machine" followed by the "machine number" and "receives corn box".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to repeat the PRINT statement for all 10 machines in the code block below.</li>
+   </ul>
 
 <label for="loops-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex2-part-b" data-section="loops"></div>
@@ -329,20 +331,16 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 3                       █ -->
-<!-- █  // Exercise 3: COUNTING OIL CONTAINERS 🛢️    █ -->
+<!-- █  // Exercise 3: Counting Oil Containers 🛢️    █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-3">
-<h3 class="exercise-title">Exercise 3: COUNTING OIL CONTAINERS 🛢️</h3>
-
+<h3 class="exercise-title">Exercise 3: Counting Oil Containers 🛢️</h3>
 <h4 class="sub-title">Part A: Counting Oil Containers</h4>
-
-<p>In this exercise, you will count the oil containers in the storage area and then assign them to machines.</p>
-
+<p>In the storage area, there are 7 oil containers that need to be checked. Use a loop to count each container.</p>
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to 7.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 0.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Checking oil container [container number]" for each container.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count and assign oil containers to machines in the code block below.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>1</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Checking oil container [container number]".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count and print each of the 7 oil containers in the code block below.</li>
 </ul>
 
 <label for="loops-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -359,15 +357,13 @@
 <pre class="answer-block" id="loops-answer3-part-a"></pre>
 <h4 class="sub-title">Part B: Assigning Oil Containers</h4>
 
-<p>In Part A, we counted 7 oil containers in the storage area. Now let's assign these oil containers to 8 production machines.</p>
-
-<p>There are 8 production machines that need to receive an oil container each. Variable names in quotes:</p>
+<p>After counting 7 oil containers in Part A, we need to assign and count them for 8 production machines.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>7</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>8</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "Machine [machine number] gets oil container".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to assign and count oil containers for 8 of the production machines in the code block below.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to 8.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 7.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] gets oil container".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to assign and count oil containers for 8 production machines in the code block below.</li>
    </ul>
 
 <label for="loops-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -393,12 +389,15 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-4">
 <h3 class="exercise-title">Exercise 4: Counting Flavor Packets 🍬</h3>
-<h4 class="sub-title">Part A: Count flavor packets on the inventory shelf</h4>
-<p>In this exercise, you will count the 5 flavor packets on the inventory shelf. You'll use a loop to automate this task.</p>
+
+<h4 class="sub-title">Part A: Counting flavor packets on the shelf</h4>
+
+<p>In this scenario, you will count the 5 flavor packets on the inventory shelf. You will use a loop to automate this task.</p>
+
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "packet number" and set its value to 5.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Counting flavor packet [packet number]" for each packet.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count and print the packets in the code block below.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Counting flavor packet {packet number}".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to count the 5 flavor packets in the code block below.</li>
    </ul>
 
 <label for="loops-ex4-part-a" class="code-label">Add your code in the code block below</label>
@@ -413,18 +412,17 @@
 <p class="hint" id="loops-hint4-part-a"></p>
 <pre class="output-block" id="loops-output4-part-a"></pre>
 <pre class="answer-block" id="loops-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Assigning Flavor Packets</h4>
+<h4 class="sub-title">Part B: Assign and Count Flavor Packets</h4>
 
-<p>In Part A, we learned how to count flavor packets on the inventory shelf. Now let's apply our counting skills to assign and count flavor packets for all 9 flavor stations.</p>
+<p>Continuing from Part A, you have already counted 5 flavor packets on the inventory shelf. Now, let's focus on assigning and counting flavor packets for all 9 flavor stations.</p>
 
-<p>We need to create a loop that will run 9 times, representing each station. During each iteration of the loop, we'll display a message indicating which station is receiving a flavor packet.</p>
+<p>You need to assign a flavor packet to each station and count how many stations have received one. Use the variables <code>"packet number"</code> and <code>"station number"</code>.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to `1`.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Station [station number] receives flavor packet".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Increase the "station number" by `1` for the next iteration.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to assign and count flavor packets for all 9 stations in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>9</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Station [station number] receives flavor packet".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to assign and count flavor packets for all stations in the code block below.</li>
+   </ul>
 
 <label for="loops-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex4-part-b" data-section="loops"></div>
@@ -450,15 +448,15 @@
 <div class="exercise-box" id="loops-exercise-5">
 <h3 class="exercise-title">Exercise 5: Counting Salt Containers 🧂</h3>
 
-<h4 class="sub-title">Part A: Count the salt containers in storage</h4>
+<h4 class="sub-title">Part A: Count salt containers in storage</h4>
 
-<p>In the Grand Hall, we need to count the 4 salt containers in storage before starting production. We will use a loop to automatically count each container.</p>
+<p>In the Grand Hall, we have 4 salt containers in storage that need to be counted. We will use a loop to automate this process.</p>
 
 <ul class="indented-list">
     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>1</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "machine number" (not used in Part A) and set its value to <code>0</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Salt container 1 counted".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the salt containers in storage in the code block below.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Salt container 1 counted".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Repeat the process for each salt container.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the salt containers in storage below.</li>
 </ul>
 
 <label for="loops-ex5-part-a" class="code-label">Add your code in the code block below</label>
@@ -473,15 +471,16 @@
 <p class="hint" id="loops-hint5-part-a"></p>
 <pre class="output-block" id="loops-output5-part-a"></pre>
 <pre class="answer-block" id="loops-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Assign and count salt containers for all production machines</h4>
+<h4 class="sub-title">Part B: Assign Salt Containers</h4>
 
-<p>In Part A, we counted the 4 salt containers in storage. Now, let's assign and count salt containers for all 10 production machines.</p>
+<p>In Part A, we counted 4 salt containers in storage. Now it's time to assign and count salt containers for all 10 production machines.</p>
+
+<p>Assign and count salt containers for all 10 production machines. Variable names in quotes.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 10.</li>
      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] receives salt container".</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Increment the machine number by 1.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to assign and count salt containers for all production machines in the code block below.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to assign and count salt containers for all machines in the code block below.</li>
    </ul>
 
 <label for="loops-ex5-part-b" class="code-label">Add your code in the code block below</label>

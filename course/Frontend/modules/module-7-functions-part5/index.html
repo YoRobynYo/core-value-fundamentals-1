@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-7-FUNCTIONS-PART5                █ -->
+<!-- █  // Module 7 Functions Part5                      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="functions-module">
+
+<h2 class="module-title">Module 7 Functions Part5</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: Loops and Functions Together -->
+<div class="helper-box">
+  <h3 class="box-title">🔁 Loops and Functions Together 🔁</h3>
+
+  <p>You already know how to write a function and call it. You already know how to
+    write a loop. But what happens when you put them together?</p>
+
+  <p>Think about the popcorn factory. Every batch needs to be checked. Every batch
+    needs to be counted. If you had to write the same instructions for every single
+    batch — that would take forever! This is exactly where loops and functions
+    become an unstoppable team.</p>
+
+  <h4 class="sub-title">A loop on its own — runs the same instructions again and again:</h4>
+
+  <div class="code-block">
+    FOR "batch number" FROM 1 TO 3<br>
+    &nbsp;&nbsp;PRINT "Processing batch ", "batch number"<br>
+    END FOR
+  </div>
+
+  <p class="output">Output:<br>
+    Processing batch 1<br>
+    Processing batch 2<br>
+    Processing batch 3</p>
+
+  <h4 class="sub-title">A function on its own — runs when you call it:</h4>
+
+  <div class="code-block">
+    FUNCTION "count bags"<br>
+    &nbsp;&nbsp;RETURN 10<br>
+    END FUNCTION<br>
+    <br>
+    SET "result" = CALL "count bags"<br>
+    PRINT "Bags ready: ", "result"
+  </div>
+
+  <p class="output">Output: Bags ready: 10</p>
+
+  <h4 class="sub-title">Now put them together — a loop calling a function:</h4>
+
+  <div class="code-block">
+    FUNCTION "count bags"<br>
+    &nbsp;&nbsp;RETURN 10<br>
+    END FUNCTION<br>
+    <br>
+    FOR "batch number" FROM 1 TO 3<br>
+    &nbsp;&nbsp;SET "bag count" = CALL "count bags"<br>
+    &nbsp;&nbsp;PRINT "Batch ", "batch number", " — bags ready: ", "bag count"<br>
+    END FOR
+  </div>
+
+  <p class="output">Output:<br>
+    Batch 1 — bags ready: 10<br>
+    Batch 2 — bags ready: 10<br>
+    Batch 3 — bags ready: 10</p>
+
+  <p>The function runs THREE times — once for each loop. You wrote the function
+    once and the loop does all the work of calling it!</p>
+
+  <p class="note">💡 <strong>Remember:</strong> Always write the function FIRST,
+    then write the loop. The loop calls the function — not the other way round!</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: The Production Report Tree -->
+<div class="helper-box">
+  <h3 class="box-title">🌳 The Production Report Tree — Everything Working Together 🌳</h3>
+
+  <p>Now let us see what happens when we add parameters and conditions into the mix.
+    The loop passes different information to the function each time — and the function
+    decides what to do with it!</p>
+
+  <h4 class="sub-title">Loop + Function + Parameter — something different goes in each time:</h4>
+
+  <div class="code-block">
+    FUNCTION "check flavour" ("flavour")<br>
+    &nbsp;&nbsp;RETURN "flavour"<br>
+    END FUNCTION<br>
+    <br>
+    FOR "flavour" IN "butter", "cheese", "salt"<br>
+    &nbsp;&nbsp;SET "result" = CALL "check flavour" ("flavour")<br>
+    &nbsp;&nbsp;PRINT "Flavour ready: ", "result"<br>
+    END FOR
+  </div>
+
+  <p class="output">Output:<br>
+    Flavour ready: butter<br>
+    Flavour ready: cheese<br>
+    Flavour ready: salt</p>
+
+  <p>The same function runs three times — but with a different flavour each time!
+    The loop is doing the hard work of passing each flavour in.</p>
+
+  <h4 class="sub-title">Now here is everything working together — the full production report:</h4>
+
+  <div class="code-block">
+    SET "factory name" = "Poppy's Factory"<br>
+    <br>
+    FUNCTION "production report" ("flavour", "bag count")<br>
+    &nbsp;&nbsp;IF "bag count" > 5<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;RETURN "flavour", " — Ready!"<br>
+    &nbsp;&nbsp;ELSE<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;RETURN "flavour", " — Not enough bags!"<br>
+    &nbsp;&nbsp;END IF<br>
+    END FUNCTION<br>
+    <br>
+    FOR EACH batch IN ("butter", 12), ("cheese", 3), ("salt", 8)<br>
+    &nbsp;&nbsp;SET "report" = CALL "production report" ("flavour", "bag count")<br>
+    &nbsp;&nbsp;PRINT "Factory: ", "factory name"<br>
+    &nbsp;&nbsp;PRINT "Batch report: ", "report"<br>
+    END FOR
+  </div>
+
+  <p class="output">Output:<br>
+    Factory: Poppy's Factory<br>
+    Batch report: butter — Ready!<br>
+    Factory: Poppy's Factory<br>
+    Batch report: cheese — Not enough bags!<br>
+    Factory: Poppy's Factory<br>
+    Batch report: salt — Ready!</p>
+
+  <ul class="indented-list">
+    <li><strong>"factory name"</strong> lives OUTSIDE — available everywhere</li>
+    <li><strong>"flavour"</strong> and <strong>"bag count"</strong> are PARAMETERS — different each loop</li>
+    <li>The condition checks INSIDE the function — decides the result</li>
+    <li>RETURN hands the answer back — the loop catches it and prints it</li>
+    <li>The loop runs the whole thing THREE times automatically!</li>
+  </ul>
+
+  <p>Variables. Parameters. Operators. Conditions. Functions. Loops. Return.
+    You are using everything — all at once. That is what real coding looks like! 🚀</p>
+
+  <p class="note">💡 <strong>Remember:</strong> The function is always written first.
+    The loop calls it — passing different information each time. Together they can
+    process an entire factory's worth of batches in just a few lines of code!</p>
+</div>
+<!-- End of Helper Box 2 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 7 Functions Part5 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Counting Bags Per Batch 🍿     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-1">
+<h3 class="exercise-title">Exercise 1: Counting Bags Per Batch 🍿</h3>
+<h4 class="sub-title">Part A: Fixed Bag Count</h4>
+<p>The factory needs to count how many bags are produced in each batch. To do this, we will create a function called "count bags" that returns a fixed number of bags. We will then use a loop to run this function three times and print the result each time. The "count bags" function will return 10, and we will store this result in the "bag count" variable.</p>
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "count bags" and set its return value to <code>10</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bag count" to store the result of the "count bags" function.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "bag count" for each batch.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the batch counting:
+    <div class="code-example">
+      <code>SET bag count = count bags<br>PRINT "Bags in this batch: ", bag count</code>
+    </div>
+  </li>
+</ul>
+<label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
+</div>
+<p class="hint" id="functions-hint1-part-a"></p>
+<pre class="output-block" id="functions-output1-part-a"></pre>
+<pre class="answer-block" id="functions-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Changing the Bag Count</h4>
+
+<p>Great work. Now let's try with different values.</p>
+
+<p>The factory needs to count how many bags are produced in each batch. This time, the "count bags" function should return 15. The loop will still run 3 times. Inside the loop, we need to call "count bags", catch the result in "bag count" and print it. We will use "bag count" to store the result of the function "count bags".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "count bags" and set its return value to <code>15</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bag count" to store the result of the function "count bags".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "bag count" with a label.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now use a loop to run the "count bags" function 3 times:
+    <div class="code-example">
+      <code>SET bag count = count bags<br>PRINT "Bags in this batch: ", bag count</code>
+    </div>
+  </li>
+</ul>
+
+<label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint1-part-b"></p>
+<pre class="output-block" id="functions-output1-part-b"></pre>
+<pre class="answer-block" id="functions-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Ingredient Usage Per Batch 🧂  █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-2">
+<h3 class="exercise-title">Exercise 2: Ingredient Usage Per Batch 🧂</h3>
+
+<h4 class="sub-title">Part A: Calculating Butter Used</h4>
+
+<p>In the popcorn factory, each batch uses a fixed amount of butter. To calculate the total butter used, we need to write a function that sets the "butter used" to a specific value, calculates the total butter used, and returns it. We will then use a loop to call this function four times and print the result each time. The "butter used" will be set to 5 inside the function, and the total butter used will be calculated by multiplying the "butter used" by 2.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "butter used" and set its value to <code>5</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total" and set its value to the result of multiplying "butter used" by <code>2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the calculation, which is the total butter used this batch.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function four times in a loop and print the result each time in the code block below.</li>
+</ul>
+
+<label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint2-part-a"></p>
+<pre class="output-block" id="functions-output2-part-a"></pre>
+<pre class="answer-block" id="functions-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Calculating Butter Used with a Different Value</h4>
+
+<p>In Part A, you calculated the total butter used for each batch with a fixed amount of butter.</p>
+
+<p>In Part B, you will change the amount of "butter used" to 8 inside the function. The "butter used" is then calculated by multiplying it by 2 and storing it in "total". You will then write a loop that runs 4 times, calling the function and printing the result each time. The "butter used" value is now 8, so the calculation will be different from Part A.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "butter used" and set its value to <code>8</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total" and set its value to <code>"butter used" * 2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the calculation, which is the "total" butter used for each batch.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function and print the result inside a loop that runs 4 times in the code block below.</li>
+</ul>
+
+<label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint2-part-b"></p>
+<pre class="output-block" id="functions-output2-part-b"></pre>
+<pre class="answer-block" id="functions-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Flavour Check Per Batch 🍬     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-3">
+<h3 class="exercise-title">Exercise 3: Flavour Check Per Batch 🍬</h3>
+
+<h4 class="sub-title">Part A: Checking Flavours</h4>
+
+<p>In the popcorn factory, each batch produces a different flavour. To keep track of the flavours, we need to write a function that takes the flavour as a parameter and returns it with a message. We will loop through three flavours: "butter", "cheese", and "salt". We will use a variable named "flavour" to store the current flavour in each iteration.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "check flavour" that takes a variable named "flavour" as a parameter.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, use the "flavour" variable to create a message that includes the flavour name.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message that includes the flavour name.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through the flavours "butter", "cheese", and "salt" and call the "check flavour" function in the code block below.</li>
+</ul>
+
+<label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint3-part-a"></p>
+<pre class="output-block" id="functions-output3-part-a"></pre>
+<pre class="answer-block" id="functions-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Checking More Flavours</h4>
+
+<p>Now that you have written a function to check the flavour of a batch, you can use it to check different flavours.</p>
+
+<p>In this part of the exercise, you will use the "check flavour" function to check the flavours "caramel", "chilli", and "toffee". You will use a loop to call the function three times, once for each flavour, and store the result in the "result" variable. The "flavour" variable will be used to pass the flavour to the function.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavour list" and set its value to a list containing "caramel", "chilli", and "toffee).</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "result" and set its value to an empty string.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of calling the "check flavour" function with each flavour in the "flavour list".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through the "flavour list" and call the "check flavour" function with each flavour in the code block below.</li>
+</ul>
+
+<label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint3-part-b"></p>
+<pre class="output-block" id="functions-output3-part-b"></pre>
+<pre class="answer-block" id="functions-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Batch Safety Check 🦺          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-4">
+<h3 class="exercise-title">Exercise 4: Batch Safety Check 🦺</h3>
+
+<h4 class="sub-title">Part A: Checking Bag Count</h4>
+
+<p>The factory needs to check if there are enough bags before each batch runs. The "batch safety check" function will take the "bag count" as a parameter and return whether it is safe to proceed. The function will be called in a loop with different "bag count" values.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "batch safety check" that takes "bag count" as a parameter.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, check if "bag count" is greater than 5 and return "Safe to proceed!" if true, otherwise return "Not enough bags!".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the function call for each "bag count" value.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "batch safety check" function in a loop with the values 12, 3, and 8, and print the result each time in the code block below.</li>
+</ul>
+
+<label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint4-part-a"></p>
+<pre class="output-block" id="functions-output4-part-a"></pre>
+<pre class="answer-block" id="functions-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Checking More Batches</h4>
+
+<p>Now that you have written a function to check the safety of a batch based on the "bag count", you can use it to check more batches.</p>
+
+<p>In this part, you will use the same function, but this time you will check batches with "bag count" values of 15, 2, and 10. You will call the function in a loop, passing these values as the "bag count" parameter, and print the result each time. The "bag count" will determine whether it is "Safe to proceed!" or "Not enough bags!".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "batch number" and set its value to 1, 2, or 3 to represent the batches.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bag count" and set its value to 15, 2, or 10 to represent the number of bags in each batch.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the function call, which will be either "Safe to proceed!" or "Not enough bags!" for each batch.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function in a loop with the given "bag count" values and print the results.</li>
+</ul>
+
+<label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint4-part-b"></p>
+<pre class="output-block" id="functions-output4-part-b"></pre>
+<pre class="answer-block" id="functions-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: The Full Production Report 🌟  █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-5">
+<h3 class="exercise-title">Exercise 5: The Full Production Report 🌟</h3>
+
+<h4 class="sub-title">Part A: Creating the Production Report</h4>
+
+<p>In this exercise, you will create a production report for Poppy's Factory. The report will include the factory name, flavour, and bag count. You will use a function to generate the report and a loop to call the function for different batches. The "factory name" variable will be set outside the function, and the "flavour" and "bag count" will be passed as parameters.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".
+
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "production report" that takes "flavour" and "bag count" as parameters. Inside the function, check if the "bag count" is greater than 5. If it is, RETURN the "flavour" followed by " — Ready!". Otherwise, RETURN the "flavour" followed by " — Not enough bags!".
+
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "factory name" and the result of calling the "production report" function.
+
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "production report" function in a loop three times with the following parameters: "butter" and 12, "cheese" and 3, "salt" and 8 in the code block below.
+</ul>
+
+<label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-a"></p>
+<pre class="output-block" id="functions-output5-part-a"></pre>
+<pre class="answer-block" id="functions-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Full Production Report with Different Flavours</h4>
+
+<p>Now that you have seen how the production report function works with different batch sizes, it is time to try it with different flavours.</p>
+
+<p>In this part of the exercise, you will keep the "factory name" as "Poppy's Factory" and call the same "production report" function in a loop three times with the following flavours and bag counts: "caramel" with 15 bags, "chilli" with 2 bags, and "toffee" with 10 bags. You will use the "flavour" and "bag count" as parameters to the function and print the "factory name" and the report each time.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".
+
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a loop that calls the "production report" function three times with the given flavours and bag counts.
+
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "factory name" and the report each time the function is called.
+
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "production report" function in a loop with the specified flavours and bag counts in the code block below.
+</ul>
+
+<label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-b"></p>
+<pre class="output-block" id="functions-output5-part-b"></pre>
+<pre class="answer-block" id="functions-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-7-FUNCTIONS-PART5                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

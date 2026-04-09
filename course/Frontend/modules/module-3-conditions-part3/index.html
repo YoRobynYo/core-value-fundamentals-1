@@ -233,15 +233,18 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-1">
 <h3 class="exercise-title">Exercise 1: Safety Guard Verification 🛡️</h3>
-<h4 class="sub-title">Part A: Check if the guard's position is safe</h4>
-<p>In this exercise, you will check if a safety guard's position meets or exceeds the minimum required for safety. Variables to use are "guard position" and "minimum safe position".</p>
+
+<h4 class="sub-title">Part A: Check if Guard is in Safe Position</h4>
+
+<p>Before a machine starts, the safety guard must be in a safe position. Let's check if the guard's position is at least the minimum required for safety.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to <code>30</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to <code>25</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Guard position is safe: true" if the guard's position is greater than or equal to the minimum safe position, otherwise display "Guard position is safe: false".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the guard is in a safe position:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to 30.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to 25.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Guard position is safe: ", followed by the result of checking if the guard's position is greater than or equal to the minimum safe position.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the guard's position:
     <div class="code-example">
-      <code>SET guard position = 30<br>SET minimum safe position = 25<br>IF guard position >= minimum safe position THEN<br>&nbsp;&nbsp;PRINT "Guard position is safe: true"<br>ELSE<br>&nbsp;&nbsp;PRINT "Guard position is safe: false"<br>END IF</code>
+      <code>SET "guard position" = 30<br>SET "minimum safe position" = 25<br>PRINT "Guard position is safe: ", "guard position" >= "minimum safe position"</code>
     </div>
   </li>
 </ul>
@@ -258,32 +261,26 @@
 <p class="hint" id="conditions-hint1-part-a"></p>
 <pre class="output-block" id="conditions-output1-part-a"></pre>
 <pre class="answer-block" id="conditions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Guard Position Verification</h4>
-
-<p>Great work! Now let's try with different values.</p>
-
-<p>Before we start, the second safety guard is in a position that doesn't meet the minimum safe requirement. The guard's current position is 10, and the minimum safe position is 20.</p>
-
+<h4 class="sub-title">Part B: Checking an Unsafe Guard Position</h4>
+<p>Great work on checking a safe guard position. Now let's try with different values.</p>
+<p>In this scenario, the "guard position" is 0.8 metres, and the "minimum safe position" is 1 metre. We need to check if the guard's position is at least the minimum required for safety using the "greater than or equal to" operator.</p>
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to 10.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to 20.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Guard position is safe: ", followed by the result of guard position >= minimum safe position.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now run your code:
-        <div class="code-example">
-            <code>SET guard position = 10<br>SET minimum safe position = 20<br>PRINT "Guard position is safe: ", guard position >= minimum safe position</code>
-        </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to <code>0.8</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to <code>1</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "guard position" is safe or not.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now check the guard's position:
+    <div class="code-example">
+      <code>SET "guard position" = 0.8<br>SET "minimum safe position" = 1<br>PRINT "Guard position is safe: ", "guard position" >= "minimum safe position"</code>
+    </div>
+  </li>
 </ul>
-
 <label for="conditions-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex1-part-b" data-section="conditions"></div>
-
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
 </div>
-
 <p class="hint" id="conditions-hint1-part-b"></p>
 <pre class="output-block" id="conditions-output1-part-b"></pre>
 <pre class="answer-block" id="conditions-answer1-part-b"></pre>
@@ -294,43 +291,40 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 2                       █ -->
-<!-- █  // Exercise 2: SAFETY GOGGLES CHECK 🥽        █ -->
+<!-- █  // Exercise 2: Safety Goggles Check 🥽        █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-2">
-<h3 class="exercise-title">Exercise 2: SAFETY GOGGLES CHECK 🥽</h3>
-<h4 class="sub-title">Part A: Checking if there are enough goggles for everyone</h4>
-<p>At a machine station, we need to make sure there are enough safety goggles for every child. We have "goggles available" and "children at station". If the number of goggles is greater than or equal to the number of children, we can proceed safely.</p>
+<h3 class="exercise-title">Exercise 2: Safety Goggles Check 🥽</h3>
+<h4 class="sub-title">Part A: Enough Goggles?</h4>
+<p>At a machine station, we need to make sure there are enough safety goggles for all the children. Let's check if we have enough goggles!</p>
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to 20.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to 15.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough goggles for everyone: true" if the number of goggles is greater than or equal to the number of children, otherwise display "There are enough goggles for everyone: false".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough goggles for everyone in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to 15.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to 10.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough goggles for everyone: " followed by the result of comparing "goggles available" with "children at station".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough goggles for all the children in the code block below.</li>
 </ul>
-
 <label for="conditions-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex2-part-a" data-section="conditions"></div>
-
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="2-part-a">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="2-part-a">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="2-part-a">Reset My Code</button>
 </div>
-
 <p class="hint" id="conditions-hint2-part-a"></p>
 <pre class="output-block" id="conditions-output2-part-a"></pre>
 <pre class="answer-block" id="conditions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Not Enough Goggles</h4>
+<h4 class="sub-title">Part B: Checking if there are enough goggles for everyone</h4>
 
-<p>In Part A, we checked if there were enough goggles for all the children at a machine station. Now let's see what happens when there aren't enough goggles.</p>
+<p>From Part A, we learned that if we have at least as many goggles as children, we can use them safely.</p>
 
-<p>At another station, there are 5 goggles available but 7 children need them to use the machines safely. 🥽</p>
+<p>Now imagine you're at another machine station where the number of goggles is different. Let's say "goggles available" is 3 and "children at station" is 5. Do we have enough goggles for everyone?</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to <code>5</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to <code>7</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough goggles for everyone: false".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough goggles for all the children in the code block below.</li>
-   </ul>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to 3.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to 5.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough goggles for everyone:" followed by the result of comparing "goggles available" with "children at station".</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough goggles for everyone in the code block below.</li>
+</ul>
 
 <label for="conditions-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex2-part-b" data-section="conditions"></div>
@@ -356,15 +350,15 @@
 <div class="exercise-box" id="conditions-exercise-3">
 <h3 class="exercise-title">Exercise 3: Safety Gloves Check 🧤</h3>
 
-<h4 class="sub-title">Part A: Check Minimum Gloves Available</h4>
+<h4 class="sub-title">Part A: Minimum Gloves Available</h4>
 
-<p>Ensure there are at least the minimum number of gloves required for safety.</p>
+<p>Ensure there are at least the minimum number of gloves required.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves available" and set its value to 50.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum required" and set its value to 40.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Minimum gloves available: true".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the number of gloves available is greater than or equal to the minimum required in the code block below.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves available" and set its value to 20.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum required" and set its value to 15.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Minimum gloves available: true" if the number of gloves available is greater than or equal to the minimum required.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are at least the minimum number of gloves required in the code block below.</li>
    </ul>
 
 <label for="conditions-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -379,17 +373,17 @@
 <p class="hint" id="conditions-hint3-part-a"></p>
 <pre class="output-block" id="conditions-output3-part-a"></pre>
 <pre class="answer-block" id="conditions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Check Storage Capacity</h4>
+<h4 class="sub-title">Part B: Check Storage Limit</h4>
 
-<p>In Part A, we checked if there were enough gloves available. Now, let's make sure we don't have too many in our storage box.</p>
+<p>In Part A, we checked if there were at least the minimum number of gloves required. Now, let's ensure that the number of gloves in storage does not exceed the maximum capacity.</p>
 
-<p>We need to ensure that the number of gloves in the box does not exceed its maximum capacity. For this exercise, let's say we need at least 15 gloves and the maximum capacity of our storage box is 20 gloves.</p>
+<p>Imagine you have a box with safety gloves, and it can hold up to 50 gloves. You currently have 45 gloves in the box. We need to check if we are within the storage limit.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves in box" and set its value to 18.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum capacity" and set its value to 20.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Storage limit not exceeded:" followed by whether the number of gloves in the box is less than or equal to the maximum capacity.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the number of gloves in the box is less than or equal to the maximum capacity in the code block below.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves in box" and set its value to 45.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum capacity" and set its value to 50.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Storage limit not exceeded: true" if the number of gloves in the box is less than or equal to the maximum capacity. Otherwise, print "Storage limit exceeded: false".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the number of gloves in the box is within the storage limit.</li>
    </ul>
 
 <label for="conditions-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -415,14 +409,16 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-4">
 <h3 class="exercise-title">Exercise 4: Weighing Scale Check ⚖️</h3>
-<h4 class="sub-title">Part A: Calibration Check</h4>
-<p>Check if the empty scale's reading is at least zero (not a negative number).</p>
+
+<h4 class="sub-title">Part A: Ensure Calibrated</h4>
+
+<p>To make sure a weighing scale is calibrated correctly, we need to check if its reading is at least zero (not a negative number). Imagine you have an empty scale and it shows a number. We want to know if that number is greater than or equal to zero.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scale reading" and set its value to 0.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum reading" and set its value to 0.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Scale is calibrated correctly: true" if the scale reading is greater than or equal to the minimum reading, otherwise print "Scale is not calibrated correctly: false".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the scale reading is at least zero in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scale reading" and set its value to `0`.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Scale is calibrated correctly: true" if the "scale reading" is greater than or equal to zero. Otherwise, print "Scale is calibrated correctly: false".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check if the "scale reading" is greater than or equal to zero in the code block below.</li>
+   </ul>
 
 <label for="conditions-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex4-part-a" data-section="conditions"></div>
@@ -436,19 +432,18 @@
 <p class="hint" id="conditions-hint4-part-a"></p>
 <pre class="output-block" id="conditions-output4-part-a"></pre>
 <pre class="answer-block" id="conditions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Scale is not overloaded</h4>
+<h4 class="sub-title">Part B: Checking Scale Weight</h4>
 
-<p>In Part A, we checked if the empty scale's reading was at least zero (not a negative number). Now let's ensure that the current weight on the scale does not exceed the maximum weight limit.</p>
+<p>In Part A, we checked if the scale reading is at least zero to ensure it's calibrated correctly. Now let's focus on making sure the current weight on the scale doesn't exceed the maximum allowed weight.</p>
 
-<p>Current weight on the scale: "10 kg"<br>
-Maximum weight allowed: "20 kg"</p>
+<p>Imagine you have a weighing scale that can hold up to 20 kilograms. The current weight on the scale is 15 kilograms. We need to make sure the scale is not overloaded.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current weight" and set its value to "10 kg".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum weight" and set its value to "20 kg".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Scale is not overloaded: true" if the current weight is less than or equal to the maximum weight.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the current weight is less than or equal to the maximum weight in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current weight" and set its value to <code>15</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum weight" and set its value to <code>20</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Scale is not overloaded: true" if the current weight is less than or equal to the maximum weight.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the current weight is less than or equal to the maximum weight in the code block below.</li>
+   </ul>
 
 <label for="conditions-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex4-part-b" data-section="conditions"></div>
@@ -473,17 +468,14 @@ Maximum weight allowed: "20 kg"</p>
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-5">
 <h3 class="exercise-title">Exercise 5: Final Readiness Verification ✅</h3>
-
 <h4 class="sub-title">Part A: Check Minimum Helpers</h4>
-
-<p>To ensure we have enough helpers at the station, we need to make sure there are AT LEAST the minimum number of helpers required.</p>
-
+<p>To ensure we have enough helpers at the station, let's verify that we have AT LEAST the minimum number of helpers required. If we have fewer than the minimum, it's not safe to proceed.</p>
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "helpers at station" and set its value to `5`.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum helpers" and set its value to `3`.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough helpers at the station: true" if the number of helpers is greater than or equal to the minimum number of helpers, otherwise display "There are not enough helpers at the station: false".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough helpers in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "helpers at station" and set its value to 3.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum helpers" and set its value to 2.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "There are enough helpers at the station: true" if "helpers at station" is greater than or equal to "minimum helpers".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough helpers in the code block below.</li>
+   </ul>
 
 <label for="conditions-ex5-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex5-part-a" data-section="conditions"></div>
@@ -497,20 +489,18 @@ Maximum weight allowed: "20 kg"</p>
 <p class="hint" id="conditions-hint5-part-a"></p>
 <pre class="output-block" id="conditions-output5-part-a"></pre>
 <pre class="answer-block" id="conditions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Check if the Station is Not Too Crowded</h4>
+<h4 class="sub-title">Part B: Checking the Crowd</h4>
 
-<p>In Part A, we checked that there are enough helpers at the station. Now, let's make sure the total number of people does not exceed the maximum allowed for safety.</p>
+<p>Now that we've confirmed there are enough helpers at the station, let's make sure we're not overcrowded.</p>
 
-<p>For this exercise, let's assume:</p>
-- The variable "people at station" is set to 30.
-- The variable "maximum allowed" is set to 25.
+<p>We need to check the total number of "people at station" to ensure it's not more than the "maximum allowed" for safety reasons. The "people at station" currently stands at 10, and the "maximum allowed" is 15. We must verify that the "people at station" does not exceed the "maximum allowed" to avoid any accidents.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "people at station" and set its value to 30.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum allowed" and set its value to 25.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The station is not too crowded: true" if the number of people at the station is less than or equal to the maximum allowed, otherwise display "The station is not too crowded: false".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are too many people in the station in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "people at station" and set its value to <code>10</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum allowed" and set its value to <code>15</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the current number of "people at station" and the "maximum allowed" for reference.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "people at station" is less than or equal to the "maximum allowed" in the code block below.</li>
+</ul>
 
 <label for="conditions-ex5-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex5-part-b" data-section="conditions"></div>

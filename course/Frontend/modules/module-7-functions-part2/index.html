@@ -94,10 +94,10 @@
 <div class="exercise-box" id="functions-exercise-1">
 <h3 class="exercise-title">Exercise 1: The Pencil Colour ✏️</h3>
 <h4 class="sub-title">Part A: Getting the Pencil Colour</h4>
-<p>The classroom needs to know what colour the pencils are. To find this out, we will write a function that returns the colour of the pencils. We will then catch the return value in a variable called "pencil colour" and print it. This will help the children in the classroom know what colour their pencils are.</p>
+<p>The classroom needs to know what colour the pencils are. To find this out, we will write a function that returns the colour of the pencils. We will then use this function to get the colour and print it out. The colour we are looking for is "yellow".</p>
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns the value <code>"yellow"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the return value of the "get pencil colour" function.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the result of calling the "get pencil colour" function.</li>
      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "The pencil colour is " along with the value of "pencil colour".</li>
      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
        <div class="code-example">
@@ -107,25 +107,27 @@
    </ul>
 <label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
   <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint1-part-a"></p>
 <pre class="output-block" id="functions-output1-part-a"></pre>
 <pre class="answer-block" id="functions-answer1-part-a"></pre>
 <h4 class="sub-title">Part B: Changing the Pencil Colour</h4>
 
-<p>Great work! Now let's try with different values.</p>
+<p>Great work. Now let's try with different values.</p>
 
-<p>The classroom needs to know what colour the pencils are, but this time they are "red". We will write a function that returns the colour "red". We will catch the return value in a variable called "pencil colour" and print it. The "pencil colour" variable will store the value returned by our function.</p>
+<p>The classroom needs to know what colour the pencils are, but this time they are "red". Write a function that returns the colour. Use a variable named "pencil colour" to catch the return value and print it. The function should be called "get pencil colour" and it should return "red" when called.</p>
 
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns <code>"red"</code>.</li>
      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the return value of the "get pencil colour" function.</li>
      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the pencil colour.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to make it happen:
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now put it all together:
        <div class="code-example">
          <code>FUNCTION "get pencil colour"<br>  RETURN "red"<br>END FUNCTION<br>SET "pencil colour" = "get pencil colour"<br>PRINT "The pencil colour is ", "pencil colour"</code>
        </div>
@@ -156,12 +158,12 @@
 <div class="exercise-box" id="functions-exercise-2">
 <h3 class="exercise-title">Exercise 2: The Tray Count 📋</h3>
 <h4 class="sub-title">Part A: Tray Count Function</h4>
-<p>We need to find out how many trays are in the classroom. To do this, we will write a function called "get tray count" that returns a fixed number. We will then catch the return value in "tray count" and print it. The function should return 10, and we will print "There are 10 trays in the classroom".</p>
+<p>The classroom has a certain number of trays, and we want to write a function that returns this number. We will use a function called "get tray count" to achieve this. The function will return a fixed number, which we will then catch and print in a sentence.</p>
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get tray count" and set its return value to <code>10</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "tray count" and set its value to the return value of "get tray count", which is <code>10</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "There are " and the value of "tray count" and " trays in the classroom".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the function and print the tray count in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns the number 10.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "tray count" to catch the return value of the "get tray count" function.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the sentence "There are " followed by the "tray count" and " trays in the classroom".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print the tray count in the code block below.</li>
 </ul>
 <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
@@ -177,13 +179,13 @@
 
 <p>In Part A, you wrote a function to return the number of trays in the classroom and printed the result.</p>
 
-<p>Now, imagine the classroom has more trays. You need to change the function to return 15 trays. You will use the "tray count" variable to catch the return value from the "get tray count" function. The "get tray count" function should return the new number of trays, and then you will print the result using the "tray count" variable.</p>
+<p>Now, imagine there are more trays in the classroom. You need to change the function to return 15 trays. You will use the "tray count" variable to catch the return value from the "get tray count" function. The "get tray count" function should return the new number of trays, and then you will print a message to show the updated tray count using the "tray count" variable.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tray count" and set its value to the return value of the "get tray count" function.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "get tray count" and set its return value to <code>15</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "There are " and the value of the "tray count" variable and the text " trays in the classroom".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print the "tray count" in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tray count" and set its value to the result of calling the "get tray count" function.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns 15.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "There are " followed by the "tray count" and " trays in the classroom".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print the tray count in the code block below.</li>
 </ul>
 
 <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
@@ -210,14 +212,14 @@
 <div class="exercise-box" id="functions-exercise-3">
 <h3 class="exercise-title">Exercise 3: The Supply Box 📦</h3>
 
-<h4 class="sub-title">Part A: Getting Started with Supply Functions</h4>
+<h4 class="sub-title">Part A: Getting a Supply</h4>
 
-<p>In this exercise, each child needs to know what is in their supply box. To achieve this, we will write a function that takes a "supply name" as a parameter and returns it. This function will be called with different supply names, and the returned values will be printed out.</p>
+<p>In this exercise, each child needs to know what is in their supply box. To achieve this, we will write a function that takes a "supply name" as a parameter and returns it. The function will be called with different supply names, and the returned values will be printed out.</p>
 
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get supply" that takes a "supply name" as a parameter.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, return the "supply name" that was passed in.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the returned "supply name" when the function is called with "ruler" and "scissors".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "get supply" function with "ruler" as the "supply name" and catch the return in "my supply".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "my supply" value, which is "ruler", and then call the function again with "scissors".</li>
      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get supply" function and call it with "ruler" and "scissors" in the code block below.</li>
    </ul>
 
@@ -233,17 +235,17 @@
 <p class="hint" id="functions-hint3-part-a"></p>
 <pre class="output-block" id="functions-output3-part-a"></pre>
 <pre class="answer-block" id="functions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Using the Get Supply Function</h4>
+<h4 class="sub-title">Part B: Using the Get Supply Function with More Items</h4>
 
-<p>In Part A, you wrote a function called "get supply" that takes a "supply name" as a parameter and returns it, then called it with "ruler" and "scissors" to print the results.</p>
+<p>In Part A, you wrote a function called "get supply" that takes a "supply name" as a parameter and returns it, then called it with "ruler" and "scissors" to see the results.</p>
 
-<p>Now, you need to use the same "get supply" function to find out what is in the supply box when the "supply name" is "glue stick" or "paint brush". You will call the function with these "supply name" values and print the results. The "get supply" function will take the "supply name" as a parameter and return it, so you can see what supply you have.</p>
+<p>Now, you need to use the same "get supply" function with different "supply name" values, such as "glue stick" and "paint brush", to see what is in your supply box. You will pass these "supply name" values to the function and print the results. The "supply name" will be returned by the function and you can then print it to the screen.</p>
 
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of calling the "get supply" function with "glue stick" as the "supply name" value.</li>
      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of calling the "get supply" function with "paint brush" as the "supply name" value.</li>
      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "My supply is " followed by the value of "my supply" each time.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get supply" function with "glue stick" and "paint brush" as the "supply name" and print the results in the code block below.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get supply" function with "glue stick" and "paint brush" and print the results in the code block below.</li>
    </ul>
 
 <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -269,13 +271,13 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="functions-exercise-4">
 <h3 class="exercise-title">Exercise 4: The Cupboard Label 🏷️</h3>
-<h4 class="sub-title">Part A: Getting Started with Cupboard Labels</h4>
-<p>In the classroom, every cupboard has a label. To help the children find their belongings, we need to write a function that takes a "cupboard number" as a parameter and returns the label. We will start by creating a function called "get cupboard label" that takes the "cupboard number" and returns it. Then, we will call this function with the numbers 1 and 2, and print the results.</p>
+<h4 class="sub-title">Part A: Getting the Cupboard Label</h4>
+<p>In the classroom, every cupboard has a label. To help the children find their things, we need to write a function that takes a "cupboard number" and returns the label. We will use this function to get the labels for cupboards 1 and 2. The function should take the "cupboard number" as a parameter and return it as the label.</p>
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get cupboard label" that takes a "cupboard number" as a parameter.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, return the "cupboard number" that was passed in.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the returned "cupboard number" as the cupboard label.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get cupboard label" function with the numbers 1 and 2, and print the results in the code block below.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, return the "cupboard number" as the label.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the label when we call the function with a "cupboard number" and catch the result in "my label".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get cupboard label" function with 1 and 2, and print the results.</li>
 </ul>
 <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
@@ -289,15 +291,15 @@
 <pre class="answer-block" id="functions-answer4-part-a"></pre>
 <h4 class="sub-title">Part B: Calling the Function with More Cupboard Numbers</h4>
 
-<p>Now that you have written and called the "get cupboard label" function with cupboard numbers 1 and 2, it is time to try it with more numbers.</p>
+<p>Now that you have written and called a function with cupboard numbers 1 and 2, it is time to try more numbers.</p>
 
-<p>In this part of the exercise, you will call the "get cupboard label" function with "cupboard number" as 3 and 4, and print the returned label each time. You will use the "cupboard number" as a parameter and catch the returned label in a variable named "my label".</p>
+<p>In this part of the exercise, you will call the "get cupboard label" function with "cupboard number" as 3 and 4, and print the results. You will use the "cupboard number" as a parameter and store the returned value in a variable named "my label". The "cupboard number" will be used to get the label, and then you will print the label.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with <code>3</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with <code>4</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "my label" each time.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function and print the result in the code block below.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with 3.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with 4.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the cupboard label for each "cupboard number".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with 3 and 4 in the code block below.</li>
    </ul>
 
 <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
@@ -349,14 +351,14 @@
 <pre class="answer-block" id="functions-answer5-part-a"></pre>
 <h4 class="sub-title">Part B: Changing the Classroom</h4>
 
-<p>Now that you have practised checking supplies in "Room 3", let's change the classroom and check some more supplies.</p>
+<p>Now that you have practised checking supplies in "Room 3", it is time to change the classroom and check some more supplies.</p>
 
-<p>In this part of the exercise, you will change the "classroom name" to "Room 5" and check the "supply name" for "scissors" and "glue stick". You will use the same function as before, but with the new "classroom name" and different "supply name" values.</p>
+<p>In this part of the exercise, you will change the "classroom name" to "Room 5" and check the "supply name" for "scissors" and "glue stick". You will use the same function as before, but with the new "classroom name" and different "supply name" values. Remember to use the "classroom name" outside the function and the "supply name" as a parameter.</p>
 
 <ul class="indented-list">
      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "classroom name" and set its value to <code>"Room 5"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "checked supply" to catch the return from the function.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the "checked supply".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "supply name" and set its value to <code>"scissors"</code>, then to <code>"glue stick"</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the "supply name" that the function returns.</li>
      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check supply" function with "scissors" and "glue stick" in the code block below.</li>
    </ul>
 

@@ -310,19 +310,18 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-1">
 <h3 class="exercise-title">Exercise 1: Basic Flavors 🍿</h3>
-<h4 class="sub-title">Part A: Plain and Butter Popcorn</h4>
-<p>A child helps check which ingredients are needed for the basic popcorn flavors.</p>
+<h4 class="sub-title">Part A: Plain and Butter Flavors</h4>
+<p>A child helps check which ingredients are needed for the basic popcorn flavors. If the flavor is "plain" or "buttery", report the correct ingredients.</p>
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor order" and set its value to "plain".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "flavor order" and set its value to "buttery".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn only".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which flavor is ordered and print the correct ingredients:
-      <div class="code-example">
-        <code>SET flavorOrder = "plain"<br>IF flavorOrder == "plain" THEN<br>  PRINT "Get: Corn only"<br>ELSE IF flavorOrder == "buttery" THEN<br>  PRINT "Get: Corn and butter"<br>END IF</code>
-      </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor order" and set its value to "plain".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients needed" and set its value to "".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn only".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the flavor order:
+    <div class="code-example">
+      <code>SET flavorOrder = "plain"<br>SET ingredientsNeeded = ""<br>IF flavorOrder == "plain" THEN<br>&nbsp;&nbsp;ingredientsNeeded = "Corn only"<br>ELSE IF flavorOrder == "buttery" THEN<br>&nbsp;&nbsp;ingredientsNeeded = "Corn and butter"<br>END IF<br>PRINT "Get:", ingredientsNeeded</code>
+    </div>
+  </li>
 </ul>
-
 <label for="conditions-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex1-part-a" data-section="conditions"></div>
 
@@ -335,31 +334,26 @@
 <p class="hint" id="conditions-hint1-part-a"></p>
 <pre class="output-block" id="conditions-output1-part-a"></pre>
 <pre class="answer-block" id="conditions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Adding a Third Flavor</h4>
-
-<p>Great work! Now let's try with different values.</p>
-
-<p>In this part, you will add a third flavor option, "salty", to check which ingredients are needed for the popcorn. The child helps determine the correct ingredients based on the selected flavor.</p>
-
+<h4 class="sub-title">Part B: Adding a Salty Flavor Option</h4>
+<p>Great work on checking the "plain" and "buttery" flavors. Now let's try with a different value.</p>
+<p>In this part, a child is helping to check the ingredients for the "salty" flavor. The "flavor order" is set to "salty" and we need to find out which ingredients are needed. We will use the "flavor order" to decide whether to get "corn only", "corn and butter", or "corn and salt".</p>
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor order" and set its value to "salty".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display the correct ingredients.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now let's check with the new flavor:
-      <div class="code-example">
-        <code>SET "flavor order" = "salty"<br>PRINT "Get:", "Corn and salt"</code>
-      </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor order" and set its value to "salty".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients needed" and set its value based on the "flavor order". If the "flavor order" is "plain", then the "ingredients needed" is "corn only". If the "flavor order" is "buttery", then the "ingredients needed" is "corn and butter". If the "flavor order" is "salty", then the "ingredients needed" is "corn and salt".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "ingredients needed".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's write the code to check the "flavor order" and print the "ingredients needed":
+    <div class="code-example">
+      <code>SET "flavor order" = "salty"<br>IF "flavor order" is "plain" THEN<br>  SET "ingredients needed" = "corn only"<br>ELSE IF "flavor order" is "buttery" THEN<br>  SET "ingredients needed" = "corn and butter"<br>ELSE IF "flavor order" is "salty" THEN<br>  SET "ingredients needed" = "corn and salt"<br>PRINT "Get: ", "ingredients needed"</code>
+    </div>
+  </li>
 </ul>
-
 <label for="conditions-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex1-part-b" data-section="conditions"></div>
-
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
 </div>
-
 <p class="hint" id="conditions-hint1-part-b"></p>
 <pre class="output-block" id="conditions-output1-part-b"></pre>
 <pre class="answer-block" id="conditions-answer1-part-b"></pre>
@@ -375,15 +369,14 @@
 <div class="exercise-box" id="conditions-exercise-2">
 <h3 class="exercise-title">Exercise 2: Sweet Flavors 🍬</h3>
 
-<h4 class="sub-title">Part A: Check Ingredients for Sweet Popcorn</h4>
+<h4 class="sub-title">Part A: Checking Ingredients for Popcorn</h4>
 
-<p>The child moves to the sweet section to check ingredients for sweet popcorn varieties. The available sweet flavors are "sweet" and "butterscotch".</p>
+<p>The child moves to the sweet section to check ingredients for different types of sweet popcorn varieties.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor choice" and set its value to "sweet flavor".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients needed" and set its value to an empty string.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn and sugar".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if "flavor choice" is "sweet" or "butterscotch" and set "ingredients needed" accordingly.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "popcorn flavor" and set its value to "sweet flavor".</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display the ingredients needed.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check if the popcorn flavor is "sweet" or "butterscotch" and report the ingredients in the code block below.</li>
 </ul>
 
 <label for="conditions-ex2-part-a" class="code-label">Add your code in the code block below</label>
@@ -398,17 +391,16 @@
 <p class="hint" id="conditions-hint2-part-a"></p>
 <pre class="output-block" id="conditions-output2-part-a"></pre>
 <pre class="answer-block" id="conditions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Add Toffee Option</h4>
+<h4 class="sub-title">Part B: Adding Toffee Flavors</h4>
 
-<p>In Part A, you checked for "sweet" and "butterscotch". Now let's add a third sweet option, "toffee", to the list of flavors to check.</p>
+<p>In Part A, you learned to check if a sweet flavor is "sweet" or "butterscotch". Now, let's expand our knowledge by adding another option, "toffee", to the list of flavors.</p>
 
-<p>Imagine you are checking ingredients for sweet popcorn varieties. The child moves to the sweet section and sees three options: "corn", "butter", and "toffee pieces". You need to report the correct ingredients based on the selected flavor.</p>
+<p>As a child in the UK, you have moved to a new sweet section where you find ingredients for different popcorn varieties. You decide to check if the new flavor is "sweet" or "butterscotch", but now you also want to include "toffee".</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "selectedFlavor" and set its value to "toffee" (or any other valid flavor).</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value based on the selected flavor. If "toffee", then "corn, butter, and toffee pieces". Otherwise, use the same logic as in Part A.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get:", followed by the ingredients needed for the selected flavor.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check for the "toffee" option and set the correct ingredients in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor" and set its value to "toffee".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn, butter, and toffee pieces".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is "toffee" in the code block below.</li>
 </ul>
 
 <label for="conditions-ex2-part-b" class="code-label">Add your code in the code block below</label>
@@ -430,20 +422,19 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 3                       █ -->
-<!-- █  // Exercise 3: SAVORY FLAVORS 🧀              █ -->
+<!-- █  // Exercise 3: Savory Flavors 🧀              █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-3">
-<h3 class="exercise-title">Exercise 3: SAVORY FLAVORS 🧀</h3>
+<h3 class="exercise-title">Exercise 3: Savory Flavors 🧀</h3>
 
-<h4 class="sub-title">Part A: Check Ingredients for Cheese and Chili</h4>
+<h4 class="sub-title">Part A: Check for Cheese and Chili</h4>
 
-<p>The child visits the cheese and spice section to check ingredients for savory flavors. The child is looking for either "cheese" or "chili". If found, report the ingredients needed.</p>
+<p>The child visits the cheese and spice section to check ingredients for savory flavors. The child finds "corn" and either "cheese powder" or "chili powder". Create a variable named "savory flavor" and set its value to either "cheese" or "chili". Use PRINT to display "Get: Corn and cheese powder".</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "savory flavor" and set its value to "cheese".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "savory flavor" and set its value to "chili".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn and cheese powder".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the savory flavor is "cheese" or "chili" in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "savory flavor" and set its value to <code>"cheese"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display <code>"Get: Corn and cheese powder"</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check for "cheese" in the code block below.</li>
 </ul>
 
 <label for="conditions-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -458,18 +449,16 @@
 <p class="hint" id="conditions-hint3-part-a"></p>
 <pre class="output-block" id="conditions-output3-part-a"></pre>
 <pre class="answer-block" id="conditions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Add a Third Savory Option</h4>
+<h4 class="sub-title">Part B: Adding More Savory Options</h4>
 
-<p>In Part A, you checked for "cheese" or "chili". Now, let's add a third savory option, "BBQ", to the list of flavors.</p>
-
-<p>Imagine you're at the cheese and spice section and want to check if the ingredient is corn, BBQ seasoning, or one of the two savory options from Part A. You'll need to use PRINT to display what ingredients you get based on your choice.</p>
+<p>In Part A, you learned how to check if a savory flavor is "cheese" or "chili". Now let's add a third option, "BBQ", to the list of flavors to check.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "savory flavor" and set its value to <code>"BBQ"</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredient" and set its value to the chosen savory flavor.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn and BBQ seasoning".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the ingredient and print the correct output in the code block below.</li>
-</ul>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "savory flavor" and set its value to "cheese".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "second savory flavor" and set its value to "chili".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "third savory flavor" and set its value to "BBQ".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the savory flavor is "cheese", "chili", or "BBQ" and display the ingredients accordingly.</li>
+   </ul>
 
 <label for="conditions-ex3-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex3-part-b" data-section="conditions"></div>
@@ -494,33 +483,41 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-4">
 <h3 class="exercise-title">Exercise 4: Special Flavors 🍫</h3>
-<h4 class="sub-title">Part A: Check Ingredients</h4>
+
+<h4 class="sub-title">Part A: Caramel and Chocolate Flavors</h4>
+
 <p>The child helps check the ingredients for the premium caramel and chocolate flavors.</p>
+
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "premium flavor" and set its value to "caramel".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "premium flavor" and set its value to "chocolate".</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor" and set its value to <code>"caramel"</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredient" and set its value to <code>""</code>.</li>
     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get: Corn, butter, and caramel sauce".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the premium flavor is "caramel" or "chocolate" and report the ingredients in the code block below.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is "caramel" or "chocolate" in the code block below.</li>
 </ul>
+
 <label for="conditions-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex4-part-a" data-section="conditions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="4-part-a">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="4-part-a">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="4-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="conditions-hint4-part-a"></p>
 <pre class="output-block" id="conditions-output4-part-a"></pre>
 <pre class="answer-block" id="conditions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Check for Chocolate Nuts</h4>
+<h4 class="sub-title">Part B: Checking More Premium Flavors</h4>
 
-<p>In this part, we are going to check if the premium flavor is "caramel", "chocolate", or "chocolate nuts". Let's help our child add ingredients for the chocolate nuts flavor.</p>
+<p>Now that we have checked the ingredients for the "caramel" and "chocolate" premium flavors, we need to add a new flavor to our list.</p>
+
+<p>The child is helping to check the ingredients for the "premium flavor" which now includes a third option, "chocolate nuts". We need to set the "premium flavor" to "chocolate nuts" and the "ingredients" to "Corn, melted chocolate, and peanuts".</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavor" and set its value to "caramel" or "chocolate" or "chocolate nuts".</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value based on the flavor. If it's "caramel", set it to "corn, butter, and caramel sauce". If it's "chocolate", set it to "corn, melted chocolate, and peanuts". If it's "chocolate nuts", set it to "corn, melted chocolate, peanuts, and chopped nuts".</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get:", and the ingredients needed.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check for each flavor in the code block below.</li>
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "premium flavor" and set its value to <code>"chocolate nuts"</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to <code>"Corn, melted chocolate, and peanuts"</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get:", "ingredients" to show the ingredients for the "chocolate nuts" flavor.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the "premium flavor" and print the correct ingredients in the code block below.</li>
    </ul>
 
 <label for="conditions-ex4-part-b" class="code-label">Add your code in the code block below</label>
@@ -546,11 +543,8 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-5">
 <h3 class="exercise-title">Exercise 5: Ice Cream Flavors 🍦</h3>
-
 <h4 class="sub-title">Part A: Vanilla and Strawberry</h4>
-
-<p>The child gets to see the exciting ice cream section and checks ingredients for ice cream coated popcorn. The assistant explains: "Each flavor needs specific ingredients. Sometimes we have to check between many different options. Let's see how it works!"</p>
-
+<p>The child sees the exciting ice cream section and checks if the coating needed for vanilla or strawberry ice cream coated popcorn is corn.</p>
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "vanilla".</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "strawberry".</li>
@@ -570,15 +564,17 @@
 <p class="hint" id="conditions-hint5-part-a"></p>
 <pre class="output-block" id="conditions-output5-part-a"></pre>
 <pre class="answer-block" id="conditions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Ice Cream Flavors</h4>
+<h4 class="sub-title">Part B: Special Flavors</h4>
 
-<p>In Part A, we checked if the ice cream flavor was "vanilla" or "strawberry". Now let's add the most popular option, "cookies and cream", to our list of flavors to check.</p>
+<p>In Part A, you learned to check for vanilla and strawberry ice cream flavors. Now let's add a popular option: "cookies and cream". Let's see how it works!</p>
+
+<p>Imagine checking ingredients for popcorn coated with cookies and cream ice cream. We need to make sure we have the correct coating. Variables in quotes:</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "vanilla".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "strawberry".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "cookies and cream".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the ice cream flavor is "vanilla", "strawberry", or "cookies and cream" in the code block below.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavor" and set its value to "cookies and cream".</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "coating needed" and set its value to "corn, vanilla coating, and cookie crumbles".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Get:", "cookies and cream ice cream", and "the coating needed".</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to print the final output in the code block below.</li>
 </ul>
 
 <label for="conditions-ex5-part-b" class="code-label">Add your code in the code block below</label>

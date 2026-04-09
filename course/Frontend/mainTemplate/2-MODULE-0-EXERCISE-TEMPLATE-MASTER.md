@@ -68,8 +68,6 @@ The ONLY time you reference a variable by name in steps is when referring back t
 
 When referencing back, keep the natural language description in quotes — still no real code syntax.
 
----
-
 ## RULE 2: EXERCISE 1 STEP 4 WORDING
 
 ### ✅ CORRECT Pattern — Exercise 1 Part A
@@ -82,14 +80,15 @@ The final step in Exercise 1 Part A MUST:
 ```html
 <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the headcount:
   <div class="code-example">
-    <code>
-      SET workersPresent = 18<br>
-      SET maximumCapacity = 20<br>
-      PRINT "Workers present: " + workersPresent<br>
-      PRINT workersPresent < maximumCapacity
-    </code>
+   <code>
+    SET "children present" = 18<br>
+    SET "maximum capacity" = 20<br>
+    PRINT "children present: ", "children present"<br>
+    PRINT "Maximum capacity: ", "maximum capacity"
+   </code>
   </div>
 </li>
+
 ```
 
 **Key elements:** theme-specific action ("check the headcount"), colon after the action, pseudocode block immediately after with no extra text.
@@ -121,20 +120,6 @@ Too generic! Use specific wording that matches the theme and task.
 
 The pseudocode speaks for itself. Just show it!
 
-### ❌ WRONG — Real Language Syntax in the Code Example
-
-```
-// WRONG - JavaScript syntax
-let workersPresent = 18;
-console.log(`Workers: ${workersPresent}`);
-
-// WRONG - Python syntax
-workers_present = 18
-print(f"Workers: {workers_present}")
-```
-
-**This course is LANGUAGE-AGNOSTIC. NEVER use real language syntax in any exercise. Always use pseudocode (see Rule 5 for pseudocode standards).**
-
 ### Theme-Specific Wording Examples by Module
 
 **Module 1 — Variables (Classroom):**
@@ -155,7 +140,7 @@ print(f"Workers: {workers_present}")
 **Module 5 — Loops (Factory):**
 - "Now write the code to count the corn boxes:"
 
-## RULE 2 ADDITION FOR PART B
+### RULE 2 ADDITION FOR PART B
 ⚠️ CRITICAL: Exercise 1 Part B MUST also show pseudocode in a code-example div — exactly like Part A. This is the most commonly missed rule. Never leave Part B without pseudocode.
 
 ## RULE 3: EXERCISES 2–5 FINAL STEP WORDING
@@ -244,7 +229,7 @@ PRINT "Maximum capacity: ", "maximum capacity"
 
 ### ❌ WRONG — Real Language Examples
 
-```
+```javascript
 // JavaScript — NEVER use this in Fundamentals
 let workersPresent = 18;
 console.log(`Workers: ${workersPresent}`);
@@ -301,7 +286,7 @@ No exceptions. If you are unsure — do not use it.
 
 ### Why This Matters
 - This course is built for children in the UK — British English only
-- "Period" means something very different to children in the UK — always say "lesson"
+- "Period" to have clarity for children in the UK — always say "lesson"
 - "Program/programming" is too technical and language-specific — say "code/coding"
 - Real code syntax (let, const, var) must never appear — pseudocode only (SET, PRINT, IF, FOR)
 
@@ -314,6 +299,7 @@ Variable parts are marked with `[PLACEHOLDER_NAME]`.
 
 ```html
 <!-- Exercise [NUMBER]: [TITLE] [EMOJI] -->
+
 <div class="exercise-box">
   <h3 class="exercise-title">Exercise [NUMBER]: [TITLE] [EMOJI]</h3>
 
@@ -339,18 +325,18 @@ Variable parts are marked with `[PLACEHOLDER_NAME]`.
     </li>
   </ul>
 
-  <label for="[SECTION_NAME]-ex[NUMBER]-part-a" class="code-label">Add your code in the code block below</label>
-  <div class="code-block" contenteditable="true" id="[SECTION_NAME]-ex[NUMBER]-part-a"></div>
+  <label for="[module-name]-ex[NUMBER]-part-a" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="[module-name]-ex[NUMBER]-part-a"></div>
 
   <div class="exercise-buttons">
-    <button class="hint-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-a">Hint</button>
-    <button class="run-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-a">Run My Code</button>
-    <button class="reset-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-a">Reset My Code</button>
+    <button class="hint-button" data-section="[module-name]" data-ex="[NUMBER]-part-a">Hint</button>
+    <button class="run-button" data-section="[module-name]" data-ex="[NUMBER]-part-a">Run My Code</button>
+    <button class="reset-button" data-section="[module-name]" data-ex="[NUMBER]-part-a">Reset My Code</button>
   </div>
 
-  <p class="hint" id="[SECTION_NAME]-hint[NUMBER]-part-a"></p>
-  <pre class="output-block" id="[SECTION_NAME]-output[NUMBER]-part-a"></pre>
-  <pre class="answer-block" id="[SECTION_NAME]-answer[NUMBER]-part-a"></pre>
+  <p class="hint" id="[module-name]-hint[NUMBER]-part-a"></p>
+  <pre class="output-block" id="[module-name]-output[NUMBER]-part-a"></pre>
+  <pre class="answer-block" id="[module-name]-answer[NUMBER]-part-a"></pre>
 
   <!-- Part B -->
   <h4 class="sub-title">Part B: [PART_B_TITLE]</h4>
@@ -365,20 +351,21 @@ Variable parts are marked with `[PLACEHOLDER_NAME]`.
     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to [specific task from above] in the code block below.</li>
   </ul>
 
-  <label for="[SECTION_NAME]-ex[NUMBER]-part-b" class="code-label">Add your code in the code block below</label>
-  <div class="code-block" contenteditable="true" id="[SECTION_NAME]-ex[NUMBER]-part-b"></div>
+  <label for="[module-name]-ex[NUMBER]-part-b" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="[module-name]-ex[NUMBER]-part-b"></div>
 
   <div class="exercise-buttons">
-    <button class="hint-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-b">Hint</button>
-    <button class="run-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-b">Run My Code</button>
-    <button class="reset-button" data-section="[SECTION_NAME]" data-ex="[NUMBER]-part-b">Reset My Code</button>
+    <button class="hint-button" data-section="[module-name]" data-ex="[NUMBER]-part-b">Hint</button>
+    <button class="run-button" data-section="[module-name]" data-ex="[NUMBER]-part-b">Run My Code</button>
+    <button class="reset-button" data-section="[module-name]" data-ex="[NUMBER]-part-b">Reset My Code</button>
   </div>
 
-  <p class="hint" id="[SECTION_NAME]-hint[NUMBER]-part-b"></p>
-  <pre class="output-block" id="[SECTION_NAME]-output[NUMBER]-part-b"></pre>
-  <pre class="answer-block" id="[SECTION_NAME]-answer[NUMBER]-part-b"></pre>
+  <p class="hint" id="[module-name]-hint[NUMBER]-part-b"></p>
+  <pre class="output-block" id="[module-name]-output[NUMBER]-part-b"></pre>
+  <pre class="answer-block" id="[module-name]-answer[NUMBER]-part-b"></pre>
 </div>
 <!-- End of exercise [NUMBER] -->
+
 ```
 
 ---
@@ -503,8 +490,6 @@ Use PRINT to display [what to show/compare].
 
 **Remember:** NO extra text like "Here's the complete code:" — just the action and a colon!
 
----
-
 ### [COMPLETE_PSEUDOCODE_ANSWER]
 **FOR EXERCISE 1 PART A ONLY:** The complete pseudocode solution.
 
@@ -516,7 +501,12 @@ Use PRINT to display [what to show/compare].
 
 **Example:**
 ```html
-<code>SET workersPresent = 18<br>SET maximumCapacity = 20<br>PRINT "Workers present: " + workersPresent<br>PRINT workersPresent < maximumCapacity</code>
+<code>
+  SET "workers present" = 18<br>
+  SET "maximum capacity" = 20<br>
+  PRINT "Workers present: ", "workers present"<br>
+  PRINT "Maximum capacity: ", "maximum capacity"
+</code>
 ```
 
 ---
@@ -556,9 +546,27 @@ The section name for this module. Must match exactly between HTML and the course
 - `logicalOperators` (Module 4 — both parts)
 - `loops` (Module 5 — all parts)
 
+⚠️ IMPORTANT: This list is for reference only. Always use the exact section name from the spec file you are currently working with.
+
 ---
 
 # PART 3: EXAMPLE EXERCISE
+
+NEVER keep [module-name] as-is in generated exercises. Always replace it with the actual section name from the spec file.
+
+⚠️ IMPORTANT: [module-name] is a placeholder. When generating exercises for a specific module, replace [module-name] with the actual section name from the spec file:
+
+    Module 1 → variables
+
+    Module 2 → operations
+
+    Module 3 → conditions
+
+    Module 4 → logicalOperators
+
+    Module 5 → loops
+
+    module 6 - 20 → TBC 
 
 Here is a complete example showing all pieces working together. Notice: pseudocode only, natural language variable names, no real language syntax anywhere.
 
@@ -584,51 +592,69 @@ Here is a complete example showing all pieces working together. Notice: pseudoco
     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display both values.</li>
     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the headcount:
       <div class="code-example">
-        <code>SET workersPresent = 18<br>SET maximumCapacity = 20<br>PRINT "Workers present: " + workersPresent<br>PRINT workersPresent < maximumCapacity</code>
+        <code>
+          SET "workers present" = 18<br>
+          SET "maximum capacity" = 20<br>
+          PRINT "Workers present: ", "workers present"<br>
+          PRINT "Maximum capacity: ", "maximum capacity"
+        </code>
       </div>
     </li>
   </ul>
 
-  <label for="conditions-ex1-part-a" class="code-label">Add your code in the code block below</label>
-  <div class="code-block" contenteditable="true" id="conditions-ex1-part-a"></div>
+  <label for="[module-name]-ex1-part-a" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="[module-name]-ex1-part-a"></div>
 
   <div class="exercise-buttons">
-    <button class="hint-button" data-section="conditions" data-ex="1-part-a">Hint</button>
-    <button class="run-button" data-section="conditions" data-ex="1-part-a">Run My Code</button>
-    <button class="reset-button" data-section="conditions" data-ex="1-part-a">Reset My Code</button>
+    <button class="hint-button" data-section="[module-name]" data-ex="1-part-a">Hint</button>
+    <button class="run-button" data-section="[module-name]" data-ex="1-part-a">Run My Code</button>
+    <button class="reset-button" data-section="[module-name]" data-ex="1-part-a">Reset My Code</button>
   </div>
 
-  <p class="hint" id="conditions-hint1-part-a"></p>
-  <pre class="output-block" id="conditions-output1-part-a"></pre>
-  <pre class="answer-block" id="conditions-answer1-part-a"></pre>
+  <p class="hint" id="[module-name]-hint1-part-a"></p>
+  <pre class="output-block" id="[module-name]-output1-part-a"></pre>
+  <pre class="answer-block" id="[module-name]-answer1-part-a"></pre>
 
+
+  
   <!-- Part B -->
-  <h4 class="sub-title">Part B: Checking Tomorrow's Headcount</h4>
+  <h4 class="sub-title">Part B: Teacher and Lesson Information</h4>
 
-  <p>Perfect! That check passed. Now let's verify another station.</p>
+  <p>Perfect! Now let's store information about your teacher and today's lesson.</p>
 
-  <p>Tomorrow we are expecting more workers — 22 are scheduled to arrive. The maximum capacity is still 20 workers. Let's check if we'll be over capacity tomorrow.</p>
+  <p>Your teacher is Mrs Jones and today's lesson is Fundamentals lesson number 1. Let's create variables to store this information.</p>
 
   <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "workers present" and set its value to <code>22</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum capacity" and set its value to <code>20</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display both values.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check tomorrow's headcount in the code block below.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "teacher name" and set its value to <code>"Mrs Jones"</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "lesson" and set its value to <code>"Fundamentals"</code>.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "lesson number" and set its value to <code>1</code>.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to display the teacher and lesson information:
+      <div class="code-example">
+        <code>
+          SET "teacher name" = "Mrs Jones"<br>
+          SET "lesson" = "Fundamentals"<br>
+          SET "lesson number" = 1<br>
+          PRINT "My teacher is ", "teacher name"<br>
+          PRINT "Today's lesson is ", "lesson", " number ", "lesson number"
+        </code>
+      </div>
+    </li>
   </ul>
 
-  <label for="conditions-ex1-part-b" class="code-label">Add your code for Part B below</label>
-  <div class="code-block" contenteditable="true" id="conditions-ex1-part-b"></div>
+  <label for="[module-name]-ex1-part-b" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="[module-name]-ex1-part-b"></div>
 
   <div class="exercise-buttons">
-    <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
-    <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
-    <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
+    <button class="hint-button" data-section="[module-name]" data-ex="1-part-b">Hint</button>
+    <button class="run-button" data-section="[module-name]" data-ex="1-part-b">Run My Code</button>
+    <button class="reset-button" data-section="[module-name]" data-ex="1-part-b">Reset My Code</button>
   </div>
 
-  <p class="hint" id="conditions-hint1-part-b"></p>
-  <pre class="output-block" id="conditions-output1-part-b"></pre>
-  <pre class="answer-block" id="conditions-answer1-part-b"></pre>
+  <p class="hint" id="[module-name]-hint1-part-b"></p>
+  <pre class="output-block" id="[module-name]-output1-part-b"></pre>
+  <pre class="answer-block" id="[module-name]-answer1-part-b"></pre>
 </div>
+
 <!-- End of exercise 1 -->
 ```
 
@@ -650,7 +676,7 @@ Before submitting any exercise, verify all of the following:
 - [ ] Title has correct class: `exercise-title`
 - [ ] Sub-titles have correct class: `sub-title`
 - [ ] Lists use correct class: `indented-list`
-- [ ] All IDs follow pattern: `[section]-[type][number]-part-[a/b]`
+- [ ] All IDs follow pattern: `[module-name]-ex[number]-part-[a/b]`
 
 ### Content Quality
 - [ ] Exercise introduction is engaging and clear
@@ -661,6 +687,9 @@ Before submitting any exercise, verify all of the following:
 - [ ] Exercises 2–5 reference specific task: "Now write the code to [task] in the code block below"
 - [ ] NO introductory text before pseudocode examples
 - [ ] Part B transition acknowledges Part A and introduces Part B
+- [ ] Exercise 1 ONLY → Part B shows full pseudocode (same as Part A)
+- [ ] Exercises 2-5 → Part A has NO pseudocode (children write from scratch)
+- [ ] Exercises 2-5 → Part B has NO pseudocode (children write from scratch)
 
 ### Technical Accuracy
 - [ ] All button `data-section` attributes match the section name

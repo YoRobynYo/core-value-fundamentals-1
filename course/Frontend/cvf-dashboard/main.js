@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
 const os = require('os');
+const fs = require('fs');
 
-// Path to your Frontend folder — adjust if needed
 const FRONTEND_DIR = path.join(os.homedir(), 'core-value-fundamentals', 'course', 'Frontend');
 
 let win;
@@ -12,10 +12,10 @@ let pipelineProcess = null;
 function createWindow() {
   win = new BrowserWindow({
     width: 1400,
-    height: 900,
-    minWidth: 1100,
-    minHeight: 700,
-    backgroundColor: '#000008',
+    height: 860,
+    minWidth: 1200,
+    minHeight: 720,
+    backgroundColor: '#02070e',
     titleBarStyle: 'hiddenInset',
     vibrancy: 'dark',
     webPreferences: {
@@ -24,7 +24,6 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-
   win.loadFile('index.html');
 }
 
@@ -35,21 +34,18 @@ app.on('window-all-closed', () => {
   app.quit();
 });
 
-// ── IPC: start pipeline ───────────────────────────────────────
-ipcMain.on('start-pipeline', () => {
-  if (pipelineProcess) {
-    pipelineProcess.kill();
-    pipelineProcess = null;
-  }
+// ── Pipeline ──────────────────────────────────────────────────
+function spawnScript(scriptName, args = []) {
+  if (pipelineProcess) { pipelineProcess.kill(); pipelineProcess = null; }
 
-  pipelineProcess = spawn('node', ['rebuild-all.js'], {
+  pipelineProcess = spawn('node', [scriptName, ...args], {
     cwd: FRONTEND_DIR,
     env: process.env,
   });
 
   pipelineProcess.stdout.on('data', data => {
-    const lines = data.toString().split('\n').filter(l => l.trim());
-    lines.forEach(line => win.webContents.send('pipeline-line', line));
+    data.toString().split('\n').filter(l => l.trim())
+      .forEach(line => win.webContents.send('pipeline-line', line));
   });
 
   pipelineProcess.stderr.on('data', data => {
@@ -60,7 +56,13 @@ ipcMain.on('start-pipeline', () => {
     win.webContents.send('pipeline-done', code);
     pipelineProcess = null;
   });
+}
+
+ipcMain.on('start-pipeline', (_, fromModule) => {
+  const args = fromModule ? ['--from', fromModule] : [];
+  spawnScript('rebuild-all.js', args);
 });
+ipcMain.on('start-audit', () => spawnScript('audit-html.js'));
 
 ipcMain.on('stop-pipeline', () => {
   if (pipelineProcess) {
@@ -68,4 +70,11 @@ ipcMain.on('stop-pipeline', () => {
     pipelineProcess = null;
     win.webContents.send('pipeline-stopped');
   }
+});
+
+// ── Read locked-modules.json for status ───────────────────────
+ipcMain.handle('get-module-status', () => {
+  const f = path.join(FRONTEND_DIR, 'locked-modules.json');
+  try { return JSON.parse(fs.readFileSync(f, 'utf8')); }
+  catch { return {}; }
 });

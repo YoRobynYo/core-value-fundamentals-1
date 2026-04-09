@@ -129,9 +129,12 @@ END OF SPEC FILE TEMPLATE
 
 ---
 
-# HOW THE SPEC TEMPLATE WORKS IN PRACTICE
+## HOW THE SPEC TEMPLATE WORKS IN PRACTICE
 
-Below is MODULE-1-VARIABLES-SPECS.md rewritten using this template.
-This is the gold standard example of a correct spec file.
+Refer to:
+
+**`4-MODULE-0-EXERCISE-GOLD-STANDARD.html`** — correctly generated exercises following all rules.
+
+This is the gold standard. If you are unsure about any part of the template, check this file.
 
 ---

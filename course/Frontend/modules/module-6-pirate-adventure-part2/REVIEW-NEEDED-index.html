@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-6-PIRATE-ADVENTURE-PART2         █ -->
+<!-- █  // Module 6 Pirate Adventure Part2               █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="pirateAdventure-module">
+
+<h2 class="module-title">Module 6 Pirate Adventure Part2</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: Welcome to Treasure Island! -->
+<div class="helper-box">
+  <h3 class="box-title">🏝️ Welcome to Treasure Island! 🏝️</h3>
+
+  <p>Congratulations, young coder! You've proven yourself on the pirate ship. Now you've arrived at Treasure Island, where the real adventure begins! The treasure is buried somewhere on this island, but finding it will take ALL your coding skills combined.</p>
+
+  <h4 class="sub-title">The Ultimate Challenge</h4>
+
+  <p>On Treasure Island, you'll need to use everything you've learned:</p>
+  <ul class="indented-list">
+    <li><strong>AND</strong> and <strong>OR</strong> together in one decision</li>
+    <li><strong>NOT</strong> to check what something isn't</li>
+    <li><strong>Parentheses ( )</strong> to group conditions correctly</li>
+    <li>All the comparison operators at once!</li>
+  </ul>
+
+  <p class="note">💡 <strong>Challenge:</strong> The gold is waiting — are you ready? 🗺️</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: Combining AND & OR Together -->
+<div class="helper-box">
+  <h3 class="box-title">🧩 Combining AND & OR Together 🧩</h3>
+
+  <p>Sometimes you need to check a mix of conditions. "You can open the chest if you have the key AND the code is 123 OR 456." The trick is that AND and OR work together.</p>
+
+  <h4 class="sub-title">How it works:</h4>
+
+  <div class="code-block">
+    SET "has key" = true<br>
+    SET "secret code" = 123<br><br>
+    IF "has key" AND ("secret code" = 123 OR "secret code" = 456) THEN<br>
+    &nbsp;&nbsp;PRINT "🏆 Chest opens!"<br>
+    IF NOT<br>
+    &nbsp;&nbsp;PRINT "🔒 Still locked"<br>
+    END IF
+  </div>
+
+  <p><strong>Breaking it down:</strong> The parentheses <strong>( )</strong> group the OR check so it happens together before combining with AND. Without them, the computer might get confused about which conditions go together!</p>
+
+  <p class="note">💡 <strong>Remember:</strong> Parentheses are like labels that say "do this part first"!</p>
+</div>
+<!-- End of Helper Box 2 -->
+
+<!-- Helper Box 3: Checking Exact Values with = -->
+<div class="helper-box">
+  <h3 class="box-title">⚖️ Checking Exact Values with = ⚖️</h3>
+
+  <p>On Treasure Island, you often need exact matches. The map says exactly 10 steps from the palm tree. The stone must be exactly number 2.</p>
+
+  <h4 class="sub-title">Exact Matches:</h4>
+
+  <div class="code-block">
+    SET "steps from tree" = 10<br><br>
+    IF "steps from tree" = 10 THEN<br>
+    &nbsp;&nbsp;PRINT "⛏️ Exactly at the X — start digging!"<br>
+    IF NOT<br>
+    &nbsp;&nbsp;PRINT "📍 Wrong spot — measure again!"<br>
+    END IF
+  </div>
+
+  <p class="note">💡 <strong>Key Insight:</strong> = checks if two things are exactly the same — not greater than, not less than, exactly equal.</p>
+</div>
+<!-- End of Helper Box 3 -->
+
+<!-- Helper Box 4: Checking What Something Is Not -->
+<div class="helper-box">
+  <h3 class="box-title">❌ Checking What Something Is Not ❌</h3>
+
+  <p>Sometimes you need to check what something is NOT. "The treasure is NOT behind stone 1." That's when we can use <strong>NOT</strong> combined with our comparison.</p>
+
+  <h4 class="sub-title">Using NOT:</h4>
+
+  <div class="code-block">
+    SET "stone number" = 2<br><br>
+    IF NOT ("stone number" = 1) THEN<br>
+    &nbsp;&nbsp;PRINT "✅ Safe — not the trap stone!"<br>
+    IF NOT<br>
+    &nbsp;&nbsp;PRINT "❌ Stone 1 triggers a trap!"<br>
+    END IF
+  </div>
+
+  <p class="note">💡 <strong>Remember:</strong> NOT flips the answer. If "stone number" = 1 is false, then NOT makes it true!</p>
+</div>
+<!-- End of Helper Box 4 -->
+
+<!-- Helper Box 5: The Ultimate Treasure Check -->
+<div class="helper-box">
+  <h3 class="box-title">🏆 THE ULTIMATE TREASURE CHECK 🏆</h3>
+
+  <p>The final treasure chest checks EVERYTHING at once — age, items, weather, secret word, and code — all in one condition!</p>
+
+  <h4 class="sub-title">The Master Code:</h4>
+
+  <div class="code-block">
+    SET "child age" = 9<br>
+    SET "has map" = true<br>
+    SET "has compass" = true<br>
+    SET "storm coming" = false<br>
+    SET "secret word" = "treasure"<br>
+    SET "code" = 123<br><br>
+    IF ("child age" > 8) AND ("has map" AND "has compass") AND NOT "storm coming" AND NOT ("secret word" = "parrot") AND ("code" = 123 OR "code" = 456) THEN<br>
+    &nbsp;&nbsp;PRINT "🏆🎉 YOU FOUND THE TREASURE!"<br>
+    IF NOT<br>
+    &nbsp;&nbsp;PRINT "Keep trying — check each condition!"<br>
+    END IF
+  </div>
+
+  <p><strong>Analysis:</strong> This checks FIVE things at once, using <strong>></strong>, <strong>AND</strong>, <strong>NOT</strong>, and <strong>OR</strong> together with parentheses!</p>
+</div>
+<!-- End of Helper Box 5 -->
+
+<!-- Helper Box 6: Captain's Final Tip -->
+<div class="helper-box">
+  <h3 class="box-title">📖 Captain's Final Tip — Read Carefully 📖</h3>
+
+  <p>The Captain's puzzles often hide small but important details. One word can change everything!</p>
+
+  <h4 class="sub-title">Key Differences to Remember:</h4>
+
+  <ul class="indented-list">
+    <li><strong>"Greater than 8"</strong> means > 8 (9 or more, NOT 8)</li>
+    <li><strong>"Fewer than 3"</strong> means < 3 (0, 1, 2 — NOT 3)</li>
+    <li><strong>"NOT equal to 'parrot'"</strong> means NOT ("secret word" = "parrot")</li>
+    <li><strong>"AND"</strong> means BOTH must be true</li>
+    <li><strong>"OR"</strong> means at least ONE must be true</li>
+  </ul>
+
+  <p class="note">💡 <strong>Final Challenge:</strong> Read each exercise twice. Every word matters! Good luck on Treasure Island! 🏴‍☠️💎</p>
+</div>
+<!-- End of Helper Box 6 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 6 Pirate Adventure Part2 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Digging for Treasure ⛏️        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="pirateAdventure-exercise-1">
+<h3 class="exercise-title">Exercise 1: Digging for Treasure ⛏️</h3>
+
+<h4 class="sub-title">Part A: Perfect Spot</h4>
+
+<p>To dig for treasure you need a shovel AND you must be exactly 10 steps from the palm tree. Variable names in quotes: "has shovel", "steps from tree".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has shovel" and set its value to true.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "steps from tree" and set its value to 10.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "⛏️ Perfect spot — start digging!"</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the child has a shovel AND is exactly 10 steps from the tree:
+    <div class="code-example">
+      <code>SET hasShovel = true<br>SET stepsFromTree = 10<br>IF hasShovel AND stepsFromTree == 10 THEN<br>&nbsp;&nbsp;PRINT "⛏️ Perfect spot — start digging!"<br>END IF</code>
+    </div>
+  </li>
+</ul>
+
+<label for="pirateAdventure-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex1-part-a" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint1-part-a"></p>
+<pre class="output-block" id="pirateAdventure-output1-part-a"></pre>
+<pre class="answer-block" id="pirateAdventure-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Wrong Location</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>To dig for treasure you need a shovel AND you must be exactly 12 steps from the palm tree. You have a shovel but you are not at the perfect spot.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "hasShovel" and set its value to "true".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "stepsFromTree" and set its value to 12.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "📍 Wrong location — check your steps!" if hasShovel is true AND stepsFromTree is not equal to 10.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now try changing the value of stepsFromTree and see what happens:
+    <div class="code-example">
+      <code>SET hasShovel = "true"<br>SET stepsFromTree = 12<br>IF hasShovel AND NOT stepsFromTree == 10 THEN PRINT "📍 Wrong location — check your steps!"</code>
+    </div>
+  </li>
+</ul>
+
+<label for="pirateAdventure-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex1-part-b" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint1-part-b"></p>
+<pre class="output-block" id="pirateAdventure-output1-part-b"></pre>
+<pre class="answer-block" id="pirateAdventure-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Ancient Puzzle Stones 🪨       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="pirateAdventure-exercise-2">
+<h3 class="exercise-title">Exercise 2: Ancient Puzzle Stones 🪨</h3>
+<h4 class="sub-title">Part A: Stone Number 2</h4>
+<p>Three stone tablets — the treasure is behind stone 2 OR stone 3 but NOT stone 1. Use <strong>"stone number"</strong> to check for the correct stone.</p>
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stone number" and set its value to 2.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "✅ Correct stone — passage opens!" if the stone number is 2.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to check for stone number 2 in the code block below.</li>
+   </ul>
+
+<label for="pirateAdventure-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex2-part-a" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint2-part-a"></p>
+<pre class="output-block" id="pirateAdventure-output2-part-a"></pre>
+<pre class="answer-block" id="pirateAdventure-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Dangerous Stone</h4>
+<p>In Part A, you learned about the correct stone to open for treasure. Now it's time to explore what happens if you choose a different stone.</p>
+<p>The danger lies in stone number "1". If you choose this stone, it will trigger a trap!</p>
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stone number" and set its value to "2".</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "treasure stone" and set its value to "3".</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "❌ Stone 1 triggers trap — careful!" if the treasure stone is not equal to "2".</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the treasure stone is not equal to "2" and print the message in the code block below.</li>
+</ul>
+
+<label for="pirateAdventure-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex2-part-b" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint2-part-b"></p>
+<pre class="output-block" id="pirateAdventure-output2-part-b"></pre>
+<pre class="answer-block" id="pirateAdventure-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Jungle Path Choice 🌿          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="pirateAdventure-exercise-3">
+<h3 class="exercise-title">Exercise 3: Jungle Path Choice 🌿</h3>
+<h4 class="sub-title">Part A: Has Machete</h4>
+<p>You can take the path if you have a machete OR it is daylight. "has machete" — machete true, daylight false.</p>
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child has machete" and set its value to <code>true</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "it is daylight" and set its value to <code>false</code>.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "🌿 Path clear — continue adventure!" if either "child has machete" is true OR "it is daylight" is true.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Write the code to check for the path in the code block below.</li>
+</ul>
+
+<label for="pirateAdventure-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex3-part-a" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint3-part-a"></p>
+<pre class="output-block" id="pirateAdventure-output3-part-a"></pre>
+<pre class="answer-block" id="pirateAdventure-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Path Without Machete but Daylight</h4>
+
+<p>Recall from Part A, you can take the path if you have a machete OR it is daylight.</p>
+
+<p>In this scenario, you do not have a machete but it is daylight. Since one of the conditions (is daylight) is true, the path remains clear!</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has machete" and set its value to <code>false</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "is daylight" and set its value to <code>true</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "🌿 Path clear — continue adventure!"</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if either "has machete" OR "is daylight" is true and print the message in the code block below.</li>
+   </ul>
+
+<label for="pirateAdventure-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex3-part-b" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint3-part-b"></p>
+<pre class="output-block" id="pirateAdventure-output3-part-b"></pre>
+<pre class="answer-block" id="pirateAdventure-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: CAVE ENTRANCE 🕯️              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="pirateAdventure-exercise-4">
+<h3 class="exercise-title">Exercise 4: CAVE ENTRANCE 🕯️</h3>
+<h4 class="sub-title">Part A: Has torch AND NOT flooded — safe to enter!</h4>
+<p>You can enter the cave if you have a torch AND the cave is NOT flooded.</p>
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has torch" and set its value to <code>true</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "cave flooded" and set its value to <code>false</code>.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "🕯️ Cave safe — watch your step!".</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to print "🕯️ Cave safe — watch your step!" if has torch AND NOT cave flooded in the code block below.</li>
+</ul>
+
+<label for="pirateAdventure-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex4-part-a" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint4-part-a"></p>
+<pre class="output-block" id="pirateAdventure-output4-part-a"></pre>
+<pre class="answer-block" id="pirateAdventure-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Cannot Enter</h4>
+
+<p>You can enter the cave if you have a torch AND the cave is NOT flooded.</p>
+
+<p>Scenario: You have a torch BUT the cave is flooded.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has torch" and set its value to "true".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "cave flooded" and set its value to "true".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "💧 Cannot enter — cave is flooded!".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if you can enter the cave in the code block below.</li>
+</ul>
+
+<label for="pirateAdventure-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex4-part-b" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint4-part-b"></p>
+<pre class="output-block" id="pirateAdventure-output4-part-b"></pre>
+<pre class="answer-block" id="pirateAdventure-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: Treasure Chest 🏆              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="pirateAdventure-exercise-5">
+<h3 class="exercise-title">Exercise 5: Treasure Chest 🏆</h3>
+
+<h4 class="sub-title">Part A: Has key, correct code, NOT rusty — TREASURE FOUND!</h4>
+
+<p>Open the treasure chest if you have the key AND the secret code is 123 OR 456 AND the chest is NOT rusty. Variable names in quotes.</p>
+
+<ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has key" and set its value to true.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "secret code" and set its value to 123.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "🏆💎 TREASURE FOUND — YOU WIN!" if the conditions are met.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check for the conditions and print the message in the code block below.</li>
+</ul>
+
+<label for="pirateAdventure-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex5-part-a" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint5-part-a"></p>
+<pre class="output-block" id="pirateAdventure-output5-part-a"></pre>
+<pre class="answer-block" id="pirateAdventure-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Chest is too rusty</h4>
+
+<p>In Part A, you learned how to find treasure if you had a key and either code 123 or 456. Now it's time for the real adventure! Try to open the treasure chest when you have the key, but this time the chest is rusty.</p>
+
+<p>Scenario: You have a key, secret code 123, and the chest is rusty.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has key" and set its value to true.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "secret code" and set its value to 123.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "chest rusty" and set its value to true.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Use PRINT to display "🔒 Still locked — chest is too rusty!"</li>
+     <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if the chest can be opened in the code block below.</li>
+   </ul>
+
+<label for="pirateAdventure-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="pirateAdventure-ex5-part-b" data-section="pirateAdventure"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="pirateAdventure" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="pirateAdventure" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="pirateAdventure" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="pirateAdventure-hint5-part-b"></p>
+<pre class="output-block" id="pirateAdventure-output5-part-b"></pre>
+<pre class="answer-block" id="pirateAdventure-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-6-PIRATE-ADVENTURE-PART2         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

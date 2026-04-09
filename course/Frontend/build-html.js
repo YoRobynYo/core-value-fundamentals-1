@@ -21,29 +21,36 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+// --- LOAD PIPELINE CONFIG ---
+const CONFIG = JSON.parse(fs.readFileSync(path.join(__dirname, 'pipeline-config.json'), 'utf8'));
+
 // --- CONFIG ---
 const MAIN_TEMPLATE_DIR = path.join(__dirname, 'mainTemplate');
 const MODULES_DIR       = path.join(__dirname, 'modules');
-const MAX_ATTEMPTS      = 5;
+const MAX_ATTEMPTS      = CONFIG.pipeline.maxAttempts;
 
-// --- AI CONFIG ---
+// --- AI CONFIG (from pipeline-config.json) ---
 const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
-const GROQ_MODEL   = 'llama-3.3-70b-versatile';
-const GROQ_URL     = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL   = CONFIG.aiConfig.groq.model;
+const GROQ_URL     = CONFIG.aiConfig.groq.url;
 
-const OLLAMA_URL   = 'http://localhost:11434/api/chat';
-const OLLAMA_MODEL = 'qwen2.5-coder:7b';
+const OLLAMA_URL   = CONFIG.aiConfig.ollama.url;
+const OLLAMA_MODEL = CONFIG.aiConfig.ollama.model;
 
-// --- GEMINI CONFIG ---
+// --- GEMINI CONFIG (from pipeline-config.json) ---
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
-const GEMINI_MODEL   = 'gemini-2.5-flash-preview-04-17';
-const GEMINI_URL     = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MODEL   = CONFIG.aiConfig.gemini.model;
+const GEMINI_URL     = CONFIG.aiConfig.gemini.url;
 
-// --- API USAGE TRACKER ---
-// Limits are daily — 90% cutoff to never burn through quota
+// --- OPENROUTER CONFIG (from pipeline-config.json) ---
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+const OPENROUTER_MODEL   = CONFIG.aiConfig.openrouter.model;
+const OPENROUTER_URL     = CONFIG.aiConfig.openrouter.url;
+
+// --- API USAGE TRACKER (from pipeline-config.json) ---
 const API_LIMITS = {
-  groq:   { max: 40,  used: 0, cutoff: 0.9 },
-  gemini: { max: 30,  used: 0, cutoff: 0.9 },
+  groq:   { max: CONFIG.aiConfig.groq.maxDaily,   used: 0, cutoff: CONFIG.aiConfig.groq.cutoff },
+  gemini: { max: CONFIG.aiConfig.gemini.maxDaily,  used: 0, cutoff: CONFIG.aiConfig.gemini.cutoff },
 };
 
 function trackUsage(provider) {
@@ -79,76 +86,38 @@ function printAPIStatus() {
 const FAST_MODE = process.env.FAST_MODE === 'true';
 
 const DELAY_RETRY             = FAST_MODE ? 0 : 30_000;
-const DELAY_RATE_LIMIT        = FAST_MODE ? 0 : 90_000;
+const DELAY_RATE_LIMIT        = 90_000;   // Always wait for rate limits — even in FAST mode
 const DELAY_BETWEEN_PARTS     = FAST_MODE ? 0 : 60_000;
 const DELAY_BETWEEN_EXERCISES = FAST_MODE ? 0 : 60_000;
 
-// --- MODULE MAPS ---
-const MODULE_FOLDER_MAP = {
-  'MODULE-1-VARIABLES':               'module-1-variables',
-  'MODULE-2-OPERATORS':               'module-2-operators',
-  'MODULE-3-CONDITIONS-PART1':        'module-3-conditions-part1',
-  'MODULE-3-CONDITIONS-PART2':        'module-3-conditions-part2',
-  'MODULE-3-CONDITIONS-PART3':        'module-3-conditions-part3',
-  'MODULE-3-CONDITIONS-PART4':        'module-3-conditions-part4',
-  'MODULE-3-CONDITIONS-PART5':        'module-3-conditions-part5',
-  'MODULE-4-LOGICAL-OPERATORS-PART1': 'module-4-logical-operators-part1',
-  'MODULE-4-LOGICAL-OPERATORS-PART2': 'module-4-logical-operators-part2',
-  'MODULE-5-LOOPS-PART1':             'module-5-loops-part1',
-  'MODULE-5-LOOPS-PART2':             'module-5-loops-part2',
-  'MODULE-5-LOOPS-PART3':             'module-5-loops-part3',
-  'MODULE-5-LOOPS-PART4':             'module-5-loops-part4',
-  'MODULE-6-PIRATE-ADVENTURE-PART1':  'module-6-pirate-adventure-part1',
-  'MODULE-6-PIRATE-ADVENTURE-PART2':  'module-6-pirate-adventure-part2',
-  'MODULE-7-FUNCTIONS-PART1':         'module-7-functions-part1',
-  'MODULE-7-FUNCTIONS-PART2':         'module-7-functions-part2',
-  'MODULE-7-FUNCTIONS-PART3':         'module-7-functions-part3',
-  'MODULE-7-FUNCTIONS-PART4':         'module-7-functions-part4',
-};
+// --- MODULE MAPS (from pipeline-config.json) ---
+function getModuleConfig(moduleId) {
+  const mod = CONFIG.modules.find(m => m.id === moduleId);
+  if (!mod) return null;
+  return mod;
+}
 
-const SPEC_FILE_MAP = {
-  'MODULE-1-VARIABLES':               'MODULE-1-VARIABLES-SPECS.md',
-  'MODULE-2-OPERATORS':               'MODULE-2-OPERATORS-SPECS.md',
-  'MODULE-3-CONDITIONS-PART1':        'MODULE-3-CONDITIONS-PART1-SPECS.md',
-  'MODULE-3-CONDITIONS-PART2':        'MODULE-3-CONDITIONS-PART2-SPECS.md',
-  'MODULE-3-CONDITIONS-PART3':        'MODULE-3-CONDITIONS-PART3-SPECS.md',
-  'MODULE-3-CONDITIONS-PART4':        'MODULE-3-CONDITIONS-PART4-SPECS.md',
-  'MODULE-3-CONDITIONS-PART5':        'MODULE-3-CONDITIONS-PART5-SPECS.md',
-  'MODULE-4-LOGICAL-OPERATORS-PART1': 'MODULE-4-LOGICAL-OPERATORS-PART1-SPECS.md',
-  'MODULE-4-LOGICAL-OPERATORS-PART2': 'MODULE-4-LOGICAL-OPERATORS-PART2-SPECS.md',
-  'MODULE-5-LOOPS-PART1':             'MODULE-5-LOOPS-PART-1-SPEC.md',
-  'MODULE-5-LOOPS-PART2':             'MODULE-5-LOOPS-PART-2-SPEC.md',
-  'MODULE-5-LOOPS-PART3':             'MODULE-5-LOOPS-PART-3-SPEC.md',
-  'MODULE-5-LOOPS-PART4':             'MODULE-5-LOOPS-PART-4-SPEC.md',
-  'MODULE-6-PIRATE-ADVENTURE-PART1':  'MODULE-6-PIRATE-ADVENTURE-PART1-SPECS.md',
-  'MODULE-6-PIRATE-ADVENTURE-PART2':  'MODULE-6-PIRATE-ADVENTURE-PART2-SPECS.md',
-  'MODULE-7-FUNCTIONS-PART1':         'MODULE-7-FUNCTIONS-PART1-SPECS.md',
-  'MODULE-7-FUNCTIONS-PART2':         'MODULE-7-FUNCTIONS-PART2-SPECS.md',
-  'MODULE-7-FUNCTIONS-PART3':         'MODULE-7-FUNCTIONS-PART3-SPECS.md',
-  'MODULE-7-FUNCTIONS-PART4':         'MODULE-7-FUNCTIONS-PART4-SPECS.md',
-};
+function getModuleFolder(moduleId) {
+  const mod = getModuleConfig(moduleId);
+  return mod ? mod.folder : null;
+}
 
-const HELPER_FILE_MAP = {
-  'MODULE-1-VARIABLES':               'MODULE-1-VARIABLES-HELPER-BOXES.md',
-  'MODULE-2-OPERATORS':               'MODULE-2-OPERATORS-HELPER-BOXES.md',
-  'MODULE-3-CONDITIONS-PART1':        'MODULE-3-CONDITIONS-PART1-HELPER-BOXES.md',
-  'MODULE-3-CONDITIONS-PART2':        'MODULE-3-CONDITIONS-PART2-HELPER-BOXES.md',
-  'MODULE-3-CONDITIONS-PART3':        'MODULE-3-CONDITIONS-PART3-HELPER-BOXES.md',
-  'MODULE-3-CONDITIONS-PART4':        'MODULE-3-CONDITIONS-PART4-HELPER-BOXES.md',
-  'MODULE-3-CONDITIONS-PART5':        'MODULE-3-CONDITIONS-PART5-HELPER-BOXES.md',
-  'MODULE-4-LOGICAL-OPERATORS-PART1': 'MODULE-4-LOGICAL-OPERATORS-PART1-HELPER-BOXES.md',
-  'MODULE-4-LOGICAL-OPERATORS-PART2': 'MODULE-4-LOGICAL-OPERATORS-PART2-HELPER-BOXES.md',
-  'MODULE-5-LOOPS-PART1':             'MODULE-5-LOOPS-PART-1-HELPER-BOX.md',
-  'MODULE-5-LOOPS-PART2':             'MODULE-5-LOOPS-PART-2-HELPER-BOX.md',
-  'MODULE-5-LOOPS-PART3':             'MODULE-5-LOOPS-PART-3-HELPER-BOX.md',
-  'MODULE-5-LOOPS-PART4':             'MODULE-5-LOOPS-PART-4-HELPER-BOX.md',
-  'MODULE-6-PIRATE-ADVENTURE-PART1':  'MODULE-6-PIRATE-ADVENTURE-PART1-HELPER-BOXES.md',
-  'MODULE-6-PIRATE-ADVENTURE-PART2':  'MODULE-6-PIRATE-ADVENTURE-PART2-HELPER-BOXES.md',
-  'MODULE-7-FUNCTIONS-PART1':         'MODULE-7-FUNCTIONS-PART1-HELPER-BOXES.md',
-  'MODULE-7-FUNCTIONS-PART2':         'MODULE-7-FUNCTIONS-PART2-HELPER-BOXES.md',
-  'MODULE-7-FUNCTIONS-PART3':         'MODULE-7-FUNCTIONS-PART3-HELPER-BOXES.md',
-  'MODULE-7-FUNCTIONS-PART4':         'MODULE-7-FUNCTIONS-PART4-HELPER-BOXES.md',
-};
+function getSpecFile(moduleId) {
+  const mod = getModuleConfig(moduleId);
+  return mod ? mod.spec : null;
+}
+
+function getHelperFile(moduleId) {
+  const mod = getModuleConfig(moduleId);
+  return mod ? mod.helper : null;
+}
+
+function getSectionName(moduleId) {
+  const mod = getModuleConfig(moduleId);
+  return mod ? mod.section : 'unknown';
+}
+
+const ALL_MODULE_IDS = CONFIG.modules.map(m => m.id);
 
 // --- HELPERS ---
 
@@ -163,16 +132,6 @@ function readFile(dir, filename) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-function getSectionName(moduleName) {
-  if (moduleName.startsWith('MODULE-1')) return 'variables';
-  if (moduleName.startsWith('MODULE-2')) return 'operations';
-  if (moduleName.startsWith('MODULE-3')) return 'conditions';
-  if (moduleName.startsWith('MODULE-4')) return 'logicalOperators';
-  if (moduleName.startsWith('MODULE-5')) return 'loops';
-  if (moduleName.startsWith('MODULE-6')) return 'pirateAdventure';
-  if (moduleName.startsWith('MODULE-7')) return 'functions';
-  return 'unknown';
-}
 
 function extractExerciseSpec(specContent, exerciseNumber) {
   const lines = specContent.split('\n');
@@ -354,7 +313,7 @@ function cleanAIResponse(text) {
 }
 
 function saveHTML(moduleName, content) {
-  const folder    = MODULE_FOLDER_MAP[moduleName];
+  const folder    = getModuleFolder(moduleName);
   const outputDir = path.join(MODULES_DIR, folder);
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
   const filePath  = path.join(outputDir, 'index.html');
@@ -363,7 +322,7 @@ function saveHTML(moduleName, content) {
 }
 
 function saveReviewNeeded(moduleName, content) {
-  const folder    = MODULE_FOLDER_MAP[moduleName];
+  const folder    = getModuleFolder(moduleName);
   const outputDir = path.join(MODULES_DIR, folder);
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
   const filePath  = path.join(outputDir, 'REVIEW-NEEDED-index.html');
@@ -419,7 +378,6 @@ async function callGemini(prompt) {
         temperature: 0.3, 
         maxOutputTokens: 8192,
       },
-      thinkingConfig: { thinkingBudget: 0 },
     }),
   });
 
@@ -434,6 +392,36 @@ async function callGemini(prompt) {
   if (!text) throw new Error('Invalid Gemini response');
   trackUsage('gemini');
   return cleanAIResponse(text);
+}
+
+async function callOpenRouter(prompt) {
+  if (!OPENROUTER_API_KEY) throw new Error('OPENROUTER_API_KEY not set');
+
+  const res = await fetch(OPENROUTER_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://core-value-fundamentals',
+      'X-Title': 'Core Value Fundamentals',
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 4096,
+      temperature: 0.3,
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    if (res.status === 429) throw new Error(`RATE_LIMIT: ${err}`);
+    throw new Error(`OpenRouter error ${res.status}: ${err}`);
+  }
+
+  const data = await res.json();
+  if (!data.choices?.[0]?.message?.content) throw new Error('Invalid OpenRouter response');
+  return cleanAIResponse(data.choices[0].message.content);
 }
 
 async function callOllama(prompt) {
@@ -507,7 +495,7 @@ async function callAI(prompt, label = '') {
           }
         }
       } else {
-        console.log(`   ⚠️  Groq failed: ${e.message.slice(0, 80)}`);
+        console.log(`   ⚠️  Groq failed: ${e.message.slice(0, 80)} — falling back to Gemini...`);
       }
     }
   } else if (isAtLimit('groq')) {
@@ -519,6 +507,8 @@ async function callAI(prompt, label = '') {
     try {
       console.log(`   🔄 Falling back to Gemini (${GEMINI_MODEL})...`);
       const result = await callGemini(prompt);
+      console.log(`   ⏳ Gemini cooldown 15s (5 RPM limit)...`);
+      await sleep(15_000);
       printAPIStatus();
       return result;
     } catch (e) {
@@ -532,15 +522,34 @@ async function callAI(prompt, label = '') {
     console.log(`   ⚠️  Gemini at 90% daily limit — skipping to Ollama...`);
   }
 
+  // --- OPENROUTER ---
+  if (OPENROUTER_API_KEY) {
+    try {
+      console.log(`   🔄 Falling back to OpenRouter (${OPENROUTER_MODEL})...`);
+      const result = await callOpenRouter(prompt);
+      printAPIStatus();
+      return result;
+    } catch (e) {
+      if (e.message.startsWith('RATE_LIMIT')) {
+        console.log(`   ⚠️  OpenRouter rate limited — falling back to Ollama...`);
+      } else {
+        console.log(`   ⚠️  OpenRouter failed: ${e.message.slice(0, 80)} — falling back to Ollama...`);
+      }
+    }
+  }
+
   // --- OLLAMA ---
   try {
     console.log(`   🔄 Falling back to Ollama (${OLLAMA_MODEL})...`);
-    return await callOllama(prompt);
+    const result = await callOllama(prompt);
+    printAPIStatus();
+    return result;
   } catch (e) {
     console.log(`   ⚠️  Ollama failed: ${e.message.slice(0, 80)}`);
     console.log(`   💡 Is Ollama running? Start it with: ollama serve`);
   }
 
+  printAPIStatus();
   throw new Error(`All AI providers failed${label ? ` for ${label}` : ''}`);
 }
 
@@ -716,20 +725,16 @@ function validatePart(html, exNum, part, sectionName) {
   if (/\bconst /.test(html))         issues.push('Contains "const" keyword');
   if (/\bvar /.test(html))           issues.push('Contains "var" keyword');
 
-  // Banned words — content quality checks
-  if (/\bstudents?\b/i.test(html))        issues.push('Contains "student/students" — use "child/children"');
-  if (/\bprogramming\b/i.test(html))      issues.push('Contains "programming" — use "coding"');
-  if (/\bprogram\b/i.test(html))          issues.push('Contains "program" — use "code" or "coding"');
-  if (/\bcolor\b/i.test(html) && 
-    !/background-color|border-color|color:|color\s*=/i.test(html))
-                                          issues.push('Contains "color" — use "colour"');
-  if (/\bcenter\b/i.test(html) &&
-    !/text-align\s*:\s*center/i.test(html))
-                                          issues.push('Contains "center" — use "centre"');
-  if (/\borganize\b/i.test(html))         issues.push('Contains "organize" — use "organise"');
-  if (/\brecognize\b/i.test(html))        issues.push('Contains "recognize" — use "recognise"');
-  if (/\bpractice\b/i.test(html))         issues.push('Contains "practice" — use "practise"');
-  if (/\bperiod\b/i.test(html))           issues.push('Contains "period" — use "lesson", "week", "time"');
+  // Banned words — from pipeline-config.json
+  for (const { word, replace, reason } of CONFIG.bannedWords) {
+    const w = word.trim();
+    if (w === 'let ' || w === 'const ' || w === 'var ' || w === 'console') continue; // handled above
+    const regex = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    // CSS exceptions
+    if (w === 'color' && /background-color|border-color|color:|color\s*=/i.test(html)) continue;
+    if (w === 'center' && /text-align\s*:\s*center/i.test(html)) continue;
+    if (regex.test(html)) issues.push(`Contains "${w}" — use "${replace}" instead`);
+  }
 
   // Exercise 1 — both parts must have pseudocode
   if (exNum === 1 && !html.includes('class="code-example"'))
@@ -743,10 +748,10 @@ function validatePart(html, exNum, part, sectionName) {
 async function main() {
   const moduleName = process.argv[2]?.toUpperCase();
 
-  if (!moduleName || !MODULE_FOLDER_MAP[moduleName]) {
+  if (!moduleName || !getModuleConfig(moduleName)) {
     console.error('❌ Provide a valid module name.');
     console.error('   Example: node build-html.js MODULE-3-CONDITIONS-PART1');
-    console.error(`   Valid: ${Object.keys(MODULE_FOLDER_MAP).join(', ')}`);
+    console.error(`   Valid: ${ALL_MODULE_IDS.join(', ')}`);
     process.exit(1);
   }
 
@@ -755,15 +760,15 @@ async function main() {
   }
 
   const sectionName   = getSectionName(moduleName);
-  const specContent   = readFile(MAIN_TEMPLATE_DIR, SPEC_FILE_MAP[moduleName]);
-  const helperContent = readFile(MAIN_TEMPLATE_DIR, HELPER_FILE_MAP[moduleName]);
+  const specContent   = readFile(MAIN_TEMPLATE_DIR, getSpecFile(moduleName));
+  const helperContent = readFile(MAIN_TEMPLATE_DIR, getHelperFile(moduleName));
   const helperSummary = helperContent.split('\n').slice(0, 30).join('\n');
   const startTime     = Date.now();
 
   console.log(`\n🚀 HTML EXERCISE GENERATOR`);
   console.log(`📄 Module:   ${moduleName}`);
   console.log(`🤖 Primary:  Groq (${GROQ_MODEL})`);
-  console.log(`🔄 Fallback: Ollama (${OLLAMA_MODEL})`);
+  console.log(`🔄 Fallback: Gemini → OpenRouter → Ollama`);
   console.log(`📝 Mode:     Part A + Part B separately`);
   console.log(`─────────────────────────────────────\n`);
 

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-7-FUNCTIONS-PART3                █ -->
+<!-- █  // Module 7 Functions Part3                      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="functions-module">
+
+<h2 class="module-title">Module 7 Functions Part3</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: ⚙️ Operators Inside Functions -->
+<div class="helper-box">
+<h3 class="box-title">⚙️ Operators Inside Functions</h3>
+
+<p>You already know operators. You have been using them since Module 2!</p>
+<div class="code-block"><code>SET "bags" = 10<br>SET "flavours" = 3<br>SET "total" = "bags" * "flavours"<br>PRINT "Total packets needed ", "total"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Total packets needed 30</code></div>
+<p>Simple! You know this already.</p>
+<p>Now here is the interesting part — what if we put that calculation INSIDE a function?</p>
+<div class="code-block"><code>FUNCTION "count packets"<br>SET "bags" = 10<br>SET "flavours" = 3<br>SET "total" = "bags" * "flavours"<br>PRINT "Total packets needed ", "total"<br>END FUNCTION<br><br>CALL "count packets"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Total packets needed 30</code></div>
+<p>The operator works exactly the same way inside a function!</p>
+<p>But wait — we learned RETURN in Part 2. So instead of printing inside the function, let us hand the answer back:</p>
+<div class="code-block"><code>FUNCTION "count packets"<br>SET "bags" = 10<br>SET "flavours" = 3<br>SET "total" = "bags" * "flavours"<br>RETURN "total"<br>END FUNCTION<br><br>SET "my total" = CALL "count packets"<br>PRINT "Total packets needed ", "my total"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Total packets needed 30</code></div>
+<p>The operator does its work inside the function. RETURN hands the answer back. We decide what to do with it!</p>
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: 🌳 The Flavour Tree — Operators Growing the Tree -->
+<div class="helper-box">
+<h3 class="box-title">🌳 The Flavour Tree — Operators Growing the Tree</h3>
+
+<p>Operators can work with parameters too — something goes in, the calculation happens inside, the answer comes back out!</p>
+<p><strong>Operator with a parameter</strong> — number goes in, calculation comes back:</p>
+<div class="code-block"><code>FUNCTION "count flavour packets" ("bags")<br>SET "total" = "bags" * 3<br>RETURN "total"<br>END FUNCTION<br><br>SET "my total" = CALL "count flavour packets" (10)<br>PRINT "Total flavour packets ", "my total"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Total flavour packets 30</code></div>
+<p><strong>Two parameters</strong> — both numbers go in, calculation happens inside:</p>
+<div class="code-block"><code>FUNCTION "count flavour packets" ("bags", "flavours")<br>SET "total" = "bags" * "flavours"<br>RETURN "total"<br>END FUNCTION<br><br>SET "my total" = CALL "count flavour packets" (10, 3)<br>PRINT "Total flavour packets ", "my total"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Total flavour packets 30</code></div>
+<p><strong>Now here is everything working together:</strong></p>
+<div class="code-block"><code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "count flavour packets" ("bags", "flavours")<br>SET "total" = "bags" * "flavours"<br>RETURN "total"<br>END FUNCTION<br><br>SET "my total" = CALL "count flavour packets" (10, 3)<br>PRINT "Factory: ", "factory name"<br>PRINT "Total flavour packets needed ", "my total"<br><br>SET "my total" = CALL "count flavour packets" (20, 5)<br>PRINT "Factory: ", "factory name"<br>PRINT "Total flavour packets needed ", "my total"</code></div>
+<p>Output:</p>
+<div class="code-block"><code>Factory: Poppy's Factory<br>Total flavour packets needed 30<br>Factory: Poppy's Factory<br>Total flavour packets needed 100</code></div>
+<ul class="indented-list"><li><code>"factory name"</code> lives OUTSIDE — available everywhere</li><li><code>"bags"</code> and <code>"flavours"</code> are PARAMETERS — passed in each time</li><li>The operator does its work INSIDE the function</li><li>RETURN hands the answer back out 🎁</li></ul>
+<p>Your operators have a new home now — inside functions! 🚀</p>
+</div>
+<!-- End of Helper Box 2 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 7 Functions Part3 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Counting Flavour Bags 🍬       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-1">
+<h3 class="exercise-title">Exercise 1: Counting Flavour Bags 🍬</h3>
+
+<h4 class="sub-title">Part A: Simple Calculation Inside a Function</h4>
+
+<p>The factory needs to count how many flavour bags are needed. Write a function that calculates and returns the answer! You need to set "bags" to 10 and "flavours" to 3, multiply them, store in "total", and return it.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bags" and set its value to 10.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to 3.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Flavour bags needed [total]."</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
+       <div class="code-example">
+         <code>SET bags = 10<br>SET flavours = 3<br>SET total = bags * flavours<br>PRINT "Flavour bags needed ", total</code>
+       </div>
+     </li>
+   </ul>
+
+<label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint1-part-a"></p>
+<pre class="output-block" id="functions-output1-part-a"></pre>
+<pre class="answer-block" id="functions-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Different Flavour Bags</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>The factory needs to count how many flavour bags are needed for a larger production run. The new values are "bags" set to 20 and "flavours" set to 4. Let's calculate the total number of bags required!</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number_of_bags" and set its value to 20.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number_of_flavours" and set its value to 4.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Flavour bags needed: " followed by the total number of bags.</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now create a function named "count_flavour_bags" with no parameters and perform the calculation inside it.
+       <div class="code-example">
+         <code>SET number_of_bags = 20<br>SET number_of_flavours = 4<br>SET total = number_of_bags * number_of_flavours<br>PRINT "Flavour bags needed: ", total</code>
+       </div>
+     </li>
+   </ul>
+
+<label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint1-part-b"></p>
+<pre class="output-block" id="functions-output1-part-b"></pre>
+<pre class="answer-block" id="functions-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4                                 █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-4">
+
+<h4 class="sub-title">Part B: Oil Container Check 🛢️</h4>
+
+<p>In Part A, we created a function to check how many oil containers are remaining after production. Now let's use the same function with different values!</p>
+
+<p>Let's find out how many oil containers are left if the factory starts with 200 containers and uses 75, and then with 150 containers and uses 60.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "starting amount" and set its value to 200.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "amount used" and set its value to 75.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Oil containers remaining [remaining]."</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with these values in the code block below.</li>
+   </ul>
+
+<label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint4-part-b"></p>
+<pre class="output-block" id="functions-output4-part-b"></pre>
+<pre class="answer-block" id="functions-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: The Full Production Count 🌟   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="functions-exercise-5">
+<h3 class="exercise-title">Exercise 5: The Full Production Count 🌟</h3>
+
+<h4 class="sub-title">Part A: Initial Setup and Calculation</h4>
+
+<p>In this part, you will set up a factory name outside the function and then create a "production count" function that takes batch size and portions as parameters. You'll multiply these values to calculate the total production count and return it. Call the function twice with different parameters and print both the factory name and the calculated totals.</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "production count" that takes two parameters: "batch size" and "portions".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, multiply "batch size" by "portions" and store the result in a variable named "total". Return "total".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Call the "production count" function with 10 and 3, catch the result in a variable named "my total", and print both "factory name" and "my total". Call again with 20 and 5.</li>
+   </ul>
+
+<label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-a"></p>
+<pre class="output-block" id="functions-output5-part-a"></pre>
+<pre class="answer-block" id="functions-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Reusing Our Production Count Function</h4>
+
+<p>You already know how to use our "production count" function from Part A! Let's use it again but with different values.</p>
+
+<p>At Poppy's Factory, you need to calculate the total production count for two different batches. The first batch has 15 bags of popcorn and 4 portions per bag. The second batch has 25 bags and 2 portions per bag. You already have a function that can do this for you!</p>
+
+<ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to <code>"Poppy's Factory"</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function "production count" with 15 as the first parameter and 4 as the second parameter. Store the result in a variable named "my total one".</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Factory: Poppy's Factory" and "Total production count " followed by the value of "my total one".</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now call the function again with 25 as the first parameter and 2 as the second parameter. Store the result in a variable named "my total two".</li>
+     <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "Factory: Poppy's Factory" and "Total production count " followed by the value of "my total two".</li>
+   </ul>
+
+⚠️ Step 4 is ONE sentence only — no pseudocode, no code-example div.
+
+=== YOUR TASK ===
+Generate the HTML fragment for Exercise 5 Part B.
+
+STRUCTURE — output these elements in this exact order:
+
+1. <h4 class="sub-title">Part B: [short title]</h4>
+
+2. <p>[One linking sentence from Part A.]</p>
+
+3. <p>[Part B scenario — 2–3 sentences with Part B values. Variable names in quotes.]</p>
+
+4. <ul class="indented-list">
+     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "[natural language]" and set its value to <code>VALUE</code>.</li>
+     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "[natural language]" and set its value to <code>VALUE</code>.</li>
+     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display [what to show].</li>
+     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to [specific task from steps above] in the code block below.</li>
+   </ul>
+
+⚠️ Step 4 is ONE sentence only — no pseudocode, no code-example div.
+
+=== COPY THIS FOOTER EXACTLY — DO NOT CHANGE ANY IDs OR ATTRIBUTES ===
+<label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="functions-hint5-part-b"></p>
+<pre class="output-block" id="functions-output5-part-b"></pre>
+<pre class="answer-block" id="functions-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-7-FUNCTIONS-PART3                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>
