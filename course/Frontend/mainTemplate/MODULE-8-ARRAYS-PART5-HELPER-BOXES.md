@@ -27,7 +27,7 @@
 
 ---
 
-## RULE 6: LISTS + LOOPS + FUNCTIONS 🔧🔁
+## RULE 6: NEVER USE WHAT HASN'T BEEN TAUGHT
 
 > If a concept, symbol, or syntax has not appeared in a helper box earlier in the course — it must NOT appear in any exercise or example.
 >
@@ -58,6 +58,7 @@
 ## HELPER BOX PART 5: LISTS + LOOPS + FUNCTIONS TOGETHER 🔧🔁
 
 ```html
+
 <!-- Helper Box Part 5: Lists + Loops + Functions -->
 <div class="helper-box">
   <h3 class="box-title">🔧🔁 Putting It All Together — Lists, Loops and Functions 🔧🔁</h3>
@@ -68,54 +69,50 @@
 
   <h4 class="sub-title">A Function That Processes Every Item in a List:</h4>
 
-  <p>Imagine the teacher wants to give a gold star to every child on the clipboard.
-    The function takes the list, loops through each name, and prints a message for
-    every single child:</p>
+  <p>Imagine the teacher wants to greet every child on the clipboard.
+    The function takes the list, loops through each name, and prints a
+    welcome message for every single child:</p>
 
   <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]
-
-    FUNCTION "give gold stars" TAKES "name list"
-      FOR EACH "child" IN "name list"
-        PRINT "Gold star for:", "child"
-      END FOR
-    END FUNCTION
-
-    CALL "give gold stars" WITH "class names"
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "greet all children" TAKES "name list"<br>
+    &nbsp;&nbsp;FOR EACH "child" IN "name list"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;PRINT "Welcome to class:", "child"<br>
+    &nbsp;&nbsp;END FOR<br>
+    END FUNCTION<br>
+    <br>
+    CALL "greet all children" WITH "class names"
   </div>
 
   <p class="output">Output:<br>
-    Gold star for: Ben<br>
-    Gold star for: Sara<br>
-    Gold star for: Tom<br>
-    Gold star for: Aisha</p>
+    Welcome to class: Ben<br>
+    Welcome to class: Sara<br>
+    Welcome to class: Tom<br>
+    Welcome to class: Aisha</p>
 
-  <h4 class="sub-title">A Function That Returns a New List:</h4>
+  <h4 class="sub-title">A Function That Returns Something Back:</h4>
 
-  <p>Sometimes you want the function to give something back — like a new list with
-    every name changed to uppercase. The function loops through the list, changes
-    each item, and RETURNS the new list:</p>
+  <p>Sometimes you want the function to give something back — like counting
+    how many children are on the list. The function loops through the list
+    and RETURNS the total count:</p>
 
   <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]
-
-    FUNCTION "make uppercase" TAKES "name list"
-      SET "new list" = []
-      FOR EACH "child" IN "name list"
-        ADD UPPERCASE OF "child" TO "new list"
-      END FOR
-      RETURN "new list"
-    END FUNCTION
-
-    SET "upper names" = CALL "make uppercase" WITH "class names"
-    PRINT "upper names"
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "count children" TAKES "name list"<br>
+    &nbsp;&nbsp;RETURN LENGTH OF "name list"<br>
+    END FUNCTION<br>
+    <br>
+    SET "total" = CALL "count children" WITH "class names"<br>
+    PRINT "Total children in class:", "total"
   </div>
 
-  <p class="output">Output: ["BEN", "SARA", "TOM", "AISHA"]</p>
+  <p class="output">Output: Total children in class: 4</p>
 
-  <p class="note">💡 <strong>Remember:</strong> A function can take a list, loop
-    through every item, do something to each one, and even RETURN a brand new list.
-    That is the power of combining everything you have learned!</p>
+  <p class="note">💡 <strong>Remember:</strong> A function can take a list,
+    loop through every item, do something with each one, and even RETURN
+    a result. That is the power of combining everything you have learned!</p>
 </div>
 
 <!-- End of Helper Box Part 5 -->

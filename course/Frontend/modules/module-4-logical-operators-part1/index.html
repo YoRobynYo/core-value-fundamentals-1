@@ -9,13 +9,23 @@
 </head>
 <body>
 <main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
 
-<!-- ▼▼▼ Module ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-4-LOGICAL-OPERATORS-PART1        █ -->
+<!-- █  // Module 4 Logical Operators Part1              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <section class="page" id="logicalOperators-module">
 
 <h2 class="module-title">Module 4 Logical Operators Part1</h2>
 
-<!-- ▼▼▼ Helper Boxes ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <!-- Helper Box 1: What Are Logical Operators? -->
 <div class="helper-box">
   <h3 class="box-title">🤔 What Are Logical Operators? 🤔</h3>
@@ -326,53 +336,68 @@
   Both gates must open for you to pass. Good luck at the Popcorn Factory! 🍿</p>
 </div>
 <!-- End of Helper Box 5 -->
-<!-- ▲▲▲ Helper Boxes ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercises ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <h2 class="module-title">Module 4 Logical Operators Part1 — Exercises</h2>
 
-<!-- ▼▼▼ Exercise 1 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Plain Popcorn - Flavor and Quantity 🌽█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-1">
 <h3 class="exercise-title">Exercise 1: Plain Popcorn - Flavor and Quantity 🌽</h3>
-<h4 class="sub-title">Part A: Checking Flavor and Quantity</h4>
-<p>The Plain Popcorn station needs both the right flavor and enough quantity to fill an order. The "current flavor" must match the "required flavor", and the "bags ready" must be enough to meet the "bags needed". The children at the station need to write a code to check these conditions.</p>
+
+<h4 class="sub-title">Part A: Check if the flavor is correct AND the quantity is enough</h4>
+
+<p>The Plain Popcorn station needs both the right flavor AND enough quantity to fill an order. If the current flavor is the required flavor AND there are enough bags ready to meet the bags needed, then the order can be fulfilled.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to <code>"salty"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to <code>"salty"</code>, and create another variable named "bags ready" and set its value to <code>10</code>, and create another variable named "bags needed" and set its value to <code>5</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the flavor is correct and the quantity is enough.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the Plain Popcorn station:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The flavor is correct and the quantity is enough: ", the result of the expression "required flavor = current flavor AND bags ready ≥ bags needed".</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is correct AND the quantity is enough:
     <div class="code-example">
-      <code>SET "current flavor" = "salty"<br>SET "required flavor" = "salty"<br>SET "bags ready" = 10<br>SET "bags needed" = 5<br>PRINT "The flavor is correct and the quantity is enough: ", "current flavor" == "required flavor" AND "bags ready" >= "bags needed"</code>
+      <code>SET required flavor = value<br>SET bags needed = value2<br>SET current flavor = value3<br>SET bags ready = value4<br>SET result = required flavor = current flavor AND bags ready ≥ bags needed<br>PRINT "The flavor is correct and the quantity is enough: ", result</code>
     </div>
   </li>
 </ul>
+
 <label for="logicalOperators-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex1-part-a" data-section="logicalOperators"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="logicalOperators" data-ex="1-part-a">Hint</button>
   <button class="run-button" data-section="logicalOperators" data-ex="1-part-a">Run My Code</button>
   <button class="reset-button" data-section="logicalOperators" data-ex="1-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="logicalOperators-hint1-part-a"></p>
 <pre class="output-block" id="logicalOperators-output1-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Flavor is Correct but Quantity is Not Enough</h4>
+<h4 class="sub-title">Part B: The Flavor is Correct But the Quantity is Not Enough</h4>
 
 <p>Great work! Now let's try with different values.</p>
 
-<p>The Plain Popcorn station needs both the right flavor AND enough quantity to fill an order. Let's say "current flavor" is "chocolate", "required flavor" is "chocolate", "bags ready" is 3, and "bags needed" is 4.</p>
+<p>The Plain Popcorn station has the correct flavor but not enough bags to fill the order. The current flavor is "Butter" and the required flavor is also "Butter", but there are only 5 bags ready and 10 bags needed.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "chocolate".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to "chocolate".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to 3.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to 4.</li>
-    <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The flavor is correct and the quantity is enough: ", and then check if both "current flavor" equals "required flavor" AND "bags ready" is greater than or equal to "bags needed".</li>
-    <li><strong>Step 6:</strong>&nbsp;&nbsp;Now run your code:
-        <div class="code-example">
-            <code>SET current flavor = "chocolate"<br>SET required flavor = "chocolate"<br>SET bags ready = 3<br>SET bags needed = 4<br>PRINT "The flavor is correct and the quantity is enough: ", current flavor == required flavor AND bags ready >= bags needed</code>
-        </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "Butter".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to "Butter".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to 5.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to 10.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display the result of checking if the flavor is correct AND the quantity is enough.</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now check what happens when the flavor is correct BUT the quantity is not enough:
+    <div class="code-example">
+      <code>SET current flavor = "Butter"<br>SET required flavor = "Butter"<br>SET bags ready = 5<br>SET bags needed = 10<br>PRINT "The flavor is correct and the quantity is enough: ", (current flavor = required flavor) AND (bags ready ≥ bags needed)</code>
+    </div>
+  </li>
 </ul>
 
 <label for="logicalOperators-ex1-part-b" class="code-label">Add your code in the code block below</label>
@@ -388,21 +413,26 @@
 <pre class="output-block" id="logicalOperators-output1-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer1-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 1 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 2 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Buttery Popcorn - Flavor and Freshness 🧈█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-2">
-<h3 class="exercise-title">Exercise 2: Butter Popcorn - Flavor and Freshness 🧈</h3>
+<h3 class="exercise-title">Exercise 2: Buttery Popcorn - Flavor and Freshness 🧈</h3>
 
-<h4 class="sub-title">Part A: Check If Correct and Fresh</h4>
+<h4 class="sub-title">Part A: Check if the flavor is correct and the popcorn is fresh</h4>
 
-<p>The Buttery Popcorn station must have the correct flavor AND the popcorn must be fresh. Use the variables "current flavor", "required flavor", "hours since made", and "freshness limit in hours".</p>
+<p>The Buttery Popcorn station must have the correct flavor AND the popcorn must be fresh. The current flavor is "Buttery", the required flavor is also "Buttery", the popcorn was made 2 hours ago, and the freshness limit is 3 hours.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "vanilla".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to "chocolate chip".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The current flavor is", "current flavor", "and the popcorn is fresh: ", hours since made &lt freshness limit in hours.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is correct AND the popcorn is fresh in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to <code>Buttery</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "hours since made" and set its value to <code>2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "freshness limit in hours" and set its value to <code>3</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is correct and the popcorn is fresh using the AND operator in the code block below.</li>
 </ul>
 
 <label for="logicalOperators-ex2-part-a" class="code-label">Add your code in the code block below</label>
@@ -417,17 +447,17 @@
 <p class="hint" id="logicalOperators-hint2-part-a"></p>
 <pre class="output-block" id="logicalOperators-output2-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Incorrect Flavor but Fresh Popcorn</h4>
+<h4 class="sub-title">Part B: What happens when the flavor is correct but the popcorn is not fresh?</h4>
 
-<p>In Part A, we checked if both the flavor and freshness of the popcorn were correct. Now let's see what happens when the flavor is correct but the popcorn is not fresh.</p>
+<p>Let's see what happens when the flavor is correct but the popcorn is not fresh.</p>
 
-<p>Scenario: The required flavor is "Chocolate Chip" and the hours since made are 10. The freshness limit in hours is 8.</p>
+<p>The current flavor is "Buttery" and the required flavor is also "Buttery". However, the popcorn was made 5 hours ago and the freshness limit is 3 hours.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "Chocolate Chip".</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "hours since made" and set its value to 10.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The flavor is correct and the popcorn is fresh: false".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the current flavor is "Chocolate Chip" AND the hours since made are less than or equal to 8 in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "required flavor" and set its value to "Buttery".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "Buttery".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "hours since made" and set its value to 5.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the flavor is correct and the popcorn is fresh in the code block below.</li>
 </ul>
 
 <label for="logicalOperators-ex2-part-b" class="code-label">Add your code in the code block below</label>
@@ -443,21 +473,29 @@
 <pre class="output-block" id="logicalOperators-output2-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer2-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 2 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 3 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Cheese Popcorn - Ingredient and Container 🧀█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-3">
 <h3 class="exercise-title">Exercise 3: Cheese Popcorn - Ingredient and Container 🧀</h3>
-<h4 class="sub-title">Part A: Correct Ingredient and Large Enough Container</h4>
-<p>The Cheese Popcorn station needs the right cheese ingredient AND the correct container size. Check if the ingredient is correct AND the container is large enough.</p>
+
+<h4 class="sub-title">Part A: Check the Ingredient and Container</h4>
+
+<p>The Cheese Popcorn station needs the right cheese ingredient AND the correct container size. The current ingredient is "cheddar" and the required ingredient is "cheddar". The current container size is 200 grams and the minimum size is 150 grams.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to "Cheese Powder".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to "Cheese Powder".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "container size in grams" and set its value to "100".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "minimum size in grams" and set its value to "50".</li>
-  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The ingredient is correct and the container is large enough: ", [result of current ingredient == required ingredient AND container size in grams >= minimum size in grams].</li>
-  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to check if the ingredient is correct AND the container is large enough in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to <code>cheddar</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to <code>cheddar</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "container size in grams" and set its value to <code>200</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "minimum size in grams" and set its value to <code>150</code>.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The ingredient is correct and the container is large enough: true" if the current ingredient is the same as the required ingredient AND the container size is greater than or equal to the minimum size.</li>
 </ul>
+
 <label for="logicalOperators-ex3-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex3-part-a" data-section="logicalOperators"></div>
 
@@ -470,15 +508,19 @@
 <p class="hint" id="logicalOperators-hint3-part-a"></p>
 <pre class="output-block" id="logicalOperators-output3-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Ingredient is correct but container is too small</h4>
+<h4 class="sub-title">Part B: What happens when the ingredient is correct but the container is too small?</h4>
 
-<p>In Part A, we learned that both the ingredient and the container size must be correct to make Cheese Popcorn. Let's see what happens when the ingredient is correct, but the container is too small.</p>
+<p>Let's see what happens when the ingredient is correct but the container is too small.</p>
+
+<p>Imagine we have the "current ingredient" as "cheddar cheese" and the "required ingredient" is also "cheddar cheese". However, the "container size in grams" is 50g, but the "minimum size in grams" is 100g.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to "cheese powder".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to "cheese powder".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The ingredient is correct and the container is large enough:". Then check if the current ingredient is the same as the required ingredient AND if the container size in grams is greater than or equal to the minimum size in grams (e.g., 100 grams).</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check both conditions in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to "cheddar cheese".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to "cheddar cheese".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "container size in grams" and set its value to 50.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "minimum size in grams" and set its value to 100.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The ingredient is correct and the container is large enough: " followed by the result of the comparison between "container size in grams" and "minimum size in grams".</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to display the result in the code block below.</li>
 </ul>
 
 <label for="logicalOperators-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -494,20 +536,26 @@
 <pre class="output-block" id="logicalOperators-output3-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer3-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 3 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 4 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Sweet Popcorn - Sugar and Label 🍬█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-4">
 <h3 class="exercise-title">Exercise 4: Sweet Popcorn - Sugar and Label 🍬</h3>
-<h4 class="sub-title">Part A: Enough Sugar AND Correct Label?</h4>
-<p>The Sweet Popcorn station needs enough sugar <strong>AND</strong> the correct label on the bag.</p>
+<h4 class="sub-title">Part A: Check if there is enough sugar AND the bag label is correct.</h4>
+<p>The Sweet Popcorn station needs enough sugar AND the correct label on the bag. We have a "sugar amount in grams" and a "required sugar amount in grams", as well as a "current label text" and a "required label text".</p>
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to <code>250</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to <code>200</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display <em>"There is enough sugar and the label is correct: "</em> followed by whether the condition is true or false.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there is enough sugar AND the bag label is correct in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to VALUE.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to VALUE.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current label text" and set its value to VALUE.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required label text" and set its value to VALUE.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "There is enough sugar and the label is correct: true" if the "sugar amount in grams" is greater than or equal to the "sugar needed in grams" AND the "current label text" is equal to the "required label text".</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to check if there is enough sugar AND the bag label is correct in the code block below.</li>
 </ul>
-
 <label for="logicalOperators-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex4-part-a" data-section="logicalOperators"></div>
 
@@ -520,19 +568,17 @@
 <p class="hint" id="logicalOperators-hint4-part-a"></p>
 <pre class="output-block" id="logicalOperators-output4-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Not enough sugar but correct label</h4>
+<h4 class="sub-title">Part B: What happens when there is enough sugar but the label is wrong?</h4>
 
-<p>In Part A, we learned how to check if there is enough sugar AND the bag label is correct. Now, let's see what happens when there is enough sugar BUT the label is wrong.</p>
+<p>Let's see what happens when there isn't enough sugar and the label is wrong.</p>
 
-<p>Imagine you have 200 grams of sugar and a bag with the text "Original Flavor". The required sugar amount is still 250 grams and the required label text is "Deluxe Popcorn".</p>
+<p>Imagine we have 50g of sugar in the bag, but we need 100g. The current label text is "Sweet Popcorn" and the required label text is "Sweet Popcorn - Limited Edition".</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to 200.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to 250.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current label text" and set its value to "Original Flavor".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required label text" and set its value to "Deluxe Popcorn".</li>
-    <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "There is enough sugar and the label is correct: false".</li>
-    <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to check if there is enough sugar AND the bag label is correct in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to <code>50</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to <code>100</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current label text" and set its value to <code>"Sweet Popcorn"</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there is enough sugar and the label is correct using the AND operator.</li>
 </ul>
 
 <label for="logicalOperators-ex4-part-b" class="code-label">Add your code in the code block below</label>
@@ -548,19 +594,30 @@
 <pre class="output-block" id="logicalOperators-output4-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer4-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 4 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 5 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: COMPLETE ORDER CHECK ✅         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-5">
-<h3 class="exercise-title">Exercise 5: Complete Order Check ✅</h3>
-<h4 class="sub-title">Part A: Flavor and Weight Check</h4>
-<p>Before shipping an order, we must verify that BOTH the flavor is correct AND the weight meets requirements. Use the variables "ordered flavor", "current flavor", "current weight in grams", and "required weight in grams".</p>
+<h3 class="exercise-title">Exercise 5: COMPLETE ORDER CHECK ✅</h3>
+
+<h4 class="sub-title">Part A: Check flavour and weight</h4>
+
+<p>Before shipping an order, we must verify that BOTH the flavour is correct AND the weight meets requirements. We have the ordered flavour, the current flavour, the current weight in grams, and the required weight in grams.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavor" and set its value to "chocolate chip".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to "chocolate chip".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to 150.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use PRINT to display "The order is correct and ready to ship: true" if the flavor is correct AND the weight is sufficient for shipping (greater than or equal to 100 grams). Otherwise, display "The order is correct and ready to ship: false".</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavour" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required weight in grams" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "The order is correct and ready to ship: true" if the flavour is correct AND the weight is sufficient for shipping.</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to check if the flavour is correct AND the weight is sufficient for shipping in the code block below.</li>
 </ul>
+
 <label for="logicalOperators-ex5-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex5-part-a" data-section="logicalOperators"></div>
 
@@ -573,18 +630,18 @@
 <p class="hint" id="logicalOperators-hint5-part-a"></p>
 <pre class="output-block" id="logicalOperators-output5-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Check if Flavor is Correct but Weight is Insufficient</h4>
+<h4 class="sub-title">Part B: What happens when the flavor is correct but the weight is insufficient?</h4>
 
-<p>In Part A, we checked that both the flavor and weight of the popcorn were correct. Now, let's see what happens when only the flavor is correct, but the weight is not sufficient for shipping.</p>
+<p>From Part A, we know that we need to check both the flavor and the weight before shipping an order.</p>
 
-<p>Imagine you ordered a bag of popcorn with the flavor "choco" and required a weight of 500 grams, but the current bag has a weight of 450 grams. We still need to make sure both conditions are met before we can ship it.</p>
+<p>In this scenario, the ordered flavor is "chocolate" and the current flavor is also "chocolate". However, the current weight in grams is 150g, which is less than the required weight in grams of 200g.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavor" and set its value to "choco".</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to 450.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The order is correct and ready to ship: false".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to perform a final check on whether both conditions are met in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavor" and set its value to <code>"chocolate"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavor" and set its value to <code>"chocolate"</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to <code>150</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the AND operator to check if the flavor is correct and the weight is sufficient for shipping.</li>
+</ul>
 
 <label for="logicalOperators-ex5-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex5-part-b" data-section="logicalOperators"></div>
@@ -599,12 +656,18 @@
 <pre class="output-block" id="logicalOperators-output5-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer5-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 5 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▲▲▲ Exercises ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </section>
-<!-- ▲▲▲ Module ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-4-LOGICAL-OPERATORS-PART1        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </main>
 <script src="../../scripts/main.js"></script>

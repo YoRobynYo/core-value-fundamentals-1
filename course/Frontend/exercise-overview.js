@@ -33,6 +33,18 @@ const SPEC_FILES = [
   { module: 'MODULE 5 — LOOPS PART 4',                 file: 'MODULE-5-LOOPS-PART-4-SPEC.md',                setting: '🍿 Popcorn Factory' },
   { module: 'MODULE 6 — PIRATE ADVENTURE PART 1',      file: 'MODULE-6-PIRATE-ADVENTURE-PART1-SPECS.md',     setting: '🏴‍☠️ Pirate Adventure' },
   { module: 'MODULE 6 — PIRATE ADVENTURE PART 2',      file: 'MODULE-6-PIRATE-ADVENTURE-PART2-SPECS.md',     setting: '🏴‍☠️ Pirate Adventure' },
+  { module: 'MODULE 7 — FUNCTIONS PART 1',             file: 'MODULE-7-FUNCTIONS-PART1-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 7 — FUNCTIONS PART 2',             file: 'MODULE-7-FUNCTIONS-PART2-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 7 — FUNCTIONS PART 3',             file: 'MODULE-7-FUNCTIONS-PART3-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 7 — FUNCTIONS PART 4',             file: 'MODULE-7-FUNCTIONS-PART4-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 7 — FUNCTIONS PART 5',             file: 'MODULE-7-FUNCTIONS-PART5-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 7 — FUNCTIONS PART 6',             file: 'MODULE-7-FUNCTIONS-PART6-SPECS.md',            setting: '🏫 Classroom & ☕ The Popcorn Press' },
+  { module: 'MODULE 8 — ARRAYS PART 1',                file: 'MODULE-8-ARRAYS-PART1-SPECS.md',               setting: '🍿 Popcorn Factory' },
+  { module: 'MODULE 8 — ARRAYS PART 2',                file: 'MODULE-8-ARRAYS-PART2-SPECS.md',               setting: '🍿 Popcorn Factory' },
+  { module: 'MODULE 8 — ARRAYS PART 3',                file: 'MODULE-8-ARRAYS-PART3-SPECS.md',               setting: '🍿 Popcorn Factory' },
+  { module: 'MODULE 8 — ARRAYS PART 4',                file: 'MODULE-8-ARRAYS-PART4-SPECS.md',               setting: '🍿 Popcorn Factory' },
+  { module: 'MODULE 8 — ARRAYS PART 5',                file: 'MODULE-8-ARRAYS-PART5-SPECS.md',               setting: '🍿 Popcorn Factory' },
+  { module: 'MODULE 8 — ARRAYS PART 6',                file: 'MODULE-8-ARRAYS-PART6-SPECS.md',               setting: '🍿 Popcorn Factory' },
 ];
 
 function parseSpec(filePath) {

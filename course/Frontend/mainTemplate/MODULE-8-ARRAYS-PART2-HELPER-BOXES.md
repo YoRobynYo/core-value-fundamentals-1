@@ -27,7 +27,7 @@
 
 ---
 
-## RULE 6: ARRAYS AND FUNCTIONS 
+## RULE 6: NEVER USE WHAT HASN'T BEEN TAUGHT
 
 > If a concept, symbol, or syntax has not appeared in a helper box earlier in the course — it must NOT appear in any exercise or example.
 >

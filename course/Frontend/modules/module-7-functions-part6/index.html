@@ -158,17 +158,17 @@
 <div class="exercise-box" id="functions-exercise-1">
 <h3 class="exercise-title">Exercise 1: Taking the First Order ☕</h3>
 
-<h4 class="sub-title">Part A: Taking the First Order</h4>
+<h4 class="sub-title">Part A: Write a function called "take order" that takes "customer name" and "drink" as parameters and returns them together as the order.</h4>
 
-<p>The Popcorn Press café is now open, and you need to take the first order. To do this, you will create a function called "take order" that takes a "customer name" and a "drink" as parameters and returns them together as the order. You will then call this function with "Marivic" as the "customer name" and "The Butter Blast" as the "drink", and print the order.</p>
+<p>Take the very first order at The Popcorn Press café. Write a function called "take order" that takes the customer's name and their chosen drink as parameters and returns the order as a single string. Call this function with "Marivic" and "The Butter Blast" as parameters, catch the result in "order", and print it out.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "take order" that takes a "customer name" and a "drink" as parameters.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, use the "customer name" and "drink" to create the order and return it.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Call the "take order" function with "Marivic" as the "customer name" and "The Butter Blast" as the "drink", and catch the result in a variable named "order".</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to <code>"Marivic"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to <code>"The Butter Blast"</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the order.</li>
   <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the order:
     <div class="code-example">
-      <code>SET customerName = Marivic<br>SET drink = The Butter Blast<br>SET order = take order(customerName, drink)<br>PRINT "Order: ", order</code>
+      <code>SET order = "customer name" &amp; " — " &amp; "drink"<br>PRINT "Order: ", order</code>
     </div>
   </li>
 </ul>
@@ -185,19 +185,19 @@
 <p class="hint" id="functions-hint1-part-a"></p>
 <pre class="output-block" id="functions-output1-part-a"></pre>
 <pre class="answer-block" id="functions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Taking Different Orders</h4>
+<h4 class="sub-title">Part B: Taking the First Order with Different Values</h4>
 
 <p>Great work! Now let's try with different values.</p>
 
-<p>Gabi wants to order The Caramel Crunch, and we need to process it through our function.</p>
+<p>For the second customer, Gabrielle, we need to take the order again. This time, she wants The Caramel Crunch. We will use the same function, "take order", but with different values for the customer name and drink.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to "Gabrielle".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Caramel Crunch".</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to <code>Gabrielle</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to <code>The Caramel Crunch</code>.</li>
   <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the order.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now take the order:
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now call the function with the new values:
     <div class="code-example">
-      <code>SET customerName = "Gabrielle"<br>SET drink = "The Caramel Crunch"<br>PRINT "Order: ", customerName, " — ", drink</code>
+      <code>SET customer name = Gabrielle<br>SET drink = The Caramel Crunch<br>PRINT "Order: ", customer name, " — ", drink</code>
     </div>
   </li>
 </ul>
@@ -226,15 +226,15 @@
 <div class="exercise-box" id="functions-exercise-2">
 <h3 class="exercise-title">Exercise 2: Adding Size and Price 🏷️</h3>
 
-<h4 class="sub-title">Part A: Adding Size and Price to Order</h4>
+<h4 class="sub-title">Part A: Take Order</h4>
 
-<p>Customers can now choose their size! Add size and price to the order. Small costs £3, large costs £4.</p>
+<p>Customers can now choose their size! Add size and price to the order. Small costs £3, large costs £4. We will use the "take order" function to take the customer's name, drink, and size as parameters, and return the complete order with price.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Set "small price" to 3.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Set "large price" to 4.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Print the complete order with price.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code for the function "take order" in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "small price" and set its value to <code>3</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "large price" and set its value to <code>4</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the customer's name, drink, and size.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set the price to "small price", use an operator to calculate if size is large add 1 to price, and return the complete order with price in the code block below.</li>
 </ul>
 
 <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
@@ -249,17 +249,17 @@
 <p class="hint" id="functions-hint2-part-a"></p>
 <pre class="output-block" id="functions-output2-part-a"></pre>
 <pre class="answer-block" id="functions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Adding Size and Price for Ellaine</h4>
+<h4 class="sub-title">Part B: Adding Size and Price</h4>
 
-<p>Now that we have our function to calculate the price of a drink based on its size, we can use it to take orders from different customers.</p>
+<p>Every order goes through the same process — take the customer's name, check what they want, work out the price, and hand back the order. Sound familiar? That is exactly what a function does!</p>
 
-<p>In this part of the exercise, we will take an order from Ellaine, who wants to buy "The Kernel Kicker" in a "small" size. We will use the "customer name", "drink", and "size" as parameters to calculate the total price. The "small price" is £3 and the "large price" is £4.</p>
+<p>Ellaine wants to order a drink from The Kernel Kicker menu. She chooses the small size. The small size costs £3. The large size costs £4. How can we use a function to work out the price of her order?</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to "Ellaine".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Kernel Kicker", and set the "size" to "small".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the complete order with the price.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "take order" function with Ellaine's order details in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "small price" and set its value to <code>3</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "large price" and set its value to <code>4</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "The Popcorn Press: Ellaine — The Kernel Kicker (small) — £3".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "take order" function with "Ellaine", "The Kernel Kicker", "small" in the code block below.</li>
 </ul>
 
 <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
@@ -286,15 +286,15 @@
 <div class="exercise-box" id="functions-exercise-3">
 <h3 class="exercise-title">Exercise 3: Checking the Menu 📋</h3>
 
-<h4 class="sub-title">Part A: Confirming an Order</h4>
+<h4 class="sub-title">Part A: Checking Availability</h4>
 
-<p>Some drinks have run out! Add a condition to check if the drink is available before taking the order.</p>
+<p>Some drinks have run out! You need to add a condition to check if the drink is available before taking the order. You will write a function called "check order" that takes "customer name" and "drink" as parameters. Inside, you will set "available" to "yes" and then check if it is "yes" before returning the order confirmed or a sorry message.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to "Marivic".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Toffee Pop".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Order confirmed: Marivic — The Toffee Pop — ready shortly!".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "check order" that takes "customer name" and "drink" as parameters. Inside, SET "available" to "yes". IF "available" = "yes" RETURN the order confirmed, ELSE RETURN sorry message. Call with "Marivic" and "The Toffee Pop". Catch in "result" and print.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "available" and set its value to <code>yes</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "check order" that takes "customer name" and "drink" as parameters.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF to check if "available" is "yes". If it is, use PRINT to display "Order confirmed: customer name — drink — ready shortly!".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to RETURN "sorry message" if "available" is not "yes" in the code block below.</li>
 </ul>
 
 <label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -309,17 +309,17 @@
 <p class="hint" id="functions-hint3-part-a"></p>
 <pre class="output-block" id="functions-output3-part-a"></pre>
 <pre class="answer-block" id="functions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Drink Availability Check</h4>
+<h4 class="sub-title">Part B: Checking the Menu</h4>
 
-<p>In Part A, you learned how to create a function that checks if a drink is available before confirming an order. Now it's time to apply this knowledge in a different scenario.</p>
+<p>Every order goes through the same process — take the customer's name, check what they want, work out the price, and hand back the order. Sound familiar? That is exactly what a function does!</p>
 
-<p>Today, Gabrielle has come to The Popcorn Press Café with her friend Marivic. They both want to try the Cheese Whip, but there might be a problem because drinks sometimes run out!</p>
+<p>Now it is time to check if the drink is available before taking the order. Gabrielle wants to order The Cheese Whip, but we need to check if it is available today.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to "Gabrielle".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Cheese Whip".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of calling the "check order" function with "Gabrielle" and "The Cheese Whip" as arguments.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the drink is available in the "check order" function. Set "available" to "no".</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "available" and set its value to "no".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "message" and set its value to "Sorry, " followed by the customer's name and " — " followed by the drink name and " is not available today."</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the availability of the drink and print the message in the code block below.</li>
 </ul>
 
 <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -346,15 +346,15 @@
 <div class="exercise-box" id="functions-exercise-4">
 <h3 class="exercise-title">Exercise 4: The Lunchtime Queue 🔁</h3>
 
-<h4 class="sub-title">Part A: Served Order</h4>
+<h4 class="sub-title">Part A: Serve Customers</h4>
 
-<p>The lunchtime rush is here! Use a loop to process multiple orders automatically — one function handles the whole queue!</p>
+<p>The lunchtime rush is here! Use a loop to process multiple orders automatically — one function handles the whole queue! The "serve customer" function takes "customer name" and "drink" as parameters.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to "Marivic".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Chilli Fizz".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Served: Marivic — The Chilli Fizz".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to serve orders for Marivic, Gabrielle, Alec, and Ellaine in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to <code>Marivic</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to <code>The Chilli Fizz</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Served: customer name — drink".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "serve customer" function with the customer name and drink in the code block below.</li>
 </ul>
 
 <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
@@ -369,15 +369,20 @@
 <p class="hint" id="functions-hint4-part-a"></p>
 <pre class="output-block" id="functions-output4-part-a"></pre>
 <pre class="answer-block" id="functions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Different Drinks</h4>
+<h4 class="sub-title">Part B: The Lunchtime Queue</h4>
 
-<p>Use the same function as in Part A, but this time, change the drinks for each customer:</p>
+<p>Now it is time to serve the whole queue at once using a loop!</p>
+
+<p>Marivic, Gabrielle, Alec, and Ellaine are all waiting to be served. You
+  need to call the "serve customer" function for each of them with their
+  respective drinks. The function should take the customer's name and their
+  drink as parameters and return the order.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to "The Butter Blast".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function "serve customer" with the arguments "Marivic" and the drink variable.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of the function call.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to serve Marivic with "The Butter Blast" in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "customer name" and set its value to <code>Marivic</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "drink" and set its value to <code>The Butter Blast</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Served: Marivic — The Butter Blast".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "serve customer" function with the values of "customer name" and "drink" in the code block below.</li>
 </ul>
 
 <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
@@ -404,15 +409,15 @@
 <div class="exercise-box" id="functions-exercise-5">
 <h3 class="exercise-title">Exercise 5: The Full Café System 🌟</h3>
 
-<h4 class="sub-title">Part A: Basic Order Function</h4>
+<h4 class="sub-title">Part A: The Complete System</h4>
 
-<p>The Popcorn Press ordering system requires a function that takes the customer name, drink, and size as parameters. It should calculate the price based on the size and return the complete order including all details.</p>
+<p>Set the café name to "The Popcorn Press" outside the function. Write a function called "full order" that takes "customer name", "drink" and "size" as parameters. Inside the function, check if "size" is "large", if so, set "price" to 4, otherwise set "price" to 3. Return the complete order including café name, customer name, drink, size and price. Write a loop that calls the function four times with different customers and drinks. Catch and print each order.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cafeName" and set its value to "The Popcorn Press".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "fullOrder" that takes "customerName", "drink", and "size" as parameters.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the complete order including cafe name, customer name, drink, size, and price.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the function and process all four customers with different drinks and sizes in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cafe name" and set its value to <code>The Popcorn Press</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "full order" that takes "customer name", "drink" and "size" as parameters.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, use an IF statement to check if "size" is "large", if so, set "price" to 4, otherwise set "price" to 3.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use a loop to call the "full order" function four times with different customers and drinks, and print each order.</li>
 </ul>
 
 <label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
@@ -427,15 +432,17 @@
 <p class="hint" id="functions-hint5-part-a"></p>
 <pre class="output-block" id="functions-output5-part-a"></pre>
 <pre class="answer-block" id="functions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: The Caramel Crunch Café</h4>
+<h4 class="sub-title">Part B: The Full Café System</h4>
 
-<p>Continue using the function you created in Part A, but now we'll process four different customers at The Popcorn Press café.</p>
+<p>Now it is time to open the café for the second time, with a new set of customers.</p>
+
+<p>Marivic, Gabrielle, Alec, and Ellaine are waiting for their orders. You have the menu in front of you, and you know the prices for each drink. Your task is to write a function that takes the customer's name, drink, and size as parameters, calculates the price, and returns the complete order.</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cafe name" and set its value to "The Popcorn Press".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function four times with different customer names, drinks, and sizes. For example: full order("Marivic", "The Factory Frost", "small").</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display each complete order.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to process all four customers in the code block below.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "full order" and set its value to an empty string.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a loop to call the function "full order" four times, once for each customer.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Write the code to call the function "full order" with the customer's name, drink, and size, and print the result.</li>
 </ul>
 
 <label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>

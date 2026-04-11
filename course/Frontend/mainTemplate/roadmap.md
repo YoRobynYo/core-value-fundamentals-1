@@ -25,7 +25,7 @@
             exercises,
             you'll create your own variables, update them, and see how your program remembers each change. This helps
             you
-            store and reuse data throughout your code, just like keeping your LEGO bricks organized for building.</p>
+            store and reuse data throughout your code, just like keeping your LEGO bricks organised for building.</p>
         </div>
 
         <div class="topic-item">

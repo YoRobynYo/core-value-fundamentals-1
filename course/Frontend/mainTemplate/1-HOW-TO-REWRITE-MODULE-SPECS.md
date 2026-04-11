@@ -30,7 +30,7 @@ Every existing spec file was written for JavaScript. They contain:
 - Concepts that reference JS-only features
 - The word "student" instead of "child"
 - The word "period" instead of "lesson"
-- American spellings (color, organize, recognize, center, math)
+- American spellings (color, organise, recognise, center, math)
 
 **None of this should appear in the rewritten specs.**
 
@@ -107,7 +107,7 @@ Outputs should show plain readable text — no JS syntax, no ${}, no + concatena
 - Remove any JS-specific references
 - Replace "student" with "child"
 - Replace "period" with "lesson"
-- Fix American spellings: color→colour, organize→organise, recognize→recognise, center→centre, math→maths
+- Fix American spellings: color→colour, organise→organise, recognise→recognise, center→centre, math→maths
 - Keep all the themes, stories, and classroom/factory narrative exactly as they are
 
 ### Step 9 — Replace the QUALITY CHECKLIST
@@ -123,7 +123,7 @@ When AI generates the exercise, verify:
 - [ ] Variables use natural language in quotes — NOT camelCase — e.g., "child name"
 - [ ] Uses pseudocode only — SET, PRINT, IF, FOR
 - [ ] Uses PRINT with commas — NO + concatenation
-- [ ] NO banned words (student, period, program, color, organize, recognize, center, math)
+- [ ] NO banned words (student, period, program, color, organise, recognise, center, math)
 
 **Structure**
 - [ ] Section name matches exactly
@@ -238,8 +238,8 @@ Before rewriting any spec file, check its current status in your pipeline monito
 | period (school) | lesson |
 | program/programming | code/coding |
 | color | colour |
-| organize | organise |
-| recognize | recognise |
+| organise | organise |
+| recognise | recognise |
 | center | centre |
 | math | maths |
 

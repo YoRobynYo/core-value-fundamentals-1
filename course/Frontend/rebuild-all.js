@@ -53,9 +53,15 @@ const MODULES_TO_REBUILD = [
   'MODULE-7-FUNCTIONS-PART4',
   'MODULE-7-FUNCTIONS-PART5',
   'MODULE-7-FUNCTIONS-PART6',
+  'MODULE-8-ARRAYS-PART1',
+  'MODULE-8-ARRAYS-PART2',
+  'MODULE-8-ARRAYS-PART3',
+  'MODULE-8-ARRAYS-PART4',
+  'MODULE-8-ARRAYS-PART5',
+  'MODULE-8-ARRAYS-PART6',
 ];
 
-const GAP_BETWEEN_MODULES = 60_000; // 60 seconds between modules
+const GAP_BETWEEN_MODULES = 5_000; // 60 seconds between modules
 
 function sleep(ms, label) {
   if (label) {

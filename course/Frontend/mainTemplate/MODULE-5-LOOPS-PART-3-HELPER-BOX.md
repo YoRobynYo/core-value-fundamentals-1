@@ -130,7 +130,7 @@ PRINT "Look by the palm trees!"
 ELSE IF "map clue" = "waterfall" THEN
 PRINT "Check behind the waterfall!"
 ELSE
-PRINT "Clue not recognized — keep searching!"
+PRINT "Clue not recognised — keep searching!"
 END IF
 
 The computer checks each condition in order:

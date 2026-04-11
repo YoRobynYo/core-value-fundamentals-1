@@ -1,395 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Value Fundamentals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../styles/css/style.css">
 </head>
+
 <body>
-<main id="main-content">
-<!-- ============================================================ -->
-<!-- GOLD STANDARD EXERCISE FILE                                  -->
-<!-- core-value-fundamentals                                      -->
-<!-- Language-Agnostic Edition                                    -->
-<!-- ============================================================ -->
+  <main id="main-content">
+    <!-- ============================================================ -->
+    <!-- GOLD STANDARD EXERCISE FILE                                  -->
+    <!-- core-value-fundamentals                                      -->
+    <!-- Language-Agnostic Edition                                    -->
+    <!-- ============================================================ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: MODULE-7-FUNCTIONS-PART2                █ -->
-<!-- █  // Module 7 Functions Part2                      █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<section class="page" id="functions-module">
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // Start::: MODULE-7-FUNCTIONS-PART2                █ -->
+    <!-- █  // Module 7 Functions Part2                      █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+    <section class="page" id="functions-module">
 
-<h2 class="module-title">Module 7 Functions Part2</h2>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Helper Boxes                     █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<!-- Helper Box 1: 🎁 Functions Can Give Something Back -->
-<div class="helper-box">
-<h3 class="box-title">🎁 Functions Can Give Something Back</h3>
+      <h2 class="module-title">Module 7 Functions Part2</h2>
 
-<p>You already know how to write a function and call it!</p>
-<div class="code-block"><code>FUNCTION "show flavour"<br>SET "flavour" = "butter"<br>PRINT "The flavour is ", "flavour"<br>END FUNCTION<br><br>CALL "show flavour"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>The flavour is butter</code></div>
-<p>That function sets a variable and prints it. Simple!</p>
-<p>But what if you want to use that answer somewhere else in your code?</p>
-<p>What if you do not want to print it straight away?</p>
-<p>Here is the problem:</p>
-<div class="code-block"><code>FUNCTION "show flavour"<br>SET "flavour" = "butter"<br>PRINT "The flavour is ", "flavour"<br>END FUNCTION<br><br>CALL "show flavour"<br>PRINT "Packing bag with ", "flavour"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>The flavour is butter</code></div>
-<p>The second PRINT did not work! The variable "flavour" only lives INSIDE the function. Once the function finishes — it is gone. 😮</p>
-<p>That is where <strong>RETURN</strong> comes in!</p>
-<p>RETURN sends the answer back OUT of the function so you can catch it:</p>
-<div class="code-block"><code>FUNCTION "get flavour"<br>RETURN "butter"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour"<br>PRINT "The flavour is ", "my flavour"<br>PRINT "Packing bag with ", "my flavour"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>The flavour is butter<br>Packing bag with butter</code></div>
-<p>The function handed the answer back. We caught it in "my flavour". Then we used it TWICE!</p>
-<p>RETURN does not print — it passes the answer back to whoever called the function.</p>
-<p>That is what makes it so powerful!</p>
-</div>
-<!-- End of Helper Box 1 -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Helper Boxes                     █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- Helper Box 1: 🎁 Functions Can Give Something Back -->
+      <div class="helper-box">
+        <h3 class="box-title">🎁 Functions Can Give Something Back</h3>
 
-<!-- Helper Box 2: 🌳 The Return Tree — Seeing How It All Fits -->
-<div class="helper-box">
-<h3 class="box-title">🌳 The Return Tree — Seeing How It All Fits</h3>
+        <p>You already know how to write a function and call it!</p>
+        <div class="code-block">
+          <code>FUNCTION "show flavour"<br>SET "flavour" = "butter"<br>PRINT "The flavour is ", "flavour"<br>END FUNCTION<br><br>CALL "show flavour"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>The flavour is butter</code></div>
+        <p>That function sets a variable and prints it. Simple!</p>
+        <p>But what if you want to use that answer somewhere else in your code?</p>
+        <p>What if you do not want to print it straight away?</p>
+        <p>Here is the problem:</p>
+        <div class="code-block">
+          <code>FUNCTION "show flavour"<br>SET "flavour" = "butter"<br>PRINT "The flavour is ", "flavour"<br>END FUNCTION<br><br>CALL "show flavour"<br>PRINT "Packing bag with ", "flavour"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>The flavour is butter</code></div>
+        <p>The second PRINT did not work! The variable "flavour" only lives INSIDE the function. Once the function
+          finishes — it is gone. 😮</p>
+        <p>That is where <strong>RETURN</strong> comes in!</p>
+        <p>RETURN sends the answer back OUT of the function so you can catch it:</p>
+        <div class="code-block">
+          <code>FUNCTION "get flavour"<br>RETURN "butter"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour"<br>PRINT "The flavour is ", "my flavour"<br>PRINT "Packing bag with ", "my flavour"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>The flavour is butter<br>Packing bag with butter</code></div>
+        <p>The function handed the answer back. We caught it in "my flavour". Then we used it TWICE!</p>
+        <p>RETURN does not print — it passes the answer back to whoever called the function.</p>
+        <p>That is what makes it so powerful!</p>
+      </div>
+      <!-- End of Helper Box 1 -->
 
-<p>RETURN can work in different ways — and each way adds a new branch to the tree!</p>
-<p><strong>RETURN on its own</strong> — the simplest form:</p>
-<div class="code-block"><code>FUNCTION "get flavour"<br>RETURN "butter"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour"<br>PRINT "Today's flavour is ", "my flavour"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>Today's flavour is butter</code></div>
-<p><strong>RETURN with a parameter</strong> — something goes in, something comes back out:</p>
-<div class="code-block"><code>FUNCTION "get flavour" ("flavour")<br>RETURN "flavour"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour" ("cheese")<br>PRINT "Today's flavour is ", "my flavour"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>Today's flavour is cheese</code></div>
-<p><strong>Without RETURN</strong> — the answer stays trapped inside:</p>
-<div class="code-block"><code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "get flavour" ("flavour")<br>SET "result" = "factory name", " makes ", "flavour"<br>END FUNCTION<br><br>CALL "get flavour" ("butter")<br>PRINT "result"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>Nothing! "result" is trapped inside the function 😮</code></div>
-<p><strong>With RETURN</strong> — the answer comes back out:</p>
-<div class="code-block"><code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "get flavour" ("flavour")<br>RETURN "factory name", " makes ", "flavour"<br>END FUNCTION<br><br>SET "result" = CALL "get flavour" ("butter")<br>PRINT "result"</code></div>
-<p>Output:</p>
-<div class="code-block"><code>Poppy's Factory makes butter 🎉</code></div>
-<ul class="indented-list"><li><code>"factory name"</code> lives OUTSIDE — available everywhere</li><li><code>"flavour"</code> is a PARAMETER — passed in each time</li><li>RETURN sends the answer back OUT to whoever called the function</li></ul>
-<p>Write once. Return anything. That is the power of RETURN! 🚀</p>
-</div>
-<!-- End of Helper Box 2 -->
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Helper Boxes                       █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- Helper Box 2: 🌳 The Return Tree — Seeing How It All Fits -->
+      <div class="helper-box">
+        <h3 class="box-title">🌳 The Return Tree — Seeing How It All Fits</h3>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercises                        █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<h2 class="module-title">Module 7 Functions Part2 — Exercises</h2>
+        <p>RETURN can work in different ways — and each way adds a new branch to the tree!</p>
+        <p><strong>RETURN on its own</strong> — the simplest form:</p>
+        <div class="code-block">
+          <code>FUNCTION "get flavour"<br>RETURN "butter"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour"<br>PRINT "Today's flavour is ", "my flavour"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>Today's flavour is butter</code></div>
+        <p><strong>RETURN with a parameter</strong> — something goes in, something comes back out:</p>
+        <div class="code-block">
+          <code>FUNCTION "get flavour" ("flavour")<br>RETURN "flavour"<br>END FUNCTION<br><br>SET "my flavour" = CALL "get flavour" ("cheese")<br>PRINT "Today's flavour is ", "my flavour"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>Today's flavour is cheese</code></div>
+        <p><strong>Without RETURN</strong> — the answer stays trapped inside:</p>
+        <div class="code-block">
+          <code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "get flavour" ("flavour")<br>SET "result" = "factory name", " makes ", "flavour"<br>END FUNCTION<br><br>CALL "get flavour" ("butter")<br>PRINT "result"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>Nothing! "result" is trapped inside the function 😮</code></div>
+        <p><strong>With RETURN</strong> — the answer comes back out:</p>
+        <div class="code-block">
+          <code>SET "factory name" = "Poppy's Factory"<br><br>FUNCTION "get flavour" ("flavour")<br>RETURN "factory name", " makes ", "flavour"<br>END FUNCTION<br><br>SET "result" = CALL "get flavour" ("butter")<br>PRINT "result"</code>
+        </div>
+        <p>Output:</p>
+        <div class="code-block"><code>Poppy's Factory makes butter 🎉</code></div>
+        <ul class="indented-list">
+          <li><code>"factory name"</code> lives OUTSIDE — available everywhere</li>
+          <li><code>"flavour"</code> is a PARAMETER — passed in each time</li>
+          <li>RETURN sends the answer back OUT to whoever called the function</li>
+        </ul>
+        <p>Write once. Return anything. That is the power of RETURN! 🚀</p>
+      </div>
+      <!-- End of Helper Box 2 -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Helper Boxes                       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 1                       █ -->
-<!-- █  // Exercise 1: The Pencil Colour ✏️           █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="functions-exercise-1">
-<h3 class="exercise-title">Exercise 1: The Pencil Colour ✏️</h3>
-<h4 class="sub-title">Part A: Getting the Pencil Colour</h4>
-<p>The classroom needs to know what colour the pencils are. To find this out, we will write a function that returns the colour of the pencils. We will then use this function to get the colour and print it out. The colour we are looking for is "yellow".</p>
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns the value <code>"yellow"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the result of calling the "get pencil colour" function.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "The pencil colour is " along with the value of "pencil colour".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
-       <div class="code-example">
-         <code>SET "get pencil colour" = "yellow"<br>SET "pencil colour" = "get pencil colour"<br>PRINT "The pencil colour is ", "pencil colour"</code>
-       </div>
-     </li>
-   </ul>
-<label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercises                        █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <h2 class="module-title">Module 7 Functions Part2 — Exercises</h2>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
-</div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 1                       █ -->
+      <!-- █  // Exercise 1: The Pencil Colour ✏️           █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="functions-exercise-1">
+        <h3 class="exercise-title">Exercise 1: The Pencil Colour ✏️</h3>
+        <h4 class="sub-title">Part A: Getting the Pencil Colour</h4>
+        <p>The classroom needs to know what colour the pencils are. To find this out, we will write a function that
+          returns the colour of the pencils. We will then use this function to get the colour and print it out. The
+          colour we are looking for is "yellow".</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns the value
+            <code>"yellow"</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the
+            result of calling the "get pencil colour" function.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "The pencil colour is " along with
+            the value of "pencil colour".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
+            <div class="code-example">
+              <code>SET "get pencil colour" = "yellow"<br>SET "pencil colour" = "get pencil colour"<br>PRINT "The pencil colour is ", "pencil colour"</code>
+            </div>
+          </li>
+        </ul>
+        <label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
 
-<p class="hint" id="functions-hint1-part-a"></p>
-<pre class="output-block" id="functions-output1-part-a"></pre>
-<pre class="answer-block" id="functions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Changing the Pencil Colour</h4>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
+        </div>
 
-<p>Great work. Now let's try with different values.</p>
+        <p class="hint" id="functions-hint1-part-a"></p>
+        <pre class="output-block" id="functions-output1-part-a"></pre>
+        <pre class="answer-block" id="functions-answer1-part-a"></pre>
+        <h4 class="sub-title">Part B: Changing the Pencil Colour</h4>
 
-<p>The classroom needs to know what colour the pencils are, but this time they are "red". Write a function that returns the colour. Use a variable named "pencil colour" to catch the return value and print it. The function should be called "get pencil colour" and it should return "red" when called.</p>
+        <p>Great work. Now let's try with different values.</p>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns <code>"red"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the return value of the "get pencil colour" function.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the pencil colour.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now put it all together:
-       <div class="code-example">
-         <code>FUNCTION "get pencil colour"<br>  RETURN "red"<br>END FUNCTION<br>SET "pencil colour" = "get pencil colour"<br>PRINT "The pencil colour is ", "pencil colour"</code>
-       </div>
-     </li>
-   </ul>
+        <p>The classroom needs to know what colour the pencils are, but this time they are "red". Write a function that
+          returns the colour. Use a variable named "pencil colour" to catch the return value and print it. The function
+          should be called "get pencil colour" and it should return "red" when called.</p>
 
-<label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get pencil colour" that returns
+            <code>"red"</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "pencil colour" and set its value to the
+            return value of the "get pencil colour" function.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the pencil colour.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now put it all together:
+            <div class="code-example">
+              <code>FUNCTION "get pencil colour"<br>  RETURN "red"<br>END FUNCTION<br>SET "pencil colour" = "get pencil colour"<br>PRINT "The pencil colour is ", "pencil colour"</code>
+            </div>
+          </li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
-</div>
+        <label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
 
-<p class="hint" id="functions-hint1-part-b"></p>
-<pre class="output-block" id="functions-output1-part-b"></pre>
-<pre class="answer-block" id="functions-answer1-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 1                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
+        </div>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 2                       █ -->
-<!-- █  // Exercise 2: The Tray Count 📋              █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="functions-exercise-2">
-<h3 class="exercise-title">Exercise 2: The Tray Count 📋</h3>
-<h4 class="sub-title">Part A: Tray Count Function</h4>
-<p>The classroom has a certain number of trays, and we want to write a function that returns this number. We will use a function called "get tray count" to achieve this. The function will return a fixed number, which we will then catch and print in a sentence.</p>
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns the number 10.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "tray count" to catch the return value of the "get tray count" function.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the sentence "There are " followed by the "tray count" and " trays in the classroom".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print the tray count in the code block below.</li>
-</ul>
-<label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
-</div>
-<p class="hint" id="functions-hint2-part-a"></p>
-<pre class="output-block" id="functions-output2-part-a"></pre>
-<pre class="answer-block" id="functions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Changing the Tray Count</h4>
+        <p class="hint" id="functions-hint1-part-b"></p>
+        <pre class="output-block" id="functions-output1-part-b"></pre>
+        <pre class="answer-block" id="functions-answer1-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 1                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<p>In Part A, you wrote a function to return the number of trays in the classroom and printed the result.</p>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 2                       █ -->
+      <!-- █  // Exercise 2: The Tray Count 📋              █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="functions-exercise-2">
+        <h3 class="exercise-title">Exercise 2: The Tray Count 📋</h3>
+        <h4 class="sub-title">Part A: Tray Count Function</h4>
+        <p>The classroom has a certain number of trays, and we want to write a function that returns this number. We
+          will use a function called "get tray count" to achieve this. The function will return a fixed number, which we
+          will then catch and print in a sentence.</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns the number 10.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "tray count" to catch the return value of the
+            "get tray count" function.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the sentence "There are " followed by the "tray
+            count" and " trays in the classroom".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print
+            the tray count in the code block below.</li>
+        </ul>
+        <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint2-part-a"></p>
+        <pre class="output-block" id="functions-output2-part-a"></pre>
+        <pre class="answer-block" id="functions-answer2-part-a"></pre>
+        <h4 class="sub-title">Part B: Changing the Tray Count</h4>
 
-<p>Now, imagine there are more trays in the classroom. You need to change the function to return 15 trays. You will use the "tray count" variable to catch the return value from the "get tray count" function. The "get tray count" function should return the new number of trays, and then you will print a message to show the updated tray count using the "tray count" variable.</p>
+        <p>In Part A, you wrote a function to return the number of trays in the classroom and printed the result.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tray count" and set its value to the result of calling the "get tray count" function.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns 15.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "There are " followed by the "tray count" and " trays in the classroom".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print the tray count in the code block below.</li>
-</ul>
+        <p>Now, imagine there are more trays in the classroom. You need to change the function to return 15 trays. You
+          will use the "tray count" variable to catch the return value from the "get tray count" function. The "get tray
+          count" function should return the new number of trays, and then you will print a message to show the updated
+          tray count using the "tray count" variable.</p>
 
-<label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tray count" and set its value to the result
+            of calling the "get tray count" function.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "get tray count" that returns 15.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "There are " followed by the "tray
+            count" and " trays in the classroom".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get tray count" function and print
+            the tray count in the code block below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="2-part-b">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="2-part-b">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="2-part-b">Reset My Code</button>
-</div>
+        <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
 
-<p class="hint" id="functions-hint2-part-b"></p>
-<pre class="output-block" id="functions-output2-part-b"></pre>
-<pre class="answer-block" id="functions-answer2-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 2                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="2-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="2-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="2-part-b">Reset My Code</button>
+        </div>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 3                       █ -->
-<!-- █  // Exercise 3: The Supply Box 📦              █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="functions-exercise-3">
-<h3 class="exercise-title">Exercise 3: The Supply Box 📦</h3>
+        <p class="hint" id="functions-hint2-part-b"></p>
+        <pre class="output-block" id="functions-output2-part-b"></pre>
+        <pre class="answer-block" id="functions-answer2-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 2                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<h4 class="sub-title">Part A: Getting a Supply</h4>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 3                       █ -->
+      <!-- █  // Exercise 3: The Supply Box 📦              █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="functions-exercise-3">
+        <h3 class="exercise-title">Exercise 3: The Supply Box 📦</h3>
 
-<p>In this exercise, each child needs to know what is in their supply box. To achieve this, we will write a function that takes a "supply name" as a parameter and returns it. The function will be called with different supply names, and the returned values will be printed out.</p>
+        <h4 class="sub-title">Part A: Getting a Supply</h4>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get supply" that takes a "supply name" as a parameter.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "get supply" function with "ruler" as the "supply name" and catch the return in "my supply".</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "my supply" value, which is "ruler", and then call the function again with "scissors".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get supply" function and call it with "ruler" and "scissors" in the code block below.</li>
-   </ul>
+        <p>In this exercise, each child needs to know what is in their supply box. To achieve this, we will write a
+          function that takes a "supply name" as a parameter and returns it. The function will be called with different
+          supply names, and the returned values will be printed out.</p>
 
-<label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get supply" that takes a "supply name" as a
+            parameter.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "get supply" function with "ruler" as the "supply name" and
+            catch the return in "my supply".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "my supply" value, which is "ruler", and then
+            call the function again with "scissors".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get supply" function and call it
+            with "ruler" and "scissors" in the code block below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="3-part-a">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="3-part-a">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="3-part-a">Reset My Code</button>
-</div>
+        <label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
 
-<p class="hint" id="functions-hint3-part-a"></p>
-<pre class="output-block" id="functions-output3-part-a"></pre>
-<pre class="answer-block" id="functions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Using the Get Supply Function with More Items</h4>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="3-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="3-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="3-part-a">Reset My Code</button>
+        </div>
 
-<p>In Part A, you wrote a function called "get supply" that takes a "supply name" as a parameter and returns it, then called it with "ruler" and "scissors" to see the results.</p>
+        <p class="hint" id="functions-hint3-part-a"></p>
+        <pre class="output-block" id="functions-output3-part-a"></pre>
+        <pre class="answer-block" id="functions-answer3-part-a"></pre>
+        <h4 class="sub-title">Part B: Using the Get Supply Function with More Items</h4>
 
-<p>Now, you need to use the same "get supply" function with different "supply name" values, such as "glue stick" and "paint brush", to see what is in your supply box. You will pass these "supply name" values to the function and print the results. The "supply name" will be returned by the function and you can then print it to the screen.</p>
+        <p>In Part A, you wrote a function called "get supply" that takes a "supply name" as a parameter and returns it,
+          then called it with "ruler" and "scissors" to see the results.</p>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of calling the "get supply" function with "glue stick" as the "supply name" value.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of calling the "get supply" function with "paint brush" as the "supply name" value.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "My supply is " followed by the value of "my supply" each time.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get supply" function with "glue stick" and "paint brush" and print the results in the code block below.</li>
-   </ul>
+        <p>Now, you need to use the same "get supply" function with different "supply name" values, such as "glue stick"
+          and "paint brush", to see what is in your supply box. You will pass these "supply name" values to the function
+          and print the results. The "supply name" will be returned by the function and you can then print it to the
+          screen.</p>
 
-<label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of
+            calling the "get supply" function with "glue stick" as the "supply name" value.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my supply" and set its value to the result of
+            calling the "get supply" function with "paint brush" as the "supply name" value.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "My supply is " followed by the value
+            of "my supply" each time.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get supply" function with "glue stick"
+            and "paint brush" and print the results in the code block below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="3-part-b">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="3-part-b">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="3-part-b">Reset My Code</button>
-</div>
+        <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
 
-<p class="hint" id="functions-hint3-part-b"></p>
-<pre class="output-block" id="functions-output3-part-b"></pre>
-<pre class="answer-block" id="functions-answer3-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 3                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="3-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="3-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="3-part-b">Reset My Code</button>
+        </div>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 4                       █ -->
-<!-- █  // Exercise 4: The Cupboard Label 🏷️         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="functions-exercise-4">
-<h3 class="exercise-title">Exercise 4: The Cupboard Label 🏷️</h3>
-<h4 class="sub-title">Part A: Getting the Cupboard Label</h4>
-<p>In the classroom, every cupboard has a label. To help the children find their things, we need to write a function that takes a "cupboard number" and returns the label. We will use this function to get the labels for cupboards 1 and 2. The function should take the "cupboard number" as a parameter and return it as the label.</p>
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get cupboard label" that takes a "cupboard number" as a parameter.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, return the "cupboard number" as the label.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the label when we call the function with a "cupboard number" and catch the result in "my label".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get cupboard label" function with 1 and 2, and print the results.</li>
-</ul>
-<label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="4-part-a">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="4-part-a">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="4-part-a">Reset My Code</button>
-</div>
-<p class="hint" id="functions-hint4-part-a"></p>
-<pre class="output-block" id="functions-output4-part-a"></pre>
-<pre class="answer-block" id="functions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Calling the Function with More Cupboard Numbers</h4>
+        <p class="hint" id="functions-hint3-part-b"></p>
+        <pre class="output-block" id="functions-output3-part-b"></pre>
+        <pre class="answer-block" id="functions-answer3-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 3                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<p>Now that you have written and called a function with cupboard numbers 1 and 2, it is time to try more numbers.</p>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 4                       █ -->
+      <!-- █  // Exercise 4: The Cupboard Label 🏷️         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="functions-exercise-4">
+        <h3 class="exercise-title">Exercise 4: The Cupboard Label 🏷️</h3>
+        <h4 class="sub-title">Part A: Getting the Cupboard Label</h4>
+        <p>In the classroom, every cupboard has a label. To help the children find their things, we need to write a
+          function that takes a "cupboard number" and returns the label. We will use this function to get the labels for
+          cupboards 1 and 2. The function should take the "cupboard number" as a parameter and return it as the label.
+        </p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a function named "get cupboard label" that takes a "cupboard
+            number" as a parameter.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the function, return the "cupboard number" as the label.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the label when we call the function with a
+            "cupboard number" and catch the result in "my label".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get cupboard label" function with 1
+            and 2, and print the results.</li>
+        </ul>
+        <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex4-part-a" data-section="functions"></div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="4-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="4-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="4-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint4-part-a"></p>
+        <pre class="output-block" id="functions-output4-part-a"></pre>
+        <pre class="answer-block" id="functions-answer4-part-a"></pre>
+        <h4 class="sub-title">Part B: Calling the Function with More Cupboard Numbers</h4>
 
-<p>In this part of the exercise, you will call the "get cupboard label" function with "cupboard number" as 3 and 4, and print the results. You will use the "cupboard number" as a parameter and store the returned value in a variable named "my label". The "cupboard number" will be used to get the label, and then you will print the label.</p>
+        <p>Now that you have written and called a function with cupboard numbers 1 and 2, it is time to try more
+          numbers.</p>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with 3.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of calling "get cupboard label" with 4.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the cupboard label for each "cupboard number".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with 3 and 4 in the code block below.</li>
-   </ul>
+        <p>In this part of the exercise, you will call the "get cupboard label" function with "cupboard number" as 3 and
+          4, and print the results. You will use the "cupboard number" as a parameter and store the returned value in a
+          variable named "my label". The "cupboard number" will be used to get the label, and then you will print the
+          label.</p>
 
-<label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of
+            calling "get cupboard label" with 3.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my label" and set its value to the result of
+            calling "get cupboard label" with 4.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the cupboard label for each "cupboard number".
+          </li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with 3 and 4 in the code block
+            below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
-</div>
+        <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
 
-<p class="hint" id="functions-hint4-part-b"></p>
-<pre class="output-block" id="functions-output4-part-b"></pre>
-<pre class="answer-block" id="functions-answer4-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 4                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
+        </div>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 5                       █ -->
-<!-- █  // Exercise 5: The Full Supply Check 🌟       █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="functions-exercise-5">
-<h3 class="exercise-title">Exercise 5: The Full Supply Check 🌟</h3>
+        <p class="hint" id="functions-hint4-part-b"></p>
+        <pre class="output-block" id="functions-output4-part-b"></pre>
+        <pre class="answer-block" id="functions-answer4-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 4                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<h4 class="sub-title">Part A: Checking Supplies in Room 3</h4>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 5                       █ -->
+      <!-- █  // Exercise 5: The Full Supply Check 🌟       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="functions-exercise-5">
+        <h3 class="exercise-title">Exercise 5: The Full Supply Check 🌟</h3>
 
-<p>In this exercise, you will create a function called "check supply" that takes a "supply name" as a parameter and returns it. You will also use a variable "classroom name" that is set outside the function. Your task is to print both the "classroom name" and the "checked supply" after calling the function with different supply names.</p>
+        <h4 class="sub-title">Part A: Checking Supplies in Room 3</h4>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "classroom name" and set its value to <code>"Room 3"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "check supply" that takes a "supply name" as a parameter and returns the "supply name".</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the returned "supply name" from the function.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check supply" function with "pencil" and "ruler" as arguments in the code block below.</li>
-   </ul>
+        <p>In this exercise, you will create a function called "check supply" that takes a "supply name" as a parameter
+          and returns it. You will also use a variable "classroom name" that is set outside the function. Your task is
+          to print both the "classroom name" and the "checked supply" after calling the function with different supply
+          names.</p>
 
-<label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "classroom name" and set its value to
+            <code>"Room 3"</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "check supply" that takes a "supply name" as a
+            parameter and returns the "supply name".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the returned "supply
+            name" from the function.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check supply" function with "pencil"
+            and "ruler" as arguments in the code block below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
-</div>
+        <label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex5-part-a" data-section="functions"></div>
 
-<p class="hint" id="functions-hint5-part-a"></p>
-<pre class="output-block" id="functions-output5-part-a"></pre>
-<pre class="answer-block" id="functions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Changing the Classroom</h4>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
+        </div>
 
-<p>Now that you have practised checking supplies in "Room 3", it is time to change the classroom and check some more supplies.</p>
+        <p class="hint" id="functions-hint5-part-a"></p>
+        <pre class="output-block" id="functions-output5-part-a"></pre>
+        <pre class="answer-block" id="functions-answer5-part-a"></pre>
+        <h4 class="sub-title">Part B: Changing the Classroom</h4>
 
-<p>In this part of the exercise, you will change the "classroom name" to "Room 5" and check the "supply name" for "scissors" and "glue stick". You will use the same function as before, but with the new "classroom name" and different "supply name" values. Remember to use the "classroom name" outside the function and the "supply name" as a parameter.</p>
+        <p>Now that you have practised checking supplies in "Room 3", it is time to change the classroom and check some
+          more supplies.</p>
 
-<ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "classroom name" and set its value to <code>"Room 5"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "supply name" and set its value to <code>"scissors"</code>, then to <code>"glue stick"</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the "supply name" that the function returns.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check supply" function with "scissors" and "glue stick" in the code block below.</li>
-   </ul>
+        <p>In this part of the exercise, you will change the "classroom name" to "Room 5" and check the "supply name"
+          for "scissors" and "glue stick". You will use the same function as before, but with the new "classroom name"
+          and different "supply name" values. Remember to use the "classroom name" outside the function and the "supply
+          name" as a parameter.</p>
 
-<label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "classroom name" and set its value to
+            <code>"Room 5"</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "supply name" and set its value to
+            <code>"scissors"</code>, then to <code>"glue stick"</code>.
+          </li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "classroom name" and the "supply name" that
+            the function returns.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check supply" function with "scissors"
+            and "glue stick" in the code block below.</li>
+        </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
-  <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
-  <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
-</div>
+        <label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>
 
-<p class="hint" id="functions-hint5-part-b"></p>
-<pre class="output-block" id="functions-output5-part-b"></pre>
-<pre class="answer-block" id="functions-answer5-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 5                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
+        </div>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercises                          █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="functions-hint5-part-b"></p>
+        <pre class="output-block" id="functions-output5-part-b"></pre>
+        <pre class="answer-block" id="functions-answer5-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 5                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-</section>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: MODULE-7-FUNCTIONS-PART2                █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercises                          █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-</main>
-<script src="../../scripts/main.js"></script>
-<script src="../../scripts/scroll.js"></script>
+    </section>
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // End::: MODULE-7-FUNCTIONS-PART2                █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  </main>
+  <script src="../../scripts/main.js"></script>
+  <script src="../../scripts/scroll.js"></script>
 </body>
+
 </html>

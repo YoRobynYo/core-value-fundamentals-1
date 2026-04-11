@@ -229,7 +229,7 @@
 
   <p>Understanding true and false is crucial because conditions make decisions
   based on these answers. Later, you'll use conditions to control what your
-  program does: "If true, do this. If false, do that."</p>
+  code does: "If true, do this. If false, do that."</p>
 
   <p class="note">💡 <strong>Think of it like this:</strong> true and false are
   the computer's way of saying "Yes" or "No" to your questions. Every condition
@@ -464,52 +464,64 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 1                       █ -->
-<!-- █  // Exercise 1: BAG POSITIONING CHECK ✅        █ -->
+<!-- █  // Exercise 1: Bag Positioning Check ✅        █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-1">
-<h3 class="exercise-title">Exercise 1: BAG POSITIONING CHECK ✅</h3>
-<h4 class="sub-title">Part A: Checking the Bag's Position</h4>
-<p>In a factory, it is crucial to ensure that bags are positioned exactly under the machine's chute to prevent spills. The "bag position" needs to be checked against the "correct position" to guarantee a smooth operation. This check will help the factory staff to identify if the bag is in the right place.</p>
+<h3 class="exercise-title">Exercise 1: Bag Positioning Check ✅</h3>
+
+<h4 class="sub-title">Part A: Check if the bag's position is exactly correct.</h4>
+
+<p>Imagine you're working at the factory and you need to check if a bag is in the correct position under the machine's chute. If it's not, you might end up with a spill. You want to make sure the bag is exactly in the right place.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag position" and set its value to <code>"under the chute"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct position" and set its value to <code>"under the chute"</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "bag position" is the same as the "correct position".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the check:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag position" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct position" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the bag position correct? "</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the bag's position is exactly correct:
     <div class="code-example">
-      <code>SET "bag position" = "under the chute"<br>SET "correct position" = "under the chute"<br>PRINT "Is the bag position correct? ", "bag position" == "correct position"</code>
+      <code>SET bag position = value<br>SET correct position = value<br>IF "bag position" = "correct position" THEN PRINT "true"<br>ELSE PRINT "false"</code>
     </div>
   </li>
 </ul>
+
 <label for="conditions-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex1-part-a" data-section="conditions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="1-part-a">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="1-part-a">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="1-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="conditions-hint1-part-a"></p>
 <pre class="output-block" id="conditions-output1-part-a"></pre>
 <pre class="answer-block" id="conditions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Checking Incorrect Bag Position</h4>
+<h4 class="sub-title">Part B: Checking if the bag's position is not correct</h4>
+
 <p>Great work! Now let's try with different values.</p>
-<p>In this scenario, the "bag position" is not exactly under the machine's chute, which means it's not in the "correct position". We need to check if the "bag position" is incorrect to prevent spills. The "bag position" is now set to a different value.</p>
+
+<p>Imagine we have a machine that needs to check if a bag is in the correct position under its chute. If the bag is not in the correct position, the machine will spill the contents. We need to check if the bag's position is not correct, so we can prevent spills.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag position" and set its value to <code>"not under chute"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct position" and set its value to <code>"under chute"</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "bag position" is incorrect.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now check the bag's position using an IF statement:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bag position" and set its value to <code>NOT CORRECT</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct position" and set its value to <code>CORRECT</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the bag position wrong?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's check if the bag's position is not correct:
     <div class="code-example">
-      <code>SET "bag position" = "not under chute"<br>SET "correct position" = "under chute"<br>IF "bag position" IS NOT "correct position" THEN<br>PRINT "Is the bag position wrong? ", "true"<br>END IF</code>
+      <code>SET bag position = NOT CORRECT<br>SET correct position = CORRECT<br>PRINT "Is the bag position wrong? ", bag position</code>
     </div>
   </li>
 </ul>
+
 <label for="conditions-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex1-part-b" data-section="conditions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
 </div>
+
 <p class="hint" id="conditions-hint1-part-b"></p>
 <pre class="output-block" id="conditions-output1-part-b"></pre>
 <pre class="answer-block" id="conditions-answer1-part-b"></pre>
@@ -525,16 +537,16 @@
 <div class="exercise-box" id="conditions-exercise-2">
 <h3 class="exercise-title">Exercise 2: Box Number Verification 🔢</h3>
 
-<h4 class="sub-title">Part A: Checking the Box Number</h4>
+<h4 class="sub-title">Part A: Check if the box number matches the station number</h4>
 
-<p>In our factory, we need to ensure that the number on a supply box exactly matches the station number. We have a "box number" and a "station number" that we need to compare. The child's task is to write a simple coding check to see if these two numbers are the same.</p>
+<p>Imagine you're at the factory, and you need to check if the number on a supply box exactly matches the station number. You have a box with the number "5" and a station with the number "5". You want to find out if the box number matches the station number.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box number" and set its value to <code>5</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>5</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "box number" matches the "station number".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "box number" is equal to the "station number" in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box number" and set its value to <code>5</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>5</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Does the box number match?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the box number exactly matches the station number in the code block below.</li>
+</ul>
 
 <label for="conditions-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex2-part-a" data-section="conditions"></div>
@@ -548,18 +560,18 @@
 <p class="hint" id="conditions-hint2-part-a"></p>
 <pre class="output-block" id="conditions-output2-part-a"></pre>
 <pre class="answer-block" id="conditions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Identifying a Mismatched Box Number</h4>
+<h4 class="sub-title">Part B: Identifying a Mismatch</h4>
 
-<p>Now that we have checked if the box number matches the station number, we need to identify a box that has the wrong number for the current station.</p>
+<p>Let's see how we can check if the box number is a mismatch for the current station.</p>
 
-<p>In this scenario, the "box number" is 5, but the "station number" is 3. We want to check if the "box number" is a mismatch for the "station number". To do this, we will use the values of "box number" and "station number" to determine if they are not equal.</p>
+<p>Imagine we have a box with a number that doesn't match the station number. We need to find a box that has the wrong number for the current station. Let's say the box number is "box number" and the station number is "station number".</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box number" and set its value to <code>5</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>3</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of checking if the "box number" is not equal to the "station number", along with the text "Is the box number a mismatch? "</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "box number" is not equal to the "station number" and print the result in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box number" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the box number a mismatch?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the box number is not equal to the station number in the code block below.</li>
+</ul>
 
 <label for="conditions-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex2-part-b" data-section="conditions"></div>
@@ -584,36 +596,42 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-3">
 <h3 class="exercise-title">Exercise 3: Status Light Colour Check 🔴</h3>
-<h4 class="sub-title">Part A: Checking the Status Light Colour</h4>
-<p>The machine's status light must be the correct colour for the setup phase to begin. The "light colour" is currently set to "red", and the "expected colour" is also "red". We need to verify that the status light is the correct colour before proceeding.</p>
+
+<h4 class="sub-title">Part A: Verify the Status Light is the Correct Colour</h4>
+
+<p>Imagine you're setting up a machine at the factory. You need to check the colour of the status light to make sure it's in the correct state for setup. The expected colour is "red".</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "light colour" and set its value to <code>"red"</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected colour" and set its value to <code>"red"</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "light colour" matches the "expected colour".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "light colour" is equal to the "expected colour" in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "light colour" and set its value to <code>red</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected colour" and set its value to <code>red</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the light colour correct?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the light colour is exactly equal to the expected colour.</li>
 </ul>
+
 <label for="conditions-ex3-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex3-part-a" data-section="conditions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="3-part-a">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="3-part-a">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="3-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="conditions-hint3-part-a"></p>
 <pre class="output-block" id="conditions-output3-part-a"></pre>
 <pre class="answer-block" id="conditions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Checking for Incorrect Status Light Colour</h4>
+<h4 class="sub-title">Part B: Detecting a Mismatch</h4>
 
-<p>Now that we have verified the status light is the correct colour for the setup phase, we need to detect when it is an unexpected colour.</p>
+<p>Imagine you've already checked if the status light is the correct colour ("red") for the setup phase.</p>
 
-<p>In this scenario, the "light colour" is "green" and the "expected colour" is "red". We want to check if the "light colour" is not the "expected colour" to ensure the machine is in the correct state. The "light colour" being "green" indicates a problem that needs to be addressed.</p>
+<p>Now, let's think about what happens if the status light is an unexpected colour ("green"). This could be a problem! We need to write some code to detect when the status light is not the correct colour.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "light colour" and set its value to <code>"green"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected colour" and set its value to <code>"red"</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the light colour a mismatch?", along with the result of checking if the "light colour" is not the "expected colour".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "light colour" is not the "expected colour" and print the result in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "light colour" and set its value to <code>green</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected colour" and set its value to <code>red</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the light colour a mismatch?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the light colour is not equal to the expected colour in the code block below.</li>
+</ul>
 
 <label for="conditions-ex3-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex3-part-b" data-section="conditions"></div>
@@ -634,21 +652,21 @@
 
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // Start::: Exercise 4                       █ -->
-<!-- █  // Exercise 4: TOOL TYPE VERIFICATION 🔧      █ -->
+<!-- █  // Exercise 4: Tool Type Verification 🔧      █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-4">
-<h3 class="exercise-title">Exercise 4: TOOL TYPE VERIFICATION 🔧</h3>
+<h3 class="exercise-title">Exercise 4: Tool Type Verification 🔧</h3>
 
-<h4 class="sub-title">Part A: Checking the Correct Tool</h4>
+<h4 class="sub-title">Part A: Check the Tool</h4>
 
-<p>In our factory, it is essential to ensure the correct type of tool is at the workstation. We need to check if the "tool type" at the station is the exact one required, which is the "scoop". The children will learn how to use exact matching to verify the correct equipment is being used.</p>
+<p>At the factory, we need to make sure the correct type of tool ("scoop") is at the workstation. Imagine you're checking if the tool at the station is the exact one required for the job. We want to use a condition to check if the tool is <strong>exactly</strong> the right one.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type" and set its value to "scoop".</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct tool" and set its value to "scoop".</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "tool type" is the same as the "correct tool".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "tool type" matches the "correct tool" in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct tool" and set its value to <code>scoop</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the tool correct?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the tool type is exactly equal to the correct tool in the code block below.</li>
+</ul>
 
 <label for="conditions-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex4-part-a" data-section="conditions"></div>
@@ -662,18 +680,18 @@
 <p class="hint" id="conditions-hint4-part-a"></p>
 <pre class="output-block" id="conditions-output4-part-a"></pre>
 <pre class="answer-block" id="conditions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Checking for the Wrong Tool</h4>
+<h4 class="sub-title">Part B: Identifying a Tool Mismatch</h4>
 
-<p>Now that we have checked if the correct tool is at the workstation, we need to identify when the wrong tool has been brought to the station.</p>
+<p>Remember, we want to ensure that the correct tool is being used at the workstation.</p>
 
-<p>In this scenario, the "tool type" is "tongs" and the "correct tool" is "scoop". We need to use exact matching to check if the tool at the station is not the correct one. The "tool type" is "tongs", which is not the same as the "correct tool".</p>
+<p>Imagine that a child has brought the wrong tool, "tongs", to the workstation. We need to check if the tool at the station is the exact one required, which is "scoop".</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type" and set its value to <code>"tongs"</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct tool" and set its value to <code>"scoop"</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display whether the "tool type" is not the same as the "correct tool", with the text "Is the tool a mismatch?" and the result of the comparison.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "tool type" is not the same as the "correct tool" in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "tool type" and set its value to <code>"tongs"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "correct tool" and set its value to <code>"scoop"</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the tool a mismatch?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the tool at the station is not the correct tool in the code block below.</li>
+</ul>
 
 <label for="conditions-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex4-part-b" data-section="conditions"></div>
@@ -697,36 +715,43 @@
 <!-- █  // Exercise 5: Lightning Panel Check ⚡        █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="conditions-exercise-5">
+=== EXERCISE 5: LIGHTNING PANEL CHECK ⚡ ===
 <h3 class="exercise-title">Exercise 5: Lightning Panel Check ⚡</h3>
-<h4 class="sub-title">Part A: Checking the Power is On</h4>
-<p>We need to verify that the machine is connected to electricity by checking a status panel. The "panel status" should match the "expected status" for the machine to be safely powered "on". We will use exact matching to check for the critical "on" status.</p>
+
+<h4 class="sub-title">Part A: Check the Power</h4>
+
+<p>At the factory, we need to be precise when checking if the machine is connected to electricity. We use a status panel to verify this. The panel shows if the machine is "on" or "off". We need to check if the panel shows the machine is correctly powered "on".</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "panel status" and set its value to <code>"on"</code>.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "panel status" and set its value to <code>VALUE</code>.</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected status" and set its value to <code>"on"</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "panel status" and check if it matches the "expected status".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the "panel status" is exactly "on" and print the result in the code block below.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is the power on?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the panel status is exactly "on" and print the result in the code block below.</li>
 </ul>
+
 <label for="conditions-ex5-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="conditions-ex5-part-a" data-section="conditions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="conditions" data-ex="5-part-a">Hint</button>
   <button class="run-button" data-section="conditions" data-ex="5-part-a">Run My Code</button>
   <button class="reset-button" data-section="conditions" data-ex="5-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="conditions-hint5-part-a"></p>
 <pre class="output-block" id="conditions-output5-part-a"></pre>
 <pre class="answer-block" id="conditions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Detect if the machine is unexpectedly powered off</h4>
+<h4 class="sub-title">Part B: Detecting a Power Problem</h4>
 
-<p>In Part A, we checked if the panel shows that the machine is correctly powered on. Now, let's detect if the panel shows that the machine is unexpectedly powered off. The panel status should be "off" and the expected status is also "off". If they match, it indicates a power problem.</p>
+<p>Remember in Part A, we checked if the panel showed the machine was correctly powered "on". Now, we need to detect if the panel shows the machine is unexpectedly powered "off".</p>
 
-<p>Let's assume the current panel status is "off" and the expected status is "off". We need to check if these two values are exactly the same.</p>
+<p>We're checking the status panel to see if the machine is working as expected. The panel status is currently showing "off", but we expected it to be "on". We need to write some code to check this.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "panel status" and set its value to "off".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected status" and set its value to "off".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is there a power problem? true" if the panel status is not equal to the expected status.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the panel status is not equal to the expected status in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "panel status" and set its value to <code>off</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "expected status" and set its value to <code>on</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Is there a power problem?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the panel status is exactly equal to the expected status in the code block below.</li>
 </ul>
 
 <label for="conditions-ex5-part-b" class="code-label">Add your code in the code block below</label>

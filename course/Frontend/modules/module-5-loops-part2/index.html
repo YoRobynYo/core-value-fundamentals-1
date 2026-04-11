@@ -9,236 +9,222 @@
 </head>
 <body>
 <main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
 
-<!-- ▼▼▼ Module ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-5-LOOPS-PART2                    █ -->
+<!-- █  // Module 5 Loops Part2                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <section class="page" id="loops-module">
 
 <h2 class="module-title">Module 5 Loops Part2</h2>
 
-<!-- ▼▼▼ Helper Boxes ▼▼▼ -->
-# module 5 - loops part 2 - exercise specifications
-## Language-Agnostic Edition
-
-**Created:** March 2026
-**Updated:** March 2026
-**Purpose:** Spec file for AI to generate all Module 5 Loops Part 2 exercises
-
-**SETTING:** Popcorn Factory
-**THEME:** Doing math with loops to manage factory resources
-
----
-
-## HOW TO USE THIS WITH AI
-
-**Give AI these files:**
-1. This spec file
-2. MODULE-0-EXERCISE-TEMPLATE-MASTER.md (for structure and rules)
-3. MODULE-5-LOOPS-PART-2-HELPER-BOX.md (for context on what has been taught)
-
-**Instruction to AI:**
-"Using the exercise template and helper boxes, generate the complete HTML for
-Exercise [NUMBER] following these specifications exactly."
-
----
-
-## EXERCISE 1: BACKUP OIL CONTAINERS 🛢️
-
-**SECTION NAME:** loops
-**EXERCISE NUMBER:** 1
-**EMOJI:** 🛢️
-
-**SCENARIO:** Calculating the total number of oil containers needed for a line of machines, including backups.
-
-**VARIABLES TO USE:**
-- Part A: "number of machines", "backup containers per machine"
-- Part B: "number of machines", "backup containers per machine"
-
-**CONCEPT:** Using addition inside a loop to calculate a running total for each iteration.
-
-**PART A FOCUS:** For machines 1 through 5, calculate total containers needed if each machine gets its number plus 2 backup containers.
-**PART B FOCUS:** For machines 1 through 7, calculate total containers needed if each machine gets its number plus 3 backup containers.
-
-**IMAGE:** if-statement-greater-than.jpg
-**ALT TEXT:** "Using loops to perform calculations"
-
-**EXPECTED OUTPUT PART A:** "Machine 1 needs 3 containers. Machine 2 needs 4 containers. Machine 3 needs 5 containers. Machine 4 needs 6 containers. Machine 5 needs 7 containers."
-**EXPECTED OUTPUT PART B:** "Machine 1 needs 4 containers. Machine 2 needs 5 containers. Machine 3 needs 6 containers. Machine 4 needs 7 containers. Machine 5 needs 8 containers. Machine 6 needs 9 containers. Machine 7 needs 10 containers."
-
----
-
-## EXERCISE 2: FLAVOR PACKET CALCULATION 🍬
-
-**SECTION NAME:** loops
-**EXERCISE NUMBER:** 2
-**EMOJI:** 🍬
-
-**SCENARIO:** Calculating how many flavor packets to deliver to each station based on its number.
-
-**VARIABLES TO USE:**
-- Part A: "number of stations", "packets multiplier"
-- Part B: "number of stations", "packets multiplier"
-
-**CONCEPT:** Using multiplication inside a loop to scale a value with each iteration.
-
-**PART A FOCUS:** For stations 1 through 5, calculate flavor packets needed if each station gets its number multiplied by 2.
-**PART B FOCUS:** For stations 1 through 6, calculate flavor packets needed if each station gets its number multiplied by 3.
-
-**IMAGE:** if-statement-greater-than.jpg
-**ALT TEXT:** "Using loops to perform calculations"
-
-**EXPECTED OUTPUT PART A:** "Station 1 gets 2 packets. Station 2 gets 4 packets. Station 3 gets 6 packets. Station 4 gets 8 packets. Station 5 gets 10 packets."
-**EXPECTED OUTPUT PART B:** "Station 1 gets 3 packets. Station 2 gets 6 packets. Station 3 gets 9 packets. Station 4 gets 12 packets. Station 5 gets 15 packets. Station 6 gets 18 packets."
-
----
-
-## EXERCISE 3: TOTAL CORN BOX DELIVERY 📦
-
-**SECTION NAME:** loops
-**EXERCISE NUMBER:** 3
-**EMOJI:** 📦
-
-**SCENARIO:** Calculating the total number of corn boxes for each machine using a formula.
-
-**VARIABLES TO USE:**
-- Part A: "number of machines", "base box multiplier", "extra boxes"
-- Part B: "number of machines", "base box multiplier", "extra boxes"
-
-**CONCEPT:** Combining multiplication and addition inside a loop for more complex calculations.
-
-**PART A FOCUS:** For machines 1 through 4, calculate total boxes if each gets (machine number × 2) + 3 extra boxes.
-**PART B FOCUS:** For machines 1 through 5, calculate total boxes if each gets (machine number × 3) + 5 extra boxes.
-
-**IMAGE:** if-statement-greater-than.jpg
-**ALT TEXT:** "Using loops to perform calculations"
-
-**EXPECTED OUTPUT PART A:** "Machine 1 needs 5 boxes. Machine 2 needs 7 boxes. Machine 3 needs 9 boxes. Machine 4 needs 11 boxes."
-**EXPECTED OUTPUT PART B:** "Machine 1 needs 8 boxes. Machine 2 needs 11 boxes. Machine 3 needs 14 boxes. Machine 4 needs 17 boxes. Machine 5 needs 20 boxes."
-
----
-
-## EXERCISE 4: OIL LEVEL CHECK 💧
-
-**SECTION NAME:** loops
-**EXERCISE NUMBER:** 4
-**EMOJI:** 💧
-
-**SCENARIO:** Monitoring a decreasing resource as it's used by a line of machines.
-
-**VARIABLES TO USE:**
-- Part A: "starting oil level", "oil used per machine", "number of machines"
-- Part B: "starting oil level", "oil used per machine", "number of machines"
-
-**CONCEPT:** Using subtraction inside a loop to track a depleting value.
-
-**PART A FOCUS:** An oil drum starts with 100 units. For machines 1 through 5, calculate the remaining oil if each machine uses 10 units.
-**PART B FOCUS:** An oil drum starts with 200 units. For machines 1 through 6, calculate the remaining oil if each machine uses 15 units.
-
-**IMAGE:** if-statement-greater-than.jpg
-**ALT TEXT:** "Using loops to perform calculations"
-
-**EXPECTED OUTPUT PART A:** "After machine 1, 90 units left. After machine 2, 80 units left. After machine 3, 70 units left. After machine 4, 60 units left. After machine 5, 50 units left."
-**EXPECTED OUTPUT PART B:** "After machine 1, 185 units left. After machine 2, 170 units left. After machine 3, 155 units left. After machine 4, 140 units left. After machine 5, 125 units left. After machine 6, 110 units left."
-
----
-
-## EXERCISE 5: POWER GRID PLANNING ⚡
-
-**SECTION NAME:** loops
-**EXERCISE NUMBER:** 5
-**EMOJI:** ⚡
-
-**SCENARIO:** Calculating the total power required for each machine in a new production line.
-
-**VARIABLES TO USE:**
-- Part A: "base power multiplier", "extra power per machine", "number of machines"
-- Part B: "base power multiplier", "extra power per machine", "number of machines"
-
-**CONCEPT:** Using multiple operations in a loop to solve a planning problem.
-
-**PART A FOCUS:** For machines 1 through 5, calculate power needed if each requires (machine number × 10) + 5 extra units.
-**PART B FOCUS:** For machines 1 through 4, calculate power needed if each requires (machine number × 12) + 8 extra units.
-
-**IMAGE:** if-statement-greater-than.jpg
-**ALT TEXT:** "Using loops to perform calculations"
-
-**EXPECTED OUTPUT PART A:** "Machine 1 needs 15 power units. Machine 2 needs 25 power units. Machine 3 needs 35 power units. Machine 4 needs 45 power units. Machine 5 needs 55 power units."
-**EXPECTED OUTPUT PART B:** "Machine 1 needs 20 power units. Machine 2 needs 32 power units. Machine 3 needs 44 power units. Machine 4 needs 56 power units."
-
----
-
-## NARRATIVE CONTEXT
-
-**Opening for Module 5, Part 2:**
-"Welcome back to the factory floor! You've mastered counting with loops, but now it's time to make them do some real work. In this section, we'll use loops to perform calculations for every machine and station, helping us manage supplies, power, and more. Let's get calculating!"
-
-**Exercise Flow:**
-1. Adding backup supplies for each machine.
-2. Multiplying to find out how many flavor packets each station needs.
-3. Combining multiplication and addition to deliver the right number of corn boxes.
-4. Subtracting to check how much oil is left after each machine runs.
-5. Planning the power needs for a whole new line of machines.
-
-**Closing:**
-"Amazing work! You've turned loops into powerful calculators. You can now automatically manage resources for the entire factory. Next up, we'll learn how to make loops even smarter by changing how they count."
-
----
-
-## QUALITY CHECKLIST FOR AI GENERATION
-
-When AI generates the exercise, verify:
-- [ ] Section name is "loops"
-- [ ] Exercise number matches
-- [ ] Both Part A and Part B are included
-- [ ] Variables use natural language in quotes — NOT camelCase
-- [ ] Uses pseudocode only — SET and PRINT — no real language syntax
-- [ ] Uses PRINT with commas — no + concatenation
-- [ ] Uses `<code>` tags (not `<highlight>`)
-- [ ] IDs follow pattern: loops-ex[number]-part-[letter]
-- [ ] Data attributes correct: data-section="loops"
-- [ ] Image filename and alt text match spec
-- [ ] Empty hint/output/answer containers present
-- [ ] Part A Step 4 shows complete pseudocode answer
-- [ ] Part B Step 4 references the specific task — no pseudocode shown
-- [ ] Expected outputs match the spec
-- [ ] Nothing used that hasn't been taught in a helper box (Rule 6)
-
----
-
-## GENERATION RESULTS
-
-**When you generate with AI, document here:**
-- Which AI was used: ___________
-- Exercise generated: ___________
-- Did it generate correctly? YES / NO
-- What needed fixing: ___________
-- Number of attempts needed: ___________
-
----
-
-END OF MODULE 5 PART 2 SPECIFICATIONS
-<!-- ▲▲▲ Helper Boxes ▲▲▲ -->
-
-<!-- ▼▼▼ Exercises ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box 1: module 5 - loops part 2 - exercise specifications -->
+<div class="helper-box">
+<h3 class="box-title">module 5 - loops part 2 - exercise specifications</h3>
+
+
+</div>
+<!-- End of Helper Box 1 -->
+
+<!-- Helper Box 2: Language-Agnostic Edition -->
+<div class="helper-box">
+<h3 class="box-title">Language-Agnostic Edition</h3>
+
+<p><strong>Created:</strong> March 2026</p>
+<p><strong>Updated:</strong> March 2026</p>
+<p><strong>Purpose:</strong> Spec file for AI to generate all Module 5 Loops Part 2 exercises</p>
+<p><strong>SETTING:</strong> Popcorn Factory</p>
+<p><strong>THEME:</strong> Doing math with loops to manage factory resources</p>
+</div>
+<!-- End of Helper Box 2 -->
+
+<!-- Helper Box 3: HOW TO USE THIS WITH AI -->
+<div class="helper-box">
+<h3 class="box-title">HOW TO USE THIS WITH AI</h3>
+
+<p><strong>Give AI these files:</strong></p>
+<p>1. This spec file</p>
+<p>2. MODULE-0-EXERCISE-TEMPLATE-MASTER.md (for structure and rules)</p>
+<p>3. MODULE-5-LOOPS-PART-2-HELPER-BOX.md (for context on what has been taught)</p>
+<p><strong>Instruction to AI:</strong></p>
+<p>"Using the exercise template and helper boxes, generate the complete HTML for</p>
+<p>Exercise [NUMBER] following these specifications exactly."</p>
+</div>
+<!-- End of Helper Box 3 -->
+
+<!-- Helper Box 4: EXERCISE 1: BACKUP OIL CONTAINERS 🛢️ -->
+<div class="helper-box">
+<h3 class="box-title">EXERCISE 1: BACKUP OIL CONTAINERS 🛢️</h3>
+
+<p><strong>SECTION NAME:</strong> loops</p>
+<p><strong>EXERCISE NUMBER:</strong> 1</p>
+<p><strong>EMOJI:</strong> 🛢️</p>
+<p><strong>SCENARIO:</strong> Calculating the total number of oil containers needed for a line of machines, including backups.</p>
+<p><strong>VARIABLES TO USE:</strong></p>
+<ul class="indented-list"><li>Part A: "number of machines", "backup containers per machine"</li><li>Part B: "number of machines", "backup containers per machine"</li></ul>
+<p><strong>CONCEPT:</strong> Using addition inside a loop to calculate a running total for each iteration.</p>
+<p><strong>PART A FOCUS:</strong> For machines 1 through 5, calculate total containers needed if each machine gets its number plus 2 backup containers.</p>
+<p><strong>PART B FOCUS:</strong> For machines 1 through 7, calculate total containers needed if each machine gets its number plus 3 backup containers.</p>
+<p><strong>IMAGE:</strong> if-statement-greater-than.jpg</p>
+<p><strong>ALT TEXT:</strong> "Using loops to perform calculations"</p>
+<p><strong>EXPECTED OUTPUT PART A:</strong> "Machine 1 needs 3 containers. Machine 2 needs 4 containers. Machine 3 needs 5 containers. Machine 4 needs 6 containers. Machine 5 needs 7 containers."</p>
+<p><strong>EXPECTED OUTPUT PART B:</strong> "Machine 1 needs 4 containers. Machine 2 needs 5 containers. Machine 3 needs 6 containers. Machine 4 needs 7 containers. Machine 5 needs 8 containers. Machine 6 needs 9 containers. Machine 7 needs 10 containers."</p>
+</div>
+<!-- End of Helper Box 4 -->
+
+<!-- Helper Box 5: EXERCISE 2: FLAVOR PACKET CALCULATION 🍬 -->
+<div class="helper-box">
+<h3 class="box-title">EXERCISE 2: FLAVOR PACKET CALCULATION 🍬</h3>
+
+<p><strong>SECTION NAME:</strong> loops</p>
+<p><strong>EXERCISE NUMBER:</strong> 2</p>
+<p><strong>EMOJI:</strong> 🍬</p>
+<p><strong>SCENARIO:</strong> Calculating how many flavor packets to deliver to each station based on its number.</p>
+<p><strong>VARIABLES TO USE:</strong></p>
+<ul class="indented-list"><li>Part A: "number of stations", "packets multiplier"</li><li>Part B: "number of stations", "packets multiplier"</li></ul>
+<p><strong>CONCEPT:</strong> Using multiplication inside a loop to scale a value with each iteration.</p>
+<p><strong>PART A FOCUS:</strong> For stations 1 through 5, calculate flavor packets needed if each station gets its number multiplied by 2.</p>
+<p><strong>PART B FOCUS:</strong> For stations 1 through 6, calculate flavor packets needed if each station gets its number multiplied by 3.</p>
+<p><strong>IMAGE:</strong> if-statement-greater-than.jpg</p>
+<p><strong>ALT TEXT:</strong> "Using loops to perform calculations"</p>
+<p><strong>EXPECTED OUTPUT PART A:</strong> "Station 1 gets 2 packets. Station 2 gets 4 packets. Station 3 gets 6 packets. Station 4 gets 8 packets. Station 5 gets 10 packets."</p>
+<p><strong>EXPECTED OUTPUT PART B:</strong> "Station 1 gets 3 packets. Station 2 gets 6 packets. Station 3 gets 9 packets. Station 4 gets 12 packets. Station 5 gets 15 packets. Station 6 gets 18 packets."</p>
+</div>
+<!-- End of Helper Box 5 -->
+
+<!-- Helper Box 6: EXERCISE 3: TOTAL CORN BOX DELIVERY 📦 -->
+<div class="helper-box">
+<h3 class="box-title">EXERCISE 3: TOTAL CORN BOX DELIVERY 📦</h3>
+
+<p><strong>SECTION NAME:</strong> loops</p>
+<p><strong>EXERCISE NUMBER:</strong> 3</p>
+<p><strong>EMOJI:</strong> 📦</p>
+<p><strong>SCENARIO:</strong> Calculating the total number of corn boxes for each machine using a formula.</p>
+<p><strong>VARIABLES TO USE:</strong></p>
+<ul class="indented-list"><li>Part A: "number of machines", "base box multiplier", "extra boxes"</li><li>Part B: "number of machines", "base box multiplier", "extra boxes"</li></ul>
+<p><strong>CONCEPT:</strong> Combining multiplication and addition inside a loop for more complex calculations.</p>
+<p><strong>PART A FOCUS:</strong> For machines 1 through 4, calculate total boxes if each gets (machine number × 2) + 3 extra boxes.</p>
+<p><strong>PART B FOCUS:</strong> For machines 1 through 5, calculate total boxes if each gets (machine number × 3) + 5 extra boxes.</p>
+<p><strong>IMAGE:</strong> if-statement-greater-than.jpg</p>
+<p><strong>ALT TEXT:</strong> "Using loops to perform calculations"</p>
+<p><strong>EXPECTED OUTPUT PART A:</strong> "Machine 1 needs 5 boxes. Machine 2 needs 7 boxes. Machine 3 needs 9 boxes. Machine 4 needs 11 boxes."</p>
+<p><strong>EXPECTED OUTPUT PART B:</strong> "Machine 1 needs 8 boxes. Machine 2 needs 11 boxes. Machine 3 needs 14 boxes. Machine 4 needs 17 boxes. Machine 5 needs 20 boxes."</p>
+</div>
+<!-- End of Helper Box 6 -->
+
+<!-- Helper Box 7: EXERCISE 4: OIL LEVEL CHECK 💧 -->
+<div class="helper-box">
+<h3 class="box-title">EXERCISE 4: OIL LEVEL CHECK 💧</h3>
+
+<p><strong>SECTION NAME:</strong> loops</p>
+<p><strong>EXERCISE NUMBER:</strong> 4</p>
+<p><strong>EMOJI:</strong> 💧</p>
+<p><strong>SCENARIO:</strong> Monitoring a decreasing resource as it's used by a line of machines.</p>
+<p><strong>VARIABLES TO USE:</strong></p>
+<ul class="indented-list"><li>Part A: "starting oil level", "oil used per machine", "number of machines"</li><li>Part B: "starting oil level", "oil used per machine", "number of machines"</li></ul>
+<p><strong>CONCEPT:</strong> Using subtraction inside a loop to track a depleting value.</p>
+<p><strong>PART A FOCUS:</strong> An oil drum starts with 100 units. For machines 1 through 5, calculate the remaining oil if each machine uses 10 units.</p>
+<p><strong>PART B FOCUS:</strong> An oil drum starts with 200 units. For machines 1 through 6, calculate the remaining oil if each machine uses 15 units.</p>
+<p><strong>IMAGE:</strong> if-statement-greater-than.jpg</p>
+<p><strong>ALT TEXT:</strong> "Using loops to perform calculations"</p>
+<p><strong>EXPECTED OUTPUT PART A:</strong> "After machine 1, 90 units left. After machine 2, 80 units left. After machine 3, 70 units left. After machine 4, 60 units left. After machine 5, 50 units left."</p>
+<p><strong>EXPECTED OUTPUT PART B:</strong> "After machine 1, 185 units left. After machine 2, 170 units left. After machine 3, 155 units left. After machine 4, 140 units left. After machine 5, 125 units left. After machine 6, 110 units left."</p>
+</div>
+<!-- End of Helper Box 7 -->
+
+<!-- Helper Box 8: EXERCISE 5: POWER GRID PLANNING ⚡ -->
+<div class="helper-box">
+<h3 class="box-title">EXERCISE 5: POWER GRID PLANNING ⚡</h3>
+
+<p><strong>SECTION NAME:</strong> loops</p>
+<p><strong>EXERCISE NUMBER:</strong> 5</p>
+<p><strong>EMOJI:</strong> ⚡</p>
+<p><strong>SCENARIO:</strong> Calculating the total power required for each machine in a new production line.</p>
+<p><strong>VARIABLES TO USE:</strong></p>
+<ul class="indented-list"><li>Part A: "base power multiplier", "extra power per machine", "number of machines"</li><li>Part B: "base power multiplier", "extra power per machine", "number of machines"</li></ul>
+<p><strong>CONCEPT:</strong> Using multiple operations in a loop to solve a planning problem.</p>
+<p><strong>PART A FOCUS:</strong> For machines 1 through 5, calculate power needed if each requires (machine number × 10) + 5 extra units.</p>
+<p><strong>PART B FOCUS:</strong> For machines 1 through 4, calculate power needed if each requires (machine number × 12) + 8 extra units.</p>
+<p><strong>IMAGE:</strong> if-statement-greater-than.jpg</p>
+<p><strong>ALT TEXT:</strong> "Using loops to perform calculations"</p>
+<p><strong>EXPECTED OUTPUT PART A:</strong> "Machine 1 needs 15 power units. Machine 2 needs 25 power units. Machine 3 needs 35 power units. Machine 4 needs 45 power units. Machine 5 needs 55 power units."</p>
+<p><strong>EXPECTED OUTPUT PART B:</strong> "Machine 1 needs 20 power units. Machine 2 needs 32 power units. Machine 3 needs 44 power units. Machine 4 needs 56 power units."</p>
+</div>
+<!-- End of Helper Box 8 -->
+
+<!-- Helper Box 9: NARRATIVE CONTEXT -->
+<div class="helper-box">
+<h3 class="box-title">NARRATIVE CONTEXT</h3>
+
+<p><strong>Opening for Module 5, Part 2:</strong></p>
+<p>"Welcome back to the factory floor! You've mastered counting with loops, but now it's time to make them do some real work. In this section, we'll use loops to perform calculations for every machine and station, helping us manage supplies, power, and more. Let's get calculating!"</p>
+<p><strong>Exercise Flow:</strong></p>
+<p>1. Adding backup supplies for each machine.</p>
+<p>2. Multiplying to find out how many flavor packets each station needs.</p>
+<p>3. Combining multiplication and addition to deliver the right number of corn boxes.</p>
+<p>4. Subtracting to check how much oil is left after each machine runs.</p>
+<p>5. Planning the power needs for a whole new line of machines.</p>
+<p><strong>Closing:</strong></p>
+<p>"Amazing work! You've turned loops into powerful calculators. You can now automatically manage resources for the entire factory. Next up, we'll learn how to make loops even smarter by changing how they count."</p>
+</div>
+<!-- End of Helper Box 9 -->
+
+<!-- Helper Box 10: QUALITY CHECKLIST FOR AI GENERATION -->
+<div class="helper-box">
+<h3 class="box-title">QUALITY CHECKLIST FOR AI GENERATION</h3>
+
+<p>When AI generates the exercise, verify:</p>
+<ul class="indented-list"><li>[ ] Section name is "loops"</li><li>[ ] Exercise number matches</li><li>[ ] Both Part A and Part B are included</li><li>[ ] Variables use natural language in quotes — NOT camelCase</li><li>[ ] Uses pseudocode only — SET and PRINT — no real language syntax</li><li>[ ] Uses PRINT with commas — no + concatenation</li><li>[ ] Uses <code><code></code> tags (not <code><highlight></code>)</li><li>[ ] IDs follow pattern: loops-ex[number]-part-[letter]</li><li>[ ] Data attributes correct: data-section="loops"</li><li>[ ] Image filename and alt text match spec</li><li>[ ] Empty hint/output/answer containers present</li><li>[ ] Part A Step 4 shows complete pseudocode answer</li><li>[ ] Part B Step 4 references the specific task — no pseudocode shown</li><li>[ ] Expected outputs match the spec</li><li>[ ] Nothing used that hasn't been taught in a helper box (Rule 6)</li></ul>
+</div>
+<!-- End of Helper Box 10 -->
+
+<!-- Helper Box 11: GENERATION RESULTS -->
+<div class="helper-box">
+<h3 class="box-title">GENERATION RESULTS</h3>
+
+<p><strong>When you generate with AI, document here:</strong></p>
+<ul class="indented-list"><li>Which AI was used: <strong>_</strong><strong>_</strong>_</li><li>Exercise generated: <strong>_</strong><strong>_</strong>_</li><li>Did it generate correctly? YES / NO</li><li>What needed fixing: <strong>_</strong><strong>_</strong>_</li><li>Number of attempts needed: <strong>_</strong><strong>_</strong>_</li></ul>
+<p>END OF MODULE 5 PART 2 SPECIFICATIONS</p>
+</div>
+<!-- End of Helper Box 11 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <h2 class="module-title">Module 5 Loops Part2 — Exercises</h2>
 
-<!-- ▼▼▼ Exercise 1 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: OIL CONTAINERS WITH BACKUP SUPPLY ➕█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-1">
-<h3 class="exercise-title">Exercise 1: Oil Containers with Backup Supply ➕</h3>
+<h3 class="exercise-title">Exercise 1: OIL CONTAINERS WITH BACKUP SUPPLY ➕</h3>
 
-<h4 class="sub-title">Part A: Adding Backup Containers</h4>
+<h4 class="sub-title">Part A: For containers 1 through 5, add 2 backup containers to each one.</h4>
 
-<p>In the Popcorn Factory, we need to calculate the total oil containers each machine gets by adding a backup supply. We have "container number" and we want to add "backup containers" to get the "total containers". For containers 1 through 5, we add 2 backup containers to each one.</p>
+<p>Calculating the total oil containers each machine gets by adding a backup supply. We need to use a loop to add 2 backup containers to each machine from 1 to 5.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>1</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "backup containers" and set its value to <code>2</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "container number" and the "total containers" after adding the "backup containers".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the calculation for each container:
-       <div class="code-example">
-         <code>SET containerNumber = 1<br>SET backupContainers = 2<br>SET totalContainers = containerNumber + backupContainers<br>PRINT "Container ", containerNumber, " plus ", backupContainers, " backups is ", totalContainers, " total."</code>
-       </div>
-     </li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "backup containers" and set its value to <code>2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Container X plus Y backups is Z total."</li>
+  <li><strong>Step 4:</nbsp;&nbsp;Now write the code to set up the loop:
+    <div class="code-example">
+      <code>SET container number = 1<br>SET backup containers = 2<br>PRINT "Container ", container number, " plus ", backup containers, " backups is ", container number + backup containers, " total."<br>SET container number = container number + 1<br>IF container number <= 5 THEN GOTO Step 3</code>
+    </div>
+  </li>
+</ul>
 
 <label for="loops-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex1-part-a" data-section="loops"></div>
@@ -252,22 +238,22 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <p class="hint" id="loops-hint1-part-a"></p>
 <pre class="output-block" id="loops-output1-part-a"></pre>
 <pre class="answer-block" id="loops-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Oil Containers with 3 Backup Supplies</h4>
+<h4 class="sub-title">Part B: Adding Backup Containers</h4>
 
 <p>Great work! Now let's try with different values.</p>
 
-<p>For containers 1 through 6, add 3 backup containers to each one.</p>
+<p>For machines 1 through 7, calculate total containers needed if each machine gets its number plus 3 backup containers.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "container number" and set its value to <code>1</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "backup containers" and set its value to <code>3</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total number of containers.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now manage the oil containers:
-       <div class="code-example">
-         <code>SET containerNumber = 1<br>SET backupContainers = 3<br>PRINT "Container ", containerNumber, " plus ", backupContainers, " backups is ", containerNumber + backupContainers, " total."</code>
-       </div>
-     </li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of machines" and set its value to 7.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "backup containers per machine" and set its value to 3.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total number of containers needed for each machine.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now calculate the total for each machine:
+    <div class="code-example">
+      <code>FOR i = 1 TO 7<br>SET totalContainers = i + 3<br>PRINT "Machine ", i, " needs ", totalContainers, " containers."<br>END FOR</code>
+    </div>
+  </li>
+</ul>
 
 <label for="loops-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex1-part-b" data-section="loops"></div>
@@ -282,21 +268,26 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <pre class="output-block" id="loops-output1-part-b"></pre>
 <pre class="answer-block" id="loops-answer1-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 1 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 2 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: FLAVOR PACKETS DISTRIBUTION ✖️ █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-2">
-<h3 class="exercise-title">Exercise 2: Flavor Packets Distribution ✖️</h3>
+<h3 class="exercise-title">Exercise 2: FLAVOR PACKETS DISTRIBUTION ✖️</h3>
 
-<h4 class="sub-title">Part A: Station Number and Total Packets</h4>
+<h4 class="sub-title">Part A: Calculating Total Packets</h4>
 
-<p>In this exercise, you will calculate how many flavor packets each station receives based on its number. Each station gets twice the number of its station number in packets (e.g., Station 1 gets 2 packets, Station 2 gets 4 packets, etc.).</p>
+<p>Imagine you're working at a popcorn factory and you need to calculate how many flavor packets each station receives based on its number. You have 5 stations and you want to give each station a certain number of packets. For this exercise, we'll use a loop to multiply the station number by 2 to get the total packets.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stationNumber" and set its value to <code>1</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "totalPackets" and set its value to <code>0</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Station 1 gets [value of totalPackets] flavor packets." Replace the placeholders with actual values.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and print the number of flavor packets for each station from 1 to 5 in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total packets" and set its value to <code>station number * 2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the message "Station [station number] gets [total packets] flavor packets."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through stations 1 to 5 and display the message for each station in the code block below.</li>
 </ul>
 
 <label for="loops-ex2-part-a" class="code-label">Add your code in the code block below</label>
@@ -311,18 +302,18 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <p class="hint" id="loops-hint2-part-a"></p>
 <pre class="output-block" id="loops-output2-part-a"></pre>
 <pre class="answer-block" id="loops-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Calculating Boxes for Storage Areas</h4>
+<h4 class="sub-title">Part B: Flavor Packet Calculation</h4>
 
-<p>In Part A, we learned how to calculate the number of flavor packets each station receives by multiplying the station number by 2. Now, let's extend our knowledge to calculate how many boxes each storage area gets based on its number.</p>
+<p>For stations 1 through 5, we calculated how many flavor packets each station gets based on its number.</p>
 
-<p>Each storage area needs 3 boxes. We need to find out how many boxes are required for storage areas numbered from 1 to 4.</p>
+<p>Now, let's calculate how many boxes each storage area gets based on its number. We have 4 storage areas, and each area gets 3 boxes.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "storageAreaNumber" and set its value to 1.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "totalBoxes" and set its value to 0.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Storage area [storageAreaNumber] gets [totalBoxes] boxes."</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total number of boxes for storage areas 1 through 4 in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "storage area number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total boxes" and set its value to <code>3</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Storage area gets boxes."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to multiply the storage area number by the total boxes in the code block below.</li>
+</ul>
 
 <label for="loops-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex2-part-b" data-section="loops"></div>
@@ -337,21 +328,26 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <pre class="output-block" id="loops-output2-part-b"></pre>
 <pre class="answer-block" id="loops-answer2-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 2 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 3 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Salt Packets for Machines ✖️   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-3">
-<h3 class="exercise-title">Exercise 3: SALT PACKETS FOR MACHINES ✖️</h3>
+<h3 class="exercise-title">Exercise 3: Salt Packets for Machines ✖️</h3>
 
-<h4 class="sub-title">Part A: Machine Number and Salt Packets</h4>
+<h4 class="sub-title">Part A: Calculating Salt Packets</h4>
 
-<p>Scenario: Calculating how many salt packets each machine receives. Each machine gets 4 salt packets.</p>
+<p>Imagine you're working in a factory that produces machines. Each machine needs a certain number of salt packets. You need to calculate how many salt packets each machine will get based on its number. You'll multiply the machine number by 4 to get the total salt packets.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total packets" and set its value to <code>4</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result for each machine.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and print the salt packets for each machine in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total packets" and set its value to <code>machine number * 4</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] gets [total packets] salt packets."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through machine numbers 1 to 5 and display the total salt packets for each machine in the code block below.</li>
 </ul>
 
 <label for="loops-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -366,17 +362,17 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <p class="hint" id="loops-hint3-part-a"></p>
 <pre class="output-block" id="loops-output3-part-a"></pre>
 <pre class="answer-block" id="loops-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Salt Containers for Production Lines</h4>
+<h4 class="sub-title">Part B: Salt Containers for Lines</h4>
 
-<p>In Part A, we calculated how many salt packets each machine receives. Now, let's calculate how many salt containers each production line receives.</p>
+<p>Now that we know how many salt packets each machine gets, let's calculate how many salt containers each production line receives.</p>
 
-<p>We have 6 production lines, and each line receives a different number of salt containers. We'll use a loop to multiply the line number by 5 to determine the total containers for each line. Here's what we'll do:</p>
+<p>For the Popcorn Factory, we have 6 production lines, and each line needs to receive a certain number of salt containers. If each line gets its number multiplied by 5, how many salt containers will each line get?</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "line_number" and set its value to 1.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total_containers" and set its value to 0.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total containers for each line.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total containers for each line in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "line number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total containers" and set its value to <code>line number * 5</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Line <line number> gets <total containers> salt containers."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and display the total containers for each line in the code block below.</li>
 </ul>
 
 <label for="loops-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -392,22 +388,27 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <pre class="output-block" id="loops-output3-part-b"></pre>
 <pre class="answer-block" id="loops-answer3-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 3 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 4 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: MIXING ADDITION AND MULTIPLICATION 🔢█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-4">
-<h3 class="exercise-title">Exercise 4: Mixing Addition and Multiplication 🔢</h3>
+<h3 class="exercise-title">Exercise 4: MIXING ADDITION AND MULTIPLICATION 🔢</h3>
 
 <h4 class="sub-title">Part A: Calculating Total Boxes</h4>
 
-<p>In the factory, we have machines that need a certain number of boxes. To calculate the total boxes for each machine, we need to multiply the "machine number" by 2 and then add 3. We will use a loop to calculate the total boxes for machines 1 to 4. We will store the machine number in the "machine number" variable, the extra boxes in the "extra boxes" variable, and the total boxes in the "total boxes" variable.</p>
+<p>For machines 1-4, calculate total boxes by multiplying the machine number by 2, then adding 3. We need to use a loop to do this calculation for each machine.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "extra boxes" and set its value to <code>3</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the machine number and the calculation for the total boxes.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total boxes by multiplying the machine number by 2 and adding the extra boxes in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total boxes" and set its value to <code>0</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machine number] gets (machine number x 2) + 3 = [total boxes] corn boxes."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to multiply the machine number by 2, add 3, and print the result in the code block below.</li>
+</ul>
 
 <label for="loops-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex4-part-a" data-section="loops"></div>
@@ -421,16 +422,18 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <p class="hint" id="loops-hint4-part-a"></p>
 <pre class="output-block" id="loops-output4-part-a"></pre>
 <pre class="answer-block" id="loops-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Calculating Flavor Packets</h4>
+<h4 class="sub-title">Part B: Calculating Total Packets</h4>
 
-<p>In Part A, we counted how many boxes of corn each machine gets. Now let's calculate how many flavor packets each station will have! For stations 1-5, we'll multiply the station number by 3 and then add 2 to find the total packets.</p>
+<p>Now that you've calculated the total number of boxes for each machine, let's calculate the total number of packets for each station.</p>
+
+<p>For stations 1 through 5, calculate total packets by multiplying the station number by 3, then adding 2.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to `1`.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bonus packets" and set its value to `0`.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Station [station number] gets (station number x 3) + 2 = [total packets] flavor packets."</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and print the total packets for each station in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "station number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "bonus packets" and set its value to <code>0</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the station number and bonus packets.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total packets by multiplying the station number by 3, then adding 2.</li>
+</ul>
 
 <label for="loops-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex4-part-b" data-section="loops"></div>
@@ -445,39 +448,52 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <pre class="output-block" id="loops-output4-part-b"></pre>
 <pre class="answer-block" id="loops-answer4-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 4 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 5 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: Power Grid Planning ⚡          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="loops-exercise-5">
 <h3 class="exercise-title">Exercise 5: Power Grid Planning ⚡</h3>
-<h4 class="sub-title">Part A: Calculating Power for Machines 1-5</h4>
-<p>In a new production line, we need to calculate the total power required for each machine. The power needed for each machine is calculated using the formula: ("machine number" × 10) + 5 "extra power" units. We will use "base power" to store the result of "machine number" × 10 and then add the "extra power" to get the "total power".</p>
+
+<h4 class="sub-title">Part A: Calculating Power Needs</h4>
+
+<p>For a new production line, we need to calculate the total power required for each machine. We have five machines, and each machine requires (machine number × 10) + 5 extra units of power.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 1.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "base power" and set its value to "machine number" × 10.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "machine number" and the calculated "total power" which is "base power" + 5 "extra power" units.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and display the power needed for machines 1 through 5 using a loop in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to <code>1</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "base power" and set its value to <code>machine number × 10</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "extra power" and set its value to <code>5</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to display "Machine [machine number] needs [base power + extra power] power units" in the code block below.</li>
 </ul>
+
 <label for="loops-ex5-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex5-part-a" data-section="loops"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="loops" data-ex="5-part-a">Hint</button>
   <button class="run-button" data-section="loops" data-ex="5-part-a">Run My Code</button>
   <button class="reset-button" data-section="loops" data-ex="5-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="loops-hint5-part-a"></p>
 <pre class="output-block" id="loops-output5-part-a"></pre>
 <pre class="answer-block" id="loops-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Power Grid Planning for Machines</h4>
+<h4 class="sub-title">Part B: Calculating Power Needs</h4>
 
-<p>For machines 1 through 5, calculate power needed if each requires (machine number × 10) + 5 extra units.</p>
+<p>For machines 1 through 5, we calculated the power needed if each requires (machine number × 10) + 5 extra units.</p>
+
+<p>Now, let's calculate the power needed for machines 1 through 4 if each requires (machine number × 12) + 8 extra units.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machineNumber" and set its value to <code>1</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "basePower" and set its value to <code>0</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "extraPower" and set its value to <code>5</code>.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Use PRINT to display "Machine [machineNumber] needs [basePower + extraPower * machineNumber] power units".</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine number" and set its value to 1.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "extra power" and set its value to 8.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Machine needs power units".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total power needed for each machine in the code block below.</li>
+</ul>
 
 <label for="loops-ex5-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="loops-ex5-part-b" data-section="loops"></div>
@@ -492,12 +508,18 @@ END OF MODULE 5 PART 2 SPECIFICATIONS
 <pre class="output-block" id="loops-output5-part-b"></pre>
 <pre class="answer-block" id="loops-answer5-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 5 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▲▲▲ Exercises ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </section>
-<!-- ▲▲▲ Module ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-5-LOOPS-PART2                    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </main>
 <script src="../../scripts/main.js"></script>

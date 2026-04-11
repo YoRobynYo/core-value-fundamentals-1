@@ -1,7 +1,7 @@
 {
   "courseName": "core-value-fundamentals",
   "version": "2.0",
-  "lastUpdated": "2026-03-30",
+  "lastUpdated": "2026-04-10",
   "modules": [
     {
       "id": "MODULE-1-VARIABLES",
@@ -149,63 +149,178 @@
       "spec": "MODULE-7-FUNCTIONS-PART6-SPECS.md",
       "helper": "MODULE-7-FUNCTIONS-PART6-HELPER-BOXES.md",
       "section": "functions"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART1",
+      "folder": "module-8-arrays-part1",
+      "spec": "MODULE-8-ARRAYS-PART1-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART1-HELPER-BOXES.md",
+      "section": "arrays"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART2",
+      "folder": "module-8-arrays-part2",
+      "spec": "MODULE-8-ARRAYS-PART2-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART2-HELPER-BOXES.md",
+      "section": "arrays"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART3",
+      "folder": "module-8-arrays-part3",
+      "spec": "MODULE-8-ARRAYS-PART3-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART3-HELPER-BOXES.md",
+      "section": "arrays"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART4",
+      "folder": "module-8-arrays-part4",
+      "spec": "MODULE-8-ARRAYS-PART4-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART4-HELPER-BOXES.md",
+      "section": "arrays"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART5",
+      "folder": "module-8-arrays-part5",
+      "spec": "MODULE-8-ARRAYS-PART5-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART5-HELPER-BOXES.md",
+      "section": "arrays"
+    },
+    {
+      "id": "MODULE-8-ARRAYS-PART6",
+      "folder": "module-8-arrays-part6",
+      "spec": "MODULE-8-ARRAYS-PART6-SPECS.md",
+      "helper": "MODULE-8-ARRAYS-PART6-HELPER-BOXES.md",
+      "section": "arrays"
     }
   ],
   "aiConfig": {
     "groq": {
       "model": "llama-3.3-70b-versatile",
-      "maxDaily": 40,
-      "cutoff": 0.9,
-      "url": "https://api.groq.com/openai/v1/chat/completions"
+      "url": "https://api.groq.com/openai/v1/chat/completions",
+      "maxDaily": 1000,
+      "cutoff": 0.9
     },
     "gemini": {
       "model": "gemini-2.0-flash",
-      "maxDaily": 20,
-      "cutoff": 0.9,
-      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+      "maxDaily": 1500,
+      "cutoff": 0.9
     },
     "openrouter": {
-      "model": "meta-llama/llama-3.3-70b-instruct",
-      "url": "https://openrouter.ai/api/v1/chat/completions"
+      "model": "meta-llama/llama-3.3-70b-instruct:free",
+      "url": "https://openrouter.ai/api/v1/chat/completions",
+      "maxDaily": 50,
+      "cutoff": 0.9
     },
     "ollama": {
       "model": "qwen2.5-coder:7b",
       "url": "http://localhost:11434/api/chat",
       "alwaysAvailable": true
+    },
+    "cerebras": {
+      "model": "llama3.1-8b",
+      "url": "https://api.cerebras.ai/v1/chat/completions",
+      "maxDaily": 14400,
+      "cutoff": 0.9
     }
   },
   "bannedWords": [
-    { "word": "students",    "replace": "children",  "reason": "UK English" },
-    { "word": "student",     "replace": "child",      "reason": "UK English" },
-    { "word": "period",      "replace": "lesson",     "reason": "UK English — school period" },
-    { "word": "periods",     "replace": "lessons",    "reason": "UK English — school periods" },
-    { "word": "program",     "replace": "code",       "reason": "Language-agnostic" },
-    { "word": "programming", "replace": "coding",     "reason": "Language-agnostic" },
-    { "word": "practice",    "replace": "practise",   "reason": "UK English verb" },
-    { "word": "color",       "replace": "colour",     "reason": "UK English" },
-    { "word": "organize",    "replace": "organise",   "reason": "UK English" },
-    { "word": "recognize",   "replace": "recognise",  "reason": "UK English" },
-    { "word": "center",      "replace": "centre",     "reason": "UK English" },
-    { "word": "math",        "replace": "maths",      "reason": "UK English" },
-    { "word": "let ",        "replace": "SET",        "reason": "Pseudocode only" },
-    { "word": "const ",      "replace": "SET",        "reason": "Pseudocode only" },
-    { "word": "var ",        "replace": "SET",        "reason": "Pseudocode only" },
-    { "word": "console",     "replace": "never use",  "reason": "JS syntax" }
+    {
+      "word": "students",
+      "replace": "children",
+      "reason": "UK English"
+    },
+    {
+      "word": "student",
+      "replace": "child",
+      "reason": "UK English"
+    },
+    {
+      "word": "period",
+      "replace": "lesson",
+      "reason": "UK English — school period"
+    },
+    {
+      "word": "periods",
+      "replace": "lessons",
+      "reason": "UK English — school periods"
+    },
+    {
+      "word": "program",
+      "replace": "code",
+      "reason": "Language-agnostic"
+    },
+    {
+      "word": "programming",
+      "replace": "coding",
+      "reason": "Language-agnostic"
+    },
+    {
+      "word": "practice",
+      "replace": "practise",
+      "reason": "UK English verb"
+    },
+    {
+      "word": "color",
+      "replace": "colour",
+      "reason": "UK English"
+    },
+    {
+      "word": "organize",
+      "replace": "organise",
+      "reason": "UK English"
+    },
+    {
+      "word": "recognize",
+      "replace": "recognise",
+      "reason": "UK English"
+    },
+    {
+      "word": "center",
+      "replace": "centre",
+      "reason": "UK English"
+    },
+    {
+      "word": "math",
+      "replace": "maths",
+      "reason": "UK English"
+    },
+    {
+      "word": "let",
+      "replace": "SET",
+      "reason": "Pseudocode only"
+    },
+    {
+      "word": "const",
+      "replace": "SET",
+      "reason": "Pseudocode only"
+    },
+    {
+      "word": "var",
+      "replace": "SET",
+      "reason": "Pseudocode only"
+    },
+    {
+      "word": "console",
+      "replace": "never use",
+      "reason": "JS syntax"
+    }
   ],
   "settings": {
-    "variables":       "🏫 Classroom",
-    "operations":      "🍿 Popcorn Factory",
-    "conditions":      "🍿 Popcorn Factory",
-    "logicalOperators":"🍿 Popcorn Factory",
-    "loops":           "🍿 Popcorn Factory",
+    "variables": "🏫 Classroom",
+    "operations": "🍿 Popcorn Factory",
+    "conditions": "🍿 Popcorn Factory",
+    "logicalOperators": "🍿 Popcorn Factory",
+    "loops": "🍿 Popcorn Factory",
     "pirateAdventure": "🏴‍☠️ Pirate Adventure",
-    "functions":       "🏫 Classroom & ☕ The Popcorn Press"
+    "functions": "🏫 Classroom & ☕ The Popcorn Press",
+    "arrays": "🍿 Popcorn Factory"
   },
   "pipeline": {
-    "gapBetweenModules":   60000,
+    "gapBetweenModules": 60000,
     "gapBetweenExercises": 60000,
-    "gapBetweenParts":     60000,
-    "maxAttempts":         5,
-    "rateLimitDelay":      90000
+    "gapBetweenParts": 60000,
+    "maxAttempts": 5,
+    "rateLimitDelay": 90000
   }
 }

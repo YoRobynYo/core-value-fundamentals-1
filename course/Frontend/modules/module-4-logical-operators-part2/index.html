@@ -9,13 +9,23 @@
 </head>
 <body>
 <main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
 
-<!-- ▼▼▼ Module ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-4-LOGICAL-OPERATORS-PART2        █ -->
+<!-- █  // Module 4 Logical Operators Part2              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <section class="page" id="logicalOperators-module">
 
 <h2 class="module-title">Module 4 Logical Operators Part2</h2>
 
-<!-- ▼▼▼ Helper Boxes ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <!-- Helper Box 1: Introduction to OR — Having Options -->
 <div class="helper-box">
   <h3 class="box-title">🎭 Introduction to OR — Having Options 🎭</h3>
@@ -297,28 +307,35 @@
   <p class="note">💡 <strong>Final Thought:</strong> In coding and in the factory, OR is about having choices and alternatives. It's what keeps things running smoothly even when plans change!</p>
 </div>
 <!-- End of Helper Box 5 -->
-<!-- ▲▲▲ Helper Boxes ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercises ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <h2 class="module-title">Module 4 Logical Operators Part2 — Exercises</h2>
 
-<!-- ▼▼▼ Exercise 1 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Butter or Oil 🧈               █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-1">
 <h3 class="exercise-title">Exercise 1: Butter or Oil 🧈</h3>
 
-<h4 class="sub-title">Part A: Check if Machine Can Run with Butter</h4>
+<h4 class="sub-title">Part A: Can the machine run with butter available but oil not?</h4>
 
-<p>The popcorn machine can run if butter is available but oil is not. Let's check!</p>
+<p>The popcorn machine can use either butter OR oil, so we need to check if at least one is available. If the child has butter available but not oil, the machine can still run.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "butter available" and set its value to true.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "oil available" and set its value to false.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Butter: ", "butter available", " Oil: ", "oil available".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
-      <div class="code-example">
-        <code>SET "butter available" = true<br>SET "oil available" = false<br>PRINT "Butter: ", "butter available", " Oil: ", "oil available"</code>
-      </div>
-    </li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "butter available" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "oil available" and set its value to <code>FALSE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Butter: ", "butter available", ", Oil: ", "oil available", ", Machine can run: ".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the machine:
+    <div class="code-example">
+      <code>SET "butter available" = true<br>SET "oil available" = false<br>PRINT "Butter: ", "butter available", ", Oil: ", "oil available", ", Machine can run: ", "butter available" OR "oil available"</code>
+    </div>
+  </li>
 </ul>
 
 <label for="logicalOperators-ex1-part-a" class="code-label">Add your code in the code block below</label>
@@ -333,19 +350,23 @@
 <p class="hint" id="logicalOperators-hint1-part-a"></p>
 <pre class="output-block" id="logicalOperators-output1-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Using Oil Only</h4>
+<h4 class="sub-title">Part B: Can the machine run with oil but not butter?</h4>
+
 <p>Great work! Now let's try with different values.</p>
-<p>In this part of the exercise, we want to check if the popcorn machine can run when "oil available" is true, but "butter available" is false. We will use the OR logical operator to check if at least one of these conditions is true. The machine should be able to run as long as either "butter available" or "oil available" is true.</p>
+
+<p>Imagine the popcorn machine can use either butter OR oil. We need to check if at least one is available. Let's see what happens when oil is available but butter is not.</p>
+
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "butter available" and set its value to <code>false</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "oil available" and set its value to <code>true</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the values of "butter available" and "oil available", along with a message indicating whether the machine can run.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now use the OR operator to check if the machine can run:
-       <div class="code-example">
-         <code>SET "butter available" = false<br>SET "oil available" = true<br>PRINT "Butter: ", "butter available", ", Oil: ", "oil available", ", Machine can run: ", "butter available" OR "oil available"</code>
-       </div>
-     </li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "oil available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "butter available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Butter: ", "butter available", ", Oil: ", "oil available", ", Machine can run: ".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now use the OR operator to check if at least one is available:
+    <div class="code-example">
+      <code>SET oil available = true<br>SET butter available = false<br>PRINT "Butter: ", butter available, ", Oil: ", oil available, ", Machine can run: ", butter available OR oil available</code>
+    </div>
+  </li>
+</ul>
+
 <label for="logicalOperators-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex1-part-b" data-section="logicalOperators"></div>
 
@@ -359,18 +380,26 @@
 <pre class="output-block" id="logicalOperators-output1-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer1-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 1 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 2 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Sugar or Honey 🍯              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-2">
 <h3 class="exercise-title">Exercise 2: Sugar or Honey 🍯</h3>
-<h4 class="sub-title">Part A: Sugar Available, Honey Not Available</h4>
-<p>Sweet popcorn can be made with sugar OR honey, so we need to check if we have either one. In this part, let's assume "sugar available" is true and "honey available" is false.</p>
+
+<h4 class="sub-title">Part A: Check if we can make sweet popcorn when sugar is available but honey is not.</h4>
+
+<p>We are making sweet popcorn and we need to check if we have either sugar or honey. If we have sugar, we can make sweet popcorn. If we have honey, we can also make sweet popcorn. But what if we have sugar but not honey? Can we still make sweet popcorn? Let's find out.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar available" and set its value to true.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "honey available" and set its value to false.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar: true, Honey: false. Can make sweet popcorn:" and the result of checking if either sugar or honey is available.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if at least one of the ingredients (sugar OR honey) is available in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "honey available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar: sugar available, Honey: honey available. Can make sweet popcorn: ?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if we can make sweet popcorn when sugar is available but honey is not.</li>
 </ul>
 
 <label for="logicalOperators-ex2-part-a" class="code-label">Add your code in the code block below</label>
@@ -385,18 +414,18 @@
 <p class="hint" id="logicalOperators-hint2-part-a"></p>
 <pre class="output-block" id="logicalOperators-output2-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Honey Only</h4>
+<h4 class="sub-title">Part B: Can We Make Sweet Popcorn with Honey?</h4>
 
-<p>In Part A, we checked if sweet popcorn could be made when sugar was available but honey was not. Now let's see what happens when only honey is available.</p>
+<p>From Part A, we know that we can make sweet popcorn if we have sugar available.</p>
 
-<p>Honey is available but sugar is not. We can still make sweet popcorn because either ingredient will do the trick.</p>
+<p>Now let's see if we can make sweet popcorn when honey is available but sugar is not. We have "honey available" and "sugar available" as variables. We can use the OR operator to check if at least one of these ingredients is available.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar available" and set its value to false.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "honey available" and set its value to true.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar: ", "sugar available", ", Honey: ", "honey available", ". Can make sweet popcorn:".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if either honey or sugar is available in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "honey available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar: sugar available, Honey: honey available. Can make sweet popcorn: true" if honey is available but sugar is not.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if honey is available but sugar is not in the code block below.</li>
+</ul>
 
 <label for="logicalOperators-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex2-part-b" data-section="logicalOperators"></div>
@@ -411,21 +440,26 @@
 <pre class="output-block" id="logicalOperators-output2-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer2-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 2 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 3 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Cheddar or Parmesan 🧀         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-3">
 <h3 class="exercise-title">Exercise 3: Cheddar or Parmesan 🧀</h3>
 
-<h4 class="sub-title">Part A: Cheddar Available, Parmesan Not</h4>
+<h4 class="sub-title">Part A: Can we make cheese popcorn with cheddar?</h4>
 
-<p>Cheese popcorn can be made with cheddar OR parmesan, so we need to check if at least one of these ingredients is in stock. Let's see if we can make cheese popcorn when cheddar is available but parmesan is not.</p>
+<p>We want to make cheese popcorn, but we need to check if we have cheddar or parmesan in stock. Let's see if we can make cheese popcorn when cheddar is available but parmesan is not.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cheddar available" and set its value to true.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "parmesan available" and set its value to false.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Cheddar: true, Parmesan: false. Can make cheese popcorn: ", cheddar available OR parmesan available.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make cheese popcorn when cheddar is available but parmesan is not in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cheddar available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "parmesan available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Cheddar: ", "cheddar available", ", Parmesan: ", "parmesan available", ", Can make cheese popcorn: ".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if we can make cheese popcorn.</li>
 </ul>
 
 <label for="logicalOperators-ex3-part-a" class="code-label">Add your code in the code block below</label>
@@ -440,17 +474,17 @@
 <p class="hint" id="logicalOperators-hint3-part-a"></p>
 <pre class="output-block" id="logicalOperators-output3-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Cheddar Available, Parmesan Not Available</h4>
+<h4 class="sub-title">Part B: Can We Make Cheese Popcorn?</h4>
 
-<p>In Part A, we learned how to make cheese popcorn when cheddar is available but parmesan is not. Now let's check if we can make cheese popcorn when parmesan is available but cheddar is not.</p>
+<p>In Part A, we checked if we could make cheese popcorn when cheddar was available but parmesan was not.</p>
 
-<p>Cheddar: false, Parmesan: true. Can we still make cheese popcorn?</p>
+<p>Now let's check if we can make cheese popcorn when parmesan is available but cheddar is not. We have two ingredients: "parmesan available" and "cheddar available". We want to use the OR operator to check if at least one of these ingredients is available.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "cheddar available" and set its value to "false".</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "parmesan available" and set its value to "true".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Cheddar:", "cheddar available", ", Parmesan:", "parmesan available", ". Can make cheese popcorn: ", "result".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make cheese popcorn when cheddar is not available but parmesan is in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "parmesan available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "cheddar available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Cheddar: false, Parmesan: true. Can make cheese popcorn: ?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if at least one of the ingredients is available.</li>
 </ul>
 
 <label for="logicalOperators-ex3-part-b" class="code-label">Add your code in the code block below</label>
@@ -466,19 +500,27 @@
 <pre class="output-block" id="logicalOperators-output3-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer3-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 3 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 4 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Peanuts or Almonds 🥜          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-4">
 <h3 class="exercise-title">Exercise 4: Peanuts or Almonds 🥜</h3>
-<h4 class="sub-title">Part A: Peanuts available, almonds not available</h4>
-<p>Nutty popcorn can be made with peanuts OR almonds, so we need to check if we have either. If peanuts are available but almonds are not, we can still make nutty popcorn.</p>
+
+<h4 class="sub-title">Part A: Check if we can make nutty popcorn when peanuts are available but almonds are not.</h4>
+
+<p>We need to check if we can make nutty popcorn when we have peanuts available but almonds are not. We can use the OR operator to check if at least one of the ingredients is available.</p>
+
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "peanuts available" and set its value to true.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "almonds available" and set its value to false.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Peanuts: true, Almonds: false. Can make nutty popcorn:" and the result of peanuts available OR almonds available.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make nutty popcorn in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "peanuts available" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "almonds available" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Peanuts: peanuts available, Almonds: almonds available. Can make nutty popcorn: ?".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if we can make nutty popcorn when peanuts are available but almonds are not.</li>
+</ul>
 
 <label for="logicalOperators-ex4-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="logicalOperators-ex4-part-a" data-section="logicalOperators"></div>
@@ -492,17 +534,17 @@
 <p class="hint" id="logicalOperators-hint4-part-a"></p>
 <pre class="output-block" id="logicalOperators-output4-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Can we make nutty popcorn when almonds are available but peanuts are not?</h4>
+<h4 class="sub-title">Part B: Can We Make Nutty Popcorn with Almonds?</h4>
 
-<p>In Part A, you learned how to check if we can make nutty popcorn using either peanuts or almonds. Now, let's focus on the scenario where almonds are available but peanuts are not.</p>
+<p>From Part A, we know that we can make nutty popcorn if we have peanuts available, but what if we have almonds available instead?</p>
 
-<p>Let's say "peanuts available" is false and "almonds available" is true. We need to check if at least one of these ingredients is available to see if we can make nutty popcorn.</p>
+<p>Let's check if we can make nutty popcorn when almonds are available but peanuts are not. We have "almonds available" and "peanuts available" as our variables.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "peanuts available" and set its value to false.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "almonds available" and set its value to true.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Peanuts: false, Almonds: true. Can make nutty popcorn:" followed by the result of using OR logic on the two variables.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make nutty popcorn in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "almonds available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "peanuts available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Almonds: true, Peanuts: false. Can make nutty popcorn: true".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if we can make nutty popcorn in the code block below.</li>
 </ul>
 
 <label for="logicalOperators-ex4-part-b" class="code-label">Add your code in the code block below</label>
@@ -518,18 +560,28 @@
 <pre class="output-block" id="logicalOperators-output4-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer4-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 4 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼ Exercise 5 ▼▼▼ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: Salt or Sea Salt 🧂            █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="logicalOperators-exercise-5">
-<h3 class="exercise-title">Exercise 5: SALT OR SEA SALT 🧂</h3>
-<h4 class="sub-title">Part A: Salt Available, Sea Salt Not</h4>
-<p>Savory popcorn can be made with regular salt OR sea salt, so we need to check if at least one is ready. If regular salt is available but sea salt is not, we should still be able to make savory popcorn.</p>
+=== EXERCISE 5: SALT OR SEA SALT 🧂 ===
+
+<h3 class="exercise-title">Exercise 5: Salt or Sea Salt 🧂</h3>
+
+<h4 class="sub-title">Part A: Can We Make Savory Popcorn?</h4>
+
+<p>Imagine you're at the Popcorn Factory. You want to make savory popcorn, but you only have regular salt or sea salt. You need to check which one is available to make your snack.</p>
+
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "salt available" and set its value to <code>true</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sea salt available" and set its value to <code>false</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Salt: ", "salt available", ", Sea Salt: ", "sea salt available", ". Can make savory popcorn: ", "salt available OR sea salt available".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make savory popcorn when regular salt is available but sea salt is not in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "salt available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sea salt available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Salt: ", "Salt available", ", Sea Salt: ", "Sea Salt available", ", Can make savory popcorn: ".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if you can make savory popcorn when regular salt is available but sea salt is not.</li>
 </ul>
 
 <label for="logicalOperators-ex5-part-a" class="code-label">Add your code in the code block below</label>
@@ -544,17 +596,17 @@
 <p class="hint" id="logicalOperators-hint5-part-a"></p>
 <pre class="output-block" id="logicalOperators-output5-part-a"></pre>
 <pre class="answer-block" id="logicalOperators-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: Sea Salt Available Only</h4>
+<h4 class="sub-title">Part B: Can We Make Savory Popcorn?</h4>
 
-<p>In Part A, we learned how to make savory popcorn when regular salt is available. But what if only sea salt is on hand? Let's check if we can still make delicious savory popcorn!</p>
+<p>From Part A, we know that we can make savory popcorn if we have regular salt available.</p>
 
-<p>Scenario: We have "salt available" set to <code>false</code> and "sea salt available" set to <code>true</code>.</p>
+<p>In Part B, we're checking if we can make savory popcorn when sea salt is available but regular salt is not. We have "sea salt available" and "salt available" as our two options.</p>
 
 <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "salt available" and set its value to <code>false</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sea salt available" and set its value to <code>true</code>.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Salt: ", "salt available", ", Sea Salt: ", "sea salt available", ". Can make savory popcorn: ", [result of OR operation].</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we can make savory popcorn when only sea salt is available in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "salt available" and set its value to <code>false</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sea salt available" and set its value to <code>true</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Salt: ", "Sea Salt: ", and "Can make savory popcorn: ".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the OR operator to check if we can make savory popcorn in the code block below.</li>
 </ul>
 
 <label for="logicalOperators-ex5-part-b" class="code-label">Add your code in the code block below</label>
@@ -570,12 +622,18 @@
 <pre class="output-block" id="logicalOperators-output5-part-b"></pre>
 <pre class="answer-block" id="logicalOperators-answer5-part-b"></pre>
 </div>
-<!-- ▲▲▲ Exercise 5 ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▲▲▲ Exercises ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </section>
-<!-- ▲▲▲ Module ▲▲▲ -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-4-LOGICAL-OPERATORS-PART2        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
 </main>
 <script src="../../scripts/main.js"></script>

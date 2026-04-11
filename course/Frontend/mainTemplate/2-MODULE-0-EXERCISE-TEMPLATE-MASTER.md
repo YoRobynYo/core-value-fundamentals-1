@@ -249,7 +249,7 @@ print(f"Workers: {workers_present}")
 >
 > This rule protects children from being confused by things they have never seen before. It applies to every module, every exercise, and every helper box across the entire course.
 
-**Examples of what this means in practise:**
+**Examples of what this means in practice:**
 - Concatenation with `+` has not been taught → do NOT use `+` to join text and variables
 - camelCase has not been taught → do NOT write camelCase variable names
 - Arrays have not been taught → do NOT use `[ ]` for anything
@@ -276,8 +276,8 @@ No exceptions. If you are unsure — do not use it.
 | program / programming | code / coding |
 | practice (verb) | practise |
 | color | colour |
-| organize | organise |
-| recognize | recognise |
+| organise | organise |
+| recognise | recognise |
 | center | centre |
 | math | maths |
 | console | never use this word |
@@ -501,12 +501,15 @@ Use PRINT to display [what to show/compare].
 
 **Example:**
 ```html
+
 <code>
-  SET "workers present" = 18<br>
-  SET "maximum capacity" = 20<br>
-  PRINT "Workers present: ", "workers present"<br>
-  PRINT "Maximum capacity: ", "maximum capacity"
+  SET "teacher name" = "Mrs Jones"<br>
+  SET lesson = "Fundamentals"<br>
+  SET "lesson number" = 1<br>
+  PRINT "My teacher is ", "teacher name"<br>
+  PRINT "Today's lesson is ", "lesson", " number ", "lesson number"
 </code>
+
 ```
 
 ---

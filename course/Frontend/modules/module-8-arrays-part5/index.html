@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-8-ARRAYS-PART5                   █ -->
+<!-- █  // Module 8 Arrays Part5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="arrays-module">
+
+<h2 class="module-title">Module 8 Arrays Part5</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box Part 5: Lists + Loops + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧🔁 Putting It All Together — Lists, Loops and Functions 🔧🔁</h3>
+
+  <p>You already know how to create a list, how to loop through it, and how to write
+    a function. Now we put ALL of them together — a function that takes a list,
+    loops through every item, and does something with each one!</p>
+
+  <h4 class="sub-title">A Function That Processes Every Item in a List:</h4>
+
+  <p>Imagine the teacher wants to greet every child on the clipboard.
+    The function takes the list, loops through each name, and prints a
+    welcome message for every single child:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "greet all children" TAKES "name list"<br>
+    &nbsp;&nbsp;FOR EACH "child" IN "name list"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;PRINT "Welcome to class:", "child"<br>
+    &nbsp;&nbsp;END FOR<br>
+    END FUNCTION<br>
+    <br>
+    CALL "greet all children" WITH "class names"
+  </div>
+
+  <p class="output">Output:<br>
+    Welcome to class: Ben<br>
+    Welcome to class: Sara<br>
+    Welcome to class: Tom<br>
+    Welcome to class: Aisha</p>
+
+  <h4 class="sub-title">A Function That Returns Something Back:</h4>
+
+  <p>Sometimes you want the function to give something back — like counting
+    how many children are on the list. The function loops through the list
+    and RETURNS the total count:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "count children" TAKES "name list"<br>
+    &nbsp;&nbsp;RETURN LENGTH OF "name list"<br>
+    END FUNCTION<br>
+    <br>
+    SET "total" = CALL "count children" WITH "class names"<br>
+    PRINT "Total children in class:", "total"
+  </div>
+
+  <p class="output">Output: Total children in class: 4</p>
+
+  <p class="note">💡 <strong>Remember:</strong> A function can take a list,
+    loop through every item, do something with each one, and even RETURN
+    a result. That is the power of combining everything you have learned!</p>
+</div>
+
+<!-- End of Helper Box Part 5 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 8 Arrays Part5 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Greet All Assistants Function 👋█ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-1">
+<h3 class="exercise-title">Exercise 1: Greet All Assistants Function 👋</h3>
+
+<h4 class="sub-title">Part A: Write a Function to Greet Assistants</h4>
+
+<p>The supervisor wants a reusable function that can greet any list of assistants. You will write a function that takes a list and prints a welcome message for each person.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistant list" and set its value to <code>"morning assistants"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "greet assistants" that takes a list called "assistant list".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, use FOR EACH to print "Hello:" followed by each assistant.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with "morning assistants":
+    <div class="code-example">
+      <code>SET assistant list = "morning assistants"<br>greet assistants(assistant list)</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-a"></p>
+<pre class="output-block" id="arrays-output1-part-a"></pre>
+<pre class="answer-block" id="arrays-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Greet All Assistants Function</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>Our supervisor wants a reusable function that can greet any list of assistants. We need to write a function that takes a list and prints a welcome message for each person.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "afternoon assistants" and set its value to <code>["Aisha", "Jake", "Mia"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the function "greet assistants" with "afternoon assistants" as the input.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now let's see the result:
+    <div class="code-example">
+      <code>SET afternoon assistants = ["Aisha", "Jake", "Mia"]<br>greet assistants afternoon assistants</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-b"></p>
+<pre class="output-block" id="arrays-output1-part-b"></pre>
+<pre class="answer-block" id="arrays-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: Total Boxes Function 📦        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-2">
+<h3 class="exercise-title">Exercise 2: Total Boxes Function 📦</h3>
+
+<h4 class="sub-title">Part A: Write a Function to Add Up Box Counts</h4>
+
+<p>The factory needs to know the total number of popcorn boxes produced by all machines. You will write a function that takes a list of box counts, adds them up, and returns the total. You will use the list "counts" = [12, 8, 15, 10, 9].</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sum" and set its value to 0.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "total boxes" that takes a list called "counts".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a FOR EACH loop to add each count to "sum".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to RETURN "sum" in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-a"></p>
+<pre class="output-block" id="arrays-output2-part-a"></pre>
+<pre class="answer-block" id="arrays-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Total Boxes Function</h4>
+
+<p>Now we need to use the "total boxes" function with the second list of box counts.</p>
+
+<p>The factory has produced a new list of box counts: "production" = [20, 18, 22, 16, 19]. We need to use the "total boxes" function to add up all these box counts and find the total number of boxes produced.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "production" and set its value to [20, 18, 22, 16, 19].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "total boxes" function with the "production" variable and store the result in a new variable.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Total boxes produced: VALUE" where VALUE is the result from step 2.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "total boxes" function with the "production" variable and display the result in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-b"></p>
+<pre class="output-block" id="arrays-output2-part-b"></pre>
+<pre class="answer-block" id="arrays-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Add Five to Each Number ➕      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-3">
+<h3 class="exercise-title">Exercise 3: Add Five to Each Number ➕</h3>
+
+<h4 class="sub-title">Part A: Current Production</h4>
+
+<p>The factory wants to increase every machine's production by 5 boxes next week. The children write a function that takes a list of numbers, adds 5 to each one, and returns a new list.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current production" and set its value to <code>[10, 15, 8, 12, 20]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "add five to each" that takes a list called "numbers".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Function to add 5 to each number in the list: add five to each(numbers)".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a new list with numbers from the original list increased by 5 in the code block below.</li>
+</ul>
+
+<label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-a"></p>
+<pre class="output-block" id="arrays-output3-part-a"></pre>
+<pre class="answer-block" id="arrays-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Add Five to Each</h4>
+
+<p>Now that you've seen how to add 5 to each number in the first list, it's time to try it with a different list of numbers.</p>
+
+<p>The factory wants to increase every machine's production by 5 boxes next week. The children write a function that takes a list of numbers, adds 5 to each one, and returns a new list. This time, the list of numbers is [6, 9, 14, 11, 18].</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current production" and set its value to [6, 9, 14, 11, 18].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "new list" and set its value to [].</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "new list" is now [].</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to add 5 to each number in the "current production" list and store the new numbers in the "new list" using a FOR EACH loop inside a function.</li>
+</ul>
+
+<label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-b"></p>
+<pre class="output-block" id="arrays-output3-part-b"></pre>
+<pre class="answer-block" id="arrays-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Double Everything Function ✖️  █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-4">
+<h3 class="exercise-title">Exercise 4: Double Everything Function ✖️</h3>
+
+<h4 class="sub-title">Part A: Current Production</h4>
+
+<p>The factory wants to double production for next week. The children write a function that takes a list of numbers, doubles each one, and returns a new list with the doubled values. The current production is [5, 10, 3, 8, 12].</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current production" and set its value to <code>[5, 10, 3, 8, 12]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "double list" that takes a list called "original". Set "doubled list" = <code>[]</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Double the current production: "</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop inside the function to double each number in the "original" list and add the doubled number to the "doubled list".</li>
+</ul>
+
+<label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-a"></p>
+<pre class="output-block" id="arrays-output4-part-a"></pre>
+<pre class="answer-block" id="arrays-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Double Everything Function</h4>
+
+<p>Now that we have a function that doubles each item in a list, let's use it with a different list of numbers.</p>
+
+<p>The factory wants to double production for next week, and we need to double the numbers in the list [7, 14, 6, 9, 11]. We will use our "double list" function to create a new list with the doubled values.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current production" and set its value to [7, 14, 6, 9, 11].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the "double list" function to create a new list with the doubled values.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the new list with the doubled values.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "double list" function and print the result in the code block below.</li>
+</ul>
+
+<label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-b"></p>
+<pre class="output-block" id="arrays-output4-part-b"></pre>
+<pre class="answer-block" id="arrays-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: AVERAGE BOXES FUNCTION 📊      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-5">
+=== EXERCISE 5: AVERAGE BOXES FUNCTION 📊 ===
+<h3 class="exercise-title">Exercise 5: AVERAGE BOXES FUNCTION 📊</h3>
+
+<h4 class="sub-title">Part A: Daily Production</h4>
+
+<p>The factory manager wants to know the average number of boxes produced per machine. The children write a function that calculates the average (total divided by how many numbers). The daily production is [10, 20, 15, 25, 30].</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total" and set its value to 0.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "average" and set its value to 0.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Average boxes per machine:".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the average number of boxes produced per machine in the code block below.</li>
+</ul>
+
+<label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex5-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint5-part-a"></p>
+<pre class="output-block" id="arrays-output5-part-a"></pre>
+<pre class="answer-block" id="arrays-answer5-part-a"></pre>
+<!-- Helper Box Part 5: Lists + Loops + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧🔁 Putting It All Together — Lists, Loops and Functions 🔧🔁</h3>
+
+  <p>You already know how to create a list, how to loop through it, and how to write
+    a function. Now we put ALL of them together — a function that takes a list,
+    loops through every item, and does something with each one!</p>
+
+  <h4 class="sub-title">Part B: Average Boxes per Machine</h4>
+
+  <p>Now it's time to use the function we wrote in Part A to calculate the average boxes per machine for the second list of daily production.</p>
+
+  <p>The factory manager wants to know the average number of boxes produced per machine for the list [8, 12, 10, 14, 16].</p>
+
+  <ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "numbers" and set its value to <code>[8, 12, 10, 14, 16]</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function we wrote in Part A and pass the "numbers" variable to it.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Average boxes per machine: " followed by the result of the function call.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function and display the result in the code block below.</li>
+  </ul>
+
+  <label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="arrays-ex5-part-b" data-section="arrays"></div>
+
+  <div class="exercise-buttons">
+    <button class="hint-button" data-section="arrays" data-ex="5-part-b">Hint</button>
+    <button class="run-button" data-section="arrays" data-ex="5-part-b">Run My Code</button>
+    <button class="reset-button" data-section="arrays" data-ex="5-part-b">Reset My Code</button>
+  </div>
+
+  <p class="hint" id="arrays-hint5-part-b"></p>
+  <pre class="output-block" id="arrays-output5-part-b"></pre>
+  <pre class="answer-block" id="arrays-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-8-ARRAYS-PART5                   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

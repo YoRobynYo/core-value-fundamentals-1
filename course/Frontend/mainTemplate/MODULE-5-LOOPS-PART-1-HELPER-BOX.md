@@ -141,7 +141,7 @@ Exercise [NUMBER] following these specifications exactly."
 **PART B FOCUS:** For 12 boxes, calculate the pencil range for each box if there are 6 pencils per box.
 
 **IMAGE:** loop-parts-diagram.jpg
-**ALT TEXT:** "Using a loop to organize items into boxes."
+**ALT TEXT:** "Using a loop to organise items into boxes."
 
 **EXPECTED OUTPUT PART A:** "Box 1 has pencils 1-5. Box 2 has pencils 6-10. ... Box 10 has pencils 46-50."
 **EXPECTED OUTPUT PART B:** "Box 1 has pencils 1-6. Box 2 has pencils 7-12. ... Box 12 has pencils 67-72."

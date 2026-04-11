@@ -84,48 +84,60 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="functions-exercise-1">
 <h3 class="exercise-title">Exercise 1: Counting Flavour Bags 🍬</h3>
-<h4 class="sub-title">Part A: Flavour Bags Calculation</h4>
-<p>The factory needs to count how many flavour bags are needed. To do this, we will write a function that calculates and returns the answer. We will start by setting the number of "bags" and "flavours" inside the function, then multiply them together to get the total.</p>
+
+<h4 class="sub-title">Part A: Counting Flavour Bags</h4>
+
+<p>The factory needs to count how many flavour bags are needed. Write a function that calculates and returns the answer!</p>
+
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bags" and set its value to <code>10</code>.</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to <code>3</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total number of flavour bags needed.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the flavour bags calculation:
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "total" and set its value to the product of "bags" and "flavours".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the function:
     <div class="code-example">
-      <code>SET "bags" = 10<br>SET "flavours" = 3<br>SET "total" = "bags" * "flavours"<br>SET "my total" = "total"<br>PRINT "Flavour bags needed ", "my total"</code>
+      <code>SET "bags" = 10<br>SET "flavours" = 3<br>SET "total" = "bags" * "flavours"<br>RETURN "total"</code>
     </div>
   </li>
 </ul>
+
 <label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex1-part-a" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
   <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint1-part-a"></p>
 <pre class="output-block" id="functions-output1-part-a"></pre>
 <pre class="answer-block" id="functions-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: More Flavour Bags</h4>
-<p>Great work. Now let's try with different values.</p>
-<p>The factory needs to count how many flavour bags are needed for a new order. This time, the "bags" are set to 20 and the "flavours" are set to 4. We need to write a function that calculates and returns the total number of flavour bags needed.</p>
+<h4 class="sub-title">Part B: Counting Flavour Bags with Different Values</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>The factory needs to count how many flavour bags are needed with 20 bags and 4 flavours. We will use the function to calculate and return the answer.</p>
+
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>20</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of flavours" and set its value to <code>4</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total number of flavour bags needed.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now calculate the total number of flavour bags needed by multiplying the "number of bags" and the "number of flavours", then print the result:
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "bags" and set its value to <code>20</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to <code>4</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total flavour bags needed.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's use the function to calculate the total flavour bags needed:
     <div class="code-example">
-      <code>SET bags = 20<br>SET flavours = 4<br>SET total = bags * flavours<br>PRINT "Flavour bags needed ", total</code>
+      <code>SET "bags" = 20<br>SET "flavours" = 4<br>SET "total" = "bags" * "flavours"<br>PRINT "Flavour bags needed ", "total"</code>
     </div>
   </li>
 </ul>
+
 <label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex1-part-b" data-section="functions"></div>
+
 <div class="exercise-buttons">
   <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
   <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
   <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
 </div>
+
 <p class="hint" id="functions-hint1-part-b"></p>
 <pre class="output-block" id="functions-output1-part-b"></pre>
 <pre class="answer-block" id="functions-answer1-part-b"></pre>
@@ -141,16 +153,16 @@
 <div class="exercise-box" id="functions-exercise-2">
 <h3 class="exercise-title">Exercise 2: Sugar Packets Remaining 🍚</h3>
 
-<h4 class="sub-title">Part A: Finding Remaining Sugar Packets</h4>
+<h4 class="sub-title">Part A: How Many Are Left?</h4>
 
-<p>The factory started with some sugar packets and used some. To find out how many sugar packets are left, we need to subtract the number of sugar packets "used" from the number of sugar packets we "started with". We will write a function called "sugar remaining" to calculate this.</p>
+<p>The factory started with some sugar packets and used some. We need to write a function that works out how many are left. We will set the number of sugar packets the factory started with to 50 and the number of sugar packets used to 15.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "started with" and set its value to <code>50</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "used" and set its value to <code>15</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of subtracting "used" from "started with", which will give us the number of sugar packets remaining.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "sugar remaining" function, perform the subtraction, store the result in "remaining", and return it in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "started with" and set its value to <code>50</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "used" and set its value to <code>15</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar packets remaining "</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to subtract "used" from "started with" and store the result in "remaining" and return it.</li>
+</ul>
 
 <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex2-part-a" data-section="functions"></div>
@@ -164,18 +176,18 @@
 <p class="hint" id="functions-hint2-part-a"></p>
 <pre class="output-block" id="functions-output2-part-a"></pre>
 <pre class="answer-block" id="functions-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Changing Sugar Packets</h4>
+<h4 class="sub-title">Part B: Sugar Packets Remaining</h4>
 
-<p>Now that we have calculated the sugar packets remaining in Part A, we can modify our function to work with different values.</p>
+<p>Now that we know how to write a function that works out how many sugar packets are left, let's try it with different values.</p>
 
-<p>In this part of the exercise, the factory <strong>started with</strong> 100 sugar packets and <strong>used</strong> 35 of them. We need to calculate how many sugar packets are left by subtracting the number <strong>used</strong> from the number we <strong>started with</strong>. We will store this result in <strong>remaining</strong> and then return it.</p>
+<p>The factory started with 100 sugar packets and used 35. We need to write a function that works out how many are left.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar packets we started with" and set its value to <code>100</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar packets used" and set its value to <code>35</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the number of sugar packets remaining.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate and return the remaining sugar packets in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "started with" and set its value to <code>100</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "used" and set its value to <code>35</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Sugar packets remaining " followed by the result of the subtraction of "used" from "started with".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the function "sugar remaining" that sets "started with" to 100 and "used" to 35, subtracts them, stores in "remaining" and returns it, and then use PRINT to display the result.</li>
+</ul>
 
 <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex2-part-b" data-section="functions"></div>
@@ -200,18 +212,14 @@
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 <div class="exercise-box" id="functions-exercise-3">
 <h3 class="exercise-title">Exercise 3: Ingredient Portions 🧂</h3>
-
-<h4 class="sub-title">Part A: Calculating Ingredient Portions</h4>
-
-<p>To calculate the total ingredient portions needed, we must multiply the "batch size" by the "portions" required for each batch. We will write a function called "get portions" to perform this calculation. The function will take "batch size" and "portions" as parameters and return the total portions needed.</p>
-
+<h4 class="sub-title">Part A: Get Portions</h4>
+<p>Each batch needs a certain number of ingredient portions. Write a function that takes the batch size and portions per batch and returns the total!</p>
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "batch size" and set its value to <code>5</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "portions" and set its value to <code>4</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total portions needed for the given batch size and portions.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to define the "get portions" function and call it with the given batch size and portions in the code block below.</li>
-   </ul>
-
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "batch size" and set its value to <code>5</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "portions" and set its value to <code>4</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Total portions needed " followed by the result of multiplying "batch size" and "portions".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "get portions" that takes "batch size" and "portions" as parameters, multiplies them, stores in "total" and returns it, then call this function with 5 and 4, catch in "my total" and print.</li>
+</ul>
 <label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex3-part-a" data-section="functions"></div>
 
@@ -224,18 +232,18 @@
 <p class="hint" id="functions-hint3-part-a"></p>
 <pre class="output-block" id="functions-output3-part-a"></pre>
 <pre class="answer-block" id="functions-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Calculating More Portions</h4>
+<h4 class="sub-title">Part B: Ingredient Portions</h4>
 
-<p>Now that we have our function working with a batch size of 5 and portions of 4, and also with a batch size of 8 and portions of 3, we can try it with different values.</p>
+<p>From Part A, we know that each batch needs a certain number of ingredient portions. Now, let's calculate the total portions needed for different batch sizes and portions per batch.</p>
 
-<p>In this part of the exercise, we need to calculate the total portions for a batch size of 10 and portions of 6, and also for a batch size of 12 and portions of 2. We will use the "batch size" and "portions" as parameters in our function to find the total portions needed.</p>
+<p>Imagine you are working at the Popcorn Factory and you need to prepare batches of popcorn. Each batch needs 10 portions, and you have 3 different batch sizes: 10, 12, and 15. Write the code to calculate the total portions needed for each batch size.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my total" and set its value to the result of calling the "get portions" function with 10 and 6.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "my total" and set its value to the result of calling the "get portions" function with 12 and 2.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the total portions needed for each batch size and portions.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get portions" function with the given batch sizes and portions in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "batch size" and set its value to <code>10</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "portions" and set its value to <code>3</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Total portions needed for batch size 10: VALUE".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get portions" function with the batch size and portions as parameters and print the result in the code block below.</li>
+</ul>
 
 <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex3-part-b" data-section="functions"></div>
@@ -261,15 +269,15 @@
 <div class="exercise-box" id="functions-exercise-4">
 <h3 class="exercise-title">Exercise 4: Oil Container Check 🛢️</h3>
 
-<h4 class="sub-title">Part A: Calculating Oil Remaining</h4>
+<h4 class="sub-title">Part A: Oil Remaining</h4>
 
-<p>The factory needs to know how many oil containers are left after production. To find this out, we need to subtract the "amount used" from the "starting amount". We will write a function that takes these two values as parameters and returns the result.</p>
+<p>The factory needs to know how many oil containers are left after production. Write a function that takes the starting amount and amount used and returns what is left!</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "starting amount" and set its value to <code>100</code>.</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "amount used" and set its value to <code>40</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of subtracting "amount used" from "starting amount" as "Oil containers remaining" with the calculated value.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "oil remaining" that takes "starting amount" and "amount used" as parameters, subtracts them, stores in "remaining" and returns it, then call this function with the given values.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Oil containers remaining <code>remaining</code>".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function "oil remaining" with the values 100 and 40, store the result in "my remaining" and print it in the code block below.</li>
 </ul>
 
 <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
@@ -284,18 +292,18 @@
 <p class="hint" id="functions-hint4-part-a"></p>
 <pre class="output-block" id="functions-output4-part-a"></pre>
 <pre class="answer-block" id="functions-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Checking More Oil Containers</h4>
+<h4 class="sub-title">Part B: Oil Container Check</h4>
 
-<p>Now that we have our function to calculate the oil containers remaining, we can use it with different values.</p>
+<p>Let's use the "oil remaining" function we wrote in Part A to check the oil containers left after production.</p>
 
-<p>The factory has <code>200</code> oil containers to start with and uses <code>75</code> for production, and then another batch starts with <code>150</code> containers and uses <code>60</code>. We need to calculate the "remaining" oil containers for each batch using the "starting amount" and "amount used" as parameters.</p>
+<p>In this part, we will call the "oil remaining" function with different values of "starting amount" and "amount used" to check how many oil containers are left after production.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "first remaining" and set its value to the result of calling our function with <code>200</code> and <code>75</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "second remaining" and set its value to the result of calling our function with <code>150</code> and <code>60</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the oil containers remaining for each batch.</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with the given values and print the results in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "oil remaining" and set its value to <code>CALL "oil remaining" (200, 75)</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "oil remaining" and set its value to <code>CALL "oil remaining" (150, 60)</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Oil containers remaining "</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "oil remaining" function with the given values and print the result in the code block below.</li>
+</ul>
 
 <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex4-part-b" data-section="functions"></div>
@@ -321,15 +329,17 @@
 <div class="exercise-box" id="functions-exercise-5">
 <h3 class="exercise-title">Exercise 5: The Full Production Count 🌟</h3>
 
-<h4 class="sub-title">Part A: Set Factory Name and Call Function</h4>
+<h4 class="sub-title">Part A: Production Count</h4>
 
-<p>In this part, you will set the "factory name" to "Poppy's Factory" outside the function. You will then create a function called "production count" that takes "batch size" and "portions" as parameters. Multiply these values inside the function, store the result in a variable named "total", and return it. Call the function with 10 and 3, store the result in "my total", and print both "factory name" and "my total". Call the function again with 20 and 5.</p>
+<p>Poppy's Factory needs to calculate the total production count. The factory name is outside the function, and the batch size and portions are parameters. We need to multiply the batch size and portions, store the result in "total", and return it. We will call the function with 10 and 3, catch the result in "my total", and print both the factory name and "my total". We will call the function again with 20 and 5.</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Set a variable named "factory name" to "Poppy's Factory".</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "production count" that takes "batch size" and "portions" as parameters.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, multiply "batch size" by "portions", store the result in a variable named "total".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Return "total". Call the function with 10 and 3, store the result in "my total", and print both "factory name" and "my total". Then call the function again with 20 and 5.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, multiply "batch size" and "portions" and store the result in "total".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use RETURN to hand the result back from the function.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Call the function with 10 and 3, catch the result in "my total", and print both the factory name and "my total".</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Call the function again with 20 and 5.</li>
 </ul>
 
 <label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
@@ -344,18 +354,21 @@
 <p class="hint" id="functions-hint5-part-a"></p>
 <pre class="output-block" id="functions-output5-part-a"></pre>
 <pre class="answer-block" id="functions-answer5-part-a"></pre>
-<h4 class="sub-title">Part B: The Full Production Count Continued</h4>
+<h4 class="sub-title">Part B: The Full Production Count</h4>
 
-<p>Now that we have calculated the production count for "Poppy's Factory" with different batch sizes and portions, let's continue with the same factory but different values.</p>
+<p>Now we are going to use the production count function with different values.</p>
 
-<p>We are still working with "Poppy's Factory", and we want to calculate the production count with a batch size of 15 and portions of 4, and then with a batch size of 25 and portions of 2. We will use the same "production count" function that takes "batch size" and "portions" as parameters, multiplies them, and returns the result.</p>
+<p>Poppy's Factory needs to calculate the total production count for two different batches. The first batch has a batch size of 15 and portions of 4, and the second batch has a batch size of 25 and portions of 2.</p>
 
 <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "batch size" and set its value to 15, then create another variable named "portions" and set its value to 4.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "factory name" and the result of the "production count" function with the given "batch size" and "portions".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "production count" function with 15 and 4, and then with 25 and 2, in the code block below.</li>
-   </ul>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "factory name" and set its value to "Poppy's Factory".</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "batch size" and set its value to 15.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "portions" and set its value to 4.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use the production count function to calculate the total production count for the first batch and store the result in a variable named "total production count 1".</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use the production count function to calculate the total production count for the second batch and store the result in a variable named "total production count 2".</li>
+  <li><strong>Step 6:</strong>&nbsp;&nbsp;Use PRINT to display the factory name and the total production counts for both batches.</li>
+  <li><strong>Step 7:</strong>&nbsp;&nbsp;Now write the code to complete the above steps in the code block below.</li>
+</ul>
 
 <label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
 <div class="code-block" contenteditable="true" id="functions-ex5-part-b" data-section="functions"></div>

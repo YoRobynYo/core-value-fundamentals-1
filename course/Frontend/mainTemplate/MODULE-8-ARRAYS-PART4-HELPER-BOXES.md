@@ -27,7 +27,7 @@
 
 ---
 
-## RULE 6: CONDITIONS WITH LISTS
+## RULE 6: NEVER USE WHAT HASN'T BEEN TAUGHT
 
 > If a concept, symbol, or syntax has not appeared in a helper box earlier in the course — it must NOT appear in any exercise or example.
 >
@@ -58,9 +58,10 @@
 ## HELPER BOX PART 4: CONDITIONS WITH LISTS 
 
 ```html
+
 <!-- Helper Box Part 4: Conditions with Lists -->
 <div class="helper-box">
-  <h3 class="box-title"> Using Conditions With a List </h3>
+  <h3 class="box-title">❓ Using Conditions With a List ❓</h3>
 
   <p>You learned about conditions back in Module 3. Here is a quick reminder — and
     then we will see how they work with lists to make much smarter decisions!</p>
@@ -70,12 +71,12 @@
   <p>A condition checks if something is true or false and then decides what to do.</p>
 
   <div class="code-block">
-    SET "score" = 8
-
-    IF "score" > 5 THEN
-      PRINT "Well done!"
-    ELSE
-      PRINT "Keep practising!"
+    SET "score" = 8<br>
+    <br>
+    IF "score" > 5 THEN<br>
+    &nbsp;&nbsp;PRINT "Well done!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Keep practising!"<br>
     END IF
   </div>
 
@@ -88,12 +89,12 @@
     we are looking for:</p>
 
   <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]
-
-    IF "class names"[0] = "Ben" THEN
-      PRINT "Ben is first on the list!"
-    ELSE
-      PRINT "Ben is not first on the list."
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    IF "class names"[0] = "Ben" THEN<br>
+    &nbsp;&nbsp;PRINT "Ben is first on the list!"<br>
+    ELSE<br>
+    &nbsp;&nbsp;PRINT "Ben is not first on the list."<br>
     END IF
   </div>
 
@@ -105,12 +106,12 @@
     only do something for the ones that match our rule:</p>
 
   <div class="code-block">
-    SET "classroom numbers" = [101, 102, 103, 104, 105]
-
-    FOR EACH "number" IN "classroom numbers"
-      IF "number" > 102 THEN
-        PRINT "Visit classroom:", "number"
-      END IF
+    SET "classroom numbers" = [101, 102, 103, 104, 105]<br>
+    <br>
+    FOR EACH "number" IN "classroom numbers"<br>
+    &nbsp;&nbsp;IF "number" > 102 THEN<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;PRINT "Visit classroom:", "number"<br>
+    &nbsp;&nbsp;END IF<br>
     END FOR
   </div>
 

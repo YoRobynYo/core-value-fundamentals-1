@@ -225,7 +225,7 @@
 <div class="helper-box">
   <h3 class="box-title">💡 Practicing with Minimums and Maximums 💡</h3>
 
-  <p>Let's practice using both >= and <= together! Many factory checks involve
+  <p>Let's practise using both >= and <= together! Many factory checks involve
   making sure we have <strong>at least</strong> the minimum required, but
   <strong>at most</strong> the maximum allowed.</p>
 

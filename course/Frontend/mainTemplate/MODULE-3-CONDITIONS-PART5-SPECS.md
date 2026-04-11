@@ -135,7 +135,7 @@ Exercise [NUMBER] following these specifications exactly."
 - Part A: `"ice cream flavor"`
 - Part B: `"ice cream flavor"`
 
-**CONCEPT:** Final practice using multiple checks for a fun and unique category of flavors.
+**CONCEPT:** Final practise using multiple checks for a fun and unique category of flavors.
 
 **PART A FOCUS:** Check if the ice cream flavor is "vanilla" or "strawberry" and report the coating needed.
 **PART B FOCUS:** Add the most popular option, "cookies and cream", to the list of flavors to check.

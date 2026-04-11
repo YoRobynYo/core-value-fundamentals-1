@@ -27,7 +27,7 @@
 
 ---
 
-## RULE 6: FOR EACH LOOPS WITH LISTS 🔁
+## RULE 6: NEVER USE WHAT HASN'T BEEN TAUGHT
 
 > If a concept, symbol, or syntax has not appeared in a helper box earlier in the course — it must NOT appear in any exercise or example.
 >
@@ -58,6 +58,7 @@
 
 ```html
 <!-- Helper Box Part 3: FOR EACH Loops with Lists -->
+
 <div class="helper-box">
   <h3 class="box-title">🔁 FOR EACH Loops With a List 🔁</h3>
 
@@ -70,8 +71,8 @@
     write the same thing over and over again.</p>
 
   <div class="code-block">
-    FOR EACH "number" IN [0, 1, 2]
-      PRINT "number"
+    FOR EACH "number" IN [0, 1, 2]<br>
+    &nbsp;&nbsp;PRINT "number"<br>
     END FOR
   </div>
 
@@ -87,10 +88,10 @@
     something with it:</p>
 
   <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]
-
-    FOR EACH "name" IN "class names"
-      PRINT "name"
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FOR EACH "name" IN "class names"<br>
+    &nbsp;&nbsp;PRINT "name"<br>
     END FOR
   </div>
 
@@ -107,10 +108,10 @@
   <h4 class="sub-title">Adding a Message:</h4>
 
   <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]
-
-    FOR EACH "name" IN "class names"
-      PRINT "Name on list:", "name"
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FOR EACH "name" IN "class names"<br>
+    &nbsp;&nbsp;PRINT "Name on list:", "name"<br>
     END FOR
   </div>
 
