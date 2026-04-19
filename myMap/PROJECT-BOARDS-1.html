@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CVF · Core Value Fundamentals | Project Board</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #13131a;
+      --surface: #1a1a24;
+      --surface2: #20202e;
+      --surface3: #26263a;
+      --border: #2a2a3e;
+      --border2: #38385a;
+      --cyan: #5fc8d4;
+      --cyan-dim: #3a7a84;
+      --purple: #8888cc;
+      --purple-dim: #444466;
+      --text: #dcdcf0;
+      --text-dim: #8888aa;
+      --text-muted: #555570;
+      --green: #aaffcc;
+      --green-bg: #1a3a28;
+      --amber: #ffdd99;
+      --amber-bg: #3a3020;
+      --blue: #bbddff;
+      --blue-bg: #1e2d4a;
+      --orange: #ffcc88;
+      --orange-bg: #3a2d20;
+      --red: #ffaaaa;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .topbar-title {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .topbar-sub {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* ── TAB NAV ── */
+    .tab-nav {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      padding: 0 1rem;
+      gap: 0.2rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-dim);
+    }
+
+    .tab-btn.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+    }
+
+    /* ── CONTENT AREA ── */
+    .tab-content {
+      flex: 1;
+      overflow: hidden;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    /* ══════════════════════════════════
+       TAB 1 — REGISTRY
+    ══════════════════════════════════ */
+    .registry-layout {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .registry-col {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border2) transparent;
+    }
+
+    .registry-col:last-child {
+      border-right: none;
+    }
+
+    .reg-col-title {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .reg-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .reg-group-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .reg-card {
+      background: var(--surface3);
+      border: 1px solid var(--border);
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.7rem;
+      margin-bottom: 0.4rem;
+      transition: border-color 0.1s;
+    }
+
+    .reg-card:hover {
+      border-color: var(--cyan-dim);
+    }
+
+    .reg-card-name {
+      font-size: 0.68rem;
+      color: #e0e0ff;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .reg-card-desc {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .reg-card-connects {
+      font-size: 0.58rem;
+      color: var(--cyan-dim);
+      margin-top: 0.25rem;
+    }
+
+    /* Actions column */
+    .action-card {
+      background: var(--surface3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--purple-dim);
+      border-radius: 0.45rem;
+      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .action-step {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #bbbbff;
+      margin-bottom: 0.2rem;
+    }
+
+    .action-desc {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .terminal-cmd {
+      background: #1a2a22;
+      color: #77ccaa;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      display: inline-block;
+      border: 1px solid #2a4a3a;
+    }
+
+    /* ══════════════════════════════════
+       TABS 2 & 3 — KANBAN
+    ══════════════════════════════════ */
+    .kanban-layout {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 1rem;
+      gap: 0.8rem;
+      width: 100%;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border2) transparent;
+    }
+
+    .kanban-lane {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 0.8rem;
+      width: 240px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border2) transparent;
+    }
+
+    .lane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .lane-title-section {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lane-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .lane-count {
+      background: var(--surface3);
+      padding: 0.1rem 0.4rem;
+      border-radius: 20px;
+      font-size: 0.58rem;
+      color: var(--text-dim);
+    }
+
+    .add-card-btn {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--purple);
+      font-size: 0.6rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 0.35rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.1s;
+    }
+
+    .add-card-btn:hover {
+      background: var(--purple-dim);
+      color: #fff;
+    }
+
+    .lane-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      min-height: 40px;
+      border-radius: 0.4rem;
+      transition: background 0.05s;
+    }
+
+    .lane-cards.drag-over {
+      background: #25253a;
+    }
+
+    .kanban-card {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.68rem;
+      cursor: grab;
+      user-select: none;
+      position: relative;
+      transition: border-color 0.1s, transform 0.1s;
+    }
+
+    .kanban-card:hover {
+      border-color: var(--cyan-dim);
+    }
+
+    .kanban-card:active {
+      cursor: grabbing;
+    }
+
+    .kanban-card.dragging {
+      opacity: 0.35;
+    }
+
+    .card-title {
+      font-weight: 500;
+      color: #f0f0ff;
+      line-height: 1.35;
+      padding-right: 1rem;
+      word-break: break-word;
+      font-size: 0.67rem;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.54rem;
+      padding: 0.12rem 0.4rem;
+      border-radius: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    .badge-notstarted {
+      background: var(--blue-bg);
+      color: var(--blue);
+    }
+
+    .badge-progress {
+      background: var(--amber-bg);
+      color: var(--amber);
+    }
+
+    .badge-review {
+      background: var(--orange-bg);
+      color: var(--orange);
+    }
+
+    .badge-done {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .delete-card {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.5rem;
+      color: var(--red);
+      font-size: 0.65rem;
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.1s;
+    }
+
+    .delete-card:hover {
+      opacity: 1;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal h3 {
+      color: #bbbbff;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal input {
+      width: 100%;
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+      font-family: inherit;
+      font-size: 0.72rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+
+    .modal input:focus {
+      border-color: var(--cyan-dim);
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .modal-buttons button {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--text-dim);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.7rem;
+    }
+
+    .modal-buttons button:first-child:hover {
+      background: var(--purple-dim);
+      color: #fff;
+    }
+
+    .modal-buttons button:last-child {
+      background: #2a1a1a;
+      border-color: #6a3a3a;
+    }
+
+    .modal-buttons button:last-child:hover {
+      background: #4a2a2a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">CVF · Core Value Fundamentals</div>
+      <div class="topbar-sub">Unified Project Board</div>
+    </div>
+  </div>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="registry">📁 File Registry</button>
+    <button class="tab-btn" data-tab="spec">📝 Spec Files</button>
+    <button class="tab-btn" data-tab="modules">🏗️ Built Modules</button>
+  </nav>
+
+  <!-- ══ TAB 1: REGISTRY ══ -->
+  <div class="tab-content active" id="tab-registry">
+    <div class="registry-layout">
+
+      <!-- COL 1: FILES -->
+      <div class="registry-col">
+        <div class="reg-col-title">📁 Pipeline Files</div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">⚙️ Config</div>
+          <div class="reg-card">
+            <div class="reg-card-name">package.json</div>
+            <div class="reg-card-desc">Node project config — lists dependencies and npm scripts</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">pipeline-config.json</div>
+            <div class="reg-card-desc">Gold standard rules — every pipeline file reads this. Change once, everything
+              updates</div>
+            <div class="reg-card-connects">↳ feeds all build files</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">locked-modules.json</div>
+            <div class="reg-card-desc">List of completed modules that the pipeline must never overwrite</div>
+            <div class="reg-card-connects">↳ read by rebuild-all.js, rebuild-new.js</div>
+          </div>
+        </div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">🔁 Build Files</div>
+          <div class="reg-card">
+            <div class="reg-card-name">agent-pipeline.js</div>
+            <div class="reg-card-desc">Master orchestrator — runs the AI waterfall chain (OpenRouter → Gemini → Ollama)
+              and triggers fallback when rate limits hit</div>
+            <div class="reg-card-connects">↳ calls build-html.js, monitors limits</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">build-spec.js</div>
+            <div class="reg-card-desc">Generates module spec files from templates using AI. Feeds into the HTML build
+              step</div>
+            <div class="reg-card-connects">↳ reads templates → outputs spec files</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">build-spec-ollama.js</div>
+            <div class="reg-card-desc">Same as build-spec.js but routes to local Ollama model when cloud APIs are
+              unavailable</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">build-html.js</div>
+            <div class="reg-card-desc">Core build file — reads config + templates, sends prompt to AI, receives module
+              HTML, writes to output folder</div>
+            <div class="reg-card-connects">↳ reads config → AI → output/</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">rebuild-all.js</div>
+            <div class="reg-card-desc">Loops through every module and rebuilds from scratch using current config.
+              Supports --from flag to start from a specific module</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">rebuild-new.js</div>
+            <div class="reg-card-desc">Only builds modules that don't exist yet — skips completed ones. Used when adding
+              new modules without a full rebuild</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">rebuild-fix-errors.js</div>
+            <div class="reg-card-desc">Targets only modules that failed the audit — reads audit output, rebuilds problem
+              files, leaves clean files untouched</div>
+            <div class="reg-card-connects">↳ reads audit-html.js output</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">rewrite-spec.js</div>
+            <div class="reg-card-desc">Rewrites existing spec files when the template changes — cloud version</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">rewrite-spec-ollama.js</div>
+            <div class="reg-card-desc">Rewrites existing spec files using local Ollama model</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">update-template.js</div>
+            <div class="reg-card-desc">Pushes template changes across all existing built files without a full rebuild
+            </div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">fix-template.js</div>
+            <div class="reg-card-desc">Targeted template repair — fixes specific structural issues in output files</div>
+          </div>
+        </div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">🔍 Monitor & Audit</div>
+          <div class="reg-card">
+            <div class="reg-card-name">audit-html.js</div>
+            <div class="reg-card-desc">Runs quality checks on all output HTML — flags banned words, missing elements,
+              structural errors</div>
+            <div class="reg-card-connects">↳ feeds rebuild-fix-errors.js</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">pipeline-monitor.js</div>
+            <div class="reg-card-desc">Watches the pipeline in real time — shows which AI is active, when limits hit,
+              when waterfall triggers to next AI</div>
+          </div>
+        </div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">📜 Course Scripts</div>
+          <div class="reg-card">
+            <div class="reg-card-name">scripts/main.js</div>
+            <div class="reg-card-desc">Main course interaction script — powers exercise UI logic across all modules
+            </div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">scripts/chat.js</div>
+            <div class="reg-card-desc">Handles the in-course chat/hint system</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">scripts/scroll.js</div>
+            <div class="reg-card-desc">Manages scroll behaviour within module pages</div>
+          </div>
+        </div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">🎨 Styles</div>
+          <div class="reg-card">
+            <div class="reg-card-name">styles/scss/</div>
+            <div class="reg-card-desc">Source SCSS files — edit these, not the compiled CSS</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">styles/css/</div>
+            <div class="reg-card-desc">Compiled CSS output — auto-generated, do not edit directly</div>
+          </div>
+        </div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">📚 Reference Docs</div>
+          <div class="reg-card">
+            <div class="reg-card-name">PROJECT-BRIEFING.md</div>
+            <div class="reg-card-desc">Master context document — loaded into every AI session to set rules, tone, and
+              course requirements</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">roadmap.md</div>
+            <div class="reg-card-desc">Full product roadmap across all phases — kids course, adult version, language
+              variants, book series</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">NARRATIVE-FRAMEWORK.md</div>
+            <div class="reg-card-desc">Defines the themed narrative environments (Popcorn Factory, Classroom, Café) used
+              across modules</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">Research Findings.pdf</div>
+            <div class="reg-card-desc">Background research informing course structure and pedagogy decisions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2: MASTER TEMPLATES -->
+      <div class="registry-col">
+        <div class="reg-col-title">📌 Master Templates</div>
+
+        <div class="reg-group">
+          <div class="reg-group-label">Core Templates</div>
+          <div class="reg-card">
+            <div class="reg-card-name">1-HOW-TO-REWRITE-MODULE-SPECS.md</div>
+            <div class="reg-card-desc">Step-by-step instructions for rewriting or updating module spec files — used when
+              templates change</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">2-MODULE-0-EXERCISE-TEMPLATE-MASTER.md</div>
+            <div class="reg-card-desc">The master exercise template — defines the structure every exercise must follow
+              including layout, code blocks, stepped instructions</div>
+            <div class="reg-card-connects">↳ read by build-html.js</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">3-MODULE-0-TEMPLATE-SPEC.md</div>
+            <div class="reg-card-desc">Spec template — the format every module spec file must follow before being passed
+              to the HTML builder</div>
+            <div class="reg-card-connects">↳ read by build-spec.js</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">4-MODULE-0-EXERCISE-GOLD-STANDARD.html</div>
+            <div class="reg-card-desc">The reference quality benchmark — a perfect finished exercise the AI must match
+              in structure, tone, and layout</div>
+            <div class="reg-card-connects">↳ used in AI prompt as quality reference</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">AA-JS-CONNECTION-SPEC.md</div>
+            <div class="reg-card-desc">Defines how JavaScript connects across exercises — rules for how scripts interact
+              with the HTML structure</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">AA-JS-HINTS-PATTERN-GUIDE.md</div>
+            <div class="reg-card-desc">Pattern guide for the hints system — defines how hints are written, structured,
+              and triggered across all modules</div>
+          </div>
+          <div class="reg-card">
+            <div class="reg-card-name">Templates-Breakdown.md</div>
+            <div class="reg-card-desc">Master reference explaining what each template does, what order they're used in,
+              and how they connect to each other</div>
+          </div>
+        </div>
+
+        <div class="reg-col-title" style="margin-top: 1.5rem;">⚡ Build Actions</div>
+
+        <div class="action-card">
+          <div class="action-step">01 · OPEN BRIEFING</div>
+          <div class="action-desc">Read PROJECT-BRIEFING.md and load full context into the AI session before any build
+            work</div>
+        </div>
+        <div class="action-card">
+          <div class="action-step">02 · BUILD SPEC</div>
+          <div class="action-desc">Generate the module spec file for the target module</div>
+          <div class="terminal-cmd">node build-spec.js</div>
+        </div>
+        <div class="action-card">
+          <div class="action-step">03 · RUN PIPELINE</div>
+          <div class="action-desc">Generate the exercise HTML — pipeline handles AI waterfall automatically</div>
+          <div class="terminal-cmd">node agent-pipeline.js</div>
+        </div>
+        <div class="action-card">
+          <div class="action-step">04 · AUDIT & REVIEW</div>
+          <div class="action-desc">Run quality checks on output, fix any flagged errors</div>
+          <div class="terminal-cmd">node audit-html.js</div>
+        </div>
+        <div class="action-card">
+          <div class="action-step">05 · FIX ERRORS</div>
+          <div class="action-desc">Rebuild only the modules that failed audit — leaves clean files untouched</div>
+          <div class="terminal-cmd">node rebuild-fix-errors.js</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ TAB 2: SPEC FILES ══ -->
+  <div class="tab-content" id="tab-spec">
+    <div class="kanban-layout" id="specLanesContainer"></div>
+  </div>
+
+  <!-- ══ TAB 3: BUILT MODULES ══ -->
+  <div class="tab-content" id="tab-modules">
+    <div class="kanban-layout" id="modulesLanesContainer"></div>
+  </div>
+
+  <script>
+    // ── TAB SWITCHING ──
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── DATA ──
+    const specModules = [
+      "Module 1 · Variables (SPEC + HELPER)",
+      "Module 2 · Operators (SPEC + HELPER)",
+      "Module 3 · Conditions Part 1 (SPEC + HELPER)",
+      "Module 3 · Conditions Part 2 (SPEC + HELPER)",
+      "Module 3 · Conditions Part 3 (SPEC + HELPER)",
+      "Module 3 · Conditions Part 4 (SPEC + HELPER)",
+      "Module 3 · Conditions Part 5 (SPEC + HELPER)",
+      "Module 4 · Logical Operators Part 1 (SPEC + HELPER)",
+      "Module 4 · Logical Operators Part 2 (SPEC + HELPER)",
+      "Module 5 · Loops Part 1 (SPEC + HELPER)",
+      "Module 5 · Loops Part 2 (SPEC + HELPER)",
+      "Module 5 · Loops Part 3 (SPEC + HELPER)",
+      "Module 5 · Loops Part 4 (SPEC + HELPER)",
+      "Module 6 · Pirate Adventure Part 1 (SPEC + HELPER)",
+      "Module 6 · Pirate Adventure Part 2 (SPEC + HELPER)",
+      "Module 7 · Functions Part 1 (SPEC + HELPER)",
+      "Module 7 · Functions Part 2 (SPEC + HELPER)",
+      "Module 7 · Functions Part 3 (SPEC + HELPER)",
+      "Module 7 · Functions Part 4 (SPEC + HELPER)",
+      "Module 7 · Functions Part 5 (SPEC + HELPER)",
+      "Module 7 · Functions Part 6 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 1 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 2 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 3 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 4 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 5 (SPEC + HELPER)",
+      "Module 8 · Arrays Part 6 (SPEC + HELPER)",
+      "Module 9 · Objects Part 1 (SPEC + HELPER)"
+    ];
+
+    const builtDoneCards = [
+      "Module 1 · Variables", "Module 2 · Operators",
+      "Module 3 · Conditions Part 1", "Module 3 · Conditions Part 3",
+      "Module 3 · Conditions Part 4", "Module 3 · Conditions Part 5",
+      "Module 4 · Logical Operators Part 1", "Module 4 · Logical Operators Part 2",
+      "Module 5 · Loops Part 1", "Module 5 · Loops Part 2",
+      "Module 5 · Loops Part 3", "Module 5 · Loops Part 4",
+      "Module 6 · Pirate Adventure Part 1",
+      "Module 8 · Arrays Part 1", "Module 8 · Arrays Part 2",
+      "Module 8 · Arrays Part 3", "Module 8 · Arrays Part 4",
+      "Module 8 · Arrays Part 5", "Module 8 · Arrays Part 6",
+      "Module 9 · Objects Part 1"
+    ];
+
+    const reviewCards = [
+      "Module 3 · Conditions Part 2",
+      "Module 6 · Pirate Adventure Part 2",
+      "Module 7 · Functions Part 1", "Module 7 · Functions Part 2",
+      "Module 7 · Functions Part 3", "Module 7 · Functions Part 4",
+      "Module 7 · Functions Part 5", "Module 7 · Functions Part 6"
+    ];
+
+    let specCards = [];
+    let builtCards = [];
+
+    function genId(prefix, title) {
+      return prefix + '-' + title.replace(/[\s·()]+/g, '-') + '-' + Math.random().toString(36).substr(2, 6);
+    }
+
+    specModules.forEach(t => specCards.push({ id: genId('spec', t), title: t, status: 'Done' }));
+    builtDoneCards.forEach(t => builtCards.push({ id: genId('built', t), title: t, status: 'Done' }));
+    reviewCards.forEach(t => builtCards.push({ id: genId('built', t), title: t, status: 'Review Needed' }));
+
+    function getBadgeClass(s) {
+      return { 'Not Started': 'badge-notstarted', 'In Progress': 'badge-progress', 'Review Needed': 'badge-review', 'Done': 'badge-done' }[s] || '';
+    }
+
+    function esc(str) {
+      return str.replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
+    }
+
+    // ── RENDER ──
+    function renderLanes(containerId, cards, kanbanType, laneList) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      let html = '';
+      for (const laneStatus of laneList) {
+        const inLane = cards.filter(c => c.status === laneStatus);
+        html += `
+        <div class="kanban-lane" data-lane-status="${laneStatus}" data-kanban="${kanbanType}">
+          <div class="lane-header">
+            <div class="lane-title-section">
+              <span class="lane-title">${laneStatus}</span>
+              <span class="lane-count">${inLane.length}</span>
+            </div>
+            <button class="add-card-btn" data-kanban="${kanbanType}" data-lane="${laneStatus}">+ Add</button>
+          </div>
+          <div class="lane-cards" data-lane="${laneStatus}" data-parent="${kanbanType}">
+            ${inLane.map(card => `
+              <div class="kanban-card" draggable="true" data-card-id="${card.id}" data-status="${card.status}" data-kanban-type="${kanbanType}">
+                <div class="card-title">${esc(card.title)}</div>
+                <span class="card-badge ${getBadgeClass(card.status)}">${card.status}</span>
+                <div class="delete-card" data-card-id="${card.id}" data-kanban="${kanbanType}">✕</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>`;
+      }
+      container.innerHTML = html;
+      attachListeners();
+    }
+
+    function renderSpecLanes() {
+      renderLanes('specLanesContainer', specCards, 'spec', ['Not Started', 'In Progress', 'Done']);
+    }
+
+    function renderModulesLanes() {
+      renderLanes('modulesLanesContainer', builtCards, 'built', ['Not Started', 'In Progress', 'Review Needed', 'Done']);
+    }
+
+    // ── LISTENERS ──
+    function attachListeners() {
+      document.querySelectorAll('.add-card-btn').forEach(btn => {
+        btn.onclick = e => {
+          e.stopPropagation();
+          showModal(btn.dataset.kanban, btn.dataset.lane);
+        };
+      });
+
+      document.querySelectorAll('.delete-card').forEach(el => {
+        el.onclick = e => {
+          e.stopPropagation();
+          const id = el.dataset.cardId;
+          const kt = el.dataset.kanban;
+          if (kt === 'spec') { specCards = specCards.filter(c => c.id !== id); renderSpecLanes(); }
+          else { builtCards = builtCards.filter(c => c.id !== id); renderModulesLanes(); }
+        };
+      });
+
+      document.querySelectorAll('.kanban-card').forEach(card => {
+        card.ondragstart = e => {
+          draggedId = card.dataset.cardId;
+          draggedType = card.dataset.kanbanType;
+          draggedEl = card;
+          e.dataTransfer.effectAllowed = 'move';
+          card.classList.add('dragging');
+        };
+        card.ondragend = () => {
+          card.classList.remove('dragging');
+          document.querySelectorAll('.lane-cards').forEach(z => z.classList.remove('drag-over'));
+          draggedId = draggedType = draggedEl = null;
+        };
+      });
+
+      document.querySelectorAll('.lane-cards').forEach(zone => {
+        zone.ondragover = e => { e.preventDefault(); zone.classList.add('drag-over'); };
+        zone.ondragleave = () => zone.classList.remove('drag-over');
+        zone.ondrop = e => {
+          e.preventDefault();
+          zone.classList.remove('drag-over');
+          if (!draggedId || !draggedType) return;
+          const targetLane = zone.closest('.kanban-lane');
+          if (!targetLane || targetLane.dataset.kanban !== draggedType) return;
+          const newStatus = targetLane.dataset.laneStatus;
+          const arr = draggedType === 'spec' ? specCards : builtCards;
+          const card = arr.find(c => c.id === draggedId);
+          if (card && card.status !== newStatus) {
+            card.status = newStatus;
+            draggedType === 'spec' ? renderSpecLanes() : renderModulesLanes();
+          }
+        };
+      });
+    }
+
+    // ── MODAL ──
+    function showModal(kanbanType, laneStatus) {
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.innerHTML = `
+        <div class="modal">
+          <h3>➕ Add new card</h3>
+          <input type="text" id="newCardTitle" placeholder="Card title..." autocomplete="off">
+          <div class="modal-buttons">
+            <button id="modalConfirm">Create</button>
+            <button id="modalCancel">Cancel</button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      const input = overlay.querySelector('#newCardTitle');
+      input.focus();
+      overlay.querySelector('#modalConfirm').onclick = () => {
+        const title = input.value.trim();
+        if (title) {
+          const card = { id: genId(kanbanType, title), title, status: laneStatus };
+          if (kanbanType === 'spec') { specCards.push(card); renderSpecLanes(); }
+          else { builtCards.push(card); renderModulesLanes(); }
+        }
+        overlay.remove();
+      };
+      overlay.querySelector('#modalCancel').onclick = () => overlay.remove();
+      overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+      input.onkeydown = e => { if (e.key === 'Enter') overlay.querySelector('#modalConfirm').click(); };
+    }
+
+    // ── DRAG STATE ──
+    let draggedId = null, draggedType = null, draggedEl = null;
+
+    // ── INIT ──
+    renderSpecLanes();
+    renderModulesLanes();
+  </script>
+</body>
+
+</html>

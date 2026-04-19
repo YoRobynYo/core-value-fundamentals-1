@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+
+<body>
+  <main id="main-content">
+    <!-- ============================================================ -->
+    <!-- GOLD STANDARD EXERCISE FILE                                  -->
+    <!-- core-value-fundamentals                                      -->
+    <!-- Language-Agnostic Edition                                    -->
+    <!-- ============================================================ -->
+
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // Start::: MODULE-9-OBJECTS-PART1                  █ -->
+    <!-- █  // Module 9 Objects Part1                        █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+    <section class="page" id="objects-module">
+
+      <h2 class="module-title">Module 9 Objects Part1</h2>
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Helper Boxes                     █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- Helper Box 1: What is an Object? -->
+      <div class="helper-box">
+        <h3 class="box-title">🧸 What is an Object? 🧸</h3>
+
+        <p>You already know how to store information in variables. But what if you need
+          to store lots of information about ONE thing? Let's say you want to describe
+          a bead. You might try this:</p>
+
+        <div class="code-block">
+          SET "bead colour" = "blue"<br>
+          SET "bead shape" = "star"<br>
+          SET "bead rarity" = "rare"
+        </div>
+
+        <p>That works — but it's messy. Three separate variables, all about the same bead.
+          If you had ten beads, that would be thirty variables! There has to be a better way.</p>
+
+        <h4 class="sub-title">A Better Way — The Bead Bag</h4>
+
+        <p>Imagine a small bead bag. Instead of keeping the colour, shape, and rarity in
+          separate places, you put them ALL inside one bag — labelled and organised. That
+          bag is what we call an <strong>object</strong>.</p>
+
+        <p>In coding, we create an object using curly braces <strong>{ }</strong>. Everything
+          inside the curly braces belongs to that one object — all in one place, neat and tidy:</p>
+
+        <div class="code-block">
+          SET "my bead" = {<br>
+          &nbsp;&nbsp;"colour": "blue",<br>
+          &nbsp;&nbsp;"shape": "star",<br>
+          &nbsp;&nbsp;"rarity": "rare"<br>
+          }
+        </div>
+
+        <p><strong>Breaking it down:</strong></p>
+        <ul class="indented-list">
+          <li><strong>SET "my bead"</strong> — we are creating a variable to hold the object</li>
+          <li><strong>{ }</strong> — the curly braces hold everything inside the object</li>
+          <li><strong>"colour": "blue"</strong> — a label (colour) and its value (blue)</li>
+          <li><strong>Each line ends with a comma</strong> — except the last one</li>
+        </ul>
+
+        <p class="note">💡 <strong>Remember:</strong> An object is like a bead bag — one
+          container that holds all the details about one thing, all in one place!</p>
+      </div>
+      <!-- End of Helper Box 1 -->
+
+      <!-- Helper Box 2: What are Properties? -->
+      <div class="helper-box">
+        <h3 class="box-title">🏷️ What are Properties? 🏷️</h3>
+
+        <p>Every piece of information stored inside an object is called a
+          <strong>property</strong>. Think of a property like a tag attached to the bead
+          — it has a label that says what it describes, and a value that says what it is.</p>
+
+        <h4 class="sub-title">A Bead Has Three Properties:</h4>
+
+        <div class="code-block">
+          SET "my bead" = {<br>
+          &nbsp;&nbsp;"colour": "gold",<br>
+          &nbsp;&nbsp;"shape": "round",<br>
+          &nbsp;&nbsp;"rarity": "common"<br>
+          }
+        </div>
+
+        <ul class="indented-list">
+          <li><strong>"colour"</strong> — the label. <strong>"gold"</strong> — the value</li>
+          <li><strong>"shape"</strong> — the label. <strong>"round"</strong> — the value</li>
+          <li><strong>"rarity"</strong> — the label. <strong>"common"</strong> — the value</li>
+        </ul>
+
+        <h4 class="sub-title">Reading a Property:</h4>
+
+        <p>To read one property from an object, we write the object name, then a dot,
+          then the property name:</p>
+
+        <div class="code-block">
+          PRINT "my bead"."colour"
+        </div>
+        <p class="output">Output: gold</p>
+
+        <div class="code-block">
+          PRINT "my bead"."rarity"
+        </div>
+        <p class="output">Output: common</p>
+
+        <p class="note">💡 <strong>Remember:</strong> The dot connects the object to its
+          property — like pointing to a specific tag on the bead bag and reading what
+          it says!</p>
+      </div>
+      <!-- End of Helper Box 2 -->
+
+      <!-- Helper Box 3: Building Your First Object -->
+      <div class="helper-box">
+        <h3 class="box-title">🔨 Building Your First Object 🔨</h3>
+
+        <p>Now let's put it all together and build a complete bead object from scratch.
+          We will create the object, then read back its properties to check everything
+          is correct.</p>
+
+        <h4 class="sub-title">Step by Step:</h4>
+
+        <p><strong>Step 1</strong> — Create the object with all three properties:</p>
+
+        <div class="code-block">
+          SET "my bead" = {<br>
+          &nbsp;&nbsp;"colour": "purple",<br>
+          &nbsp;&nbsp;"shape": "hexagon",<br>
+          &nbsp;&nbsp;"rarity": "legendary"<br>
+          }
+        </div>
+
+        <p><strong>Step 2</strong> — Read back each property to check it:</p>
+
+        <div class="code-block">
+          PRINT "Colour:", "my bead"."colour"<br>
+          PRINT "Shape:", "my bead"."shape"<br>
+          PRINT "Rarity:", "my bead"."rarity"
+        </div>
+
+        <p class="output">Output:<br>
+          Colour: purple<br>
+          Shape: hexagon<br>
+          Rarity: legendary</p>
+
+        <p>That's it — you just built your first object! One bead, three properties,
+          all stored neatly inside one bead bag.</p>
+
+        <p class="note">💡 <strong>Remember:</strong> Create the object with { }, then
+          use the dot to read each property back. That is the full pattern — and you
+          will use it every time!</p>
+      </div>
+      <!-- End of Helper Box 3 -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Helper Boxes                       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercises                        █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <h2 class="module-title">Module 9 Objects Part1 — Exercises</h2>
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 1                       █ -->
+      <!-- █  // Exercise 1: Spot the Properties 🔍         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="objects-exercise-1">
+        <h3 class="exercise-title">Exercise 1: Spot the Properties 🔍</h3>
+
+        <h4 class="sub-title">Part A: What is the "colour" of the magic bead?</h4>
+
+        <p>Look at this bead object and answer the questions. We have a special bead with some properties. A property is like a label with a value.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "magic bead" and set its value to a new object with three properties — "colour": "blue", "shape": "star", and "glow": "yes".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "colour" property of "magic bead".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to set up the magic bead and display its colour:
+            <div class="code-example">
+              <code>SET "magic bead" = {<br>
+              &nbsp;&nbsp;"colour": "blue",<br>
+              &nbsp;&nbsp;"shape": "star",<br>
+              &nbsp;&nbsp;"glow": "yes"<br>
+              }<br>
+              PRINT "magic bead"."colour"</code>
+            </div>
+          </li>
+        </ul>
+
+        <label for="objects-ex1-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex1-part-a" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="1-part-a">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="1-part-a">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="1-part-a">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint1-part-a"></p>
+        <pre class="output-block" id="objects-output1-part-a"></pre>
+        <pre class="answer-block" id="objects-answer1-part-a"></pre>
+
+        <h4 class="sub-title">Part B: What is the "shape" of the magic bead?</h4>
+
+        <p>Great work! Now let's read a different property from the same magic bead.</p>
+
+        <p>Using the same "magic bead" object from Part A, use PRINT and dot notation to display the "shape" property.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "shape" property of "magic bead".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Now write the code to display the shape of "magic bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex1-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex1-part-b" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="1-part-b">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="1-part-b">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="1-part-b">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint1-part-b"></p>
+        <pre class="output-block" id="objects-output1-part-b"></pre>
+        <pre class="answer-block" id="objects-answer1-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 1                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 2                       █ -->
+      <!-- █  // Exercise 2: Build Your Bead Object 🔨      █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="objects-exercise-2">
+        <h3 class="exercise-title">Exercise 2: Build Your Bead Object 🔨</h3>
+
+        <h4 class="sub-title">Part A: Create Your Own Bead</h4>
+
+        <p>Now it is your turn to create your very own bead object! You are going to build a bead called "my bead" with three properties — its colour, shape, and size.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "my bead" and set its value to a new object.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the object, add three properties — "colour": "red", "shape": "circle", and "size": "small".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "colour" of "my bead".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to build "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex2-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex2-part-a" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="2-part-a">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="2-part-a">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="2-part-a">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint2-part-a"></p>
+        <pre class="output-block" id="objects-output2-part-a"></pre>
+        <pre class="answer-block" id="objects-answer2-part-a"></pre>
+
+        <h4 class="sub-title">Part B: Check Your Bead</h4>
+
+        <p>Great work! Now let's read back each property of "my bead" to check it was created correctly.</p>
+
+        <p>Use PRINT and dot notation to display all three properties — "colour", "shape", and "size".</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "colour" of "my bead". Expected output: <code>red</code></li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "shape" of "my bead". Expected output: <code>circle</code></li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "size" of "my bead". Expected output: <code>small</code></li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to display all three properties of "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex2-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex2-part-b" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="2-part-b">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="2-part-b">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="2-part-b">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint2-part-b"></p>
+        <pre class="output-block" id="objects-output2-part-b"></pre>
+        <pre class="answer-block" id="objects-answer2-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 2                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 3                       █ -->
+      <!-- █  // Exercise 3: Read Your Bead 📖              █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="objects-exercise-3">
+        <h3 class="exercise-title">Exercise 3: Read Your Bead 📖</h3>
+
+        <h4 class="sub-title">Part A: Read the Colour</h4>
+
+        <p>Using the "my bead" object you built in Exercise 2, let's practise reading properties using dot notation.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "colour" property of "my bead".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Expected output: <code>red</code></li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to display the colour of "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex3-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex3-part-a" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="3-part-a">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="3-part-a">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="3-part-a">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint3-part-a"></p>
+        <pre class="output-block" id="objects-output3-part-a"></pre>
+        <pre class="answer-block" id="objects-answer3-part-a"></pre>
+
+        <h4 class="sub-title">Part B: Read the Shape</h4>
+
+        <p>Great work! Now use the same dot notation to read a different property from "my bead".</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "shape" property of "my bead".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Expected output: <code>circle</code></li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to display the shape of "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex3-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex3-part-b" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="3-part-b">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="3-part-b">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="3-part-b">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint3-part-b"></p>
+        <pre class="output-block" id="objects-output3-part-b"></pre>
+        <pre class="answer-block" id="objects-answer3-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 3                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 4                       █ -->
+      <!-- █  // Exercise 4: Update a Property ✏️           █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="objects-exercise-4">
+        <h3 class="exercise-title">Exercise 4: Update a Property ✏️</h3>
+
+        <h4 class="sub-title">Part A: Change the Colour</h4>
+
+        <p>Your bead has been upgraded! You want to change the colour of "my bead" from "red" to "purple". You can use SET and dot notation to update a property.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use SET and dot notation to change the "colour" property of "my bead" to "purple".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "colour" of "my bead" to confirm the change.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Expected output: <code>purple</code></li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to update the colour of "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex4-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex4-part-a" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="4-part-a">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="4-part-a">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="4-part-a">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint4-part-a"></p>
+        <pre class="output-block" id="objects-output4-part-a"></pre>
+        <pre class="answer-block" id="objects-answer4-part-a"></pre>
+
+        <h4 class="sub-title">Part B: Change the Size</h4>
+
+        <p>Now let's update another property. Change the "size" of "my bead" from "small" to "medium".</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use SET and dot notation to change the "size" property of "my bead" to "medium".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "size" of "my bead" to confirm the change.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Expected output: <code>medium</code></li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to update the size of "my bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex4-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex4-part-b" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="4-part-b">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="4-part-b">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="4-part-b">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint4-part-b"></p>
+        <pre class="output-block" id="objects-output4-part-b"></pre>
+        <pre class="answer-block" id="objects-answer4-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 4                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 5                       █ -->
+      <!-- █  // Exercise 5: The Golden Bead 🌟             █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="objects-exercise-5">
+        <h3 class="exercise-title">Exercise 5: The Golden Bead 🌟</h3>
+
+        <h4 class="sub-title">Part A: Create the Golden Bead</h4>
+
+        <p>You've earned the rarest bead of all — the Golden Bead! You want to store information about it, like its colour, shape, size, and rarity. Let's create an object to hold all of this information in one place.</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "golden bead" and set its value to a new object using <code>{ }</code>.</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the object, add four properties — "colour": "gold", "shape": "octagonal", "size": "medium", and "rarity": "legendary".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "rarity" of "golden bead".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create the "golden bead" object in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex5-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex5-part-a" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="5-part-a">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="5-part-a">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="5-part-a">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint5-part-a"></p>
+        <pre class="output-block" id="objects-output5-part-a"></pre>
+        <pre class="answer-block" id="objects-answer5-part-a"></pre>
+
+        <h4 class="sub-title">Part B: Display the Rarity</h4>
+
+        <p>Great work building the Golden Bead! Now let's read one of its properties.</p>
+
+        <p>Use PRINT and dot notation to display the "rarity" of "golden bead" and check it is set to "legendary".</p>
+
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Use PRINT and dot notation to display the "rarity" property of "golden bead".</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Expected output: <code>legendary</code></li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to display the rarity of "golden bead" in the code block below.</li>
+        </ul>
+
+        <label for="objects-ex5-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="objects-ex5-part-b" data-section="objects"></div>
+
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="objects" data-ex="5-part-b">Hint</button>
+          <button class="run-button" data-section="objects" data-ex="5-part-b">Run My Code</button>
+          <button class="reset-button" data-section="objects" data-ex="5-part-b">Reset My Code</button>
+        </div>
+
+        <p class="hint" id="objects-hint5-part-b"></p>
+        <pre class="output-block" id="objects-output5-part-b"></pre>
+        <pre class="answer-block" id="objects-answer5-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 5                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercises                          █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+    </section>
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // End::: MODULE-9-OBJECTS-PART1                  █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  </main>
+  <script src="../../scripts/main.js"></script>
+  <script src="../../scripts/scroll.js"></script>
+</body>
+
+</html>

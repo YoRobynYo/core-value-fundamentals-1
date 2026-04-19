@@ -191,6 +191,13 @@
       "spec": "MODULE-8-ARRAYS-PART6-SPECS.md",
       "helper": "MODULE-8-ARRAYS-PART6-HELPER-BOXES.md",
       "section": "arrays"
+    },
+    {
+      "id": "MODULE-9-OBJECTS-PART1",
+      "folder": "module-9-objects-part1",
+      "spec": "MODULE-9-OBJECTS-PART1-SPECS.md",
+      "helper": "MODULE-9-OBJECTS-PART1-HELPER-BOXES.md",
+      "section": "objects"
     }
   ],
   "aiConfig": {
@@ -314,7 +321,8 @@
     "loops": "🍿 Popcorn Factory",
     "pirateAdventure": "🏴‍☠️ Pirate Adventure",
     "functions": "🏫 Classroom & ☕ The Popcorn Press",
-    "arrays": "🍿 Popcorn Factory"
+    "arrays": "🍿 Popcorn Factory",
+    "objects": "📦 Object Workshop"
   },
   "pipeline": {
     "gapBetweenModules": 60000,

@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CVF · Core Value Fundamentals | Project Board</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #13131a;
+      --surface: #1a1a24;
+      --surface2: #20202e;
+      --surface3: #26263a;
+      --border: #2a2a3e;
+      --border2: #38385a;
+      --cyan: #5fc8d4;
+      --cyan-dim: #3a7a84;
+      --purple: #8888cc;
+      --purple-dim: #444466;
+      --text: #dcdcf0;
+      --text-dim: #8888aa;
+      --text-muted: #555570;
+      --green: #aaffcc;
+      --green-bg: #1a3a28;
+      --amber: #ffdd99;
+      --amber-bg: #3a3020;
+      --blue: #bbddff;
+      --blue-bg: #1e2d4a;
+      --orange: #ffcc88;
+      --orange-bg: #3a2d20;
+      --red: #ffaaaa;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .topbar-title {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .topbar-sub {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      padding: 0 1rem;
+      gap: 0.2rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-dim);
+    }
+
+    .tab-btn.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+    }
+
+    /* Content Area */
+    .tab-content {
+      flex: 1;
+      overflow: hidden;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    /* ======================== */
+    /* TWO-COLUMN LAYOUT (Registry + Master Templates) */
+    /* ======================== */
+    .two-col-layout {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .col {
+      width: 280px;
+      flex-shrink: 0;
+      height: 100%;
+      overflow-y: auto;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      scrollbar-width: thin;
+    }
+
+    .col:last-child {
+      border-right: none;
+    }
+
+    .col-title {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Cards */
+    .file-card,
+    .template-card,
+    .action-card {
+      background: var(--surface3);
+      border: 1px solid var(--border);
+      border-radius: 0.45rem;
+      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.1s;
+    }
+
+    .file-card:hover,
+    .template-card:hover {
+      border-color: var(--cyan-dim);
+    }
+
+    .file-name,
+    .template-name {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #e0e0ff;
+      margin-bottom: 0.2rem;
+    }
+
+    .file-desc,
+    .template-desc {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+
+    .file-connects {
+      font-size: 0.55rem;
+      color: var(--cyan-dim);
+      margin-top: 0.25rem;
+    }
+
+    .action-card {
+      border-left: 3px solid var(--purple-dim);
+    }
+
+    .action-step {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #bbbbff;
+      margin-bottom: 0.2rem;
+    }
+
+    .action-desc {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .terminal-cmd {
+      background: #1a2a22;
+      color: #77ccaa;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      display: inline-block;
+      border: 1px solid #2a4a3a;
+    }
+
+    .group-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin: 1rem 0 0.5rem 0;
+      font-weight: 500;
+    }
+
+    .group-label:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ======================== */
+    /* THREE COLUMN (Spec Files) */
+    /* ======================== */
+    .three-col-layout {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: 0;
+    }
+
+    .spec-col {
+      width: 320px;
+      flex-shrink: 0;
+      height: 100%;
+      overflow-y: auto;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      scrollbar-width: thin;
+    }
+
+    .spec-col:last-child {
+      border-right: none;
+    }
+
+    .col-title {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 600;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 1;
+    }
+
+    /* updated styles */
+    /* Add spacing between modules */
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 0.6rem;
+      margin-bottom: 1.5rem;
+      /* Increased from 1rem to 1.5rem for clearer gaps */
+      overflow: hidden;
+    }
+
+    /* Color-coded module headers based on module type */
+    .module-header {
+      background: var(--surface2);
+      padding: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    /* Module 1-2: Classroom theme (cyan) */
+    .module-header[data-type="classroom"] {
+      color: var(--cyan);
+      border-left: 3px solid var(--cyan);
+    }
+
+    /* Module 3: Conditions theme (amber) */
+    .module-header[data-type="conditions"] {
+      color: var(--amber);
+      border-left: 3px solid var(--amber);
+    }
+
+    /* Module 4-5: Operators/Loops theme (purple) */
+    .module-header[data-type="operators"] {
+      color: var(--purple);
+      border-left: 3px solid var(--purple);
+    }
+
+    /* Module 6: Pirate theme (orange) */
+    .module-header[data-type="pirate"] {
+      color: var(--orange);
+      border-left: 3px solid var(--orange);
+    }
+
+    /* Module 7: Functions theme (green) */
+    .module-header[data-type="functions"] {
+      color: var(--green);
+      border-left: 3px solid var(--green);
+    }
+
+    /* Module 8-9: Arrays/Objects theme (blue) */
+    .module-header[data-type="advanced"] {
+      color: var(--blue);
+      border-left: 3px solid var(--blue);
+    }
+
+    /* Section divider between major module groups */
+    .module-section-divider {
+      margin: 1rem 0 1.5rem 0;
+      text-align: center;
+      position: relative;
+      border-top: 1px dashed var(--border2);
+    }
+
+    .module-section-divider span {
+      background: var(--bg);
+      padding: 0 0.8rem;
+      position: relative;
+      top: -0.7rem;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    /* ======================== */
+    /* KANBAN LAYOUT (Built Modules) */
+    /* ======================== */
+    .kanban-layout {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 1rem;
+      gap: 0.8rem;
+      width: 100%;
+    }
+
+    .kanban-lane {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 0.8rem;
+      width: 260px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .lane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .lane-title-section {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lane-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .lane-count {
+      background: var(--surface3);
+      padding: 0.1rem 0.4rem;
+      border-radius: 20px;
+      font-size: 0.58rem;
+      color: var(--text-dim);
+    }
+
+    .add-card-btn {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--purple);
+      font-size: 0.6rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 0.35rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.1s;
+    }
+
+    .add-card-btn:hover {
+      background: var(--purple-dim);
+      color: #fff;
+    }
+
+    .lane-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      min-height: 60px;
+    }
+
+    .lane-cards.drag-over {
+      background: #25253a;
+      border-radius: 0.4rem;
+    }
+
+    .kanban-card {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.68rem;
+      cursor: grab;
+      user-select: none;
+      position: relative;
+    }
+
+    .kanban-card:hover {
+      border-color: var(--cyan-dim);
+    }
+
+    .kanban-card:active {
+      cursor: grabbing;
+    }
+
+    .kanban-card.dragging {
+      opacity: 0.35;
+    }
+
+    .card-title {
+      font-weight: 500;
+      color: #f0f0ff;
+      padding-right: 1rem;
+      font-size: 0.67rem;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.54rem;
+      padding: 0.12rem 0.4rem;
+      border-radius: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    .badge-notstarted {
+      background: var(--blue-bg);
+      color: var(--blue);
+    }
+
+    .badge-progress {
+      background: var(--amber-bg);
+      color: var(--amber);
+    }
+
+    .badge-review {
+      background: var(--orange-bg);
+      color: var(--orange);
+    }
+
+    .badge-done {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .delete-card {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.5rem;
+      color: var(--red);
+      font-size: 0.65rem;
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.1s;
+    }
+
+    .delete-card:hover {
+      opacity: 1;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      width: 300px;
+    }
+
+    .modal h3 {
+      color: #bbbbff;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal input {
+      width: 100%;
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+      font-family: inherit;
+      font-size: 0.72rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .modal-buttons button {
+      background: var(--surface3);
+      border: 1px solid var(--border2);
+      color: var(--text-dim);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">CVF · Core Value Fundamentals</div>
+      <div class="topbar-sub">Unified Project Board</div>
+    </div>
+  </div>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="registry">📁 File Registry</button>
+    <button class="tab-btn" data-tab="templates">📌 Master Templates</button>
+    <button class="tab-btn" data-tab="spec">📝 Spec Files</button>
+    <button class="tab-btn" data-tab="modules">🏗️ Built Modules</button>
+  </nav>
+
+  <!-- TAB 1: FILE REGISTRY (2 columns) -->
+  <div class="tab-content active" id="tab-registry">
+    <div class="two-col-layout" id="registryContainer"></div>
+  </div>
+
+  <!-- TAB 2: MASTER TEMPLATES (2 columns) -->
+  <div class="tab-content" id="tab-templates">
+    <div class="two-col-layout" id="templatesContainer"></div>
+  </div>
+
+  <!-- TAB 3: SPEC FILES (3 columns) -->
+  <div class="tab-content" id="tab-spec">
+    <div class="three-col-layout" id="specContainer"></div>
+  </div>
+
+  <!-- TAB 4: BUILT MODULES (kanban) -->
+  <div class="tab-content" id="tab-modules">
+    <div class="kanban-layout" id="modulesContainer"></div>
+  </div>
+
+  <script>
+    // ========================
+    // TAB SWITCHING
+    // ========================
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ========================
+    // FILE REGISTRY DATA
+    // ========================
+    const registryFiles = {
+      config: [
+        { name: "package.json", desc: "Node project config — lists dependencies and npm scripts" },
+        { name: "pipeline-config.json", desc: "Gold standard rules — every pipeline file reads this", connects: "↳ feeds all build files" },
+        { name: "locked-modules.json", desc: "List of completed modules that the pipeline must never overwrite", connects: "↳ read by rebuild-all.js, rebuild-new.js" }
+      ],
+      build: [
+        { name: "agent-pipeline.js", desc: "Master orchestrator — runs the AI waterfall chain", connects: "↳ calls build-html.js, monitors limits" },
+        { name: "build-spec.js", desc: "Generates module spec files from templates using AI", connects: "↳ reads templates → outputs spec files" },
+        { name: "build-spec-ollama.js", desc: "Same as build-spec.js but routes to local Ollama" },
+        { name: "build-html.js", desc: "Core build file — sends prompt to AI, writes HTML", connects: "↳ reads config → AI → output/" },
+        { name: "rebuild-all.js", desc: "Loops through every module and rebuilds from scratch" },
+        { name: "rebuild-new.js", desc: "Only builds modules that don't exist yet" },
+        { name: "rebuild-fix-errors.js", desc: "Targets only modules that failed the audit", connects: "↳ reads audit-html.js output" },
+        { name: "rewrite-spec.js", desc: "Rewrites existing spec files when template changes" },
+        { name: "rewrite-spec-ollama.js", desc: "Rewrites spec files using local Ollama" },
+        { name: "update-template.js", desc: "Pushes template changes across all existing built files" },
+        { name: "fix-template.js", desc: "Targeted template repair — fixes structural issues" }
+      ],
+      monitor: [
+        { name: "audit-html.js", desc: "Runs quality checks on all output HTML", connects: "↳ feeds rebuild-fix-errors.js" },
+        { name: "pipeline-monitor.js", desc: "Watches the pipeline in real time" }
+      ],
+      scripts: [
+        { name: "scripts/main.js", desc: "Main course interaction script" },
+        { name: "scripts/chat.js", desc: "Handles the in-course chat/hint system" },
+        { name: "scripts/scroll.js", desc: "Manages scroll behaviour within module pages" }
+      ],
+      styles: [
+        { name: "styles/scss/", desc: "Source SCSS files — edit these" },
+        { name: "styles/css/", desc: "Compiled CSS output — auto-generated" }
+      ],
+      reference: [
+        { name: "PROJECT-BRIEFING.md", desc: "Master context document — loaded into every AI session" },
+        { name: "roadmap.md", desc: "Full product roadmap across all phases" },
+        { name: "NARRATIVE-FRAMEWORK.md", desc: "Defines themed narrative environments" },
+        { name: "Research Findings.pdf", desc: "Background research informing course structure" }
+      ]
+    };
+
+    const buildActions = [
+      { step: "01 · OPEN BRIEFING", desc: "Read PROJECT-BRIEFING.md and load full context into the AI session" },
+      { step: "02 · BUILD SPEC", desc: "Generate the module spec file for the target module", cmd: "node build-spec.js" },
+      { step: "03 · RUN PIPELINE", desc: "Generate the exercise HTML — pipeline handles AI waterfall", cmd: "node agent-pipeline.js" },
+      { step: "04 · AUDIT & REVIEW", desc: "Run quality checks on output, fix any flagged errors", cmd: "node audit-html.js" },
+      { step: "05 · FIX ERRORS", desc: "Rebuild only the modules that failed audit", cmd: "node rebuild-fix-errors.js" }
+    ];
+
+    function renderRegistry() {
+      const container = document.getElementById('registryContainer');
+      if (!container) return;
+
+      // Left column - Files
+      let leftHtml = `<div class="col"><div class="col-title">📁 Pipeline Files</div>`;
+      leftHtml += `<div class="group-label">⚙️ Config</div>`;
+      registryFiles.config.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div>${f.connects ? `<div class="file-connects">${f.connects}</div>` : ''}</div>`;
+      });
+      leftHtml += `<div class="group-label">🔁 Build Files</div>`;
+      registryFiles.build.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div>${f.connects ? `<div class="file-connects">${f.connects}</div>` : ''}</div>`;
+      });
+      leftHtml += `<div class="group-label">🔍 Monitor & Audit</div>`;
+      registryFiles.monitor.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div>${f.connects ? `<div class="file-connects">${f.connects}</div>` : ''}</div>`;
+      });
+      leftHtml += `<div class="group-label">📜 Course Scripts</div>`;
+      registryFiles.scripts.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div></div>`;
+      });
+      leftHtml += `<div class="group-label">🎨 Styles</div>`;
+      registryFiles.styles.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div></div>`;
+      });
+      leftHtml += `<div class="group-label">📚 Reference Docs</div>`;
+      registryFiles.reference.forEach(f => {
+        leftHtml += `<div class="file-card"><div class="file-name">${f.name}</div><div class="file-desc">${f.desc}</div></div>`;
+      });
+      leftHtml += `</div>`;
+
+      // Right column - Descriptions + Build Actions
+      let rightHtml = `<div class="col"><div class="col-title">📋 File Descriptions & Actions</div>`;
+      rightHtml += `<div class="group-label">📖 What Each File Does</div>`;
+      rightHtml += `<div class="file-card"><div class="file-name">💡 Pipeline Overview</div><div class="file-desc">The pipeline reads spec + helper files → AI generates HTML → audit checks quality → locked modules are never rebuilt</div></div>`;
+      rightHtml += `<div class="group-label">⚡ Build Actions (Terminal Commands)</div>`;
+      buildActions.forEach(a => {
+        rightHtml += `<div class="action-card"><div class="action-step">${a.step}</div><div class="action-desc">${a.desc}</div>${a.cmd ? `<div class="terminal-cmd">${a.cmd}</div>` : ''}</div>`;
+      });
+      rightHtml += `</div>`;
+
+      container.innerHTML = leftHtml + rightHtml;
+    }
+
+    // ========================
+    // MASTER TEMPLATES DATA
+    // ========================
+    const templates = [
+      { name: "1-HOW-TO-REWRITE-MODULE-SPECS.md", desc: "Step-by-step instructions for rewriting or updating module spec files" },
+      { name: "2-MODULE-0-EXERCISE-TEMPLATE-MASTER.md", desc: "The master exercise template — defines structure every exercise must follow", connects: "↳ read by build-html.js" },
+      { name: "3-MODULE-0-TEMPLATE-SPEC.md", desc: "Spec template — format every module spec file must follow", connects: "↳ read by build-spec.js" },
+      { name: "4-MODULE-0-EXERCISE-GOLD-STANDARD.html", desc: "Reference quality benchmark — a perfect finished exercise example", connects: "↳ used in AI prompt as quality reference" },
+      { name: "AA-JS-CONNECTION-SPEC.md", desc: "Defines how JavaScript connects across exercises" },
+      { name: "AA-JS-HINTS-PATTERN-GUIDE.md", desc: "Pattern guide for the hints system" },
+      { name: "Templates-Breakdown.md", desc: "Master reference explaining what each template does and how they connect" }
+    ];
+
+    const templateDescriptions = [
+      { name: "📌 Template Hierarchy", desc: "The templates work in sequence: Spec Template → Exercise Template → Gold Standard for quality reference" },
+      { name: "🔄 How Templates Connect", desc: "Changes to templates require running rewrite-spec.js or update-template.js to propagate changes to all modules" },
+      { name: "🎯 Purpose", desc: "Templates ensure every generated exercise has consistent structure, tone, and quality across the entire course" }
+    ];
+
+    function renderTemplates() {
+      const container = document.getElementById('templatesContainer');
+      if (!container) return;
+
+      let leftHtml = `<div class="col"><div class="col-title">📌 Template Files</div>`;
+      templates.forEach(t => {
+        leftHtml += `<div class="template-card"><div class="template-name">${t.name}</div><div class="template-desc">${t.desc}</div>${t.connects ? `<div class="file-connects">${t.connects}</div>` : ''}</div>`;
+      });
+      leftHtml += `</div>`;
+
+      let rightHtml = `<div class="col"><div class="col-title">📋 Template Descriptions</div>`;
+      templateDescriptions.forEach(d => {
+        rightHtml += `<div class="file-card"><div class="file-name">${d.name}</div><div class="file-desc">${d.desc}</div></div>`;
+      });
+      rightHtml += `</div>`;
+
+      container.innerHTML = leftHtml + rightHtml;
+    }
+
+    // ========================
+    // SPEC FILES - Course Content Map
+    // ========================
+    const moduleContent = [
+      {
+        name: "Module 1 · Variables", exercises: [
+          { title: "Exercise 1: Classroom Introduction 👋", parts: ["Introduce Yourself", "Teacher and Lesson Information"] },
+          { title: "Exercise 2: Supply Cupboard Mapping 📦", parts: ["First Supply Items", "Adding Another Supply"] },
+          { title: "Exercise 3: Classroom Directory 📚", parts: ["First Classmate", "Another Classmate"] },
+          { title: "Exercise 4: Teacher Information 👨‍🏫", parts: ["Main Teacher", "Teaching Assistant"] },
+          { title: "Exercise 5: Daily Timetable ⏰", parts: ["First Lesson", "Second Lesson and Special Activity"] }
+        ]
+      },
+      {
+        name: "Module 2 · Operators", exercises: [
+          { title: "Exercise 1: Counting Pencils ✏️", parts: ["Adding Up the Shelves", "Checking the Drawers"] },
+          { title: "Exercise 2: Supplies Used vs. Remaining 📝", parts: ["Notebooks", "Erasers"] },
+          { title: "Exercise 3: Organising into Boxes 📦", parts: ["Markers", "Crayons"] },
+          { title: "Exercise 4: Supplies for All Children 🎨", parts: ["Paper Sheets", "Glue Sticks"] },
+          { title: "Exercise 5: Complete Classroom Supply Planning 📊", parts: ["How Many Pencils Do We Need?", "Organising Leftover Papers"] }
+        ]
+      },
+      {
+        name: "Module 3 · Conditions Part 1", exercises: [
+          { title: "Exercise 1: Great Hall Headcount 👥", parts: ["Checking Today's Headcount", "Checking Maximum Capacity"] },
+          { title: "Exercise 2: Safety Gear Distribution 🦺", parts: ["Safety Vest Check", "Hair Net Check"] },
+          { title: "Exercise 3: Work Station Setup 🛠️", parts: ["Station Readiness Check", "Clipboard Shortage Check"] },
+          { title: "Exercise 4: Checking Bags at Station 1 👜", parts: ["Check if Bags are Present", "Check if We Have Enough Bags"] },
+          { title: "Exercise 5: Checking Boxes at Station 1 📦", parts: ["Check if Boxes are Present", "Check if a Box is Labeled"] }
+        ]
+      },
+      {
+        name: "Module 3 · Conditions Part 2", exercises: [
+          { title: "Exercise 1: Bag Positioning Check ✅", parts: ["Checking the Bag Position", "Spotting a Wrong Position"] },
+          { title: "Exercise 2: Box Number Verification 🔢", parts: ["Matching Box to Station", "Catching a Wrong Box"] },
+          { title: "Exercise 3: Status Light Colour Check 🔴", parts: ["Checking the Setup Light", "Detecting an Unexpected Light"] },
+          { title: "Exercise 4: Tool Type Verification 🔧", parts: ["Checking the Correct Tool", "Spotting the Wrong Tool"] },
+          { title: "Exercise 5: Lightning Panel Check ⚡", parts: ["Confirming the Power is On", "Finding a Power Problem"] }
+        ]
+      },
+      {
+        name: "Module 3 · Conditions Part 3", exercises: [
+          { title: "Exercise 1: Safety Guard Verification 🛡️", parts: ["Check Guard Position", "Check Another Guard"] },
+          { title: "Exercise 2: Safety Goggles Check 🥽", parts: ["Station 1 Goggles", "Station 2 Goggles"] },
+          { title: "Exercise 3: Safety Gloves Check 🧤", parts: ["Minimum Gloves Check", "Storage Capacity Check"] },
+          { title: "Exercise 4: Weighing Scale Check ⚖️", parts: ["Scale Calibration Check", "Maximum Weight Check"] },
+          { title: "Exercise 5: Final Readiness Verification ✅", parts: ["Enough Helpers Check", "Maximum People Check"] }
+        ]
+      },
+      {
+        name: "Module 3 · Conditions Part 4", exercises: [
+          { title: "Exercise 1: Bags and Boxes Ready 📦", parts: ["Both Ready", "One Not Ready"] },
+          { title: "Exercise 2: Hair Nets and Aprons Check 🦺", parts: ["Enough of Both", "Missing Aprons"] },
+          { title: "Exercise 3: Scale Status Check ⚖️", parts: ["Scale Ready", "Scale Overloaded"] },
+          { title: "Exercise 4: Tool Check 🔧", parts: ["Right Tools and Enough", "Not Enough Tools"] },
+          { title: "Exercise 5: Gloves and Goggles 🧤🥽", parts: ["Fully Equipped", "Missing Goggles"] }
+        ]
+      },
+      {
+        name: "Module 3 · Conditions Part 5", exercises: [
+          { title: "Exercise 1: Basic Flavours 🍿", parts: ["Plain or Buttery", "Adding the Salty Option"] },
+          { title: "Exercise 2: Sweet Flavours 🍬", parts: ["Sweet or Butterscotch", "Adding Toffee"] },
+          { title: "Exercise 3: Savoury Flavours 🧀", parts: ["Cheese or Chili", "Adding BBQ"] },
+          { title: "Exercise 4: Special Flavours 🍫", parts: ["Caramel or Chocolate", "Adding Chocolate Nuts"] },
+          { title: "Exercise 5: Ice Cream Flavours 🍦", parts: ["Vanilla or Strawberry", "Adding Cookies and Cream"] }
+        ]
+      },
+      {
+        name: "Module 4 · Logical Operators Part 1", exercises: [
+          { title: "Exercise 1: Plain Popcorn - Flavor and Quantity 🌽", parts: ["Checking Today's Batch", "When Quantity Drops"] },
+          { title: "Exercise 2: Buttery Popcorn - Flavor and Freshness 🧈", parts: ["Checking Freshness Today", "When Popcorn Goes Stale"] },
+          { title: "Exercise 3: Cheese Popcorn - Ingredient and Container 🧀", parts: ["Checking Ingredients Today", "When Containers are Too Small"] },
+          { title: "Exercise 4: Sweet Popcorn - Sugar and Label 🍬", parts: ["Checking Sugar and Labels Today", "When Labels are Wrong"] },
+          { title: "Exercise 5: Complete Order Check ✅", parts: ["Checking a Good Order", "When Weight is Insufficient"] }
+        ]
+      },
+      {
+        name: "Module 4 · Logical Operators Part 2", exercises: [
+          { title: "Exercise 1: Butter or Oil 🧈", parts: ["Butter Available, Oil Not Available", "Oil Available, Butter Not Available"] },
+          { title: "Exercise 2: Sugar or Honey 🍯", parts: ["Sugar Available, Honey Not Available", "Honey Available, Sugar Not Available"] },
+          { title: "Exercise 3: Cheddar or Parmesan 🧀", parts: ["Cheddar Available, Parmesan Not Available", "Parmesan Available, Cheddar Not Available"] },
+          { title: "Exercise 4: Peanuts or Almonds 🥜", parts: ["Peanuts Available, Almonds Not Available", "Almonds Available, Peanuts Not Available"] },
+          { title: "Exercise 5: Salt or Sea Salt 🧂", parts: ["Salt Available, Sea Salt Not Available", "Sea Salt Available, Salt Not Available"] }
+        ]
+      },
+      {
+        name: "Module 5 · Loops Part 1", exercises: [
+          { title: "Exercise 1: Counting Bags on the Production Line 📦", parts: ["Counting the First 5 Bags", "Counting 10 Bags"] },
+          { title: "Exercise 2: Counting Corn Boxes 🌽", parts: ["Corn Boxes for the First 6 Machines", "Corn Boxes for All 10 Machines"] },
+          { title: "Exercise 3: Counting Oil Containers 🛢️", parts: ["Checking Oil Containers in Storage", "Assigning Oil Containers to Machines"] },
+          { title: "Exercise 4: Counting Flavor Packets 🍬", parts: ["Counting Flavor Packets on the Shelf", "Delivering to Flavor Stations"] },
+          { title: "Exercise 5: Counting Salt Containers 🧂", parts: ["Counting Salt in Storage", "Delivering Salt to All Machines"] }
+        ]
+      },
+      {
+        name: "Module 5 · Loops Part 2", exercises: [
+          { title: "Exercise 1: Oil Containers with Backup Supply ➕", parts: ["2 Backup Containers", "3 Backup Containers"] },
+          { title: "Exercise 2: Flavor Packets Distribution ✖️", parts: ["Station Packet Count", "Storage Area Box Count"] },
+          { title: "Exercise 3: Salt Packets for Machines ✖️", parts: ["Machine Salt Packets", "Production Line Salt Containers"] },
+          { title: "Exercise 4: Mixing Addition and Multiplication 🔢", parts: ["Corn Box Formula", "Flavor Packet Formula"] },
+          { title: "Exercise 5: Power Grid Planning ⚡", parts: ["New Line A Power Needs", "New Line B Power Needs"] }
+        ]
+      },
+      {
+        name: "Module 5 · Loops Part 3", exercises: [
+          { title: "Exercise 1: Tracking Oil Containers 🛢️", parts: ["First Week Tracking", "Busier Week Ahead"] },
+          { title: "Exercise 2: Corn Supply Countdown 🌽", parts: ["Five-Day Countdown", "Extended Production Run"] },
+          { title: "Exercise 3: Distributing Flavor Packets 🍬", parts: ["Four Machine Setup", "Expanding to Six Machines"] },
+          { title: "Exercise 4: Organising Popcorn Bags 📦", parts: ["Shelf Planning", "Larger Shipment"] },
+          { title: "Exercise 5: Salt Packet Distribution 🧂", parts: ["Five Machine Distribution", "Ten Machine Distribution"] }
+        ]
+      },
+      {
+        name: "Module 5 · Loops Part 4", exercises: [
+          { title: "Exercise 1: Tracking Total Corn Boxes 📊", parts: ["Counting Corn From the Shelves", "Tracking Oil Container Deliveries"] },
+          { title: "Exercise 2: Tracking Salt Usage Over Time 🧂", parts: ["Daily Salt Usage", "Weekly Flavour Packet Usage"] },
+          { title: "Exercise 3: Tracking Production Batches 📦", parts: ["Daily Batch Production", "Packaging Bags Across Shifts"] },
+          { title: "Exercise 4: Quality Control Checks ✅", parts: ["Counting Boxes Checked", "Counting Defects Found"] },
+          { title: "Exercise 5: Factory Payroll 💰", parts: ["Calculating Total Daily Wages", "Paying Bonuses to Top Performers"] }
+        ]
+      },
+      {
+        name: "Module 6 · Pirate Adventure Part 1", exercises: [
+          { title: "Exercise 1: Boarding the Ship ⚓", parts: ["A Child With Permission", "A Younger Child"] },
+          { title: "Exercise 2: Treasure Map Reading 🗺️", parts: ["The Palm Tree Clue", "The Waterfall Clue"] },
+          { title: "Exercise 3: Crew Member Check 👥", parts: ["A Fully Equipped Pirate", "Missing Equipment"] },
+          { title: "Exercise 4: Night Watch Duty 🌙", parts: ["Moonlit Night", "Pitch Black Night"] },
+          { title: "Exercise 5: Cannon Firing Time 💥", parts: ["Clear Skies", "Stormy Weather"] }
+        ]
+      },
+      {
+        name: "Module 6 · Pirate Adventure Part 2", exercises: [
+          { title: "Exercise 1: Digging for Treasure ⛏️", parts: ["The Perfect Spot", "Wrong Location"] },
+          { title: "Exercise 2: Ancient Puzzle Stones 🪨", parts: ["The Correct Stone", "The Trap Stone"] },
+          { title: "Exercise 3: Jungle Path Choice 🌿", parts: ["The Machete Path", "The Daylight Path"] },
+          { title: "Exercise 4: Cave Entrance 🕯️", parts: ["Safe Entry", "Flooded Cave"] },
+          { title: "Exercise 5: Treasure Chest 🏆", parts: ["Opening the Chest", "A Rusty Lock"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 1", exercises: [
+          { title: "Exercise 1: My First Function 👋", parts: ["Introduce Me", "Introducing Samantha"] },
+          { title: "Exercise 2: My Desk 🪑", parts: ["Create a Function with Two Variables", "Show My Desk"] },
+          { title: "Exercise 3: My Classroom 🏫", parts: ["Introduce Myself", "Introduce Samantha"] },
+          { title: "Exercise 4: Introducing Anyone 🙋", parts: ["Greet Child", "Call the Function with a Name of Your Choice"] },
+          { title: "Exercise 5: The Full Introduction 🌟", parts: ["Setting Up the School", "Using Functions with Two Parameters"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 2", exercises: [
+          { title: "Exercise 1: The Pencil Colour ✏️", parts: ["Getting the Pencil Colour", "Changing the Pencil Colour"] },
+          { title: "Exercise 2: The Tray Count 📋", parts: ["Tray Count Function", "Changing the Tray Count"] },
+          { title: "Exercise 3: The Supply Box 📦", parts: ["Getting a Supply", "Using the Get Supply Function with More Items"] },
+          { title: "Exercise 4: The Cupboard Label 🏷️", parts: ["Getting the Cupboard Label", "Calling the Function with More Cupboard Numbers"] },
+          { title: "Exercise 5: The Full Supply Check 🌟", parts: ["Checking Supplies in Room 3", "Changing the Classroom"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 3", exercises: [
+          { title: "Exercise 1: Counting Flavour Bags 🍬", parts: ["Flavour Bags Calculation", "More Flavour Bags"] },
+          { title: "Exercise 2: Sugar Packets Remaining 🍚", parts: ["Finding Remaining Sugar Packets", "Changing Sugar Packets"] },
+          { title: "Exercise 3: Ingredient Portions 🧂", parts: ["Calculating Ingredient Portions", "Calculating More Portions"] },
+          { title: "Exercise 4: Oil Container Check 🛢️", parts: ["Calculating Oil Remaining", "Checking More Oil Containers"] },
+          { title: "Exercise 5: The Full Production Count 🌟", parts: ["Set Factory Name and Call Function", "The Full Production Count Continued"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 4", exercises: [
+          { title: "Exercise 1: Goggles Check 🥽", parts: ["Goggles Ready", "Goggles Not Ready"] },
+          { title: "Exercise 2: Gloves Check 🧤", parts: ["Checking Gloves", "Gloves Not Ready"] },
+          { title: "Exercise 3: Bag Safety Check 📦", parts: ["Checking the Bag Count", "Checking More Bag Counts"] },
+          { title: "Exercise 4: Worker Safety Check 🦺", parts: ["Checking Worker Status", "Checking Worker Status"] },
+          { title: "Exercise 5: The Full Safety Report 🌟", parts: ["Full Safety Report", "Checking the Safety Report with Different Bag Counts"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 5", exercises: [
+          { title: "Exercise 1: Counting Bags Per Batch 🍿", parts: ["Fixed Bag Count", "Changing the Bag Count"] },
+          { title: "Exercise 2: Ingredient Usage Per Batch 🧂", parts: ["Calculating Butter Used", "Calculating Butter Used with a Different Value"] },
+          { title: "Exercise 3: Flavour Check Per Batch 🍬", parts: ["Checking Flavours", "Checking More Flavours"] },
+          { title: "Exercise 4: Batch Safety Check 🦺", parts: ["Checking Bag Count", "Checking More Batches"] },
+          { title: "Exercise 5: The Full Production Report 🌟", parts: ["Creating the Production Report", "Full Production Report with Different Flavours"] }
+        ]
+      },
+      {
+        name: "Module 7 · Functions Part 6", exercises: [
+          { title: "Exercise 1: Taking the First Order ☕", parts: ["Taking the First Order", "Taking Different Orders"] },
+          { title: "Exercise 2: Adding Size and Price 🏷️", parts: ["Adding Size and Price to Order", "Adding Size and Price for Ellaine"] },
+          { title: "Exercise 3: Checking the Menu 📋", parts: ["Confirming an Order", "Drink Availability Check"] },
+          { title: "Exercise 4: The Lunchtime Queue 🔁", parts: ["Served Order", "Different Drinks"] },
+          { title: "Exercise 5: The Full Café System 🌟", parts: ["Basic Order Function", "The Caramel Crunch Café"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 1", exercises: [
+          { title: "Exercise 1: The Flavours Clipboard 🍿", parts: ["Create the Flavours List", "Machine Numbers"] },
+          { title: "Exercise 2: The Assistants Clipboard 👦", parts: ["Create the Assistants List", "Adding a New Child"] },
+          { title: "Exercise 3: The Ingredients Clipboard 🧂", parts: ["Fix the Ingredients List", "Refine the Ingredients List"] },
+          { title: "Exercise 4: The Machines Clipboard 🤖", parts: ["Loop through the Ready Machines List", "Machine Status"] },
+          { title: "Exercise 5: The Production Clipboard 📦", parts: ["Counting Total Machines", "First and Last Production Counts"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 2", exercises: [
+          { title: "Exercise 1: Count the Flavours 🍿", parts: ["Write a Function to Count Flavours", "Count Limited Flavours"] },
+          { title: "Exercise 2: First and Last Machine 🔧", parts: ["Get First and Last", "Get First and Last v2"] },
+          { title: "Exercise 3: Check If List Has Items ✅", parts: ["Write a Function", "Checking an Empty List"] },
+          { title: "Exercise 4: Get Item by Position 📍", parts: ["Write a function called 'get assistant'", "Get Assistant by Position"] },
+          { title: "Exercise 5: Update List Inside Function ✏️", parts: ["Fix Box Count", "Fix Another Box"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 3", exercises: [
+          { title: "Exercise 1: Print All Flavours 📋", parts: ["Flavours List", "Flavours with Fewer Options"] },
+          { title: "Exercise 2: Welcome Each Assistant 👋", parts: ["Welcome the Assistants", "Welcome Each Assistant"] },
+          { title: "Exercise 3: Show Machine Status 🤖", parts: ["Checking Machine Names", "Machine Status"] },
+          { title: "Exercise 4: Double the Box Counts 🔢", parts: ["Doubling Box Counts", "Double the Box Counts"] },
+          { title: "Exercise 5: Build a Shopping List 🛒", parts: ["Start with an empty list", "Building a Shopping List"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 4", exercises: [
+          { title: "Exercise 1: Find High Scores 🏆", parts: ["Finding High Scores", "Finding High Scores"] },
+          { title: "Exercise 2: Check First Assistant 🔍", parts: ["Checking the First Assistant", "Checking the First Assistant"] },
+          { title: "Exercise 3: Count Ready Machines ✅", parts: ["Count Ready Machines in the Factory", "Count Ready Machines"] },
+          { title: "Exercise 4: Find Low Ingredients ⚠️", parts: ["Ingredient Stocks", "Finding Low Ingredients"] },
+          { title: "Exercise 5: Collect High Numbers Only ⭐", parts: ["Production Numbers", "Collecting High Numbers Only"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 5", exercises: [
+          { title: "Exercise 1: Greet All Assistants Function 👋", parts: ["Write a Function to Greet Assistants", "Greet All Assistants Function"] },
+          { title: "Exercise 2: Total Boxes Function 📦", parts: ["Write a Function to Add Up Box Counts", "Total Boxes Function"] },
+          { title: "Exercise 3: Add Five to Each Number ➕", parts: ["Current Production", "Add Five to Each"] },
+          { title: "Exercise 4: Double Everything Function ✖️", parts: ["Current Production", "Double Everything Function"] },
+          { title: "Exercise 5: AVERAGE BOXES FUNCTION 📊", parts: ["Daily Production", "Average Boxes per Machine"] }
+        ]
+      },
+      {
+        name: "Module 8 · Arrays Part 6", exercises: [
+          { title: "Exercise 1: Count High Scores Function 🏆", parts: ["Counting High Quality Batches", "Counting High Scores"] },
+          { title: "Exercise 2: Filter Ready Machines ✅", parts: ["Get Ready Machines", "Filter Ready Machines"] },
+          { title: "Exercise 3: Count Low Stock Items ⚠️", parts: ["Counting Low Stock", "Count Low Stock Ingredients"] },
+          { title: "Exercise 4: Pass or Fail Function 📝", parts: ["Mark Results", "Marking Results"] },
+          { title: "Exercise 5: Collect High Scores Only ⭐", parts: ["Get High Scores", "Filter High Scores"] }
+        ]
+      },
+      {
+        name: "Module 9 · Objects Part 1", exercises: [
+          { title: "Exercise 1: Spot the Properties 🔍", parts: ["What is the 'colour' of the magic bead?", "What is the 'shape' of the magic bead?"] },
+          { title: "Exercise 2: Build Your Bead Object 🔨", parts: ["Create Your Own Bead", "Check Your Bead"] },
+          { title: "Exercise 3: Read Your Bead 📖", parts: ["Read the Colour", "Read the Shape"] },
+          { title: "Exercise 4: Update a Property ✏️", parts: ["Change the Colour", "Change the Size"] },
+          { title: "Exercise 5: The Golden Bead 🌟", parts: ["Create the Golden Bead", "Display the Rarity"] }
+        ]
+      }
+    ];
+
+    function getModuleType(moduleName) {
+      if (moduleName.includes('Module 1') || moduleName.includes('Module 2')) return 'classroom';
+      if (moduleName.includes('Module 3')) return 'conditions';
+      if (moduleName.includes('Module 4') || moduleName.includes('Module 5')) return 'operators';
+      if (moduleName.includes('Module 6')) return 'pirate';
+      if (moduleName.includes('Module 7')) return 'functions';
+      if (moduleName.includes('Module 8') || moduleName.includes('Module 9')) return 'advanced';
+      return 'classroom';
+    }
+
+    function renderSpecFiles() {
+      const container = document.getElementById('specContainer');
+      if (!container) return;
+
+      // Split modules into 3 columns
+      const columns = [[], [], []];
+      moduleContent.forEach((module, index) => {
+        columns[index % 3].push(module);
+      });
+
+      let html = '';
+      columns.forEach((colModules, colIdx) => {
+        html += `<div class="spec-col">
+      <div class="col-title">📝 ${colIdx === 0 ? 'Modules 1-9' : colIdx === 1 ? 'Modules 10-18' : 'Modules 19-27'}</div>`;
+
+        let lastType = '';
+        colModules.forEach(module => {
+          const moduleType = getModuleType(module.name);
+
+          // Add visual divider when module type changes
+          if (lastType && lastType !== moduleType) {
+            html += `<div class="module-section-divider"><span>▼ ${moduleType.toUpperCase()} ▼</span></div>`;
+          }
+
+          html += `<div class="module-card">
+        <div class="module-header" data-type="${moduleType}">${module.name}</div>
+        <div class="module-body">`;
+          module.exercises.forEach(ex => {
+            html += `<div class="exercise-item">
+          <div class="exercise-title">${ex.title}</div>`;
+            ex.parts.forEach((part, idx) => {
+              html += `<div class="part-item"><span class="part-letter">Part ${String.fromCharCode(65 + idx)}:</span> ${part}</div>`;
+            });
+            html += `</div>`;
+          });
+          html += `</div></div>`;
+
+          lastType = moduleType;
+        });
+        html += `</div>`;
+      });
+      container.innerHTML = html;
+    }
+
+    // ========================
+    // BUILT MODULES (Kanban with localStorage)
+    // ========================
+    let builtCards = [];
+
+    const defaultBuiltCards = [
+      "Module 1 · Variables", "Module 2 · Operators",
+      "Module 3 · Conditions Part 1", "Module 3 · Conditions Part 3",
+      "Module 3 · Conditions Part 4", "Module 3 · Conditions Part 5",
+      "Module 4 · Logical Operators Part 1", "Module 4 · Logical Operators Part 2",
+      "Module 5 · Loops Part 1", "Module 5 · Loops Part 2",
+      "Module 5 · Loops Part 3", "Module 5 · Loops Part 4",
+      "Module 6 · Pirate Adventure Part 1",
+      "Module 8 · Arrays Part 1", "Module 8 · Arrays Part 2",
+      "Module 8 · Arrays Part 3", "Module 8 · Arrays Part 4",
+      "Module 8 · Arrays Part 5", "Module 8 · Arrays Part 6",
+      "Module 9 · Objects Part 1"
+    ];
+
+    const reviewCardsList = [
+      "Module 3 · Conditions Part 2",
+      "Module 6 · Pirate Adventure Part 2",
+      "Module 7 · Functions Part 1", "Module 7 · Functions Part 2",
+      "Module 7 · Functions Part 3", "Module 7 · Functions Part 4",
+      "Module 7 · Functions Part 5", "Module 7 · Functions Part 6"
+    ];
+
+    function loadBuiltCards() {
+      const saved = localStorage.getItem('cvf_built_cards');
+      if (saved) {
+        builtCards = JSON.parse(saved);
+      } else {
+        builtCards = [];
+        defaultBuiltCards.forEach(title => {
+          builtCards.push({ id: genId('built', title), title: title, status: 'Done' });
+        });
+        reviewCardsList.forEach(title => {
+          builtCards.push({ id: genId('built', title), title: title, status: 'Review Needed' });
+        });
+      }
+    }
+
+    function saveBuiltCards() {
+      localStorage.setItem('cvf_built_cards', JSON.stringify(builtCards));
+    }
+
+    function genId(prefix, title) {
+      return prefix + '-' + title.replace(/[\s·()]+/g, '-') + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6);
+    }
+
+    function getBadgeClass(status) {
+      const map = { 'Not Started': 'badge-notstarted', 'In Progress': 'badge-progress', 'Review Needed': 'badge-review', 'Done': 'badge-done' };
+      return map[status] || '';
+    }
+
+    let draggedId = null, draggedType = null, draggedEl = null;
+
+    function renderBuiltModules() {
+      const container = document.getElementById('modulesContainer');
+      if (!container) return;
+      const lanes = ['Not Started', 'In Progress', 'Review Needed', 'Done'];
+      let html = '';
+      for (const laneStatus of lanes) {
+        const cardsInLane = builtCards.filter(c => c.status === laneStatus);
+        html += `
+        <div class="kanban-lane" data-lane-status="${laneStatus}" data-kanban="built">
+          <div class="lane-header">
+            <div class="lane-title-section">
+              <span class="lane-title">${laneStatus}</span>
+              <span class="lane-count">${cardsInLane.length}</span>
+            </div>
+            <button class="add-card-btn" data-kanban="built" data-lane="${laneStatus}">+ Add</button>
+          </div>
+          <div class="lane-cards" data-lane="${laneStatus}" data-parent="built">
+            ${cardsInLane.map(card => `
+              <div class="kanban-card" draggable="true" data-card-id="${card.id}" data-status="${card.status}" data-kanban-type="built">
+                <div class="card-title">${escapeHtml(card.title)}</div>
+                <span class="card-badge ${getBadgeClass(card.status)}">${card.status}</span>
+                <div class="delete-card" data-card-id="${card.id}" data-kanban="built">✕</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>`;
+      }
+      container.innerHTML = html;
+      attachKanbanListeners();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
+    }
+
+    function attachKanbanListeners() {
+      document.querySelectorAll('.add-card-btn').forEach(btn => {
+        btn.onclick = e => {
+          e.stopPropagation();
+          showModal(btn.dataset.kanban, btn.dataset.lane);
+        };
+      });
+
+      document.querySelectorAll('.delete-card').forEach(el => {
+        el.onclick = e => {
+          e.stopPropagation();
+          const id = el.dataset.cardId;
+          builtCards = builtCards.filter(c => c.id !== id);
+          saveBuiltCards();
+          renderBuiltModules();
+        };
+      });
+
+      document.querySelectorAll('.kanban-card').forEach(card => {
+        card.ondragstart = e => {
+          draggedId = card.dataset.cardId;
+          draggedType = card.dataset.kanbanType;
+          draggedEl = card;
+          e.dataTransfer.effectAllowed = 'move';
+          card.classList.add('dragging');
+        };
+        card.ondragend = () => {
+          if (draggedEl) draggedEl.classList.remove('dragging');
+          document.querySelectorAll('.lane-cards').forEach(z => z.classList.remove('drag-over'));
+          draggedId = draggedType = draggedEl = null;
+        };
+      });
+
+      document.querySelectorAll('.lane-cards').forEach(zone => {
+        zone.ondragover = e => { e.preventDefault(); zone.classList.add('drag-over'); };
+        zone.ondragleave = () => zone.classList.remove('drag-over');
+        zone.ondrop = e => {
+          e.preventDefault();
+          zone.classList.remove('drag-over');
+          if (!draggedId || !draggedType) return;
+          const targetLane = zone.closest('.kanban-lane');
+          if (!targetLane || targetLane.dataset.kanban !== draggedType) return;
+          const newStatus = targetLane.dataset.laneStatus;
+          const card = builtCards.find(c => c.id === draggedId);
+          if (card && card.status !== newStatus) {
+            card.status = newStatus;
+            saveBuiltCards();
+            renderBuiltModules();
+          }
+        };
+      });
+    }
+
+    function showModal(kanbanType, laneStatus) {
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.innerHTML = `
+      <div class="modal">
+        <h3>➕ Add new module card</h3>
+        <input type="text" id="newCardTitle" placeholder="Module name..." autocomplete="off">
+        <div class="modal-buttons">
+          <button id="modalConfirm">Create</button>
+          <button id="modalCancel">Cancel</button>
+        </div>
+      </div>`;
+      document.body.appendChild(overlay);
+      const input = overlay.querySelector('#newCardTitle');
+      input.focus();
+      overlay.querySelector('#modalConfirm').onclick = () => {
+        const title = input.value.trim();
+        if (title) {
+          builtCards.push({ id: genId('built', title), title: title, status: laneStatus });
+          saveBuiltCards();
+          renderBuiltModules();
+        }
+        overlay.remove();
+      };
+      overlay.querySelector('#modalCancel').onclick = () => overlay.remove();
+      overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+      input.onkeydown = e => { if (e.key === 'Enter') overlay.querySelector('#modalConfirm').click(); };
+    }
+
+    // Initialize everything
+    renderRegistry();
+    renderTemplates();
+    renderSpecFiles();
+    loadBuiltCards();
+    renderBuiltModules();
+  </script>
+</body>
+
+</html>

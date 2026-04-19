@@ -332,7 +332,7 @@
   <p>The Ingredients Room has many sections — basic flavours, sweet flavours, savory
   flavours, premium flavours, and even ice cream flavours! Each section uses the same
   ELSE IF pattern, just with different flavour names and ingredients. You'll get lots
-  of practise building these chains. Let's get started!</p>
+  of practice building these chains. Let's get started!</p>
 </div>
 <!-- End of Helper Box 5 -->
 ```

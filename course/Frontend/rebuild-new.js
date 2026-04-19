@@ -20,15 +20,10 @@ const path = require('path');
 const PIPELINE_DIR = __dirname;
 
 const MODULES_TO_REBUILD = [
-  'MODULE-7-FUNCTIONS-PART1',
-  'MODULE-7-FUNCTIONS-PART2',
-  'MODULE-7-FUNCTIONS-PART3',
-  'MODULE-7-FUNCTIONS-PART4',
-  'MODULE-7-FUNCTIONS-PART5',
-  'MODULE-7-FUNCTIONS-PART6',
+  'MODULE-9-OBJECTS-PART1',
 ];
 
-const GAP_BETWEEN_MODULES = 60_000; // 60 seconds between modules
+const GAP_BETWEEN_MODULES = 5_000; // 5 seconds between modules
 
 function sleep(ms, label) {
   if (label) {

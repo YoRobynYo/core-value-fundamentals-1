@@ -92,7 +92,8 @@ function auditFile(filePath) {
       // For 'var ' and 'const ' — skip if in a comment
       if ((word === 'var ' || word === 'const ') && isComment) return;
 
-      if (lower.includes(word.toLowerCase())) {
+      const wordRegex = new RegExp(`\\b${word.toLowerCase().trim()}\\b`);
+      if (wordRegex.test(lower)) {
         findings.push({ lineNum, word, reason, line: trimmed });
       }
     });

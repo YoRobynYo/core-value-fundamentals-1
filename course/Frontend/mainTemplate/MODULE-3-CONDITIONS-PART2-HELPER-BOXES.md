@@ -265,7 +265,7 @@
 
   <p>Understanding true and false is crucial because conditions make decisions
   based on these answers. Later, you'll use conditions to control what your
-  code does: "If true, do this. If false, do that."</p>
+  program does: "If true, do this. If false, do that."</p>
 
   <p class="note">💡 <strong>Think of it like this:</strong> true and false are
   the computer's way of saying "Yes" or "No" to your questions. Every condition

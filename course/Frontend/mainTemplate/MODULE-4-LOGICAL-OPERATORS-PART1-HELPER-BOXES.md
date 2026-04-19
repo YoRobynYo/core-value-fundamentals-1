@@ -53,8 +53,8 @@ No exceptions. If you are unsure — do not use it.
 | program / programming | code / coding |
 | practice (verb) | practise |
 | color | colour |
-| organise | organise |
-| recognise | recognise |
+| organize | organise |
+| recognize | recognise |
 | center | centre |
 | math | maths |
 | console | never use this word |

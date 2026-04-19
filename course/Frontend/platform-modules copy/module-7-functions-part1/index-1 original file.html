@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+
+<body>
+  <main id="main-content">
+
+    <!-- ========================================================== -->
+    <!-- GOLD STANDARD EXERCISE FILE                                -->
+    <!-- core-value-fundamentals                                    -->
+    <!-- Language-Agnostic Edition                                  -->
+    <!-- ========================================================== -->
+
+
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // Start::: Module 7                         █ -->
+    <!-- █  // Functions Part 1                          █ -->
+    <!-- █  // My First Function!                        █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+    <section class="page" id="functions-module">
+      <h2 class="module-title">Module 7: Functions 🧠</h2>
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Helper Boxes                     █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- Helper Box 1: From Variables to Functions -->
+      <div class="helper-box">
+        <h3 class="box-title">🧠 From Variables to Functions 🧠</h3>
+        <p>You already know variables. You have been using them since Module 1! A variable stores a piece of
+          information. Simple!</p>
+        <h4 class="sub-title">Writing Instructions Once</h4>
+        <p>Now meet a <strong>function</strong>. A function is a named container for instructions. You write the
+          instructions once, give them a name, and use that name whenever you need them to run.</p>
+        <h4 class="sub-title">In Pseudocode It Looks Like This:</h4>
+        <div class="code-example">
+          <code>
+        FUNCTION "show name"<br>
+        &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+        END FUNCTION
+      </code>
+        </div>
+        <p>To make it run, you <strong>CALL</strong> it:</p>
+        <div class="code-example">
+          <code>CALL "show name"</code>
+        </div>
+        <h4 class="sub-title">Adding Parameters</h4>
+        <p>What if we want the function to work with DIFFERENT information each time? We use a
+          <strong>parameter</strong>! A parameter is information you pass INTO the function when you call it.
+        </p>
+        <div class="code-example">
+          <code>
+        FUNCTION "show name" WITH "child name"<br>
+        &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+        END FUNCTION<br><br>
+        CALL "show name" WITH "David"<br>
+        CALL "show name" WITH "Samantha"
+      </code>
+        </div>
+        <p class="note">💡 <strong>One function — works for everyone! 🎉</strong></p>
+      </div>
+      <!-- End of Helper Box 1 -->
+
+      <!-- Helper Box 2: The Function Tree -->
+      <div class="helper-box">
+        <h3 class="box-title">🌳 The Function Tree 🌳</h3>
+        <p>Variables can live in different places — and that changes what they can do!</p>
+        <h4 class="sub-title">Where Variables Live</h4>
+        <ul class="indented-list">
+          <li><strong>OUTSIDE a function:</strong> Available everywhere.</li>
+          <li><strong>INSIDE a function:</strong> Only lives while the function runs.</li>
+          <li><strong>As a PARAMETER:</strong> Information given to the function each time it is called.</li>
+        </ul>
+        <h4 class="sub-title">The Full Tree Working Together:</h4>
+        <div class="code-example">
+          <code>
+        SET "school name" TO "Greenfield Primary"<br><br>
+        FUNCTION "introduce child" WITH "child name", "desk number"<br>
+        &nbsp;&nbsp;PRINT "School: ", "school name"<br>
+        &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+        &nbsp;&nbsp;PRINT "I sit at desk ", "desk number"<br>
+        END FUNCTION<br><br>
+        CALL "introduce child" WITH "David", 5<br>
+        CALL "introduce child" WITH "Samantha", 12
+      </code>
+        </div>
+        <p class="note">💡 <strong>Write once. Use anywhere. That is the power of functions! 🚀</strong></p>
+      </div>
+      <!-- End of Helper Box 2 -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Helper Boxes                       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercises                        █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <h2 class="module-title">Module 7: Functions — Exercises 🧠</h2>
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 1                       █ -->
+      <!-- █  // My First Function 👋                      █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box">
+        <h3 class="exercise-title">Exercise 1: My First Function 👋</h3>
+
+        <!-- Part A -->
+        <h4 class="sub-title">Part A: Introducing David</h4>
+        <p>It is time to write your very first function! A function lets you write instructions once and use them
+          whenever you need them. Let us start simple — introduce yourself to the class using your name.</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "child name" to "David"</li>
+          <li><strong>Step 2:</strong> Write a FUNCTION called "introduce me" that prints "My name is ", "child name"
+          </li>
+          <li><strong>Step 3:</strong> Close it with END FUNCTION</li>
+          <li><strong>Step 4:</strong> Here is the complete pseudocode — study the shape carefully:</li>
+        </ul>
+        <div class="code-example">
+          <code>
+      SET "child name" TO "David"<br><br>
+      FUNCTION "introduce me"<br>
+      &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+      END FUNCTION<br><br>
+      CALL "introduce me"
+    </code>
+        </div>
+        <label for="functions-ex1-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex1-part-a"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="1-part-a">
+          <button class="hint-button" data-section="functions" data-ex="1-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="1-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="1-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint1-part-a">Remember: FUNCTION "name" starts it, END FUNCTION closes it, and
+          CALL "name" makes it run!</p>
+        <pre class="output-block" id="functions-output1-part-a"></pre>
+        <pre class="answer-block" id="functions-answer1-part-a"></pre>
+
+        <!-- Part B -->
+        <h4 class="sub-title">Part B: Introducing Samantha</h4>
+        <p>The function shape is exactly the same — only the name stored in "child name" changes. This is the beauty of
+          functions — the instructions stay the same, the information inside can change!</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "child name" to "Samantha" this time</li>
+          <li><strong>Step 2:</strong> Write the same FUNCTION called "introduce me" with the same PRINT instruction
+          </li>
+          <li><strong>Step 3:</strong> Close it with END FUNCTION</li>
+          <li><strong>Step 4:</strong> Here is the complete pseudocode — notice the shape is identical to Part A:</li>
+        </ul>
+        <div class="code-example">
+          <code>
+      SET "child name" TO "Samantha"<br><br>
+      FUNCTION "introduce me"<br>
+      &nbsp;&nbsp;PRINT "My name is ", "child name"<br>
+      END FUNCTION<br><br>
+      CALL "introduce me"
+    </code>
+        </div>
+        <label for="functions-ex1-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex1-part-b"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="1-part-b">
+          <button class="hint-button" data-section="functions" data-ex="1-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="1-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="1-part-b">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint1-part-b">The shape is the same as Part A — just change "David" to "Samantha"
+          in your SET line!</p>
+        <pre class="output-block" id="functions-output1-part-b"></pre>
+        <pre class="answer-block" id="functions-answer1-part-b"></pre>
+
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 1                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 2                       █ -->
+      <!-- █  // My Desk 🪑                                █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box">
+        <h3 class="exercise-title">Exercise 2: My Desk 🪑</h3>
+
+        <!-- Part A -->
+        <h4 class="sub-title">Part A: David at Desk 5</h4>
+        <p>You know the shape now — FUNCTION, instructions inside, END FUNCTION, CALL. This time let us add more
+          information to the function. Your name AND your desk number!</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "child name" to "David" and SET "desk number" to 5</li>
+          <li><strong>Step 2:</strong> Write a FUNCTION called "show my desk" with two PRINT instructions inside — one
+            for name, one for desk number</li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION and CALL the function</li>
+          <li><strong>Step 4:</strong> Now write the code to introduce David and show his desk number in the code block
+            below.</li>
+        </ul>
+        <label for="functions-ex2-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex2-part-a"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="2-part-a">
+          <button class="hint-button" data-section="functions" data-ex="2-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="2-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="2-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint2-part-a">Your function needs two PRINT lines inside it — one for "child name"
+          and one for "desk number". The shape is the same as Exercise 1!</p>
+        <pre class="output-block" id="functions-output2-part-a"></pre>
+        <pre class="answer-block" id="functions-answer2-part-a"></pre>
+
+        <!-- Part B -->
+        <h4 class="sub-title">Part B: Gabrielle at Desk 12</h4>
+        <p>Same function, different information. Change the variables and the function does the same job for a
+          completely different child. The shape stays the same — only the values change.</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> Change "child name" to "Gabrielle" and "desk number" to 12</li>
+          <li><strong>Step 2:</strong> Write the same function "show my desk" with the same two PRINT instructions</li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION and CALL the function</li>
+          <li><strong>Step 4:</strong> Now write the code to introduce Gabrielle and show her desk number in the code
+            block below.</li>
+        </ul>
+        <label for="functions-ex2-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex2-part-b"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="2-part-b">
+          <button class="hint-button" data-section="functions" data-ex="2-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="2-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="2-part-b">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint2-part-b">Copy your Part A code and just change "David" to "Gabrielle" and 5
+          to 12 in your SET lines!</p>
+        <pre class="output-block" id="functions-output2-part-b"></pre>
+        <pre class="answer-block" id="functions-answer2-part-b"></pre>
+
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 2                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 3                       █ -->
+      <!-- █  // My Classroom 🏫                           █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box">
+        <h3 class="exercise-title">Exercise 3: My Classroom 🏫</h3>
+
+        <!-- Part A -->
+        <h4 class="sub-title">Part A: David in Room 3</h4>
+        <p>The full classroom introduction — name, desk, AND classroom all in one function. Three variables, three PRINT
+          instructions, same shape as before. You are getting really comfortable with this!</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "child name" to "David", "desk number" to 5, and "classroom" to "Room 3"</li>
+          <li><strong>Step 2:</strong> Write a FUNCTION called "introduce myself" with three PRINT instructions inside
+          </li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION and CALL the function</li>
+          <li><strong>Step 4:</strong> Now write the code to give David's full classroom introduction in the code block
+            below.</li>
+        </ul>
+        <label for="functions-ex3-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex3-part-a"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="3-part-a">
+          <button class="hint-button" data-section="functions" data-ex="3-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="3-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="3-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint3-part-a">Three SET lines at the top, then your function with three PRINT
+          lines inside. PRINT "My name is ", "child name" — PRINT "I sit at desk ", "desk number" — PRINT "My classroom
+          is ", "classroom"</p>
+        <pre class="output-block" id="functions-output3-part-a"></pre>
+        <pre class="answer-block" id="functions-answer3-part-a"></pre>
+
+        <!-- Part B -->
+        <h4 class="sub-title">Part B: Samantha in Room 5</h4>
+        <p>Same function, new child, new classroom. By now the shape feels completely natural — FUNCTION, instructions,
+          END FUNCTION, CALL. You have mastered the format!</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> Change "child name" to "Samantha", "desk number" to 8, and "classroom" to "Room
+            5"</li>
+          <li><strong>Step 2:</strong> Write the same function "introduce myself" with the same three PRINT instructions
+          </li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION and CALL the function</li>
+          <li><strong>Step 4:</strong> Now write the code to give Samantha's full classroom introduction in the code
+            block below.</li>
+        </ul>
+        <label for="functions-ex3-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex3-part-b"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="3-part-b">
+          <button class="hint-button" data-section="functions" data-ex="3-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="3-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="3-part-b">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint3-part-b">Same as Part A — just update the three SET lines with Samantha's
+          details!</p>
+        <pre class="output-block" id="functions-output3-part-b"></pre>
+        <pre class="answer-block" id="functions-answer3-part-b"></pre>
+
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 3                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 4                       █ -->
+      <!-- █  // Introducing Anyone 🙋                     █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box">
+        <h3 class="exercise-title">Exercise 4: Introducing Anyone 🙋</h3>
+
+        <!-- Part A -->
+        <h4 class="sub-title">Part A: A New Branch — Parameters!</h4>
+        <p>So far your function has used a variable SET outside it. Now meet something new — a
+          <strong>parameter</strong>! Instead of setting "child name" separately, you pass it straight into the function
+          when you call it. One function — works for anyone!
+        </p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> Write a FUNCTION called "greet child" WITH "child name" as a parameter</li>
+          <li><strong>Step 2:</strong> Inside, PRINT "Hello ", "child name", ", welcome to class!"</li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION</li>
+          <li><strong>Step 4:</strong> Now write the code to greet David and then Samantha using the same function in
+            the code block below.</li>
+        </ul>
+        <label for="functions-ex4-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex4-part-a"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="4-part-a">
+          <button class="hint-button" data-section="functions" data-ex="4-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="4-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="4-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint4-part-a">FUNCTION "greet child" WITH "child name" — then CALL "greet child"
+          WITH "David" and CALL "greet child" WITH "Samantha"</p>
+        <pre class="output-block" id="functions-output4-part-a"></pre>
+        <pre class="answer-block" id="functions-answer4-part-a"></pre>
+
+        <!-- Part B -->
+        <h4 class="sub-title">Part B: Your Turn!</h4>
+        <p>The same function — now call it with Gabrielle, and then with your own name! The function does not need to
+          change at all — just call it with different information each time.</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> Write the same FUNCTION "greet child" WITH "child name" as a parameter</li>
+          <li><strong>Step 2:</strong> Inside, PRINT "Hello ", "child name", ", welcome to class!"</li>
+          <li><strong>Step 3:</strong> Close with END FUNCTION</li>
+          <li><strong>Step 4:</strong> Now write the code to greet Gabrielle and then yourself using the same function
+            in the code block below.</li>
+        </ul>
+        <label for="functions-ex4-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex4-part-b"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="4-part-b">
+          <button class="hint-button" data-section="functions" data-ex="4-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="4-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="4-part-b">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint4-part-b">CALL "greet child" WITH "Gabrielle" — then CALL "greet child" WITH
+          "your own name in quotes"!</p>
+        <pre class="output-block" id="functions-output4-part-b"></pre>
+        <pre class="answer-block" id="functions-answer4-part-b"></pre>
+
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 4                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 5                       █ -->
+      <!-- █  // The Full Introduction 🌟                  █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box">
+        <h3 class="exercise-title">Exercise 5: The Full Introduction 🌟</h3>
+
+        <!-- Part A -->
+        <h4 class="sub-title">Part A: Two Parameters and an Outside Variable</h4>
+        <p>This is the full function tree working together! One variable lives OUTSIDE the function, two variables are
+          passed in as PARAMETERS. The school name stays the same — the child name and desk number change every time.
+        </p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "school name" to "Greenfield Primary" outside the function</li>
+          <li><strong>Step 2:</strong> Write FUNCTION "full introduction" WITH "child name", "desk number" — two
+            parameters!</li>
+          <li><strong>Step 3:</strong> Inside, PRINT "school name", then "child name", then "desk number". Close with
+            END FUNCTION.</li>
+          <li><strong>Step 4:</strong> Now write the code to give the full introduction for David at desk 5 and Samantha
+            at desk 8 in the code block below.</li>
+        </ul>
+        <label for="functions-ex5-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex5-part-a"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="5-part-a">
+          <button class="hint-button" data-section="functions" data-ex="5-part-a">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="5-part-a">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="5-part-a">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint5-part-a">SET "school name" first. Then FUNCTION "full introduction" WITH
+          "child name", "desk number". Inside: PRINT "School: ", "school name" — PRINT "My name is ", "child name" —
+          PRINT "I sit at desk ", "desk number". Then CALL "full introduction" WITH "David", 5 and again WITH
+          "Samantha", 8</p>
+        <pre class="output-block" id="functions-output5-part-a"></pre>
+        <pre class="answer-block" id="functions-answer5-part-a"></pre>
+
+        <!-- Part B -->
+        <h4 class="sub-title">Part B: Gabrielle and You!</h4>
+        <p>Keep "school name" as "Greenfield Primary". Call the same function for Gabrielle at desk 3 — and then one
+          more time with your own name and desk number. You are the last person to be introduced!</p>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong> SET "school name" to "Greenfield Primary" outside the function</li>
+          <li><strong>Step 2:</strong> Write the same FUNCTION "full introduction" WITH "child name", "desk number"</li>
+          <li><strong>Step 3:</strong> Same three PRINT instructions inside. Close with END FUNCTION.</li>
+          <li><strong>Step 4:</strong> Now write the code to introduce Gabrielle at desk 3 and then yourself in the code
+            block below.</li>
+        </ul>
+        <label for="functions-ex5-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="functions-ex5-part-b"></div>
+        <div class="exercise-buttons" data-section="functions" data-ex="5-part-b">
+          <button class="hint-button" data-section="functions" data-ex="5-part-b">Hint</button>
+          <button class="run-button" data-section="functions" data-ex="5-part-b">Run My Code</button>
+          <button class="reset-button" data-section="functions" data-ex="5-part-b">Reset My Code</button>
+        </div>
+        <p class="hint" id="functions-hint5-part-b">CALL "full introduction" WITH "Gabrielle", 3 — then CALL "full
+          introduction" WITH "your name", your desk number!</p>
+        <pre class="output-block" id="functions-output5-part-b"></pre>
+        <pre class="answer-block" id="functions-answer5-part-b"></pre>
+
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 5                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercises                          █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+    </section>
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // End::: Module 7                           █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  </main>
+  <script src="../../scripts/main.js"></script>
+  <script src="../../scripts/scroll.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-8-ARRAYS-PART1                   █ -->
+<!-- █  // Module 8 Arrays Part1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="arrays-module">
+
+<h2 class="module-title">Module 8 Arrays Part1</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box Part 1: What is a List? + Positions + ADD, REMOVE, UPDATE -->
+<div class="helper-box">
+  <h3 class="box-title">📋 What is a List? (Arrays) 📋</h3>
+
+  <p>Imagine the teacher has a clipboard on their desk. On that clipboard is a list of
+    names — every child who is helping in class today. Instead of writing each name in a
+    separate variable, the teacher writes them all together in one neat list.</p>
+
+  <p>In coding, we call this kind of list an <strong>array</strong>. An array lets you
+    store multiple items together in one place — just like a clipboard holds a full list
+    instead of lots of separate pieces of paper.</p>
+
+  <h4 class="sub-title">Here is How We Create a List:</h4>
+
+  <p>We use square brackets <strong>[ ]</strong> to hold the list. Each item inside is
+    separated by a comma:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha", "Jake"]
+  </div>
+
+  <p><strong>Breaking it down:</strong></p>
+  <ul class="indented-list">
+    <li><strong>SET</strong> — we are creating a variable, just like before</li>
+    <li><strong>"class names"</strong> — the name of our list, written in plain English</li>
+    <li><strong>[ ]</strong> — the square brackets hold everything in the list</li>
+    <li><strong>"Ben", "Sara", "Tom"...</strong> — each item in the list, separated by commas</li>
+  </ul>
+
+  <p>A list can hold words or numbers — or both!</p>
+
+  <div class="code-block">
+    SET "classroom numbers" = [101, 102, 103, 104, 105]
+  </div>
+
+  <h4 class="sub-title">How Do You Read From a List? (Positions)</h4>
+
+  <p>Every item on the list has a <strong>position</strong>. But here is the important
+    part — <strong>lists always start counting from 0, not 1.</strong></p>
+
+  <p>Think of it like this — the teacher's clipboard has five names. Their positions
+    are:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha", "Jake"]<br>
+    <br>
+    Position 0 → "Ben"<br>
+    Position 1 → "Sara"<br>
+    Position 2 → "Tom"<br>
+    Position 3 → "Aisha"<br>
+    Position 4 → "Jake"
+  </div>
+
+  <h4 class="sub-title">Reading a Specific Item:</h4>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom"]<br>
+    PRINT "class names"[0]<br>
+    PRINT "The third name is:", "class names"[2]
+  </div>
+  <p class="output">Output:<br>
+    Ben<br>
+    The third name is: Tom</p>
+
+  <h4 class="sub-title">Changing a List — ADD, REMOVE and UPDATE</h4>
+
+  <p>The teacher's clipboard might need a new name added, a name crossed off, or a
+    name corrected. In coding we can do exactly the same thing!</p>
+
+  <h4 class="sub-title">ADD — Putting a New Item on the List</h4>
+
+  <p>To add a new name to the end of your list, we use the <strong>ADD</strong> command:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom"]<br>
+    ADD "Aisha" TO "class names"<br>
+    PRINT "class names"
+  </div>
+  <p class="output">Output: ["Ben", "Sara", "Tom", "Aisha"]</p>
+
+  <h4 class="sub-title">REMOVE — Taking an Item Off the List</h4>
+
+  <p>To remove a name, we tell the computer which <strong>position</strong> to take away:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    REMOVE "class names"[1]<br>
+    PRINT "class names"
+  </div>
+  <p class="output">Output: ["Ben", "Tom", "Aisha"]</p>
+
+  <h4 class="sub-title">UPDATE — Changing an Item on the List</h4>
+
+  <p>If a name was spelled wrong, we can <strong>UPDATE</strong> it at its position:</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Tom", "Aisha"]<br>
+    UPDATE "class names"[0] = "Benjamin"<br>
+    PRINT "class names"
+  </div>
+  <p class="output">Output: ["Benjamin", "Tom", "Aisha"]</p>
+
+  <p class="note">💡 <strong>Remember:</strong> ADD always goes to the very end of the
+    list. REMOVE and UPDATE need a position number so the computer knows exactly which
+    item to change. And positions always start at 0 — never 1!</p>
+</div>
+
+<!-- End of Helper Box Part 1 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 8 Arrays Part1 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: The Flavours Clipboard 🍿      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-1">
+<h3 class="exercise-title">Exercise 1: The Flavours Clipboard 🍿</h3>
+
+<h4 class="sub-title">Part A: Create the Flavours List</h4>
+
+<p>The supervisor hands you a clipboard with today's popcorn flavours. You need to create a list of flavours and read the first and third flavour by position.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "today's flavours" and set its value to <code>["Salted", "Sweet", "Spicy", "Toffee", "Cheese"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "first flavour" and set its value to <code>today's flavours[0]</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "third flavour" and set its value to <code>today's flavours[2]</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to display the first and third flavour:
+    <div class="code-example">
+      <code>SET today's flavours = ["Salted", "Sweet", "Spicy", "Toffee", "Cheese"]<br>
+      SET first flavour = today's flavours[0]<br>
+      SET third flavour = today's flavours[2]<br>
+      PRINT "First flavour: ", first flavour, "Third flavour: ", third flavour</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-a"></p>
+<pre class="output-block" id="arrays-output1-part-a"></pre>
+<pre class="answer-block" id="arrays-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Machine Numbers</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>The supervisor hands you a clipboard with the machine numbers for today. The first list on the clipboard shows the machine numbers. You need to create the list and read from it.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine numbers" and set its value to [1, 2, 3, 4, 5].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "second machine number" and set its value to the second item in the "machine numbers" list.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the second machine number and the last machine number.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now display the values you found:
+    <div class="code-example">
+      <code>SET machine numbers = [1, 2, 3, 4, 5]<br>SET second machine number = machine numbers[1]<br>SET last machine number = machine numbers[4]<br>PRINT "Second machine: ", second machine number, ", Last machine: ", last machine number</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-b"></p>
+<pre class="output-block" id="arrays-output1-part-b"></pre>
+<pre class="answer-block" id="arrays-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: The Assistants Clipboard 👦    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-2">
+<h3 class="exercise-title">Exercise 2: The Assistants Clipboard 👦</h3>
+
+<h4 class="sub-title">Part A: Create the Assistants List</h4>
+
+<p>The next list on the clipboard shows which children are helping at the factory today. One child didn't arrive so their name needs removing. Create a variable named "assistants" and set its value to ["Ben", "Sara", "Tom", "Aisha"]. Then, use PRINT to display the list.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to ["Ben", "Sara", "Tom", "Aisha"].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display the list of assistants.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to remove "Tom" from the list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-a"></p>
+<pre class="output-block" id="arrays-output2-part-a"></pre>
+<pre class="answer-block" id="arrays-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Adding a New Child</h4>
+
+<p>Ben and Sara are still helping at the factory, but Tom didn't arrive, so we need to remove his name from the list.</p>
+
+<p>Now, a new child called Jake has turned up to help, so we need to add his name to the list. The list of children helping at the factory today is stored in a variable called "assistants".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to ["Ben", "Sara", "Aisha"].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display the current list of assistants.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use REMOVE to remove "Aisha" from the list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to ADD "Jake" to the list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-b"></p>
+<pre class="output-block" id="arrays-output2-part-b"></pre>
+<pre class="answer-block" id="arrays-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: The Ingredients Clipboard 🧂   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-3">
+<h3 class="exercise-title">Exercise 3: The Ingredients Clipboard 🧂</h3>
+
+<h4 class="sub-title">Part A: Fix the Ingredients List</h4>
+
+<p>The ingredients list has some mistakes — the wrong ingredients were written down for two of the flavours. The children need to spot the errors and UPDATE the list before production starts. The list currently has the ingredients "Salt", "Sugar", "Chilli", "Butter", and "Milk". We need to update the list to have "Toffee Sauce" instead of "Butter" and "Cheese Powder" instead of "Milk".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to ["Salt", "Sugar", "Chilli", "Butter", "Milk"].</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to ["Salt", "Sugar", "Chilli", "Toffee Sauce", "Cheese Powder"].</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the updated ingredients list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to update the list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-a"></p>
+<pre class="output-block" id="arrays-output3-part-a"></pre>
+<pre class="answer-block" id="arrays-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Refine the Ingredients List</h4>
+
+<p>From Part A, we know the ingredients list has some mistakes — the wrong ingredients were written down for two of the flavours.</p>
+
+<p>Now, we need to refine the ingredients list further with more precise ingredient names. We have a new list of ingredients for two flavours: "Sea Salt" and "Hot Chilli Flakes". We need to update the list with these new ingredients.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to <code>["Salt", "Sugar", "Chilli", "Toffee Sauce", "Cheese Powder"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to <code>["Sea Salt", "Sugar", "Hot Chilli Flakes", "Toffee Sauce", "Cheese Powder"]</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the updated ingredients list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to update the ingredients list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-b"></p>
+<pre class="output-block" id="arrays-output3-part-b"></pre>
+<pre class="answer-block" id="arrays-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: The Machines Clipboard 🤖      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-4">
+<h3 class="exercise-title">Exercise 4: The Machines Clipboard 🤖</h3>
+
+<h4 class="sub-title">Part A: Loop through the Ready Machines List</h4>
+
+<p>The machines clipboard shows which machines are ready to start production. The children need to loop through the list and print the status of every machine so the supervisor knows which ones are good to go. We have a list of "ready machines" and we need to print each machine name.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ready machines" and set its value to <code>["Machine 1", "Machine 2", "Machine 3", "Machine 4"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "machine name" and set its value to <code>"Checking: "</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the machine name and the current machine from the list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through the ready machines list and print each machine name in the code block below.</li>
+</ul>
+
+<label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-a"></p>
+<pre class="output-block" id="arrays-output4-part-a"></pre>
+<pre class="answer-block" id="arrays-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Machine Status</h4>
+
+<p>Now that we know which machines are ready, let's check their status.</p>
+
+<p>On the machines clipboard, the supervisor has a list of machine statuses. The list is: "Ready", "Not Ready", "Ready", "Ready", "Not Ready". We need to loop through this list and print each status so the supervisor knows which machines are ready to go.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine status" and set its value to <code>"Ready", "Not Ready", "Ready", "Ready", "Not Ready"</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "status" and set its value to <code>VALUE</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Status: VALUE".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through the machine status list and print each status in the code block below.</li>
+</ul>
+
+<label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-b"></p>
+<pre class="output-block" id="arrays-output4-part-b"></pre>
+<pre class="answer-block" id="arrays-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: The Production Clipboard 📦    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-5">
+=== EXERCISE 5: THE PRODUCTION CLIPBOARD 📦 ===
+
+<h3 class="exercise-title">Exercise 5: The Production Clipboard 📦</h3>
+
+<h4 class="sub-title">Part A: Counting Total Machines</h4>
+
+<p>At the end of the visit, the children check the production clipboard which shows how many boxes each machine produced today. They write a function that takes the list and counts the total boxes produced.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "boxes produced" and set its value to <code>[12, 8, 15, 10, 9]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "total boxes" and set its value to <code>0</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Total machines that produced today: "</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use LENGTH OF to count the total number of machines that produced boxes in the code block below.</li>
+</ul>
+
+<label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex5-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint5-part-a"></p>
+<pre class="output-block" id="arrays-output5-part-a"></pre>
+<pre class="answer-block" id="arrays-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: First and Last Production Counts</h4>
+
+<p>Now that we have the total number of machines that produced boxes, let's find the first and last production counts.</p>
+
+<p>On the production clipboard, we have a list of boxes produced by each machine: "boxes produced" = [20, 18, 22, 16, 19]. We need to find the first and last production counts.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "first production count" and set its value to <code>boxes produced[0]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "last production count" and set its value to <code>boxes produced[4]</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "First machine produced: [first production count]" and "Last machine produced: [last production count]."</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to display the first and last production counts in the code block below.</li>
+</ul>
+
+<label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex5-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint5-part-b"></p>
+<pre class="output-block" id="arrays-output5-part-b"></pre>
+<pre class="answer-block" id="arrays-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-8-ARRAYS-PART1                   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

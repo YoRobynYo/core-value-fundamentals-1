@@ -9,7 +9,7 @@
 
 ## THE JOURNEY
 
-Children first start at school and carry out light tasks. Then on a day out they visit the Popcorn Factory and learn how it works by helping with various tasks.
+Children visit the Popcorn Factory and learn how it works by helping with various tasks.
 Each module represents a deeper level of understanding.
 
 **The Progression:**

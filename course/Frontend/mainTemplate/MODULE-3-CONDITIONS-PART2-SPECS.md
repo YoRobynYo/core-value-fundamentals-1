@@ -73,28 +73,28 @@ Exercise [NUMBER] following these specifications exactly."
 
 ---
 
-## EXERCISE 3: STATUS LIGHT COLOUR CHECK 🔴
+## EXERCISE 3: STATUS LIGHT COLOR CHECK 🔴
 
 **SECTION NAME:** conditions
 **EXERCISE NUMBER:** 3
 **EMOJI:** 🔴
 
-**SCENARIO:** Checking the colour of the machine's status light to ensure it's in the correct state for setup.
+**SCENARIO:** Checking the color of the machine's status light to ensure it's in the correct state for setup.
 
 **VARIABLES TO USE:**
-- Part A: "light colour", "expected colour"
-- Part B: "light colour", "expected colour"
+- Part A: "light color", "expected color"
+- Part B: "light color", "expected color"
 
 **CONCEPT:** Using exact matching with text to verify a machine's status.
 
-**PART A FOCUS:** Verify the status light is the correct colour ("red") for the setup phase.
-**PART B FOCUS:** Detect when the status light is an unexpected colour ("green"), indicating a problem.
+**PART A FOCUS:** Verify the status light is the correct color ("red") for the setup phase.
+**PART B FOCUS:** Detect when the status light is an unexpected color ("green"), indicating a problem.
 
 **IMAGE:** if-statement-not-equal-to.jpg
 **ALT TEXT:** "A diagram showing an IF statement checking if two values are not equal."
 
-**EXPECTED OUTPUT PART A:** "Is the light colour correct? true"
-**EXPECTED OUTPUT PART B:** "Is the light colour a mismatch? true"
+**EXPECTED OUTPUT PART A:** "Is the light color correct? true"
+**EXPECTED OUTPUT PART B:** "Is the light color a mismatch? true"
 
 ---
 
@@ -156,7 +156,7 @@ Exercise [NUMBER] following these specifications exactly."
 **Exercise Flow:**
 1. Bag positioning — is it exactly under the chute?
 2. Box numbers — does the number on the box match the station number?
-3. Status lights — is the light the correct colour for the setup phase?
+3. Status lights — is the light the correct color for the setup phase?
 4. Tool types — is it the right tool for the job?
 5. Power panel — is the machine switched on and ready?
 

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                  -->
+<!-- core-value-fundamentals                                      -->
+<!-- Language-Agnostic Edition                                    -->
+<!-- ============================================================ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: MODULE-8-ARRAYS-PART2                   █ -->
+<!-- █  // Module 8 Arrays Part2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<section class="page" id="arrays-module">
+
+<h2 class="module-title">Module 8 Arrays Part2</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Helper Boxes                     █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<!-- Helper Box Part 2: Arrays + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧 Using a List With a Function 🔧</h3>
+
+  <p>You already know how to create a function and how to create a list. Now we are
+    going to put them together — passing a list INTO a function so it can do something
+    useful with it!</p>
+
+  <h4 class="sub-title">Passing a List Into a Function:</h4>
+
+  <p>Imagine the teacher hands their clipboard to an assistant and says "read me the
+    first name on this list." The clipboard is the list — the assistant is the function!</p>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "read first name" TAKES "class names"<br>
+    &nbsp;&nbsp;PRINT "First on the list:", "class names"[0]<br>
+    END FUNCTION<br>
+    <br>
+    CALL "read first name" WITH "class names"
+  </div>
+
+  <p class="output">Output: First on the list: Ben</p>
+
+  <h4 class="sub-title">A Function That Gives Something Back:</h4>
+
+  <div class="code-block">
+    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+    <br>
+    FUNCTION "count names" TAKES "class names"<br>
+    &nbsp;&nbsp;RETURN LENGTH OF "class names"<br>
+    END FUNCTION<br>
+    <br>
+    SET "total" = CALL "count names" WITH "class names"<br>
+    PRINT "Total children:", "total"
+  </div>
+
+  <p class="output">Output: Total children: 4</p>
+
+  <p class="note">💡 <strong>Remember:</strong> A function can take a list as its
+    input, work with it, and give something back — just like handing a clipboard
+    to an assistant and asking them to report back!</p>
+</div>
+
+<!-- End of Helper Box Part 2 -->
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Helper Boxes                       █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercises                        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<h2 class="module-title">Module 8 Arrays Part2 — Exercises</h2>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 1                       █ -->
+<!-- █  // Exercise 1: Count the Flavours 🍿          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-1">
+<h3 class="exercise-title">Exercise 1: Count the Flavours 🍿</h3>
+
+<h4 class="sub-title">Part A: Write a Function to Count Flavours</h4>
+
+<p>The supervisor at the popcorn factory needs to know how many flavours are on today's production list. The children write a function that takes the flavours list and returns the total count.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "today's flavours" and set its value to <code>["Salted", "Sweet", "Spicy", "Toffee", "Cheese", "Butter"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function named "count flavours" that takes a list and returns the total count using LENGTH OF.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Total flavours today: " followed by the result of the function.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
+    <div class="code-example">
+      <code>SET today's flavours = ["Salted", "Sweet", "Spicy", "Toffee", "Cheese", "Butter"]<br>SET count = LENGTH OF today's flavours<br>PRINT "Total flavours today: ", count</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-a"></p>
+<pre class="output-block" id="arrays-output1-part-a"></pre>
+<pre class="answer-block" id="arrays-answer1-part-a"></pre>
+<h4 class="sub-title">Part B: Count Limited Flavours</h4>
+
+<p>Great work! Now let's try with different values.</p>
+
+<p>The supervisor at the popcorn factory needs to know how many flavours are on the limited menu today. The children write a function that takes the flavours list and returns the total count.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "limited flavours" and set its value to <code>["Salted", "Sweet", "Butter"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "count limited flavours" that takes a list and returns the total count using LENGTH OF.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Limited menu has: " followed by the result of the function.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's see the result:
+    <div class="code-example">
+      <code>SET limited flavours = ["Salted", "Sweet", "Butter"]<br>FUNCTION count limited flavours(list)<br>RETURN LENGTH OF list<br>END FUNCTION<br>PRINT "Limited menu has: ", count limited flavours(limited flavours)</code>
+    </div>
+  </li>
+</ul>
+
+<label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex1-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="1-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="1-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="1-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint1-part-b"></p>
+<pre class="output-block" id="arrays-output1-part-b"></pre>
+<pre class="answer-block" id="arrays-answer1-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 1                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 2                       █ -->
+<!-- █  // Exercise 2: First and Last Machine 🔧      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-2">
+<h3 class="exercise-title">Exercise 2: First and Last Machine 🔧</h3>
+
+<h4 class="sub-title">Part A: Get First and Last</h4>
+
+<p>The factory has a list of machine IDs. We need to write a function that takes the list and returns the first machine ID and the last machine ID using positions.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine IDs" and set its value to <code>[101, 102, 103, 104, 105]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "get first and last" that takes a list, returns the item at position 0 and the item at the last position using LENGTH OF - 1.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "First machine: " followed by the first machine ID and "Last machine: " followed by the last machine ID.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with the list of machine IDs in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-a"></p>
+<pre class="output-block" id="arrays-output2-part-a"></pre>
+<pre class="answer-block" id="arrays-answer2-part-a"></pre>
+<h4 class="sub-title">Part B: Get First and Last v2</h4>
+
+<p>Now we need to write a function that takes a shorter list of machine IDs and returns the first and last machine IDs using positions.</p>
+
+<p>Let's use the list of machine IDs: "machine IDs" = [201, 202, 203]. We need to write a function called "get first and last v2" that takes this list and returns the item at position 0 and the item at the last position using LENGTH OF - 1.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine IDs" and set its value to <code>[201, 202, 203]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "get first and last v2" that takes a list and returns the item at position 0 and the item at the last position using LENGTH OF - 1.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "First machine: " followed by the first machine ID and "Last machine: " followed by the last machine ID.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with the list of machine IDs and display the result in the code block below.</li>
+</ul>
+
+<label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex2-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="2-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="2-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="2-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint2-part-b"></p>
+<pre class="output-block" id="arrays-output2-part-b"></pre>
+<pre class="answer-block" id="arrays-answer2-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 2                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 3                       █ -->
+<!-- █  // Exercise 3: Check If List Has Items ✅      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-3">
+<h3 class="exercise-title">Exercise 3: Check If List Has Items ✅</h3>
+
+<h4 class="sub-title">Part A: Write a Function</h4>
+
+<p>The supervisor needs to check if the ingredients list has any items at all. The children write a function that returns "Ready to go!" if the list has items, or "No ingredients!" if it is empty. The ingredients list is already created and contains the following items: "Salt", "Sugar", and "Oil".</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to <code>["Salt", "Sugar", "Oil"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "check ingredients" that takes a list, uses LENGTH OF to see if it has items, and returns a message.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result of calling the "check ingredients" function with the "ingredients" list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "check ingredients" function with the "ingredients" list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-a"></p>
+<pre class="output-block" id="arrays-output3-part-a"></pre>
+<pre class="answer-block" id="arrays-answer3-part-a"></pre>
+<h4 class="sub-title">Part B: Checking an Empty List</h4>
+
+<p>Before starting production, the supervisor needs to check if the ingredients list has any items at all.</p>
+
+<p>Let's see what happens when we pass an empty list to our function. We create a variable named "ingredients" and set its value to <code>[]</code>.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ingredients" and set its value to <code>[]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the function we created in Part A to check if the list has any items.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check the list and display the result in the code block below.</li>
+</ul>
+
+<label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex3-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="3-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="3-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="3-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint3-part-b"></p>
+<pre class="output-block" id="arrays-output3-part-b"></pre>
+<pre class="answer-block" id="arrays-answer3-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 3                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 4                       █ -->
+<!-- █  // Exercise 4: Get Item by Position 📍        █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-4">
+<h3 class="exercise-title">Exercise 4: Get Item by Position 📍</h3>
+
+<h4 class="sub-title">Part A: Write a function called "get assistant" that takes a list and a position number, then returns the item at that position</h4>
+
+<p>The supervisor asks the children to write a helper function that can grab any item from the assistants list by its position number. The function takes a list AND a position number, then returns the item at that position. We will use the list "assistants" = ["Ben", "Sara", "Tom", "Aisha", "Jake"] to test our function.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to <code>["Ben", "Sara", "Tom", "Aisha", "Jake"]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "position" and set its value to <code>2</code>.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Assistant at position [position]:".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to return the item at the position in the code block below.</li>
+</ul>
+
+<label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-a"></p>
+<pre class="output-block" id="arrays-output4-part-a"></pre>
+<pre class="answer-block" id="arrays-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Get Assistant by Position</h4>
+
+<p>Now that we have a function to get an assistant by position, let's call it with a different position number.</p>
+
+<p>We have a list of assistants: "assistants" = ["Ben", "Sara", "Tom", "Aisha", "Jake"] and we want to get the assistant at position 4.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "position" and set its value to <code>4</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the function "get assistant" to get the assistant at the position we just created.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the assistant we got.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with the position 4 in the code block below.</li>
+</ul>
+
+<label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex4-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="4-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="4-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="4-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint4-part-b"></p>
+<pre class="output-block" id="arrays-output4-part-b"></pre>
+<pre class="answer-block" id="arrays-answer4-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 4                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Exercise 5                       █ -->
+<!-- █  // Exercise 5: Update List Inside Function ✏️ █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+<div class="exercise-box" id="arrays-exercise-5">
+<h3 class="exercise-title">Exercise 5: Update List Inside Function ✏️</h3>
+
+<h4 class="sub-title">Part A: Fix Box Count</h4>
+
+<p>The production list has a mistake — the wrong box count was recorded for one machine. The children write a function that takes the list, updates a specific position, and returns the updated list.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box counts" and set its value to <code>[12, 8, 15, 10, 9]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "fix box count" that takes a list as input.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, use UPDATE to change the second item in the list to 20.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to return the updated list in the code block below.</li>
+</ul>
+
+<label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex5-part-a" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="5-part-a">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="5-part-a">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="5-part-a">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint5-part-a"></p>
+<pre class="output-block" id="arrays-output5-part-a"></pre>
+<pre class="answer-block" id="arrays-answer5-part-a"></pre>
+<h4 class="sub-title">Part B: Fix Another Box</h4>
+
+<p>Now we need to fix the box count for another machine. Remember, we need to update position 3 to 25.</p>
+
+<p>Let's use the "box counts" list and update position 3 to 25. The list is "box counts" = [12, 8, 15, 10, 9]. We need to update the fourth item, which is at position 3.</p>
+
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "box counts" and set its value to <code>[12, 8, 15, 10, 9]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "fix another box" that takes the list, updates position 3 to 25, and returns the updated list.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the updated list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to fix the box count for another machine in the code block below.</li>
+</ul>
+
+<label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
+<div class="code-block" contenteditable="true" id="arrays-ex5-part-b" data-section="arrays"></div>
+
+<div class="exercise-buttons">
+  <button class="hint-button" data-section="arrays" data-ex="5-part-b">Hint</button>
+  <button class="run-button" data-section="arrays" data-ex="5-part-b">Run My Code</button>
+  <button class="reset-button" data-section="arrays" data-ex="5-part-b">Reset My Code</button>
+</div>
+
+<p class="hint" id="arrays-hint5-part-b"></p>
+<pre class="output-block" id="arrays-output5-part-b"></pre>
+<pre class="answer-block" id="arrays-answer5-part-b"></pre>
+</div>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercise 5                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Exercises                          █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: MODULE-8-ARRAYS-PART2                   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

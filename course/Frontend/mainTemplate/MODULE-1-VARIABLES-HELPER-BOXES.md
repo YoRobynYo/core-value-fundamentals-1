@@ -52,11 +52,11 @@ every exercise, and every helper box across the entire course.
 
   <p>Imagine you have a special labeled box sitting on your desk. You can put something
     inside it, read what's in it, and even swap it out for something new. That's exactly
-    what a variable is — a labeled box that your code uses to remember information!</p>
+    what a variable is — a labeled box that your program uses to remember information!</p>
 
   <h4 class="sub-title">Variables Remember Things For You</h4>
 
-  <p>When your code is running, it needs to remember things — like someone's name,
+  <p>When your program is running, it needs to remember things — like someone's name,
     a score, or how many items are left. Instead of writing the same information over and
     over, you store it once in a variable and use the label whenever you need it.</p>
 
@@ -171,7 +171,7 @@ every exercise, and every helper box across the entire course.
   <div class="code-block">
     SET "child name" = "Ben" ✅ (clear — it's a child's name)<br>
     SET "x" = "Ben" ❌ (what is x? we have no idea!)<br><br>
-    SET "number of children" = 25 ✅ (clear — it's a count of children)<br>
+    SET "number of children" = 25 ✅ (clear — it's a count of students)<br>
     SET "n" = 25 ❌ (n tells us nothing useful)
   </div>
 
@@ -270,7 +270,7 @@ every exercise, and every helper box across the entire course.
   <h3 class="box-title">💡 The Power of a Variable: Change It Once!</h3>
 
   <p>Here is where variables really start to show their superpower. Because your
-    code always reads the variable's label — not the value directly — you only
+    program always reads the variable's label — not the value directly — you only
     ever need to change the value in ONE place and everything updates automatically!</p>
 
   <h4 class="sub-title">Let's See This in Action:</h4>
