@@ -24,7 +24,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ## EXERCISE 1: COUNT HIGH SCORES FUNCTION 🏆
 
-**SECTION NAME:** arrays
+**SECTION NAME:** arrays66
 **EXERCISE NUMBER:** 1
 **EMOJI:** 🏆
 
@@ -49,7 +49,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ## EXERCISE 2: FILTER READY MACHINES ✅
 
-**SECTION NAME:** arrays
+**SECTION NAME:** arrays66
 **EXERCISE NUMBER:** 2
 **EMOJI:** ✅
 
@@ -74,7 +74,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ## EXERCISE 3: COUNT LOW STOCK ITEMS ⚠️
 
-**SECTION NAME:** arrays
+**SECTION NAME:** arrays66
 **EXERCISE NUMBER:** 3
 **EMOJI:** ⚠️
 
@@ -99,7 +99,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ## EXERCISE 4: PASS OR FAIL FUNCTION 📝
 
-**SECTION NAME:** arrays
+**SECTION NAME:** arrays66
 **EXERCISE NUMBER:** 4
 **EMOJI:** 📝
 
@@ -124,7 +124,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ## EXERCISE 5: COLLECT HIGH SCORES ONLY ⭐
 
-**SECTION NAME:** arrays
+**SECTION NAME:** arrays66
 **EXERCISE NUMBER:** 5
 **EMOJI:** ⭐
 
@@ -186,7 +186,7 @@ When AI generates the exercise, verify:
 - [ ] Uses PRINT with commas — no + concatenation
 - [ ] Uses `<code>` tags (not `<highlight>`)
 - [ ] IDs follow pattern: arrays-ex[number]-part-[letter]
-- [ ] Data attributes correct: data-section="arrays"
+- [ ] Data attributes correct: data-section="arrays6"
 - [ ] Empty hint/output/answer containers present
 - [ ] Expected outputs match the spec
 - [ ] Popcorn factory theme consistent throughout
@@ -194,5 +194,7 @@ When AI generates the exercise, verify:
 - [ ] Nothing used that hasn't been taught (Rule 6)
 
 ---
+
+- [ ] NEVER wrap exercise content in a helper-box div — exercises must be standalone inside exercise-box divs only
 
 **END OF MODULE 8 ARRAYS PART 6 SPECIFICATIONS**

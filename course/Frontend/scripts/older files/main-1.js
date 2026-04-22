@@ -2435,44 +2435,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const outputLines = [];
 
     // ----------------------------------------------------------
-    // HELPER: strip quotes from a name string
-    // ----------------------------------------------------------
-    function stripQuotes(s) {
-      s = s.trim();
-      if ((s.startsWith('"') && s.endsWith('"')) ||
-          (s.startsWith("'") && s.endsWith("'"))) {
-        return s.slice(1, -1);
-      }
-      return s;
-    }
-
-    // ----------------------------------------------------------
-    // RESOLVE A SINGLE VALUE (string literal, number, variable, array index)
+    // RESOLVE A SINGLE VALUE (string literal, number, variable)
     // ----------------------------------------------------------
     function resolveValue(val) {
       const trimmed = val.trim();
       if (trimmed === 'TRUE' || trimmed === 'true') return true;
       if (trimmed === 'FALSE' || trimmed === 'false') return false;
-
-      // LENGTH OF "list"
-      if (trimmed.startsWith('LENGTH OF ')) {
-        const listName = stripQuotes(trimmed.slice(10).trim());
-        const list = variables[listName];
-        if (Array.isArray(list)) return list.length;
-        return 0;
-      }
-
-      // Array index access: "list"[0] or list[0]
-      const bracketIdx = trimmed.lastIndexOf('[');
-      if (bracketIdx !== -1 && trimmed.endsWith(']')) {
-        const listPart = stripQuotes(trimmed.slice(0, bracketIdx).trim());
-        const indexPart = trimmed.slice(bracketIdx + 1, -1).trim();
-        const list = variables[listPart];
-        const index = resolveValue(indexPart);
-        if (Array.isArray(list)) return list[index] !== undefined ? list[index] : '';
-        return '';
-      }
-
       if ((trimmed.startsWith('"') && trimmed.endsWith('"')) ||
           (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
         const inner = trimmed.slice(1, -1);
@@ -2583,44 +2551,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Save current variables, bind parameters
       const savedVars = { ...variables };
-      // Clear variables and set only params
-      Object.keys(variables).forEach(k => delete variables[k]);
-      // Restore saved vars so function can read outer variables if needed
-      Object.assign(variables, savedVars);
-      // Now bind the parameters (overwriting any outer vars with same name)
       func.params.forEach((p, i) => {
         variables[p] = args[i] !== undefined ? args[i] : undefined;
       });
 
       let returnValue = undefined;
+      const funcLines = func.body.map(l => l.trim()).filter(l => l !== '');
 
-      // Use a special flag to capture RETURN value from executeBlock
-      const returnCapture = { value: undefined, returned: false };
-
-      // Inject RETURN handling by prepending a marker
-      const funcLines = func.body.slice();
-
-      // Find and handle RETURN before passing to executeBlock
-      // We process line by line to intercept RETURN
       let fi = 0;
-      const processedLines = [];
       while (fi < funcLines.length) {
         const fl = funcLines[fi].trim();
+
         if (fl.startsWith('RETURN ')) {
-          // Execute everything before this line
-          if (processedLines.length > 0) {
-            executeBlock(processedLines);
-          }
           returnValue = resolveValue(fl.slice(7).trim());
           break;
         }
-        processedLines.push(funcLines[fi]);
-        fi++;
-      }
 
-      // If no RETURN found, execute all lines
-      if (fi >= funcLines.length && processedLines.length > 0) {
-        executeBlock(processedLines);
+        // SET inside function
+        if (fl.startsWith('SET ')) {
+          const rest = fl.slice(4).trim();
+          const eqIdx = rest.indexOf('=');
+          if (eqIdx !== -1) {
+            let varName = rest.slice(0, eqIdx).trim();
+            let valExpr = rest.slice(eqIdx + 1).trim();
+            if (varName.startsWith('"') && varName.endsWith('"'))
+              varName = varName.slice(1, -1);
+            if (valExpr.startsWith('CALL ')) {
+              variables[varName] = callFunction(valExpr.slice(5).trim());
+            } else {
+              variables[varName] = resolveExpression(valExpr);
+            }
+          }
+          fi++;
+          continue;
+        }
+
+        // PRINT inside function
+        if (fl.startsWith('PRINT ')) {
+          const rest = fl.slice(6).trim();
+          const parts = [];
+          let current = '';
+          let inQuote = false;
+          for (let c = 0; c < rest.length; c++) {
+            if (rest[c] === '"') inQuote = !inQuote;
+            if (rest[c] === ',' && !inQuote) {
+              parts.push(current);
+              current = '';
+            } else {
+              current += rest[c];
+            }
+          }
+          if (current.trim()) parts.push(current);
+          const result = parts.map(p => {
+            const pt = p.trim();
+            return resolveValue(pt);
+          }).join(' ');
+          outputLines.push(String(result));
+          fi++;
+          continue;
+        }
+
+        fi++;
       }
 
       // Restore variables after function call
@@ -2638,90 +2629,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let idx = 0;
         while (idx < blockLines.length) {
           const line = blockLines[idx].trim();
-
-          // CREATE LIST
-          if (line.startsWith('CREATE LIST ')) {
-            const listName = stripQuotes(line.slice(12).trim());
-            variables[listName] = [];
-            idx++;
-            continue;
-          }
-
-          // ADD "item" TO "list"
-          if (line.startsWith('ADD ')) {
-            const toIdx = line.indexOf(' TO ');
-            if (toIdx !== -1) {
-              const itemExpr = line.slice(4, toIdx).trim();
-              const listName = stripQuotes(line.slice(toIdx + 4).trim());
-              const item = resolveValue(itemExpr);
-              if (!Array.isArray(variables[listName])) variables[listName] = [];
-              variables[listName].push(item);
-            }
-            idx++;
-            continue;
-          }
-
-          // REMOVE "item" FROM "list"
-          if (line.startsWith('REMOVE ')) {
-            const fromIdx = line.indexOf(' FROM ');
-            if (fromIdx !== -1) {
-              const itemExpr = line.slice(7, fromIdx).trim();
-              const listName = stripQuotes(line.slice(fromIdx + 6).trim());
-              const item = resolveValue(itemExpr);
-              if (Array.isArray(variables[listName])) {
-                variables[listName] = variables[listName].filter(x => x !== item);
-              }
-            }
-            idx++;
-            continue;
-          }
-
-          // UPDATE "list"[index] = value
-          if (line.startsWith('UPDATE ')) {
-            const eqIdx = line.indexOf('=');
-            if (eqIdx !== -1) {
-              const target = line.slice(7, eqIdx).trim();
-              const valExpr = line.slice(eqIdx + 1).trim();
-              const bracketIdx = target.lastIndexOf('[');
-              if (bracketIdx !== -1 && target.endsWith(']')) {
-                const listName = stripQuotes(target.slice(0, bracketIdx).trim());
-                const indexVal = resolveValue(target.slice(bracketIdx + 1, -1).trim());
-                const newVal = resolveValue(valExpr);
-                if (Array.isArray(variables[listName])) {
-                  variables[listName][indexVal] = newVal;
-                }
-              }
-            }
-            idx++;
-            continue;
-          }
-
-          // FOR EACH "item" IN "list"
-          if (line.startsWith('FOR EACH ')) {
-            const inIdx = line.indexOf(' IN ');
-            if (inIdx !== -1) {
-              const itemVar = stripQuotes(line.slice(9, inIdx).trim());
-              const listName = stripQuotes(line.slice(inIdx + 4).trim());
-              const loopBody = [];
-              idx++;
-              while (idx < blockLines.length &&
-                     blockLines[idx].trim() !== 'END FOR' &&
-                     blockLines[idx].trim() !== 'END EACH') {
-                loopBody.push(blockLines[idx]);
-                idx++;
-              }
-              const list = variables[listName];
-              if (Array.isArray(list)) {
-                for (const item of list) {
-                  variables[itemVar] = item;
-                  executeBlock(loopBody);
-                }
-                delete variables[itemVar];
-              }
-            }
-            idx++;
-            continue;
-          }
 
           // SET
           if (line.startsWith('SET ')) {

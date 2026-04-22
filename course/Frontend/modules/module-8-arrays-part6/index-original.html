@@ -104,65 +104,73 @@
 <!-- █  // Start::: Exercise 1                       █ -->
 <!-- █  // Exercise 1: Count High Scores Function 🏆  █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-1">
-<h3 class="exercise-title">Exercise 1: Count High Scores Function 🏆</h3>
+<div class="exercise-box" id="arrays6-exercise-1">
+<!-- Helper Box Part 6: Lists + Conditions + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧❓ Putting It All Together — Lists, Conditions and Functions 🔧❓</h3>
 
-<h4 class="sub-title">Part A: Quality Scores</h4>
+  <h3 class="exercise-title">Exercise 1: Count High Scores Function 🏆</h3>
 
-<p>The factory tracks quality scores for each batch of popcorn. The children write a function that counts how many batches scored above 85.</p>
+  <h4 class="sub-title">Part A: Counting High Quality Batches</h4>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to [92, 78, 88, 95, 67, 89, 76].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "high count" and set its value to 0.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "high count: ".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to set up the classroom:
-    <div class="code-example">
-      <code>SET high count = 0<br>FOR EACH score IN quality scores<br>IF score > 85 THEN<br>ADD 1 TO high count<br>END IF<br>END FOR<br>PRINT "high count: ", high count</code>
-    </div>
-  </li>
-</ul>
+  <p>The factory tracks quality scores for each batch of popcorn. We need to write a function that counts how many batches scored above 85.</p>
 
-<label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex1-part-a" data-section="arrays6"></div>
+  <ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to [92, 78, 88, 95, 67, 89, 76].</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "high count" and set its value to 0.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through each score in "quality scores". If the score is greater than 85, add 1 to "high count".</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the high quality batches:
+      <div class="code-example">
+        <code>SET high count = 0<br>FOR EACH score IN quality scores<br>IF score > 85 THEN<br>ADD 1 TO high count<br>END IF<br>END FOR<br>PRINT "Batches above 85: ", high count</code>
+      </div>
+    </li>
+  </ul>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays6" data-ex="1-part-a">Hint</button>
-  <button class="run-button" data-section="arrays6" data-ex="1-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays6" data-ex="1-part-a">Reset My Code</button>
-</div>
+  <label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="arrays6-ex1-part-a" data-section="arrays6"></div>
 
-<p class="hint" id="arrays-hint1-part-a"></p>
-<pre class="output-block" id="arrays-output1-part-a"></pre>
-<pre class="answer-block" id="arrays-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Counting High Scores</h4>
+  <div class="exercise-buttons">
+    <button class="hint-button" data-section="arrays6" data-ex="1-part-a">Hint</button>
+    <button class="run-button" data-section="arrays6" data-ex="1-part-a">Run My Code</button>
+    <button class="reset-button" data-section="arrays6" data-ex="1-part-a">Reset My Code</button>
+  </div>
 
-<p>Great work! Now let's try with different values.</p>
+  <p class="hint" id="arrays6-hint1-part-a"></p>
+  <pre class="output-block" id="arrays6-output1-part-a"></pre>
+  <pre class="answer-block" id="arrays6-answer1-part-a"></pre>
+<!-- Helper Box Part 6: Lists + Conditions + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧❓ Putting It All Together — Lists, Conditions and Functions 🔧❓</h3>
 
-<p>Imagine we have a new batch of popcorn with quality scores. We want to count how many batches scored above 85.</p>
+  <h4 class="sub-title">Part B: Counting High Scores</h4>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to [84, 91, 73, 86, 94, 68].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "count high quality" that takes a list called "scores". Set "high count" = 0. Use FOR EACH — IF score > 85, add 1 to "high count". RETURN "high count".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Batches above 85: " followed by the result of the function.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's call the function with the new quality scores:
-    <div class="code-example">
-      <code>SET quality scores = [84, 91, 73, 86, 94, 68]<br>SET high count = 0<br>FOR EACH score IN quality scores<br>  IF score > 85<br>    ADD 1 TO high count<br>  END IF<br>END FOR<br>PRINT "Batches above 85: ", high count</code>
-    </div>
-  </li>
-</ul>
+  <p>Great work! Now let's try with different values.</p>
 
-<label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex1-part-b" data-section="arrays6"></div>
+  <p>Let's see how many batches of popcorn scored above 85 out of the following scores: "quality scores" = [84, 91, 73, 86, 94, 68].</p>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays6" data-ex="1-part-b">Hint</button>
-  <button class="run-button" data-section="arrays6" data-ex="1-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays6" data-ex="1-part-b">Reset My Code</button>
-</div>
+  <ul class="indented-list">
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to <code>[84, 91, 73, 86, 94, 68]</code>.</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the "count high quality" function to count how many scores are above 85.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now let's see the code:
+      <div class="code-example">
+        <code>SET quality scores = [84, 91, 73, 86, 94, 68]<br>SET high count = 0<br>FOR EACH score IN quality scores<br>IF score > 85<br>ADD 1 TO high count<br>END IF<br>END FOR<br>PRINT "Batches above 85: ", high count</code>
+      </div>
+    </li>
+  </ul>
 
-<p class="hint" id="arrays-hint1-part-b"></p>
-<pre class="output-block" id="arrays-output1-part-b"></pre>
-<pre class="answer-block" id="arrays-answer1-part-b"></pre>
+  <label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
+  <div class="code-block" contenteditable="true" id="arrays6-ex1-part-b" data-section="arrays6"></div>
+
+  <div class="exercise-buttons">
+    <button class="hint-button" data-section="arrays6" data-ex="1-part-b">Hint</button>
+    <button class="run-button" data-section="arrays6" data-ex="1-part-b">Run My Code</button>
+    <button class="reset-button" data-section="arrays6" data-ex="1-part-b">Reset My Code</button>
+  </div>
+
+  <p class="hint" id="arrays6-hint1-part-b"></p>
+  <pre class="output-block" id="arrays6-output1-part-b"></pre>
+  <pre class="answer-block" id="arrays6-answer1-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 1                         █ -->
@@ -172,22 +180,23 @@
 <!-- █  // Start::: Exercise 2                       █ -->
 <!-- █  // Exercise 2: Filter Ready Machines ✅        █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-2">
+<div class="exercise-box" id="arrays6-exercise-2">
+<!-- Exercise 2: Filter Ready Machines ✅ -->
 <h3 class="exercise-title">Exercise 2: Filter Ready Machines ✅</h3>
 
 <h4 class="sub-title">Part A: Get Ready Machines</h4>
 
-<p>The factory needs a list of only the machines that are "Ready". We will write a function that takes a status list and returns a new list with only the ready machines.</p>
+<p>The factory needs a list of only the machines that are "Ready". Write a function that takes a status list and returns a new list with only the ready machines.</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine statuses" and set its value to <code>["Ready", "Not Ready", "Ready", "Ready", "Not Ready", "Ready"]</code>.</li>
   <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "ready list" and set its value to <code>[]</code>.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "machine statuses" and "ready list".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to create a function called "get ready machines" that takes a list called "statuses", sets "ready list" to [], uses FOR EACH to check each status in "statuses", and adds the status to "ready list" if it equals "Ready", then returns "ready list".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Machine statuses: machine statuses".</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop to check each status in "machine statuses". If the status is "Ready", add it to "ready list".</li>
 </ul>
 
 <label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex2-part-a" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex2-part-a" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="2-part-a">Hint</button>
@@ -195,24 +204,24 @@
   <button class="reset-button" data-section="arrays6" data-ex="2-part-a">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint2-part-a"></p>
-<pre class="output-block" id="arrays-output2-part-a"></pre>
-<pre class="answer-block" id="arrays-answer2-part-a"></pre>
+<p class="hint" id="arrays6-hint2-part-a"></p>
+<pre class="output-block" id="arrays6-output2-part-a"></pre>
+<pre class="answer-block" id="arrays6-answer2-part-a"></pre>
 <h4 class="sub-title">Part B: Filter Ready Machines</h4>
 
-<p>From Part A, we know that we can use a function to filter a list of machine statuses.</p>
+<p>Now that we have a function to get the ready machines, let's use it with a different list of statuses.</p>
 
-<p>In Part B, we have a new list of machine statuses: "machine statuses" = ["Not Ready", "Ready", "Not Ready", "Not Ready", "Ready"]. We want to use the same function to get a list of only the ready machines.</p>
+<p>The factory has another list of machine statuses: "Not Ready", "Ready", "Not Ready", "Not Ready", "Ready". We want to find the ready machines from this list.</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine statuses" and set its value to ["Not Ready", "Ready", "Not Ready", "Not Ready", "Ready"].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "get ready machines" function with the new list of machine statuses.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the list of ready machines.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function and print the result in the code block below.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the "get ready machines" function with the "machine statuses" variable and store the result in a new variable named "ready machines".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "ready machines" list.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "get ready machines" function with the "machine statuses" variable in the code block below.</li>
 </ul>
 
 <label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex2-part-b" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex2-part-b" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="2-part-b">Hint</button>
@@ -220,9 +229,9 @@
   <button class="reset-button" data-section="arrays6" data-ex="2-part-b">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint2-part-b"></p>
-<pre class="output-block" id="arrays-output2-part-b"></pre>
-<pre class="answer-block" id="arrays-answer2-part-b"></pre>
+<p class="hint" id="arrays6-hint2-part-b"></p>
+<pre class="output-block" id="arrays6-output2-part-b"></pre>
+<pre class="answer-block" id="arrays6-answer2-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 2                         █ -->
@@ -232,24 +241,26 @@
 <!-- █  // Start::: Exercise 3                       █ -->
 <!-- █  // Exercise 3: Count Low Stock Items ⚠️       █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-3">
-<!-- Exercise 3: Count Low Stock Items ⚠️ -->
-<div class="exercise">
+<div class="exercise-box" id="arrays6-exercise-3">
+<!-- Helper Box Part 6: Lists + Conditions + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧❓ Putting It All Together — Lists, Conditions and Functions 🔧❓</h3>
+
   <h3 class="exercise-title">Exercise 3: Count Low Stock Items ⚠️</h3>
 
   <h4 class="sub-title">Part A: Counting Low Stock</h4>
 
-  <p>The factory needs to know how many ingredients are low (5 or fewer bags left). The children write a function that counts low stock items.</p>
+  <p>The factory needs to know how many ingredients are low (5 or fewer bags left). The children write a function that counts low stock items. They will use the "stock levels" list to find out how many ingredients are low.</p>
 
   <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stock levels" and set its value to <code>[8, 3, 12, 4, 7]</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "count low stock" that takes a list called "levels". Set "low count" = 0.</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use FOR EACH — IF "level" <= 5, add 1 to "low count".</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to RETURN "low count" in the code block below.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stock levels" and set its value to [8, 3, 12, 4, 7].</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "low count" and set its value to 0.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Low stock ingredients: "</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the number of ingredients in "stock levels" that are low (5 or fewer bags left) and add it to "low count".</li>
   </ul>
 
   <label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
-  <div class="code-block" contenteditable="true" id="arrays-ex3-part-a" data-section="arrays6"></div>
+  <div class="code-block" contenteditable="true" id="arrays6-ex3-part-a" data-section="arrays6"></div>
 
   <div class="exercise-buttons">
     <button class="hint-button" data-section="arrays6" data-ex="3-part-a">Hint</button>
@@ -257,25 +268,26 @@
     <button class="reset-button" data-section="arrays6" data-ex="3-part-a">Reset My Code</button>
   </div>
 
-  <p class="hint" id="arrays-hint3-part-a"></p>
-  <pre class="output-block" id="arrays-output3-part-a"></pre>
-  <pre class="answer-block" id="arrays-answer3-part-a"></pre>
+  <p class="hint" id="arrays6-hint3-part-a"></p>
+  <pre class="output-block" id="arrays6-output3-part-a"></pre>
+  <pre class="answer-block" id="arrays6-answer3-part-a"></pre>
 </div>
-<h4 class="sub-title">Part B: Counting Low Stock</h4>
+<h4 class="sub-title">Part B: Count Low Stock Ingredients</h4>
 
-<p>Now we need to count the low stock ingredients for the second list of stock levels.</p>
+<p>Now we need to count how many ingredients are low in stock at the popcorn factory.</p>
 
-<p>The factory has the following stock levels: "stock levels" = [2, 9, 5, 11, 1]. We need to count how many ingredients are low (5 or fewer bags left).</p>
+<p>The factory has a list of stock levels: "stock levels" = [2, 9, 5, 11, 1]. We need to write a function that counts how many ingredients are low in stock (5 or fewer bags left).</p>
 
 <ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stock levels" and set its value to [2, 9, 5, 11, 1].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "count low stock" that takes a list called "levels". Set "low count" = 0. Use FOR EACH — IF "level" <= 5, add 1 to "low count". RETURN "low count".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "Low stock ingredients: " followed by the result of the function.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function with the second list and print the result in the code block below.</li>
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "low count" and set its value to 0.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through each "level" in the "stock levels" list.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use IF "level" <= 5 to check if the level is low in stock.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;If the level is low in stock, add 1 to the "low count" variable.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;After the loop, use PRINT to display "Low stock ingredients: " followed by the "low count" value.</li>
 </ul>
 
 <label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex3-part-b" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex3-part-b" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="3-part-b">Hint</button>
@@ -283,9 +295,9 @@
   <button class="reset-button" data-section="arrays6" data-ex="3-part-b">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint3-part-b"></p>
-<pre class="output-block" id="arrays-output3-part-b"></pre>
-<pre class="answer-block" id="arrays-answer3-part-b"></pre>
+<p class="hint" id="arrays6-hint3-part-b"></p>
+<pre class="output-block" id="arrays6-output3-part-b"></pre>
+<pre class="answer-block" id="arrays6-answer3-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 3                         █ -->
@@ -295,23 +307,22 @@
 <!-- █  // Start::: Exercise 4                       █ -->
 <!-- █  // Exercise 4: Pass or Fail Function 📝       █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-4">
-<!-- Exercise 4: Pass or Fail Function 📝 -->
+<div class="exercise-box" id="arrays6-exercise-4">
 <h3 class="exercise-title">Exercise 4: Pass or Fail Function 📝</h3>
 
 <h4 class="sub-title">Part A: Mark Results</h4>
 
-<p>The factory tests each machine's performance. The children write a function that takes a list of test scores and returns a new list with "Pass" for scores 70 or above, and "Fail" for scores below 70. We will use the list of "test scores" = [85, 62, 91, 48, 77, 53].</p>
+<p>The factory tests each machine's performance. The children write a function that takes a list of test scores and returns a new list with "Pass" for scores 70 or above, and "Fail" for scores below 70. The list of test scores is "test scores" = [85, 62, 91, 48, 77, 53].</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "test scores" and set its value to [85, 62, 91, 48, 77, 53].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "mark results" that takes a list called "scores".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the variable name "scores" and its value.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop to check each score in the "scores" list. If the score is 70 or above, ADD "Pass" to the "results" list. Otherwise, ADD "Fail" to the "results" list.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "results" and set its value to an empty list.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the list of test scores.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop to add "Pass" to the "results" list if the score is 70 or above, and add "Fail" to the "results" list if the score is below 70.</li>
 </ul>
 
 <label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex4-part-a" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex4-part-a" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="4-part-a">Hint</button>
@@ -319,24 +330,24 @@
   <button class="reset-button" data-section="arrays6" data-ex="4-part-a">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint4-part-a"></p>
-<pre class="output-block" id="arrays-output4-part-a"></pre>
-<pre class="answer-block" id="arrays-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Using the Mark Results Function</h4>
+<p class="hint" id="arrays6-hint4-part-a"></p>
+<pre class="output-block" id="arrays6-output4-part-a"></pre>
+<pre class="answer-block" id="arrays6-answer4-part-a"></pre>
+<h4 class="sub-title">Part B: Marking Results</h4>
 
-<p>Now that we have a function called "mark results" that works with the test scores, let's use it with a new list of scores.</p>
+<p>Let's see how we can use the "mark results" function with a different list of test scores.</p>
 
-<p>We have a new list of test scores called "test scores" = [95, 44, 68, 82, 59]. We want to use the "mark results" function to get a new list with "Pass" for scores 70 or above, and "Fail" for scores below 70.</p>
+<p>Here are the test scores for a new batch of machines: "test scores" = [95, 44, 68, 82, 59]. We want to use the "mark results" function to get a list of "Pass" or "Fail" for each score.</p>
 
 <ul class="indented-list">
   <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "test scores" and set its value to [95, 44, 68, 82, 59].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the "mark results" function to process the "test scores" list and store the result in a new variable called "results".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the "results" list.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use the "mark results" function with the "test scores" list in the code block below.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the "mark results" function to get a new list of "Pass" or "Fail" for each score.</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display the result.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the "mark results" function with the new list of test scores in the code block below.</li>
 </ul>
 
 <label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex4-part-b" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex4-part-b" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="4-part-b">Hint</button>
@@ -344,9 +355,9 @@
   <button class="reset-button" data-section="arrays6" data-ex="4-part-b">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint4-part-b"></p>
-<pre class="output-block" id="arrays-output4-part-b"></pre>
-<pre class="answer-block" id="arrays-answer4-part-b"></pre>
+<p class="hint" id="arrays6-hint4-part-b"></p>
+<pre class="output-block" id="arrays6-output4-part-b"></pre>
+<pre class="answer-block" id="arrays6-answer4-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 4                         █ -->
@@ -356,31 +367,24 @@
 <!-- █  // Start::: Exercise 5                       █ -->
 <!-- █  // Exercise 5: Collect High Scores Only ⭐     █ -->
 <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-5">
-=== YOUR TASK ===
-Generate the HTML fragment for Exercise 5 Part A.
+<div class="exercise-box" id="arrays6-exercise-5">
+<!-- Exercise 5: Collect High Scores Only ⭐ -->
+<h3 class="exercise-title">Exercise 5: Collect High Scores Only ⭐</h3>
 
-STRUCTURE — output these elements in this exact order:
+<h4 class="sub-title">Part A: Get High Scores</h4>
 
-1. <h3 class="exercise-title">Exercise 5: Collect High Scores Only ⭐</h3>
+<p>The supervisor wants a list of only the high quality scores (above 85). You will write a function that takes a list of scores and returns a new list containing only the scores that are above 85.</p>
 
-2. <h4 class="sub-title">Part A: Focus on Quality Scores</h4>
+<ul class="indented-list">
+  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to <code>[92, 78, 88, 95, 67, 89, 76]</code>.</li>
+  <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "get high scores" that takes a list called "scores".</li>
+  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the function, create a new list called "high scores" and set it to <code>[]</code>.</li>
+  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through each score in the "scores" list. If the score is greater than 85, add it to the "high scores" list.</li>
+  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display "High scores:", followed by the "high scores" list.</li>
+</ul>
 
-3. <p>The supervisor wants a list of only the high quality scores (above 85). Write a function that takes a list of scores and returns a new list containing only the scores that are above 85.</p>
-
-4. <ul class="indented-list">
-     <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to <code>[92, 78, 88, 95, 67, 89, 76]</code>.</li>
-     <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a function called "get high scores" that takes a list called "scores". Set "high scores" = <code>[]</code>.</li>
-     <li><strong>Step 3:</strong>&nbsp;&nbsp;Use FOR EACH to loop through the "scores" list. If "score" > 85, ADD "score" to "high scores".</li>
-     <li><strong>Step 4:</strong>&nbsp;&nbsp;Use PRINT to display "High scores:", followed by "high scores".</li>
-     <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to call the "get high scores" function with the "quality scores" list in the code block below.</li>
-   </ul>
-
-⚠️ Step 5 is ONE sentence only — no pseudocode, no code-example div.
-
-=== COPY THIS FOOTER EXACTLY — DO NOT CHANGE ANY IDs OR ATTRIBUTES ===
 <label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex5-part-a" data-section="arrays6"></div>
+<div class="code-block" contenteditable="true" id="arrays6-ex5-part-a" data-section="arrays6"></div>
 
 <div class="exercise-buttons">
   <button class="hint-button" data-section="arrays6" data-ex="5-part-a">Hint</button>
@@ -388,23 +392,28 @@ STRUCTURE — output these elements in this exact order:
   <button class="reset-button" data-section="arrays6" data-ex="5-part-a">Reset My Code</button>
 </div>
 
-<p class="hint" id="arrays-hint5-part-a"></p>
-<pre class="output-block" id="arrays-output5-part-a"></pre>
-<pre class="answer-block" id="arrays-answer5-part-a"></pre>
-<!-- Exercise 5 Part B: Collect High Scores Only ⭐ -->
-<div class="exercise-box" id="arrays-ex5-part-b" data-section="arrays6">
+<p class="hint" id="arrays6-hint5-part-a"></p>
+<pre class="output-block" id="arrays6-output5-part-a"></pre>
+<pre class="answer-block" id="arrays6-answer5-part-a"></pre>
+<!-- Helper Box Part 6: Lists + Conditions + Functions -->
+<div class="helper-box">
+  <h3 class="box-title">🔧❓ Putting It All Together — Lists, Conditions and Functions 🔧❓</h3>
+
   <h4 class="sub-title">Part B: Filter High Scores</h4>
-  <p>Now that you have learned how to count high scores, let's use this function to filter a list of scores and return only the high scores.</p>
-  <p>Here is another list of scores: "quality scores" = [84, 91, 73, 86, 94, 68]. Use the function you wrote in Part A to filter out the scores that are below 85.</p>
+
+  <p>Now that we have a function that gets high scores, let's use it with a different list of scores.</p>
+
+  <p>In this part, we will use the same function with a new list of scores: "quality scores" = [84, 91, 73, 86, 94, 68]. We want to find out which scores are above 85.</p>
+
   <ul class="indented-list">
-    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scores" and set its value to <code>[84, 91, 73, 86, 94, 68]</code>.</li>
-    <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function "get high scores" with the variable "scores" and assign the result to a new variable called "high scores".</li>
-    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "High scores:", followed by the variable "high scores" with commas.</li>
-    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function "get high scores" with the variable "scores" and display the result in the code block below.</li>
+    <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "quality scores" and set its value to [84, 91, 73, 86, 94, 68].</li>
+    <li><strong>Step 2:</strong>&nbsp;&nbsp;Call the function "get high scores" with "quality scores" as the argument.</li>
+    <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "High scores:", followed by the list of high scores.</li>
+    <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to call the function and print the high scores in the code block below.</li>
   </ul>
 
   <label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
-  <div class="code-block" contenteditable="true" id="arrays-ex5-part-b" data-section="arrays6"></div>
+  <div class="code-block" contenteditable="true" id="arrays6-ex5-part-b" data-section="arrays6"></div>
 
   <div class="exercise-buttons">
     <button class="hint-button" data-section="arrays6" data-ex="5-part-b">Hint</button>
@@ -412,10 +421,9 @@ STRUCTURE — output these elements in this exact order:
     <button class="reset-button" data-section="arrays6" data-ex="5-part-b">Reset My Code</button>
   </div>
 
-  <p class="hint" id="arrays-hint5-part-b"></p>
-  <pre class="output-block" id="arrays-output5-part-b"></pre>
-  <pre class="answer-block" id="arrays-answer5-part-b"></pre>
-</div>
+  <p class="hint" id="arrays6-hint5-part-b"></p>
+  <pre class="output-block" id="arrays6-output5-part-b"></pre>
+  <pre class="answer-block" id="arrays6-answer5-part-b"></pre>
 </div>
 <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
 <!-- █  // End::: Exercise 5                         █ -->

@@ -148,6 +148,26 @@ This produces `module-content-map.txt` — compare it against the Course Content
 
 ---
 
+### Rebuilding a Single Module
+
+The rebuild-new.js script does NOT accept command line arguments — it ignores them. The module to rebuild is hardcoded inside the file.
+
+To rebuild a specific module:
+
+    Open rebuild-new.js
+    Find the MODULES_TO_REBUILD array at the top
+    Change the module name to the one you want to rebuild
+    Run node rebuild-new.js
+    After rebuild, run node audit-html.js to lock it
+
+Also remember:
+
+    Remove the module from locked-modules.json first — otherwise the rebuild won't overwrite it
+    Keep the old folder as a backup by renaming it before rebuilding
+    Always check the API STATUS during the build — stop immediately if only Ollama is available
+
+---
+
 ## COURSE CONTENT MAP
 
 > This section was last generated: **April 2026**

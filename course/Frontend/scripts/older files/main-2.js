@@ -2360,24 +2360,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-			arrays: {
-					// "1-part-a": { hints: [], answer: "" },
-					// "1-part-b": { hints: [], answer: "" }
-			},
-
 			objects: {
 					// "1-part-a": { hints: [], answer: "" },
 					// "1-part-b": { hints: [], answer: "" }
@@ -2583,44 +2565,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Save current variables, bind parameters
       const savedVars = { ...variables };
-      // Clear variables and set only params
-      Object.keys(variables).forEach(k => delete variables[k]);
-      // Restore saved vars so function can read outer variables if needed
-      Object.assign(variables, savedVars);
-      // Now bind the parameters (overwriting any outer vars with same name)
       func.params.forEach((p, i) => {
         variables[p] = args[i] !== undefined ? args[i] : undefined;
       });
 
       let returnValue = undefined;
+      const funcLines = func.body.map(l => l.trim()).filter(l => l !== '');
 
-      // Use a special flag to capture RETURN value from executeBlock
-      const returnCapture = { value: undefined, returned: false };
-
-      // Inject RETURN handling by prepending a marker
-      const funcLines = func.body.slice();
-
-      // Find and handle RETURN before passing to executeBlock
-      // We process line by line to intercept RETURN
       let fi = 0;
-      const processedLines = [];
       while (fi < funcLines.length) {
         const fl = funcLines[fi].trim();
+
         if (fl.startsWith('RETURN ')) {
-          // Execute everything before this line
-          if (processedLines.length > 0) {
-            executeBlock(processedLines);
-          }
           returnValue = resolveValue(fl.slice(7).trim());
           break;
         }
-        processedLines.push(funcLines[fi]);
-        fi++;
-      }
 
-      // If no RETURN found, execute all lines
-      if (fi >= funcLines.length && processedLines.length > 0) {
-        executeBlock(processedLines);
+        // SET inside function
+        if (fl.startsWith('SET ')) {
+          const rest = fl.slice(4).trim();
+          const eqIdx = rest.indexOf('=');
+          if (eqIdx !== -1) {
+            let varName = rest.slice(0, eqIdx).trim();
+            let valExpr = rest.slice(eqIdx + 1).trim();
+            if (varName.startsWith('"') && varName.endsWith('"'))
+              varName = varName.slice(1, -1);
+            if (valExpr.startsWith('CALL ')) {
+              variables[varName] = callFunction(valExpr.slice(5).trim());
+            } else {
+              variables[varName] = resolveExpression(valExpr);
+            }
+          }
+          fi++;
+          continue;
+        }
+
+        // PRINT inside function
+        if (fl.startsWith('PRINT ')) {
+          const rest = fl.slice(6).trim();
+          const parts = [];
+          let current = '';
+          let inQuote = false;
+          for (let c = 0; c < rest.length; c++) {
+            if (rest[c] === '"') inQuote = !inQuote;
+            if (rest[c] === ',' && !inQuote) {
+              parts.push(current);
+              current = '';
+            } else {
+              current += rest[c];
+            }
+          }
+          if (current.trim()) parts.push(current);
+          const result = parts.map(p => {
+            const pt = p.trim();
+            return resolveValue(pt);
+          }).join(' ');
+          outputLines.push(String(result));
+          fi++;
+          continue;
+        }
+
+        fi++;
       }
 
       // Restore variables after function call
@@ -2774,8 +2779,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   if (op === '<') return left < right;
                 }
               }
-              return resolveValue(pt);
-            }).join(' ');
+						 const resolved = resolveValue(pt);
+							if (Array.isArray(resolved)) return resolved.join(', ');
+						 return resolved;
+						 }).join(' ');
             outputLines.push(String(result));
             idx++;
             continue;

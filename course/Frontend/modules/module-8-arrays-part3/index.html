@@ -1,433 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Value Fundamentals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../styles/css/style.css">
 </head>
+
 <body>
-<main id="main-content">
-<!-- ============================================================ -->
-<!-- GOLD STANDARD EXERCISE FILE                                  -->
-<!-- core-value-fundamentals                                      -->
-<!-- Language-Agnostic Edition                                    -->
-<!-- ============================================================ -->
+  <main id="main-content">
+    <!-- ============================================================ -->
+    <!-- GOLD STANDARD EXERCISE FILE                                  -->
+    <!-- core-value-fundamentals                                      -->
+    <!-- Language-Agnostic Edition                                    -->
+    <!-- ============================================================ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: MODULE-8-ARRAYS-PART3                   █ -->
-<!-- █  // Module 8 Arrays Part3                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<section class="page" id="arrays-module">
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // Start::: MODULE-8-ARRAYS-PART3                   █ -->
+    <!-- █  // Module 8 Arrays Part3                         █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+    <section class="page" id="arrays-module">
 
-<h2 class="module-title">Module 8 Arrays Part3</h2>
+      <h2 class="module-title">Module 8 Arrays Part3</h2>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Helper Boxes                     █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<!-- Helper Box Part 3: FOR EACH Loops with Lists -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Helper Boxes                     █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- Helper Box Part 3: FOR EACH Loops with Lists -->
 
-<div class="helper-box">
-  <h3 class="box-title">🔁 FOR EACH Loops With a List 🔁</h3>
+      <div class="helper-box">
+        <h3 class="box-title">🔁 FOR EACH Loops With a List 🔁</h3>
 
-  <p>You learned about loops back in Module 5. Here is a quick reminder — and then
-    we will see how they work with lists, which is where they become really powerful!</p>
+        <p>You learned about loops back in Module 5. Here is a quick reminder — and then
+          we will see how they work with lists, which is where they become really powerful!</p>
 
-  <h4 class="sub-title">Quick Reminder — What a Loop Does:</h4>
+        <h4 class="sub-title">Quick Reminder — What a Loop Does:</h4>
 
-  <p>A loop repeats a set of instructions automatically — so you do not have to
-    write the same thing over and over again.</p>
+        <p>A loop repeats a set of instructions automatically — so you do not have to
+          write the same thing over and over again.</p>
 
-  <div class="code-block">
-    FOR EACH "number" IN [0, 1, 2]<br>
-    &nbsp;&nbsp;PRINT "number"<br>
-    END FOR
-  </div>
+        <div class="code-block">
+          FOR EACH "number" IN [0, 1, 2]<br>
+          &nbsp;&nbsp;PRINT "number"<br>
+          END FOR
+        </div>
 
-  <p class="output">Output:<br>
-    0<br>
-    1<br>
-    2</p>
+        <p class="output">Output:<br>
+          0<br>
+          1<br>
+          2</p>
 
-  <h4 class="sub-title">Now — Loops With a List:</h4>
+        <h4 class="sub-title">Now — Loops With a List:</h4>
 
-  <p>Instead of writing a list of numbers, we can use a loop to go through every
-    item on a list automatically. The loop visits each item in order and does
-    something with it:</p>
+        <p>Instead of writing a list of numbers, we can use a loop to go through every
+          item on a list automatically. The loop visits each item in order and does
+          something with it:</p>
 
-  <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
-    <br>
-    FOR EACH "name" IN "class names"<br>
-    &nbsp;&nbsp;PRINT "name"<br>
-    END FOR
-  </div>
+        <div class="code-block">
+          SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+          <br>
+          FOR EACH "name" IN "class names"<br>
+          &nbsp;&nbsp;PRINT "name"<br>
+          END FOR
+        </div>
 
-  <p class="output">Output:<br>
-    Ben<br>
-    Sara<br>
-    Tom<br>
-    Aisha</p>
+        <p class="output">Output:<br>
+          Ben<br>
+          Sara<br>
+          Tom<br>
+          Aisha</p>
 
-  <p>The loop creates a temporary variable called <strong>"name"</strong>. On the
-    first go, it holds "Ben", then "Sara", then "Tom", then "Aisha". Every name on
-    the clipboard — printed automatically!</p>
+        <p>The loop creates a temporary variable called <strong>"name"</strong>. On the
+          first go, it holds "Ben", then "Sara", then "Tom", then "Aisha". Every name on
+          the clipboard — printed automatically!</p>
 
-  <h4 class="sub-title">Adding a Message:</h4>
+        <h4 class="sub-title">Adding a Message:</h4>
 
-  <div class="code-block">
-    SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
-    <br>
-    FOR EACH "name" IN "class names"<br>
-    &nbsp;&nbsp;PRINT "Name on list:", "name"<br>
-    END FOR
-  </div>
+        <div class="code-block">
+          SET "class names" = ["Ben", "Sara", "Tom", "Aisha"]<br>
+          <br>
+          FOR EACH "name" IN "class names"<br>
+          &nbsp;&nbsp;PRINT "Name on list:", "name"<br>
+          END FOR
+        </div>
 
-  <p class="output">Output:<br>
-    Name on list: Ben<br>
-    Name on list: Sara<br>
-    Name on list: Tom<br>
-    Name on list: Aisha</p>
+        <p class="output">Output:<br>
+          Name on list: Ben<br>
+          Name on list: Sara<br>
+          Name on list: Tom<br>
+          Name on list: Aisha</p>
 
-  <p class="note">💡 <strong>Remember:</strong> FOR EACH goes through every item
-    in the list from first to last. You don't need to know how many items there are
-    — the loop handles it for you!</p>
-</div>
+        <p class="note">💡 <strong>Remember:</strong> FOR EACH goes through every item
+          in the list from first to last. You don't need to know how many items there are
+          — the loop handles it for you!</p>
+      </div>
 
-<!-- End of Helper Box Part 3 -->
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Helper Boxes                       █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- End of Helper Box Part 3 -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Helper Boxes                       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercises                        █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<h2 class="module-title">Module 8 Arrays Part3 — Exercises</h2>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercises                        █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <h2 class="module-title">Module 8 Arrays Part3 — Exercises</h2>
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 1                       █ -->
-<!-- █  // Exercise 1: Print All Flavours 📋          █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-1">
-<h3 class="exercise-title">Exercise 1: Print All Flavours 📋</h3>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 1                       █ -->
+      <!-- █  // Exercise 1: Print All Flavours 📋          █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="arrays3-exercise-1">
+        <h3 class="exercise-title">Exercise 1: Print All Flavours 📋</h3>
 
-<h4 class="sub-title">Part A: Flavours List</h4>
+        <h4 class="sub-title">Part A: Flavours List</h4>
 
-<p>The supervisor wants to see every flavour on today's menu. The children write a loop that goes through the flavours list and prints each one.</p>
+        <p>The supervisor wants to see every flavour on today's menu. The children write a loop that goes through the
+          flavours list and prints each one.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to ["Salted", "Sweet", "Spicy", "Toffee", "Cheese"].</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through the "flavours" list and print each flavour with the message "Flavour: "</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to set up the loop:
-    <div class="code-example">
-      <code>FOR EACH flavour IN flavours<br>PRINT "Flavour: ", flavour</code>
-    </div>
-  </li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to ["Salted",
+            "Sweet", "Spicy", "Toffee", "Cheese"].</li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through the "flavours" list and print each
+            flavour with the message "Flavour: "</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to set up the loop:
+            <div class="code-example">
+              <code>FOR EACH flavour IN flavours<br>PRINT "Flavour: ", flavour</code>
+            </div>
+          </li>
+        </ul>
 
-<label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex1-part-a" data-section="arrays"></div>
+        <label for="arrays-ex1-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex1-part-a" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="1-part-a">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="1-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="1-part-a">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="1-part-a">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="1-part-a">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="1-part-a">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint1-part-a"></p>
-<pre class="output-block" id="arrays-output1-part-a"></pre>
-<pre class="answer-block" id="arrays-answer1-part-a"></pre>
-<h4 class="sub-title">Part B: Flavours with Fewer Options</h4>
+        <p class="hint" id="arrays3-hint1-part-a"></p>
+        <pre class="output-block" id="arrays3-output1-part-a"></pre>
+        <pre class="answer-block" id="arrays3-answer1-part-a"></pre>
+        <h4 class="sub-title">Part B: Flavours with Fewer Options</h4>
 
-<p>Great work! Now let's try with different values.</p>
+        <p>Great work! Now let's try with different values.</p>
 
-<p>Today, we have a shorter menu with fewer flavours. The supervisor wants to see every flavour on this menu. We will write a loop that goes through the flavours list and prints each one.</p>
+        <p>Today, we have a shorter menu with fewer flavours. The supervisor wants to see every flavour on this menu. We
+          will write a loop that goes through the flavours list and prints each one.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to <code>["Butter", "Caramel", "Plain"]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through the flavours list and print each flavour with the message "Flavour:".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now let's see the flavours printed out:
-    <div class="code-example">
-      <code>SET flavours = ["Butter", "Caramel", "Plain"]<br>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavours" and set its value to
+            <code>["Butter", "Caramel", "Plain"]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through the flavours list and print each
+            flavour with the message "Flavour:".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now let's see the flavours printed out:
+            <div class="code-example">
+              <code>SET flavours = ["Butter", "Caramel", "Plain"]<br>
       FOR EACH flavour IN flavours<br>
         PRINT "Flavour: ", flavour<br>
       END FOR</code>
-    </div>
-  </li>
-</ul>
+            </div>
+          </li>
+        </ul>
 
-<label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex1-part-b" data-section="arrays"></div>
+        <label for="arrays-ex1-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex1-part-b" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="1-part-b">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="1-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="1-part-b">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="1-part-b">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="1-part-b">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="1-part-b">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint1-part-b"></p>
-<pre class="output-block" id="arrays-output1-part-b"></pre>
-<pre class="answer-block" id="arrays-answer1-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 1                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="arrays3-hint1-part-b"></p>
+        <pre class="output-block" id="arrays3-output1-part-b"></pre>
+        <pre class="answer-block" id="arrays3-answer1-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 1                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 2                       █ -->
-<!-- █  // Exercise 2: Welcome Each Assistant 👋      █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-2">
-<h3 class="exercise-title">Exercise 2: Welcome Each Assistant 👋</h3>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 2                       █ -->
+      <!-- █  // Exercise 2: Welcome Each Assistant 👋      █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="arrays3-exercise-2">
+        <h3 class="exercise-title">Exercise 2: Welcome Each Assistant 👋</h3>
 
-<h4 class="sub-title">Part A: Welcome the Assistants</h4>
+        <h4 class="sub-title">Part A: Welcome the Assistants</h4>
 
-<p>Each assistant arrives at the factory. You need to write a loop that prints a welcome message for every assistant on the list. The list of assistants is stored in a variable named "assistants" and its value is ["Ben", "Sara", "Tom", "Aisha"].</p>
+        <p>Each assistant arrives at the factory. You need to write a loop that prints a welcome message for every
+          assistant on the list. The list of assistants is stored in a variable named "assistants" and its value is
+          ["Ben", "Sara", "Tom", "Aisha"].</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to <code>["Ben", "Sara", "Tom", "Aisha"]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Welcome to the factory: " followed by each assistant's name.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop with the "assistants" list in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to
+            <code>["Ben", "Sara", "Tom", "Aisha"]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "Welcome to the factory: " followed by each
+            assistant's name.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop with the "assistants" list
+            in the code block below.</li>
+        </ul>
 
-<label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex2-part-a" data-section="arrays"></div>
+        <label for="arrays-ex2-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex2-part-a" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="2-part-a">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="2-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="2-part-a">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="2-part-a">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="2-part-a">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="2-part-a">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint2-part-a"></p>
-<pre class="output-block" id="arrays-output2-part-a"></pre>
-<pre class="answer-block" id="arrays-answer2-part-a"></pre>
-<h4 class="sub-title">Part B: Welcome Each Assistant</h4>
+        <p class="hint" id="arrays3-hint2-part-a"></p>
+        <pre class="output-block" id="arrays3-output2-part-a"></pre>
+        <pre class="answer-block" id="arrays3-answer2-part-a"></pre>
+        <h4 class="sub-title">Part B: Welcome Each Assistant</h4>
 
-<p>Remember how we welcomed each assistant at the factory in Part A? Now, let's welcome a new group of assistants who have just arrived!</p>
+        <p>Remember how we welcomed each assistant at the factory in Part A? Now, let's welcome a new group of
+          assistants who have just arrived!</p>
 
-<p>We have a new list of assistants: "assistants" = ["Jake", "Mia", "Leo"]. We want to print a welcome message for each one of them.</p>
+        <p>We have a new list of assistants: "assistants" = ["Jake", "Mia", "Leo"]. We want to print a welcome message
+          for each one of them.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to <code>["Jake", "Mia", "Leo"]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to print "Welcome to the factory:" followed by each assistant's name.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to use the FOR EACH loop in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "assistants" and set its value to
+            <code>["Jake", "Mia", "Leo"]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to print "Welcome to the factory:" followed by
+            each assistant's name.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to use the FOR EACH loop in the code block below.
+          </li>
+        </ul>
 
-<label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex2-part-b" data-section="arrays"></div>
+        <label for="arrays-ex2-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex2-part-b" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="2-part-b">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="2-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="2-part-b">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="2-part-b">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="2-part-b">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="2-part-b">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint2-part-b"></p>
-<pre class="output-block" id="arrays-output2-part-b"></pre>
-<pre class="answer-block" id="arrays-answer2-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 2                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="arrays3-hint2-part-b"></p>
+        <pre class="output-block" id="arrays3-output2-part-b"></pre>
+        <pre class="answer-block" id="arrays3-answer2-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 2                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 3                       █ -->
-<!-- █  // Exercise 3: Show Machine Status 🤖         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-3">
-<h3 class="exercise-title">Exercise 3: Show Machine Status 🤖</h3>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 3                       █ -->
+      <!-- █  // Exercise 3: Show Machine Status 🤖         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="arrays3-exercise-3">
+        <h3 class="exercise-title">Exercise 3: Show Machine Status 🤖</h3>
 
-<h4 class="sub-title">Part A: Checking Machine Names</h4>
+        <h4 class="sub-title">Part A: Checking Machine Names</h4>
 
-<p>In the machines clipboard, you see each machine's name. Your task is to write a loop that prints "Checking: [machine name]" for every machine. You will use the "machine names" list, which contains the names of all the machines.</p>
+        <p>In the machines clipboard, you see each machine's name. Your task is to write a loop that prints "Checking:
+          [machine name]" for every machine. You will use the "machine names" list, which contains the names of all the
+          machines.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine names" and set its value to <code>["Popper 1", "Popper 2", "Popper 3", "Popper 4"]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through each machine name in the "machine names" list.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display "Checking: " followed by the current machine name.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to print the machine names in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine names" and set its value to
+            <code>["Popper 1", "Popper 2", "Popper 3", "Popper 4"]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through each machine name in the "machine
+            names" list.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display "Checking: " followed by the
+            current machine name.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to print the machine names in the code block below.
+          </li>
+        </ul>
 
-<label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex3-part-a" data-section="arrays"></div>
+        <label for="arrays-ex3-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex3-part-a" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="3-part-a">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="3-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="3-part-a">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="3-part-a">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="3-part-a">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="3-part-a">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint3-part-a"></p>
-<pre class="output-block" id="arrays-output3-part-a"></pre>
-<pre class="answer-block" id="arrays-answer3-part-a"></pre>
-<h4 class="sub-title">Part B: Machine Status</h4>
+        <p class="hint" id="arrays3-hint3-part-a"></p>
+        <pre class="output-block" id="arrays3-output3-part-a"></pre>
+        <pre class="answer-block" id="arrays3-answer3-part-a"></pre>
+        <h4 class="sub-title">Part B: Machine Status</h4>
 
-<p>Now that you know how to loop through a list of machine names, let's see how to do the same with a list of machine statuses.</p>
+        <p>Now that you know how to loop through a list of machine names, let's see how to do the same with a list of
+          machine statuses.</p>
 
-<p>Imagine you have a list of machine statuses: "Ready", "Not Ready", "Ready", "Ready". You want to print out each status, one by one.</p>
+        <p>Imagine you have a list of machine statuses: "Ready", "Not Ready", "Ready", "Ready". You want to print out
+          each status, one by one.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine statuses" and set its value to <code>["Ready", "Not Ready", "Ready", "Ready"]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to loop through each item in "machine statuses".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display "Status: " followed by the current status.</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through each status and print it in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "machine statuses" and set its value to
+            <code>["Ready", "Not Ready", "Ready", "Ready"]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to loop through each item in "machine statuses".
+          </li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display "Status: " followed by the
+            current status.</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to loop through each status and print it in the
+            code block below.</li>
+        </ul>
 
-<label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex3-part-b" data-section="arrays"></div>
+        <label for="arrays-ex3-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex3-part-b" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="3-part-b">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="3-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="3-part-b">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="3-part-b">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="3-part-b">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="3-part-b">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint3-part-b"></p>
-<pre class="output-block" id="arrays-output3-part-b"></pre>
-<pre class="answer-block" id="arrays-answer3-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 3                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="arrays3-hint3-part-b"></p>
+        <pre class="output-block" id="arrays3-output3-part-b"></pre>
+        <pre class="answer-block" id="arrays3-answer3-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 3                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 4                       █ -->
-<!-- █  // Exercise 4: Double the Box Counts 🔢       █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-4">
-<h3 class="exercise-title">Exercise 4: Double the Box Counts 🔢</h3>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 4                       █ -->
+      <!-- █  // Exercise 4: Double the Box Counts 🔢       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="arrays3-exercise-4">
+        <h3 class="exercise-title">Exercise 4: Double the Box Counts 🔢</h3>
 
-<h4 class="sub-title">Part A: Doubling Box Counts</h4>
+        <h4 class="sub-title">Part A: Doubling Box Counts</h4>
 
-<p>The factory wants to double production. You need to write a loop that takes each box count, doubles it, and prints the new number. The box counts are stored in the list ["box counts"] = [5, 10, 3, 8, 12].</p>
+        <p>The factory wants to double production. You need to write a loop that takes each box count, doubles it, and
+          prints the new number. The box counts are stored in the list ["box counts"] = [5, 10, 3, 8, 12].</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "doubled" and set its value to <code>VALUE</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through "box counts". For each "count", SET "doubled" = "count" * 2.</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "New count:", "doubled".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop to double each box count in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "doubled" and set its value to
+            <code>VALUE</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR EACH loop to go through "box counts". For each "count", SET
+            "doubled" = "count" * 2.</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to display "New count:", "doubled".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to use a FOR EACH loop to double each box count in
+            the code block below.</li>
+        </ul>
 
-<label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex4-part-a" data-section="arrays"></div>
+        <label for="arrays-ex4-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex4-part-a" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="4-part-a">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="4-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="4-part-a">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="4-part-a">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="4-part-a">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="4-part-a">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint4-part-a"></p>
-<pre class="output-block" id="arrays-output4-part-a"></pre>
-<pre class="answer-block" id="arrays-answer4-part-a"></pre>
-<h4 class="sub-title">Part B: Double the Box Counts 🔢</h4>
+        <p class="hint" id="arrays3-hint4-part-a"></p>
+        <pre class="output-block" id="arrays3-output4-part-a"></pre>
+        <pre class="answer-block" id="arrays3-answer4-part-a"></pre>
+        <h4 class="sub-title">Part B: Double the Box Counts 🔢</h4>
 
-<p>Remember how we doubled the box counts in Part A? Now we need to do the same for the second list of box counts.</p>
+        <p>Remember how we doubled the box counts in Part A? Now we need to do the same for the second list of box
+          counts.</p>
 
-<p>The factory wants to double production again. We need to write a loop that takes each box count, doubles it, and prints the new number. The box counts are stored in the list [2, 4, 6, 8, 10].</p>
+        <p>The factory wants to double production again. We need to write a loop that takes each box count, doubles it,
+          and prints the new number. The box counts are stored in the list [2, 4, 6, 8, 10].</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "doubled" and set its value to <code>count * 2</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "New count:", "doubled".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to loop through the list [2, 4, 6, 8, 10] in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "doubled" and set its value to
+            <code>count * 2</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use PRINT to display "New count:", "doubled".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Now write the code to loop through the list [2, 4, 6, 8, 10] in the
+            code block below.</li>
+        </ul>
 
-<label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex4-part-b" data-section="arrays"></div>
+        <label for="arrays-ex4-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex4-part-b" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="4-part-b">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="4-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="4-part-b">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="4-part-b">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="4-part-b">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="4-part-b">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint4-part-b"></p>
-<pre class="output-block" id="arrays-output4-part-b"></pre>
-<pre class="answer-block" id="arrays-answer4-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 4                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="arrays3-hint4-part-b"></p>
+        <pre class="output-block" id="arrays3-output4-part-b"></pre>
+        <pre class="answer-block" id="arrays3-answer4-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 4                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // Start::: Exercise 5                       █ -->
-<!-- █  // Exercise 5: Build a Shopping List 🛒       █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
-<div class="exercise-box" id="arrays-exercise-5">
-<h3 class="exercise-title">Exercise 5: Build a Shopping List 🛒</h3>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // Start::: Exercise 5                       █ -->
+      <!-- █  // Exercise 5: Build a Shopping List 🛒       █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <div class="exercise-box" id="arrays3-exercise-5">
+        <h3 class="exercise-title">Exercise 5: Build a Shopping List 🛒</h3>
 
-<h4 class="sub-title">Part A: Start with an empty list called "shopping list". ADD "Corn", then ADD "Oil", then ADD "Salt", then ADD "Sugar". Print the final list</h4>
+        <h4 class="sub-title">Part A: Start with an empty list called "shopping list". ADD "Corn", then ADD "Oil", then
+          ADD "Salt", then ADD "Sugar". Print the final list</h4>
 
-<p>Start with an empty list called "shopping list". The supervisor asks you to fill it with ingredients. You start with an empty list, then add each ingredient one by one, and finally print the complete list.</p>
+        <p>Start with an empty list called "shopping list". The supervisor asks you to fill it with ingredients. You
+          start with an empty list, then add each ingredient one by one, and finally print the complete list.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "shopping list" and set its value to <code>[]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the ADD command to add "Corn" to the "shopping list".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use the ADD command to add "Oil" to the "shopping list".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use the ADD command to add "Salt" to the "shopping list".</li>
-  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use the ADD command to add "Sugar" to the "shopping list".</li>
-  <li><strong>Step 6:</strong>&nbsp;&nbsp;Use PRINT to display the "shopping list".</li>
-  <li><strong>Step 7:</strong>&nbsp;&nbsp;Now write the code to build the shopping list in the code block below.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "shopping list" and set its value to
+            <code>[]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the ADD command to add "Corn" to the "shopping list".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use the ADD command to add "Oil" to the "shopping list".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Use the ADD command to add "Salt" to the "shopping list".</li>
+          <li><strong>Step 5:</strong>&nbsp;&nbsp;Use the ADD command to add "Sugar" to the "shopping list".</li>
+          <li><strong>Step 6:</strong>&nbsp;&nbsp;Use PRINT to display the "shopping list".</li>
+          <li><strong>Step 7:</strong>&nbsp;&nbsp;Now write the code to build the shopping list in the code block below.
+          </li>
+        </ul>
 
-<label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex5-part-a" data-section="arrays"></div>
+        <label for="arrays-ex5-part-a" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex5-part-a" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="5-part-a">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="5-part-a">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="5-part-a">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="5-part-a">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="5-part-a">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="5-part-a">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint5-part-a"></p>
-<pre class="output-block" id="arrays-output5-part-a"></pre>
-<pre class="answer-block" id="arrays-answer5-part-a"></pre>
-=== EXERCISE 5: BUILD A SHOPPING LIST 🛒
+        <p class="hint" id="arrays3-hint5-part-a"></p>
+        <pre class="output-block" id="arrays3-output5-part-a"></pre>
+        <pre class="answer-block" id="arrays3-answer5-part-a"></pre>
+        <!-- === EXERCISE 5: BUILD A SHOPPING LIST 🛒 -->
 
-<h4 class="sub-title">Part B: Building a Shopping List</h4>
+        <h4 class="sub-title">Part B: Building a Shopping List</h4>
 
-<p>Remember how we built a shopping list by adding each item one by one in Part A?</p>
+        <p>Remember how we built a shopping list by adding each item one by one in Part A?</p>
 
-<p>Now, let's start with an empty list and add three different ingredients: "Butter", "Caramel", and "Cheese Powder". We will use the ADD command to add each item to the list.</p>
+        <p>Now, let's start with an empty list and add three different ingredients: "Butter", "Caramel", and "Cheese
+          Powder". We will use the ADD command to add each item to the list.</p>
 
-<ul class="indented-list">
-  <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "shopping list" and set its value to <code>[]</code>.</li>
-  <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the ADD command to add "Butter" to the "shopping list".</li>
-  <li><strong>Step 3:</strong>&nbsp;&nbsp;Use the ADD command to add "Caramel" to the "shopping list".</li>
-  <li><strong>Step 4:</strong>&nbsp;&nbsp;Use the ADD command to add "Cheese Powder" to the "shopping list".</li>
-  <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display the complete shopping list.</li>
-</ul>
+        <ul class="indented-list">
+          <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "shopping list" and set its value to
+            <code>[]</code>.
+          </li>
+          <li><strong>Step 2:</strong>&nbsp;&nbsp;Use the ADD command to add "Butter" to the "shopping list".</li>
+          <li><strong>Step 3:</strong>&nbsp;&nbsp;Use the ADD command to add "Caramel" to the "shopping list".</li>
+          <li><strong>Step 4:</strong>&nbsp;&nbsp;Use the ADD command to add "Cheese Powder" to the "shopping list".
+          </li>
+          <li><strong>Step 5:</strong>&nbsp;&nbsp;Use PRINT to display the complete shopping list.</li>
+        </ul>
 
-<label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
-<div class="code-block" contenteditable="true" id="arrays-ex5-part-b" data-section="arrays"></div>
+        <label for="arrays-ex5-part-b" class="code-label">Add your code in the code block below</label>
+        <div class="code-block" contenteditable="true" id="arrays3-ex5-part-b" data-section="arrays3"></div>
 
-<div class="exercise-buttons">
-  <button class="hint-button" data-section="arrays" data-ex="5-part-b">Hint</button>
-  <button class="run-button" data-section="arrays" data-ex="5-part-b">Run My Code</button>
-  <button class="reset-button" data-section="arrays" data-ex="5-part-b">Reset My Code</button>
-</div>
+        <div class="exercise-buttons">
+          <button class="hint-button" data-section="arrays3" data-ex="5-part-b">Hint</button>
+          <button class="run-button" data-section="arrays3" data-ex="5-part-b">Run My Code</button>
+          <button class="reset-button" data-section="arrays3" data-ex="5-part-b">Reset My Code</button>
+        </div>
 
-<p class="hint" id="arrays-hint5-part-b"></p>
-<pre class="output-block" id="arrays-output5-part-b"></pre>
-<pre class="answer-block" id="arrays-answer5-part-b"></pre>
-</div>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercise 5                         █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+        <p class="hint" id="arrays3-hint5-part-b"></p>
+        <pre class="output-block" id="arrays3-output5-part-b"></pre>
+        <pre class="answer-block" id="arrays3-answer5-part-b"></pre>
+      </div>
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercise 5                         █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: Exercises                          █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+      <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+      <!-- █  // End::: Exercises                          █ -->
+      <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-</section>
-<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
-<!-- █  // End::: MODULE-8-ARRAYS-PART3                   █ -->
-<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+    </section>
+    <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+    <!-- █  // End::: MODULE-8-ARRAYS-PART3                   █ -->
+    <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-</main>
-<script src="../../scripts/main.js"></script>
-<script src="../../scripts/scroll.js"></script>
+  </main>
+  <script src="../../scripts/main.js"></script>
+  <script src="../../scripts/scroll.js"></script>
 </body>
+
 </html>

@@ -20,7 +20,7 @@ const path = require('path');
 const PIPELINE_DIR = __dirname;
 
 const MODULES_TO_REBUILD = [
-  'MODULE-9-OBJECTS-PART1',
+  'MODULE-8-ARRAYS-PART6',
 ];
 
 const GAP_BETWEEN_MODULES = 5_000; // 5 seconds between modules
